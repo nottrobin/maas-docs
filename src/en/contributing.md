@@ -101,7 +101,7 @@ Callouts are used to notify the user of additional information or warn them of
 potential pitfalls. This will create a notification resembling the following in
 the docs:
 
-![callout](./media/note.png)
+![callout](../../media/note.png)
 
 To implement this callout, use the following syntax:
 
@@ -143,7 +143,7 @@ description of the new page and why it is needed!
 ## Adding screenshots
 
 When adding screenshots place them in `media`. To reference them in
-your page use the syntax `![description](./media/picture.png)`
+your page use the syntax `![description](../../media/picture.png)`
 
 
 # Testing or deploying locally

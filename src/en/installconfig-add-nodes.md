@@ -47,7 +47,7 @@ If you know the MAC address of a node, you can manually enter details about
 the node through the web interface. Click the `Add Node` button to be taken to
 the "Add Node" form:
 
-![image](./media/add-node.png)
+![image](../../media/add-node.png)
 
 
 ## KVM guest nodes
@@ -73,7 +73,7 @@ sudo virsh list --all
 qemu+ssh://ubuntu@10.0.0.2/system
 ```
 
-![qemu ssh power](./media/virsh-config.png)
+![qemu ssh power](../../media/virsh-config.png)
 
 For SSH, you'll need to generate an SSH keypair for the 'maas' user. A home
 directory and a login shell will also need to be set up:
@@ -114,7 +114,7 @@ MAAS's web interface by selecting a specific node. When a node's state is
 either *Ready* or *Broken*, network interfaces can be added or removed,
 attached to a fabric and linked to a subnet. 
 
-![node interface](./media/node-interface-ip.png)
+![node interface](../../media/node-interface-ip.png)
 
 There are four further options for how an interface's IP addresses is assigned:
 

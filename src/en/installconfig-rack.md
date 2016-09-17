@@ -36,7 +36,7 @@ latter.
 Once registered, the new, secondary, controller will appear immediately in the
 web UI and begin to sync with the primary controller:
 
-![add controller](./media/installconfig-rack__add-controller2.png)
+![add controller](../../media/installconfig-rack__add-controller2.png)
 
 
 <!--
@@ -69,6 +69,6 @@ If for any reason, the rack controller interfaces are mis-identified and are
 in the correct fabric, the user can manually change that by editing the Rack
 Controller Fabric information:
 
-![image](./media/rack-interface-edit.png)
+![image](../../media/rack-interface-edit.png)
 
 -->
