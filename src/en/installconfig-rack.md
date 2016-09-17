@@ -30,7 +30,7 @@ One reason to add extra rack controllers is to achieve DHCP high availability
 
 To install and register a rack controller you can either use the Ubuntu Server
 ISO or work from the command line. See
-[MAAS CLI](./manage-cli-advanced.html#add-a-rack-controller) on how to do the
+[MAAS CLI](manage-cli-advanced.md#add-a-rack-controller) on how to do the
 latter.
 
 Once registered, the new, secondary, controller will appear immediately in the

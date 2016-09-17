@@ -13,7 +13,7 @@ configuration altered to allow MAAS to enlist and control nodes
 automatically.
 
 !!! Note: If you don’t let MAAS manage DHCP, then MAAS will not be able to
-allocate its [*static IP addresses*](cluster-configuration.html#static-ip-address) to nodes.
+allocate its [*static IP addresses*](cluster-configuration.md#static-ip-address) to nodes.
 
 At the very least the “filename” option should be set to “pxelinux.0”.
 
@@ -243,11 +243,11 @@ maas maas node-groups import-boot-images
 
 *Using the web UI*
 :   Follow the instructions at [*Cluster
-    Configuration*](cluster-configuration.html) to use the web UI to set
+    Configuration*](cluster-configuration.md) to use the web UI to set
     up your cluster controller.
 *Using the command line client*
-:   First [*logging in to the API*](maascli.html#api-key) and then
-    [*following this procedure*](maascli.html#cli-dhcp)
+:   First [*logging in to the API*](maascli.md#api-key) and then
+    [*following this procedure*](maascli.md#cli-dhcp)
 
 ## Client-side DNS configuration
 

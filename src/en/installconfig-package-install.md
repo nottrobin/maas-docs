@@ -15,12 +15,12 @@ There are several packages to choose from:
 For convenience, the 'maas' metapackage will install all the above packages
 onto the localhost. This will provide all the services necessary to manage
 your machines with MAAS. See
-[A simple MAAS setup](./index.html#a-simple-maas-setup) for a little
+[A simple MAAS setup](index.md#a-simple-maas-setup) for a little
 more detail on the all-in-one MAAS solution. It is the ideal design for trying
 out MAAS for the first time.
 
 If you want to distribute these services on several machines (or want to
-[deploy extra rack controllers](./installconfig-rack.html#add-a-rack-controller)),
+[deploy extra rack controllers](installconfig-rack.md#add-a-rack-controller)),
 you will need to install packages individually on those machines.
 
 Packages 'maas-dhcp' and 'maas-dns' provide MAAS-controlled DHCP and DNS

@@ -101,7 +101,7 @@ balancing.
 It's important to note that installing the `maas` package will provide a DHCP
 service.  Review your existing network design in order to determine whether
 this will cause problems. See
-[DHCP](./installconfig-dhcp.html#competing-dhcp) for more on this subject.
+[DHCP](installconfig-dhcp.md#competing-dhcp) for more on this subject.
 
 
 ## Installation methods

@@ -19,7 +19,7 @@ discovery procedure](#automatic-discovery), below. You do not need to install
 Ubuntu on nodes that you wish to add to MAAS prior to enlistment.
 
 To learn more about setting up DHCP, read the
-[Rack Controller](./installconfig-rack.html) documentation.
+[Rack Controller](installconfig-rack.md) documentation.
 
 
 ## Automatic discovery
@@ -37,7 +37,7 @@ in the database. You can accept and commission the nodes via the web interface.
 After the nodes have been accepted, the selected series of Ubuntu will be
 installed.
 
-See [Using the CLI](./manage-cli.html#commission-all-machines) for how to
+See [Using the CLI](manage-cli.md#commission-all-machines) for how to
 commission all machines from the CLI.
 
 
@@ -133,7 +133,7 @@ IP address for that interface to use when deployed.
 
 Interfaces configured as "DHCP" will use DHCP to request configuration
 information at boot. In order for the interface to successfully configure, you
-will need to ensure that a [dynamic range](intro-concepts.html#ip-ranges) has
+will need to ensure that a [dynamic range](intro-concepts.md#ip-ranges) has
 been reserved on the associated subnet, and that either you have configured
 MAAS to provide DHCP services on the associated VLAN, or that you have provided
 an external DHCP server to do so.

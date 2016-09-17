@@ -27,7 +27,7 @@ as you would install it manually: using the [Debian
 Installer](http://www.debian.org/devel/debian-installer/). Answers to
 the questions asked by the installer are provided in a ‘preseed’ file.
 For more information on preseed files, see the [*Additional
-Configuration*](configure.html#preseed) page.
+Configuration*](configure.md#preseed) page.
 
 The Debian installer is not enabled by default. To enable it for a node
 that’s been configured to use the fast installer, visit the node’s page
@@ -67,7 +67,7 @@ installation.
 The fast installer is much quicker than the Debian installer, but has
 the disadvantage that it’s less easy to configure a node at install
 time, since the fast installer doesn’t use a 
-[preseed file](configure.html#preseed). In addition, the packages that are
+[preseed file](configure.md#preseed). In addition, the packages that are
 initially installed on a fast-installed node need updating manually,
 since they are part of the installation image and not downloaded fresh
 from an apt repository.
