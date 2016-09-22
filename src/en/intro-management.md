@@ -1,6 +1,9 @@
-Title: MAAS | Management Summary
-TODO:  Add link for CLI docs to navigation when those docs are available and updated
-
+---
+title:
+- MAAS | Management Summary
+todo:
+- Add link for CLI docs to navigation when those docs are available and updated
+---
 
 # Management summary
 
@@ -34,4 +37,4 @@ get a sense of what is possible with the CLI see [MAAS CLI](manage-cli.md).
 ## API
 
 The API is typically reserved for large-scale automization. See
-[API / CLI Documentation](http://maas.ubuntu.com/docs/index.html#api-cli-documentation). 
+[API / CLI Documentation](http://maas.ubuntu.com/docs/index.html#api-cli-documentation).

@@ -1,5 +1,7 @@
-Title: MAAS Proxying
-
+---
+title:
+- MAAS Proxying
+---
 
 # MAAS Proxying
 

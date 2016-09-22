@@ -1,13 +1,16 @@
-Title: Add Nodes
-TODO: Review needed
-      Update/replace API references with GUI
-      Clarify terms: discovery, enlistment, accept, commission
-      There should be a "commission" section (i.e. not bundled with "discovery")
-      AFAIK, user 'maas' has a default home directory of /var/lib/maas
-      This is the wrong place for node interface configuration, but until we
-      migrate to the new structure, I can't think of a better place at the
-      moment. 
-
+---
+title:
+- Add Nodes
+todo:
+- Review needed
+- Update/replace API references with GUI
+- 'Clarify terms: discovery, enlistment, accept, commission'
+- There should be a "commission" section (i.e. not bundled with "discovery")
+- AFAIK, user 'maas' has a default home directory of /var/lib/maas
+- This is the wrong place for node interface configuration, but until we
+- migrate to the new structure, I can't think of a better place at the
+- moment.
+---
 
 # Add Nodes
 
@@ -112,7 +115,7 @@ virsh -c qemu+ssh://ubuntu@10.0.0.2/system list --all
 After a node has been commissioned, its interface(s) can be configured within
 MAAS's web interface by selecting a specific node. When a node's state is
 either *Ready* or *Broken*, network interfaces can be added or removed,
-attached to a fabric and linked to a subnet. 
+attached to a fabric and linked to a subnet.
 
 ![node interface](../../media/node-interface-ip.png)
 

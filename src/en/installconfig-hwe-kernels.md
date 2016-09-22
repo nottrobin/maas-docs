@@ -1,5 +1,7 @@
-Title: HWE kernels
-
+---
+title:
+- HWE kernels
+---
 
 # HWE kernels
 
@@ -81,4 +83,4 @@ kernel' field. Hit 'Go' to initiate the deployment.
 ![image](../../media/hwe_kernel.png)
 
 MAAS verifies that the specified kernel is available for the given Ubuntu
-release (series) before deploying the node. 
+release (series) before deploying the node.

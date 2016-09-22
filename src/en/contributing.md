@@ -1,7 +1,10 @@
-Title: Contributing to MAAS docs  
-TODO: update callout graphic
-      update corresponding file for Juju docs
-
+---
+title:
+- Contributing to MAAS docs
+todo:
+- update callout graphic
+- update corresponding file for Juju docs
+---
 
 # Contributing to MAAS documentation
 

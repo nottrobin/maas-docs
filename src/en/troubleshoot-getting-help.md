@@ -1,4 +1,7 @@
-Title: MAAS Troubleshooting | Getting Help
+---
+title:
+- MAAS Troubleshooting | Getting Help
+---
 
 # Getting help
 

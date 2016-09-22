@@ -1,4 +1,7 @@
-Title: Additional configuration
+---
+title:
+- Additional configuration
+---
 
 # Additional Configuration
 

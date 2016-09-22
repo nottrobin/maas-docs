@@ -1,8 +1,12 @@
-Title: MAAS CLI | Common Tasks
-TODO:  Decide whether explicit examples are needed everywhere
-       Foldouts cannot be used due to bug: https://git.io/vwbCz
-       There is a nuance between a single reserved address and a single address in a range (start and end addresses being the same). this could use some digging
-
+---
+title:
+- MAAS CLI | Common Tasks
+todo:
+- Decide whether explicit examples are needed everywhere
+- 'Foldouts cannot be used due to bug: https://git.io/vwbCz'
+- There is a nuance between a single reserved address and a single address in a range
+  (start and end addresses being the same). this could use some digging
+---
 
 # Common CLI Tasks
 
@@ -31,7 +35,7 @@ To determine the system ID based on a node's hostname:
 
 ```bash
 SYSTEM_ID=$(maas $PROFILE nodes read hostname=$HOSTNAME \
-	| grep system_id | cut -d '"' -f 4)
+    | grep system_id | cut -d '"' -f 4)
 ```
 
 
@@ -72,7 +76,7 @@ node enlistment and commissioning:
 
 ```bash
 maas $PROFILE ipranges create type=dynamic \
-	start_ip=$IP_DYNAMIC_RANGE_LOW end_ip=$IP_DYNAMIC_RANGE_HIGH
+    start_ip=$IP_DYNAMIC_RANGE_LOW end_ip=$IP_DYNAMIC_RANGE_HIGH
 ```
 
 See
@@ -83,7 +87,7 @@ To reserve a range of IP addresses that will not be used by MAAS:
 
 ```bash
 maas $PROFILE ipranges create type=reserved \
-	start_ip=$IP_STATIC_RANGE_LOW end_ip=$IP_STATIC_RANGE_HIGH
+    start_ip=$IP_STATIC_RANGE_LOW end_ip=$IP_STATIC_RANGE_HIGH
 ```
 
 To reserve a single IP address that will not be used by MAAS:
@@ -105,7 +109,7 @@ To determine a fabric ID based on a subnet address:
 
 ```bash
 FABRIC_ID=$(maas $PROFILE subnet read $SUBNET_CIDR \
-	| grep fabric | cut -d ' ' -f 10 | cut -d '"' -f 2)
+    | grep fabric | cut -d ' ' -f 10 | cut -d '"' -f 2)
 ```
 
 
@@ -115,15 +119,15 @@ To enable DHCP on a VLAN on a certain fabric:
 
 ```bash
 maas $PROFILE vlan update $FABRIC_ID $VLAN_TAG dhcp_on=True \
-	primary_rack=$PRIMARY_RACK_CONTROLLER
+    primary_rack=$PRIMARY_RACK_CONTROLLER
 ```
 
 To enable DHCP HA you will need both a primary and a secondary controller:
 
 ```bash
 maas $PROFILE vlan update $FABRIC_ID $VLAN_TAG dhcp_on=True \
-	primary_rack=$PRIMARY_RACK_CONTROLLER \
-	secondary_rack=$SECONDARY_RACK_CONTROLLER 
+    primary_rack=$PRIMARY_RACK_CONTROLLER \
+    secondary_rack=$SECONDARY_RACK_CONTROLLER 
 ```
 
 You will also need to [set a default gateway](#set-a-default-gateway).
@@ -201,7 +205,7 @@ To set a description for a physical zone:
 
 ```bash
 maas $PROFILE zone update default \
-	description="This zone was configured by a script."
+    description="This zone was configured by a script."
 ```
 
 
@@ -220,7 +224,7 @@ To determine the hostname based on a node's MAC address:
 
 ```bash
 HOSTNAME=$(maas $PROFILE nodes read mac_address=$MAC \
-	| grep hostname | cut -d '"' -f 4)
+    | grep hostname | cut -d '"' -f 4)
 ```
 
 
@@ -230,7 +234,7 @@ To create a regular user:
 
 ```bash
 maas $PROFILE users create username=$USERNAME \
-	email=$EMAIL_ADDRESS password=$PASSWORD is_superuser=0
+    email=$EMAIL_ADDRESS password=$PASSWORD is_superuser=0
 ```
 
 All the options are necessary. Note that stipulating a password on the CLI may

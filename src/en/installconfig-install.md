@@ -1,5 +1,7 @@
-Title: Installation
-
+---
+title:
+- Installation
+---
 
 # Installation
 
@@ -27,4 +29,3 @@ from an [Ubuntu Server ISO](installconfig-server-iso.md).
 
 Ubuntu 14.04 systems running MAAS 1.9 and 1.9.x can [upgrade to MAAS
 2.0](installconfig-upgrade-to-2.md) via the system-wide upgrade to Ubuntu 16.04.
-

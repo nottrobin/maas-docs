@@ -1,6 +1,8 @@
-Title: MAAS | Access the GUI
+---
+title:
+- MAAS | Access the GUI
+---
 
-	
 # Access the GUI
 
 Unless MAAS was installed from the

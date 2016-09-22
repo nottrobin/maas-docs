@@ -1,5 +1,7 @@
-Title: Local Image Mirror
-
+---
+title:
+- Local Image Mirror
+---
 
 # Local Image Mirror
 
@@ -35,7 +37,7 @@ kernels that are compatible with either Ubuntu 14.04 (Trusty) and Ubuntu 16.04
 
 ```bash
 sudo sstream-mirror --keyring=$KEYRING_FILE $IMAGE_SRC $IMAGE_DIR \
-	'arch=amd64' 'release~(trusty|xenial)' --max=1 --progress
+    'arch=amd64' 'release~(trusty|xenial)' --max=1 --progress
 ```
 
 To know in advance what the `sstream-mirror` command will grab and/or if you

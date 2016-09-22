@@ -1,4 +1,7 @@
-Title: Partitions
+---
+title:
+- Partitions
+---
 
 # Partitions
 

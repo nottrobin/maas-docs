@@ -1,4 +1,7 @@
-Title: Upgrade from 1.9 to 2.0
+---
+title:
+- Upgrade from 1.9 to 2.0
+---
 
 # Upgrade from 1.9 to 2.0
 

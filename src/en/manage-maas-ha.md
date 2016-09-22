@@ -1,5 +1,9 @@
-Title: High Availability (HA) Configuration
-TODO: Needs a rewrite
+---
+title:
+- High Availability (HA) Configuration
+todo:
+- Needs a rewrite
+---
 
 # High Availability (HA) Configuration
 

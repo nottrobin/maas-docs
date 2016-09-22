@@ -1,8 +1,11 @@
-Title: MAAS CLI
-TODO:  Provide links to definitions of the entities (e.g. fabric, dynamic address range)
-       Foldouts cannot be used due to bug: https://git.io/vwbCz
-       Consider explaining how an API call is converted to a CLI command
-
+---
+title:
+- MAAS CLI
+todo:
+- Provide links to definitions of the entities (e.g. fabric, dynamic address range)
+- 'Foldouts cannot be used due to bug: https://git.io/vwbCz'
+- Consider explaining how an API call is converted to a CLI command
+---
 
 # MAAS CLI
 

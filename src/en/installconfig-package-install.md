@@ -1,6 +1,9 @@
-Title: Install from Packages
-TODO:  Explain MAAS proxy
-
+---
+title:
+- Install from Packages
+todo:
+- Explain MAAS proxy
+---
 
 # Install from Packages
 

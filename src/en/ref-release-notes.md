@@ -1,4 +1,7 @@
-Title: Release Notes
+---
+title:
+- Release Notes
+---
 
 # 2.0.0 Release notes
 

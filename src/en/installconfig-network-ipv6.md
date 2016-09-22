@@ -1,4 +1,7 @@
-Title: Managing IPv6 Networks
+---
+title:
+- Managing IPv6 Networks
+---
 
 # Managing IPv6 Networks
 

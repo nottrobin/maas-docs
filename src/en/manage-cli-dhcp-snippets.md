@@ -1,7 +1,10 @@
-Title: MAAS CLI | DHCP snippets
-TODO:  Include non-trivial examples of DHCP snippets
-       Bug check: https://bugs.launchpad.net/maas/+bug/1623192
-
+---
+title:
+- MAAS CLI | DHCP snippets
+todo:
+- Include non-trivial examples of DHCP snippets
+- 'Bug check: https://bugs.launchpad.net/maas/+bug/1623192'
+---
 
 # CLI DHCP Snippet Management
 

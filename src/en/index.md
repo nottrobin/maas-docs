@@ -1,5 +1,7 @@
-Title: MAAS | Metal As A Service
-
+---
+title:
+- MAAS | Metal As A Service
+---
 
 # What is MAAS?
 

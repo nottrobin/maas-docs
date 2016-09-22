@@ -1,5 +1,7 @@
-Title: DHCP
-
+---
+title:
+- DHCP
+---
 
 # DHCP
 

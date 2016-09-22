@@ -1,8 +1,11 @@
-Title: MAAS | Networks
-TODO:  There are too many words on this page.
-       Add links to CLI page (examples) where appropriate
-       Combine this page with installconfig-network (?)
-
+---
+title:
+- MAAS | Networks
+todo:
+- There are too many words on this page.
+- Add links to CLI page (examples) where appropriate
+- Combine this page with installconfig-network (?)
+---
 
 # MAAS networks
 

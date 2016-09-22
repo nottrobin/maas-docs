@@ -1,4 +1,7 @@
-Title: Storage
+---
+title:
+- Storage
+---
 
 # Storage
 
@@ -72,12 +75,12 @@ formatted with ext4 and set as the / mount point:
 The following options are supported for this layout. :
 
 `boot_size`: Size of the boot partition on the boot disk. Default is 0,
-	meaning not to create the boot partition. The '/boot' will be placed on
+    meaning not to create the boot partition. The '/boot' will be placed on
 the root filesystem.
-    
+
 `root_device`: The block device to place the root partition on. Default is the
 boot disk.
-    
+
 `root_size`: Size of the root partition. Default is 100%, meaning the entire
 size of the root device.
 

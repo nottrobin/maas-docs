@@ -1,5 +1,7 @@
-Title: MAAS | Architectural Overview
-
+---
+title:
+- MAAS | Architectural Overview
+---
 
 # Architectural overview
 

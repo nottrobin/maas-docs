@@ -1,5 +1,9 @@
-Title: Install Locally with LXD
-TODO:  Text needs a review
+---
+title:
+- Install Locally with LXD
+todo:
+- Text needs a review
+---
 
 # Install locally with LXD
 
@@ -72,4 +76,4 @@ access the container with:
 lxc exec xenial-maas bash
 ```
 You can now proceed with the [standard package
-installation](installconfig-package-install.md). 
+installation](installconfig-package-install.md).

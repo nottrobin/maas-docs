@@ -1,7 +1,10 @@
-Title: MAAS CLI | Tags
-TODO:  Decide whether explicit examples are needed everywhere
-       Foldouts cannot be used due to bug: https://git.io/vwbCz
-
+---
+title:
+- MAAS CLI | Tags
+todo:
+- Decide whether explicit examples are needed everywhere
+- 'Foldouts cannot be used due to bug: https://git.io/vwbCz'
+---
 
 # Tag management
 
@@ -16,15 +19,15 @@ applied to all the nodes that satisfy the definition:
 
 ```bash
 maas $PROFILE tags create name=$TAG_NAME \
-	comment='$TAG_COMMENT' definition='$TAG_DEFINITION'
+    comment='$TAG_COMMENT' definition='$TAG_DEFINITION'
 ```
 
 For example,
 
 ```bash
 maas $PROFILE tags create name='gpu' \
-	comment='GPU with clock speed >1GHz for running CUDA type operations.' \
-	definition='//node[@id="display"]/'clock units="Hz"' > 1000000000'
+    comment='GPU with clock speed >1GHz for running CUDA type operations.' \
+    definition='//node[@id="display"]/'clock units="Hz"' > 1000000000'
 ```
 
 We recommend that each tag have a short name and a comment that fully describes
@@ -90,7 +93,7 @@ In the same operation, a tag can be added to some nodes and removed from others:
 
 ```bash
 maas $PROFILE tag update-nodes $TAG_NAME \
-	add=$SYSTEM_ID_1 add=$SYSTEM_ID_2 remove=$SYSTEM_ID_3
+    add=$SYSTEM_ID_1 add=$SYSTEM_ID_2 remove=$SYSTEM_ID_3
 ```
 
 
@@ -104,7 +107,7 @@ you would use to do this:
 
 ```bash
 maas $PROFILE tags create name=$TAG_NAME \
-	comment='$TAG_COMMENT' definition='$TAG_DEFINITION'
+    comment='$TAG_COMMENT' definition='$TAG_DEFINITION'
 maas $PROFILE tag update $TAG_NAME definition=''
 maas $PROFILE tag update-nodes $TAG_NAME add=$SYSTEM_ID
 ```

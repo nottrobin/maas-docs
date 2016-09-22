@@ -1,4 +1,6 @@
-Title: MAAS | Practical Examples
+---
+title:
+- MAAS | Practical Examples
+---
 
 # Practical examples
-

@@ -1,6 +1,9 @@
-Title: MAAS | Concepts and Terms
-TODO: For "Zones", Refer to page equivalent to physical-zones.rst (e.g. fault tolerance)
-
+---
+title:
+- MAAS | Concepts and Terms
+todo:
+- For "Zones", Refer to page equivalent to physical-zones.rst (e.g. fault tolerance)
+---
 
 # Concepts and terms
 

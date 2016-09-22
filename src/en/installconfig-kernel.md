@@ -1,7 +1,10 @@
-Title: Kernel Boot Options
-TODO: Review
-      Add rationale/examples for using non-default kernel boot options
-
+---
+title:
+- Kernel Boot Options
+todo:
+- Review
+- Add rationale/examples for using non-default kernel boot options
+---
 
 # Kernel Boot Options
 

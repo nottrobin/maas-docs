@@ -1,4 +1,7 @@
-Title: STP | Network Configuration
+---
+title:
+- STP | Network Configuration
+---
 
 # Switches and STP
 

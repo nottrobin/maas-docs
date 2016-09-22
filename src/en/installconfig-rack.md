@@ -1,6 +1,9 @@
-Title: Rack Controller
-TODO:  Needs review (see GH#24: https://git.io/viCzJ)
-
+---
+title:
+- Rack Controller
+todo:
+- 'Needs review (see GH#24: https://git.io/viCzJ)'
+---
 
 # Rack Controller
 

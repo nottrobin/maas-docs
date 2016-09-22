@@ -1,6 +1,9 @@
-Title: MAAS | Select and Import Images
-TODO: Update images (pictures)
-
+---
+title:
+- MAAS | Select and Import Images
+todo:
+- Update images (pictures)
+---
 
 # Select and Import Images
 

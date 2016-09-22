@@ -1,7 +1,10 @@
-Title: MAAS CLI | Image Management
-TODO:  Decide whether explicit examples are needed everywhere
-       Foldouts cannot be used due to bug: https://git.io/vwbCz
-
+---
+title:
+- MAAS CLI | Image Management
+todo:
+- Decide whether explicit examples are needed everywhere
+- 'Foldouts cannot be used due to bug: https://git.io/vwbCz'
+---
 
 # CLI Image Management
 
@@ -154,7 +157,7 @@ Once the source is added, proceed to the
 
 ### Using a local image mirror
 
-Once the mirror is set up according to 
+Once the mirror is set up according to
 [Local Image Mirror](installconfig-images-mirror.md) it is just a matter of
 specifying the mirror location (URL). Since the images come from the default
 source the default keyring should be used. If the aforementioned mirror

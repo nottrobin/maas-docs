@@ -1,6 +1,10 @@
-Title: Static IPs
-TODO:  This page is improperly titled; reserving addresses should not be associated with static addresses
-
+---
+title:
+- Static IPs
+todo:
+- This page is improperly titled; reserving addresses should not be associated with
+  static addresses
+---
 
 # Static IPs
 
