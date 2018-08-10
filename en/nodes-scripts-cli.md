@@ -1,6 +1,3 @@
-Title: CLI Testing Scripts
-table_of_contents: True
-
 # CLI Testing Scripts
 
 The [web UI][hardware-testing] enables you to easily write, upload and execute
@@ -12,10 +9,11 @@ result automation.
 
 To use the CLI, first make sure you are [logged in][maas-cli-login].
 
-!!! Note:
-    For further details on which metadata fields can be used within scripts,
-    and what they do, see 
-    [Commissioning and Hardware Testing Scripts][maas-scripts-fields].
+[note]
+For further details on which metadata fields can be used within scripts,
+and what they do, see 
+[Commissioning and Hardware Testing Scripts][maas-scripts-fields].
+[/note]
 
 ## Script management
 
@@ -73,9 +71,10 @@ to:
 maas $PROFILE node-script revert $SCRIPT_NAME to=$VERSION_ID
 ```
 
-!!! Negative "Warning":
-    The history for later modifications will be lost when reverting to an earlier
-    version of the script.
+[note=negative title="Warning"]
+The history for later modifications will be lost when reverting to an earlier
+version of the script.
+[/note]
 
 To download a script, enter the following:
 
@@ -145,9 +144,10 @@ maas $PROFILE node-script-result download $SYSTEM_ID $RUN_ID output=all \
  filetype=tar.xz > $LOCAL_FILENAME
 ```
 
-!!! Note:
-    **$RUN_ID** is labelled `id` in the verbose result output. See [Determine a
-    node's system ID][system-id] for details on retrieving **$SYSTEM_ID**.
+[note]
+**$RUN_ID** is labelled `id` in the verbose result output. See [Determine a
+node's system ID][system-id] for details on retrieving **$SYSTEM_ID**.
+[/note]
 
 <!-- LINKS -->
 [hardware-testing]: nodes-scripts.md

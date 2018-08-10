@@ -1,6 +1,3 @@
-Title: STP
-
-
 # STP
 
 Some switches use Spanning-Tree Protocol (STP) to negotiate a loop-free path

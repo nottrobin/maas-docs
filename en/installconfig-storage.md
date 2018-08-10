@@ -1,13 +1,13 @@
-Title: Storage
-TODO:  Describe the Storage web UI page
-       Explain how to perform actions: LVM, RAID, Bcache, modify filesystems
-       Bug tracking: https://pad.lv/1636933
-       Bug tracking: https://pad.lv/1698891
-       Bug tracking: https://pad.lv/1698895
-       The 'block devices' and 'partitions' pages have been removed from the menu. They should be reviewed. If worthy, they should be moved to the CLI section
-       Re the above, partitions *are* block devices (?)
-table_of_contents: True
-
+<!--
+Todo:
+- Describe the Storage web UI page
+- Explain how to perform actions: LVM, RAID, Bcache, modify filesystems
+- Bug tracking: https://pad.lv/1636933
+- Bug tracking: https://pad.lv/1698891
+- Bug tracking: https://pad.lv/1698895
+- The 'block devices' and 'partitions' pages have been removed from the menu. They should be reviewed. If worthy, they should be moved to the CLI section
+- Re the above, partitions *are* block devices (?)
+-->
 
 # Storage
 
@@ -35,10 +35,11 @@ A node booting with UEFI is supported by every layout type. In such a case, an
 EFI boot partition (`/boot/efi`) will be automatically created. Other than
 setting the node to boot from UEFI, no other action is required of the user.
 
-!!! Negative "Warning":
-    UEFI is either used by the node throughout its lifecycle or it's not. For
-    example, do not enlist a node with UEFI enabled and then disable it before
-    commissioning. It won't work!
+[note=negative title="Warning"]
+UEFI is either used by the node throughout its lifecycle or it's not. For
+example, do not enlist a node with UEFI enabled and then disable it before
+commissioning. It won't work!
+[/note]
 
 The EFI partition, if created, will be the first partition (`sda1`) and will
 have a FAT32 filesystem with a size of 512 MB.
@@ -170,8 +171,9 @@ the 'Storage' tab.
 See [Disk erasure][storage-erasure] for an explanation of the options related
 to the erasing of disks.
 
-!!! Warning "Important":
-    The new default will only apply to newly-commissioned nodes.
+[note=caution title="Important"]
+The new default will only apply to newly-commissioned nodes.
+[/note]
 
 To change the default with the CLI see
 [MAAS CLI - advanced tasks][cli-default-storage-layout].
@@ -183,9 +185,10 @@ that layout providing this is done while the node has a status of 'Ready'. This
 is only possible via the CLI at this time (see
 [MAAS CLI - advanced tasks][cli-set-storage-layout]).
 
-!!! Note:
-    Only an administrator can modify storage at the block device level (providing
-    the node has a status of 'Ready').
+[note]
+Only an administrator can modify storage at the block device level (providing
+the node has a status of 'Ready').
+[/note]
 
 
 ## Final storage modifications

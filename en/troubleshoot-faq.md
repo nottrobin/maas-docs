@@ -1,7 +1,7 @@
-Title: Troubleshooting
-TODO:  critical: review needed
-table_of_contents: True
-
+<!--
+Todo:
+- critical: review needed
+-->
 
 # Troubleshooting
 
@@ -173,9 +173,10 @@ mkdir xenial
 sudo tar -C xenial -xpSf xenial-server-cloudimg-amd64-root.tar.gz --numeric-owner --xattrs "--xattrs-include=*"
 ```
 
-!!! Note:
-    `sudo` is required when extracting the image filesystem and when making
-    changes to the files extracted from the image filesystem.
+[note]
+`sudo` is required when extracting the image filesystem and when making
+changes to the files extracted from the image filesystem.
+[/note]
 
 ### Generate password hash
 

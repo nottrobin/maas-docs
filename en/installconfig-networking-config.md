@@ -1,6 +1,13 @@
-Title: Configure Networking
-TODO: 	Write new 'Configure Nodes for Networking' section (see issue #33)
-	Split and update this document
+<!--
+Todo:
+- Write new 'Configure Nodes for Networking' section (see issue #33)
+- Split and update this document
+- Write instruction for configuring from within the GUI
+-->
+
+# Configure Networking
+
+Split and update this document
 	Write instruction for configuring from within the GUI
 
 

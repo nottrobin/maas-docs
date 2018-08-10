@@ -1,7 +1,7 @@
-Title: Audit Event Logs
-TODO:  Update when all audit event logs have landed in MAAS master.
-table_of_contents: True
-
+<!--
+Todo:
+- Update when all audit event logs have landed in MAAS master.
+-->
 
 # Audit Event Logs
 

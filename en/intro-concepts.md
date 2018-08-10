@@ -1,8 +1,8 @@
-Title: Concepts and Terms
-TODO:  Consider CLI commands for every node action and link from the action section
-       QA node actions
-table_of_contents: True
-
+<!--
+Todo:
+- Consider CLI commands for every node action and link from the action section
+- QA node actions
+-->
 
 # Concepts and Terms
 

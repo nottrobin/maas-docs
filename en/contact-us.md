@@ -1,6 +1,3 @@
-Title: Contact Us
-
-
 # Contact Us
 
 We love hearing your feedback and about how you're using MAAS. Get in touch

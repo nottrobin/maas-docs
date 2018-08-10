@@ -1,8 +1,8 @@
-Title: Tags
-TODO:  Cover how tags are used in the web UI (including XML output for a node)
-       Track bug: https://bugs.launchpad.net/maas/+bug/1608629 (UI and tags)
-table_of_contents: True
-
+<!--
+Todo:
+- Cover how tags are used in the web UI (including XML output for a node)
+- Track bug: https://bugs.launchpad.net/maas/+bug/1608629 (UI and tags)
+-->
 
 # Tags
 
@@ -18,9 +18,10 @@ Because MAAS was designed to work well with [Juju][about-juju], the latter
 supports MAAS tags for application deployments. Juju is the recommended way to
 deploy services onto machines managed by MAAS.
 
-!!! Note: 
-    Newly-created tags immediately become available as a filter in the
-    'Machines' page in the web UI. 
+[note]
+Newly-created tags immediately become available as a filter in the
+'Machines' page in the web UI.
+[/note]
 
 
 ## Tag definitions

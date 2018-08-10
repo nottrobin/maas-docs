@@ -1,6 +1,3 @@
-Title: What's new in 2.4
-table_of_contents: True
-
 # What's new in 2.4
 
 Welcome to MAAS 2.4, a major update to [Canonical's][canonical] *Metal as a

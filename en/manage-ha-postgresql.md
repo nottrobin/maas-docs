@@ -1,7 +1,7 @@
-Title: PostgreSQL HA notes
-TODO:  these notes should be tested occasionally
-table_of_contents: True
-
+<!--
+Todo:
+- these notes should be tested occasionally
+-->
 
 # PostgreSQL HA: hot standby
 

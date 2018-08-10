@@ -1,7 +1,3 @@
-Title: CLI Image Management
-table_of_contents: True
-
-
 # CLI Image Management
 
 This is a list of image management tasks to perform with the MAAS CLI. See
@@ -19,9 +15,10 @@ be downloaded from:
 maas $PROFILE boot-sources read
 ```
 
-!!! Note:
-    Although multiple boot sources may be listed, MAAS can only practically
-    work with a single boot source.
+[note]
+Although multiple boot sources may be listed, MAAS can only practically
+work with a single boot source.
+[/note]
 
 
 ## Select images
@@ -131,9 +128,10 @@ KEYRING_FILE=/usr/share/keyrings/ubuntu-cloudimage-keyring.gpg
 
 ## Add a boot source
 
-!!! Note: 
-    To avoid unnecessary complexity, you should probably delete any
-    existing boot sources before adding a new one.
+[note]
+To avoid unnecessary complexity, you should probably delete any
+existing boot sources before adding a new one.
+[/note]
 
 Presented below are two use cases for adding a boot source:
 

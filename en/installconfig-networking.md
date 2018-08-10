@@ -1,7 +1,8 @@
-Title: Networking
-TODO:  Bug check: https://goo.gl/mPKBRl
-       Not sure about the purpose of "deleting" a subnet. Won't it reappear eventually?
-
+<!--
+Todo:
+- Bug check: https://goo.gl/mPKBRl
+- Not sure about the purpose of "deleting" a subnet. Won't it reappear eventually?
+-->
 
 # Networking
 

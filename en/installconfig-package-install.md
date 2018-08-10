@@ -1,6 +1,3 @@
-Title: Install from Packages
-
-
 # Install from Packages
 
 There are three packages to consider when installing MAAS:

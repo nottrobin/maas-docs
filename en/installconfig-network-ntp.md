@@ -1,6 +1,3 @@
-Title: NTP
-
-
 # NTP
 
 MAAS provides managed NTP services (with [Chrony][chrony]) for all region and

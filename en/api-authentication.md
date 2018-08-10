@@ -1,6 +1,3 @@
-Title: API Authentication
-table_of_contents: True
-
 # API authentication
 
 MAAS's API uses [OAuth][oauth] as its authentication mechanism. There isn't a

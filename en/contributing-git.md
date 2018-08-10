@@ -1,8 +1,8 @@
-Title: Working with Git and GitHub
-TODO:  Review commented out section: "Additional resources"
-       bug tracking: https://github.com/canonical-webteam/documentation-builder/issues/83
-table_of_contents: True
-
+<!--
+Todo:
+- Review commented out section: "Additional resources"
+- bug tracking: https://github.com/canonical-webteam/documentation-builder/issues/83
+-->
 
 # Working with Git and GitHub
 

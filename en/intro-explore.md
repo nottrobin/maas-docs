@@ -1,6 +1,3 @@
-Title: Explore MAAS
-table_of_contents: True
-
 # Explore MAAS
 
 MAAS is designed to scale. But it can be explored effectively with virtual
@@ -29,10 +26,11 @@ and natively supported by MAAS for power management duties.
 We'd also recommend installing the GUI `virt-manager` to ease configuration,
 but *libvirt* can also be operated from the command line.
 
-!!! Note:
-    MAAS will also work within a Linux virtual machine running from Oracle's
-    [VirtualBox][virtualbox], which may be useful if you want to test MAAS from
-    a Microsoft Windows or macOS environment. 
+[note]
+MAAS will also work within a Linux virtual machine running from Oracle's
+[VirtualBox][virtualbox], which may be useful if you want to test MAAS from
+a Microsoft Windows or macOS environment.
+[/note]
 
 Assuming a base installation of [Ubuntu 18.04 LTS(Bionic) server][bionic-link]
 running on a fresh *libvirt* instance or real hardware, matching the 

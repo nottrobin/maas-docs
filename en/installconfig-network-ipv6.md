@@ -1,6 +1,3 @@
-Title: IPv6
-
-
 # IPv6
 
 Current support for IPv6 in MAAS is similar to support for IPv4 but with the
@@ -24,8 +21,9 @@ machine (`::1`, the IPv6 equivalent of `localhost`):
 http://[::1]:5240/MAAS/
 ```
 
-!!! Note: 
-    Most BMCs can only be controlled over IPv4.
+[note]
+Most BMCs can only be controlled over IPv4.
+[/note]
 
 
 ## Enable IPv6

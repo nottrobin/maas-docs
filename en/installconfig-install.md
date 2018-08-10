@@ -1,6 +1,3 @@
-Title: Installation
-
-
 # Installation
 
 There are four ways to install MAAS:

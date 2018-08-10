@@ -1,6 +1,7 @@
-Title: Install from ISO
-TODO:  Check debian-installer bug: https://goo.gl/abMnu8 and reword stuff appropriately
-
+<!--
+Todo:
+- Check debian-installer bug: https://goo.gl/abMnu8 and reword stuff appropriately
+-->
 
 # Install from ISO
 
@@ -19,10 +20,11 @@ Choosing option **Install MAAS Rack Controller** will install a rack
 controller and register it with an existing region controller. Therefore,
 *an existing region controller is a requirement* for this option to succeed.
 
-!!! Note: 
-    Using the ISO to install a rack controller is typically used to install an
-    extra rack controller since the recommended starting design is to co-locate
-    the rack controller with the region controller.
+[note]
+Using the ISO to install a rack controller is typically used to install an
+extra rack controller since the recommended starting design is to co-locate
+the rack controller with the region controller.
+[/note]
 
 Each of these two options will add extra dialog boxes to the generic Ubuntu
 Server install procedure. This page covers these extra dialogs only. See the

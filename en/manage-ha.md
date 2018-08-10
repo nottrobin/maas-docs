@@ -1,12 +1,12 @@
-Title: High Availability
-TODO:  CDO QA (irc: cgregan/jog) might be testing/using installing HA via Juju
-       Remove the part about stopping apache2 once port 80 redirect is removed from MAAS
-       Remove comment about 80:5240 redirect once apache/redirect is removed from MAAS
-       Update link to HAProxy upstream manual if haproxy 1.6 not used by default
-       See expanded comment on ports in this document (it's important; no pun intended)
-       There should be a section devoted to verifying that the various aspects of HA are working
-table_of_contents: True
-
+<!--
+Todo:
+- CDO QA (irc: cgregan/jog) might be testing/using installing HA via Juju
+- Remove the part about stopping apache2 once port 80 redirect is removed from MAAS
+- Remove comment about 80:5240 redirect once apache/redirect is removed from MAAS
+- Update link to HAProxy upstream manual if haproxy 1.6 not used by default
+- See expanded comment on ports in this document (it's important; no pun intended)
+- There should be a section devoted to verifying that the various aspects of HA are working
+-->
 
 # High Availability
 
@@ -52,9 +52,10 @@ you should have to do is press the 'Reconfigure DHCP' button:
 
 The setup of rack controller HA is now complete.
 
-!!! Note:
-    For HA purposes, DHCP provisioning will take into account multiple DNS
-    services when there is more than one region controller on a single region.    
+[note]
+For HA purposes, DHCP provisioning will take into account multiple DNS
+services when there is more than one region controller on a single region.
+[/note]
 
 
 ## Region controller HA
@@ -80,20 +81,22 @@ here for convenience only. Its purpose is to give an idea of what's involved at
 the command line level when implementing one particular form of HA with
 PostgreSQL.
 
-!!! Note:
-    Each region controller uses up to 40 connections to PostgreSQL in high load
-    situations. Running 2 region controllers requires no modifications to the
-    `max_connections` in `postgresql.conf`. More than 2 region controllers
-    requires that `max_connections` be adjusted to add 40 more connections per
-    extra region controller added to the HA configuration.
+[note]
+Each region controller uses up to 40 connections to PostgreSQL in high load
+situations. Running 2 region controllers requires no modifications to the
+`max_connections` in `postgresql.conf`. More than 2 region controllers
+requires that `max_connections` be adjusted to add 40 more connections per
+extra region controller added to the HA configuration.
+[/note]
 
 ### Secondary API server
 
 This section assumes that PostgreSQL HA has been set up.
 
-!!! Note:
-    Any number of API servers can be present as long as each connects to
-    the same PostgreSQL database and allows the required number of connections.
+[note]
+Any number of API servers can be present as long as each connects to
+the same PostgreSQL database and allows the required number of connections.
+[/note]
 
 On the primary database host, edit file `/etc/postgresql/9.5/main/pg_hba.conf`
 to allow the eventual secondary API server to contact the primary PostgreSQL
@@ -104,9 +107,10 @@ IP address of the host that will contain the secondary API server:
 host    maasdb          maas	$SECONDARY_API_SERVER_IP/32         md5
 ```
 
-!!! Note:
-    It is very common for the primary database server and the primary API
-    server to reside on the same host.
+[note]
+It is very common for the primary database server and the primary API
+server to reside on the same host.
+[/note]
 
 Apply this change by restarting the database:
 
@@ -274,10 +278,11 @@ Restart the daemon to have these changes take effect:
 sudo systemctl restart keepalived
 ```
 
-!!! Note:
-    If this is being done inside a container, its host needs the ip\_vs
-    module loaded and the sysctl change. A restart of the container will then be
-    required.
+[note]
+If this is being done inside a container, its host needs the ip\_vs
+module loaded and the sysctl change. A restart of the container will then be
+required.
+[/note]
 
 Finally, for all API servers, replace the original IP address in the MAAS URL
 with that of the VIP. Then inform all rack controllers of that change.

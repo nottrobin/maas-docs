@@ -1,7 +1,7 @@
-Title: Install from a Snap
-TODO:  Track bug: https://goo.gl/Yifghb
-table_of_contents: True
-
+<!--
+Todo:
+- Track bug: https://goo.gl/Yifghb
+-->
 
 # Install MAAS
 
@@ -19,9 +19,10 @@ Additionally, you may want to consider an installation within
 [LXD containers][install-with-lxd]. This allows MAAS nodes to also run as
 local containers and is ideal for testing and experimenting with MAAS.
 
-!!! Note:
-    Implementing high availability via snaps is not yet possible.
-    See [MAAS HA][maas-ha] for more on that topic.
+[note]
+Implementing high availability via snaps is not yet possible.
+See [MAAS HA][maas-ha] for more on that topic.
+[/note]
 
 ## Install from snap
 

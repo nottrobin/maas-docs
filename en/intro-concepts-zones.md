@@ -1,6 +1,3 @@
-Title: Zone Examples
-
-
 # Zone Examples
 
 This page provides examples of how MAAS zones can be used.

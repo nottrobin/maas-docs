@@ -1,8 +1,8 @@
-Title: Advanced CLI Tasks
-TODO:  Update nodes-tags.md to show assigning tags to machines with web UI; then link to it (for entry 'specify boot option') 
-       bug tracking: https://pad.lv/1700795 (IP assignment mode)
-table_of_contents: True
-
+<!--
+Todo:
+- Update nodes-tags.md to show assigning tags to machines with web UI; then link to it (for entry 'specify boot option')
+- bug tracking: https://pad.lv/1700795 (IP assignment mode)
+-->
 
 # Advanced CLI Tasks
 
@@ -82,9 +82,10 @@ Example output:
 {"hostname":"node3","system_id":"qwkmar","status":4}
 ```
 
-!!! Note:
-    An interface can only be edited when the corresponding machine has a
-    status of 'Ready'. This is numberically denoted by the integer '4'.
+[note]
+An interface can only be edited when the corresponding machine has a
+status of 'Ready'. This is numberically denoted by the integer '4'.
+[/note]
 
 List some information for all interfaces on the machine in question (identified
 by its system id 'dfgnnd'):
@@ -186,9 +187,10 @@ sudo apt install maas-rack-controller
 sudo maas-rack register
 ```
 
-!!! Note: 
-    The *register* command is not required when the rack controller is being
-    added to a system that already houses an API server.
+[note]
+The *register* command is not required when the rack controller is being
+added to a system that already houses an API server.
+[/note]
 
 You will be asked for the URL of the region API server. If you provide a
 hostname ensure it is resolvable. Next, you will be prompted for the secret key
@@ -233,8 +235,9 @@ For example, to set the default layout to Flat:
 maas $PROFILE maas set-config name=default_storage_layout value=flat
 ```
 
-!!! Warning "Important":
-    The new default will only apply to newly-commissioned nodes.
+[note=caution title="Important"]
+The new default will only apply to newly-commissioned nodes.
+[/note]
 
 See [Storage][storage] for more details on MAAS storage features.
 
@@ -256,8 +259,9 @@ maas $PROFILE machine set-storage-layout $SYSTEM_ID storage_layout=lvm lv_size=5
 
 All storage sizes are currently required to be specified in bytes.
 
-!!! Warning
-    This will remove the configuration that may exist on any block device.
+[note=caution]
+This will remove the configuration that may exist on any block device.
+[/note]
 
 ## Create an alias (CNAME) record in DNS
 

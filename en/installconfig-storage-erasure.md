@@ -1,6 +1,3 @@
-Title: Disk Erasure
-
-
 # Disk Erasure
 
 Disk erasure pertains to the erasing of data on each of a node's disks when the

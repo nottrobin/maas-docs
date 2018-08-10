@@ -1,6 +1,3 @@
-Title: Commissioning and Hardware Testing Scripts
-table_of_contents: True
-
 # Commissioning and Hardware Testing Scripts
 
 Commissioning and hardware testing scripts are used by MAAS while
@@ -17,11 +14,12 @@ This page explains the various metadata fields used within these scripts, how
 parameters are passed to scripts and how any results are returned, along with
 examples of both commissioning and hardware testing scripts.
 
-!!! Note:
-    By default, all commissioning scripts will be run except those which use the
-    `for_hardware` feature. Similarly, any test script tagged `commissioning` will
-    be run during commissioning or testing. 
-    [See below](#automatic-script-selection-by-hardware-type) for more details.
+[note]
+By default, all commissioning scripts will be run except those which use the
+`for_hardware` feature. Similarly, any test script tagged `commissioning` will
+be run during commissioning or testing. 
+[See below](#automatic-script-selection-by-hardware-type) for more details.
+[/note]
 
 
 ## Metadata fields
@@ -194,9 +192,10 @@ extracted by MAAS. The script reboots the system to complete the update. The
 system will boot back into the MAAS ephemeral environment to finish
 commissioning and optionally testing.
 
-!!! Note:
-    Vendor tools which use UEFI boot capsules or need to store resource files
-    on disk while rebooting are not currently supported.
+[note]
+Vendor tools which use UEFI boot capsules or need to store resource files
+on disk while rebooting are not currently supported.
+[/note]
 
 ```bash
 #!/bin/bash -ex
@@ -286,10 +285,11 @@ from a machine's 'Take action' menu.
 
 ![select custom script][nodes-hw-scripts__select]
 
-!!! Note: 
-    MAAS executes scripts in lexicographical order. This allows you to control
-    when your scripts are executed and if they run before or after the standard
-    MAAS scripts.
+[note]
+MAAS executes scripts in lexicographical order. This allows you to control
+when your scripts are executed and if they run before or after the standard
+MAAS scripts.
+[/note]
 
 ## Debugging
 

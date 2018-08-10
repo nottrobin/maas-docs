@@ -1,8 +1,8 @@
-Title: Common CLI Tasks
-TODO:  Decide whether explicit examples are needed everywhere
-       There is a nuance between a single reserved address and a single address in a range (start and end addresses being the same). this could use some digging
-table_of_contents: True
-
+<!--
+Todo:
+- Decide whether explicit examples are needed everywhere
+- There is a nuance between a single reserved address and a single address in a range (start and end addresses being the same). this could use some digging
+-->
 
 # Common CLI Tasks
 
@@ -43,8 +43,9 @@ To commission a node:
 maas $PROFILE machine commission $SYSTEM_ID
 ```
 
-!!! Note:
-    To commission a node it must have a status of 'New'.
+[note]
+To commission a node it must have a status of 'New'.
+[/note]
 
 
 To commission all nodes in the 'New' state:
@@ -70,8 +71,9 @@ To acquire/allocate a specific node:
 maas $PROFILE machines allocate system_id=$SYSTEM_ID
 ```
 
-!!! Note:
-    To acquire a node it must have a status of 'Ready'.
+[note]
+To acquire a node it must have a status of 'Ready'.
+[/note]
 
 
 ## Deploy a node
@@ -82,9 +84,10 @@ To deploy a node:
 maas $PROFILE machine deploy $SYSTEM_ID
 ```
 
-!!! Note:
-    To deploy with the CLI the node must have a status of 'Allocated'. See
-    'Acquire a node' above (or use the [web UI][acquire-nodes]).
+[note]
+To deploy with the CLI the node must have a status of 'Allocated'. See
+'Acquire a node' above (or use the [web UI][acquire-nodes]).
+[/note]
 
 See [Deploy nodes][deploy-nodes].
 
@@ -173,8 +176,9 @@ maas $PROFILE vlan update $FABRIC_ID $VLAN_TAG dhcp_on=True \
 You will also need to set a default gateway (see
 [below][anchor__set-a-default-gateway]).
 
-!!! Note: 
-    DHCP for PXE booting will need to be enabled on the 'untagged' VLAN.
+[note]
+DHCP for PXE booting will need to be enabled on the 'untagged' VLAN.
+[/note]
 
 See [DHCP][dhcp] for more on this subject.
 

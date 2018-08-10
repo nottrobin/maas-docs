@@ -1,8 +1,8 @@
-Title: BMC Power Types
-TODO:  Provide examples for setting up common power types (BMCs)
-       Consider putting power check troubleshooting notes on the troubleshooting page
-table_of_contents: True
-
+<!--
+Todo:
+- Provide examples for setting up common power types (BMCs)
+- Consider putting power check troubleshooting notes on the troubleshooting page
+-->
 
 # BMC Power Types
 
@@ -48,10 +48,11 @@ virsh, the value of 'Power ID' is the KVM domain (guest) name, here `node2`.
 
 ![power types example: virsh][img__power-types-example-virsh]
 
-!!! Note:
-    The node's hostname *according to MAAS* is a randomly chosen string (here
-    `dear.ant`). This would normally be edited to reflect the hostname of the
-    underlying machine.
+[note]
+The node's hostname *according to MAAS* is a randomly chosen string (here
+`dear.ant`). This would normally be edited to reflect the hostname of the
+underlying machine.
+[/note]
 
 See [MAAS CLI][cli-update-node-hostname-and-power-parameters] for an example of
 how to edit a power type with the CLI.

@@ -1,6 +1,3 @@
-Title: 2.4 Release Notes
-table_of_contents: True
-
 # Release Notes 2.4
 
 *Last updated 30th May 2018.*

@@ -1,6 +1,3 @@
-Title: Network Discovery
-
-
 # Network Discovery
 
 MAAS constantly listens to the network and reports any discovered devices.

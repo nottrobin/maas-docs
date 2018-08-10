@@ -1,6 +1,3 @@
-Title: Kernel Boot Options
-
-
 # Kernel Boot Options
 
 MAAS is able to specify kernel boot options to nodes on both a global basis and

@@ -1,7 +1,8 @@
-Title: CLI Tag Management
-TODO:  Decide whether explicit examples are needed everywhere
-       Foldouts cannot be used due to bug: https://git.io/vwbCz
-
+<!--
+Todo:
+- Decide whether explicit examples are needed everywhere
+- Foldouts cannot be used due to bug: https://git.io/vwbCz
+-->
 
 # CLI Tag Management
 

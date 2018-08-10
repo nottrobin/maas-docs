@@ -1,6 +1,3 @@
-Title: Proxy
-
-
 # Proxy
 
 MAAS provides a way for its managed machines to use a proxy server when they

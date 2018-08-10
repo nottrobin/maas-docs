@@ -1,7 +1,3 @@
-Title: Writing Guide
-table_of_contents: True
-
-
 # Writing Guide
 
 This page contains detailed information on how to become a successful MAAS
@@ -114,80 +110,87 @@ Use a backtick to `inline filenames and other literals`.
 
 ## Admonishments
 
-An admonishment distinguishes information from the rest of the text. The syntax
-begins with 3 exclamation points:
+An admonishment distinguishes information from the rest of the text. The syntax is as follows:
 
 ```no-highlight
-!!! [admonishment-type] "[title]": 
-    [aligned text]
+[note={type} title="{title}"] 
+{text}
+[/note]
 ```
 
 Where:
 
-- `admonishment-type` can be 'Note', 'Warning', 'Positive', or 'Negative'.
+- `type` is optional and may be 'positive', 'negative' or 'caution'.
 - `title` is an optional title (visible in HTML)
-- `aligned text` is the text
-
-When a value for 'title' is omitted, the default will be the type itself. If
-the 'title' has a null value (i.e. "") then no title will be displayed.
+- `text` is the text
 
 ### Admonishment examples
 
 A standard 'Note' type admonishment:
 
 ```no-highlight
-!!! Note: 
-    If KVM-backed nodes are used, ensure that the 'maas' user on the rack
-    controller can connect to the KVM host using a passphraseless private SSH
-    key.
+[note]
+If KVM-backed nodes are used, ensure that the 'maas' user on the rack
+controller can connect to the KVM host using a passphraseless private SSH
+key.
+[/note]
 ```
 
 A standard 'Warning' type admonishment:
 
 ```no-highlight
-!!! Warning: 
-    Data will be lost unless you do the right thing.
+[note=caution]
+Data will be lost unless you do the right thing.
+[/note]
 ```
 
 A 'Positive' type admonishment with title:
 
 ```no-highlight
-!!! Positive "High score":
-    A positive note that should include a title.
+[note=positive title="High score"]
+A positive note that should include a title.
+[/note]
 ```
 
 A 'Negative' type admonishment with title:
 
 ```no-highlight
-!!! Negative "Game over": 
-    A negative note that should include a title.
+[note=negative title="Game over"]
+A negative note that should include a title.
+[/note]
 ```
 
 A 'Positive' type admonishment with no title:
 
 ```no-highlight
-!!! Positive "": 
-    I'm done, and I feel fine.
+[note=positive]
+I'm done, and I feel fine.
+[/note]
 ```
 
 The above examples will appear as:
 
-!!! Note: 
-    If KVM-backed nodes are used, ensure that the 'maas' user on the rack
-    controller can connect to the KVM host using a passphraseless private SSH
-    key.
+[note]
+If KVM-backed nodes are used, ensure that the 'maas' user on the rack
+controller can connect to the KVM host using a passphraseless private SSH
+key.
+[/note]
 
-!!! Warning: 
-    Data will be lost unless you do the right thing.
+[note=caution]
+Data will be lost unless you do the right thing.
+[/note]
 
-!!! Positive "High score":
-    A positive note that should include a title.
+[note=positive title="High score"]
+A positive note that should include a title.
+[/note]
 
-!!! Negative "Game over": 
-    A negative note that should include a title.
+[note=negative title="Game over"]
+A negative note that should include a title.
+[/note]
 
-!!! Positive "": 
-    I'm done, and I feel fine.
+[note=positive]
+I'm done, and I feel fine.
+[/note]
 
 
 ## Comments

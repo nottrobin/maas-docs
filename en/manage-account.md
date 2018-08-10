@@ -1,8 +1,8 @@
-Title: User Accounts
-TODO:  This requires a full treatment (delete user, other user preferences)
-       Needs a better explanation of admin vs. non-admin
-table_of_contents: True
-
+<!--
+Todo:
+- This requires a full treatment (delete user, other user preferences)
+- Needs a better explanation of admin vs. non-admin
+-->
 
 # User Accounts
 
@@ -10,8 +10,9 @@ User accounts are managed from the 'Users' tab of the 'Settings' page.
 
 ![current users][img__current-users]
 
-!!! Note: 
-    A currently logged in user cannot delete himself from the web UI.
+[note]
+A currently logged in user cannot delete himself from the web UI.
+[/note]
 
 
 ## Add a user
@@ -42,9 +43,10 @@ will need to be in possession of the corresponding private key. See [Public key
 authentication][ssh.com-what-is-public-key-auth] (ssh.com) if you're not
 familiar with SSH keys.
 
-!!! Note:
-    An initial SSH key is normally imported during a user's initial login to the
-    web UI (see [Configuration journey][config-journey]).
+[note]
+An initial SSH key is normally imported during a user's initial login to the
+web UI (see [Configuration journey][config-journey]).
+[/note]
 
 To add a locally generated public key, select 'Upload' from the 'Source' menu
 and paste the complete contents of your key file, usually called `id_rsa.pub`,
@@ -75,9 +77,10 @@ password' to finish.
 
 ![change user password][img__change-user-password]
 
-!!! Note:
-    An administrator can change any user's password from within the 'Users' tab
-    of the 'Settings' page. 
+[note]
+An administrator can change any user's password from within the 'Users' tab
+of the 'Settings' page.
+[/note]
 
 
 <!-- LINKS -->

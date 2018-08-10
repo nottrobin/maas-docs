@@ -1,6 +1,3 @@
-Title: Upgrade from 1.9 to 2.x
-
-
 # Upgrade from 1.9 to 2.x
 
 MAAS 2.4 is only supported on Ubuntu 18.04 (Bionic Beaver). This is because
@@ -66,10 +63,11 @@ Reserved range (3): 192.168.0.200 -> 192.168.0.254
 The above example shows a static range replaced by three reserved ranges to
 create an equivalent configuration.
 
-!!! Note:
-    With MAAS 2.1+, [network devices discovery][device-discovery] uses the ARP
-    protocol to determine which addresses are being used, allowing MAAS to
-    automatically avoid assigning recently used IP addresses.
+[note]
+With MAAS 2.1+, [network devices discovery][device-discovery] uses the ARP
+protocol to determine which addresses are being used, allowing MAAS to
+automatically avoid assigning recently used IP addresses.
+[/note]
 
 ## Troubleshooting
 

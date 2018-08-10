@@ -1,7 +1,3 @@
-Title: Installation and Configuration Checklist
-table_of_contents: True
-
-
 # Installation and Configuration Checklist
 
 This is a guide that you can use to achieve a working MAAS environment. Once
@@ -24,9 +20,10 @@ around! Proceed to the [web UI][webui] now. This will involve the creation of
 an administrator user. Notice how the web UI (API server) is accessed via port
 5240 and not port 80.
 
-!!! Note: 
-    Although the web UI may be accessed via port 80, this is not
-    guaranteed to work in future versions of MAAS.
+[note]
+Although the web UI may be accessed via port 80, this is not
+guaranteed to work in future versions of MAAS.
+[/note]
 
 The initial access of the web UI will kick off an optional
 [configuration journey][config-journey] whose purpose is to get the essential
@@ -62,9 +59,10 @@ to use the CLI to do this. Either way: achievement unlocked!
 The import process can take a while. Consider moving on and coming back. Just
 ensure that the import has completed prior to adding a node.
 
-!!! Note: 
-    Once installed, by default, MAAS will begin downloading images for
-    the latest Ubuntu LTS.
+[note]
+Once installed, by default, MAAS will begin downloading images for
+the latest Ubuntu LTS.
+[/note]
 
 
 ## Access the MAAS CLI

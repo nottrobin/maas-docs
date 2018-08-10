@@ -1,6 +1,3 @@
-Title: Subnet Management
-
-
 # Subnet Management 
 
 The topic of subnet management pertains to whether MAAS is in full control of a

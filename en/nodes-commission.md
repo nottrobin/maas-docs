@@ -1,6 +1,7 @@
-Title: Commission Nodes
-TODO:  Add link to CLI for setting global commissioning kernel
-
+<!--
+Todo:
+- Add link to CLI for setting global commissioning kernel
+-->
 
 # Commission Nodes
 
@@ -176,8 +177,9 @@ menu:
 
 Press the 'Save' button when you're done.
 
-!!! Note: 
-    The MAC address defaults to the MAC address of the primary interface.
+[note]
+The MAC address defaults to the MAC address of the primary interface.
+[/note]
 
 
 ### Bridge interfaces
@@ -190,9 +192,10 @@ and a tag to be configured.
 
 Press the 'Save' button when you're done.
 
-!!! Positive "Pro tip":
-    A network bridge may be useful if virtual machines or containers are to be
-    put on the node. 
+[note=positive title="Pro tip"]
+A network bridge may be useful if virtual machines or containers are to be
+put on the node.
+[/note]
 
 See [CLI Interface Management][manage-cli-interfaces] for details on how
 interfaces can be configured from the command line.

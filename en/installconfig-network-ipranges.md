@@ -1,6 +1,3 @@
-Title: IP Ranges
-
-
 # IP Ranges
 
 The two types of IP ranges are explained in the

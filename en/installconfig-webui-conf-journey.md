@@ -1,6 +1,3 @@
-Title: Configuration Journey
-
-
 # Configuration Journey 
 
 When the web UI is accessed for the first time a series of configuration

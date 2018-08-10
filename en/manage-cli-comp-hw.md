@@ -1,7 +1,3 @@
-Title: CLI Composable Hardware
-table_of_contents: True
-
-
 # CLI Composable Hardware
 
 This is a list of composable hardware tasks which can be performed with the

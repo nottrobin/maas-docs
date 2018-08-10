@@ -1,7 +1,3 @@
-Title: Availability Zones
-table_of_contents: True
-
-
 # Availability Zones
 
 The concept of a *zone*, and examples of how they can be used, are provided in

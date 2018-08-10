@@ -1,6 +1,7 @@
-Title: Hardware Testing
-TODO:  Display test output (require metal-based nodes)
-
+<!--
+Todo:
+- Display test output (require metal-based nodes)
+-->
 
 # Hardware Testing
 
@@ -15,9 +16,10 @@ Testing can also be included as part of the commissioning process. The dialog
 aware that if the hardware tests fail the node will become unavailable for
 Deployment.
 
-!!! Note: 
-    The majority of testing scripts only work with nodes that are backed by
-    physical hardware (e.g. they may be incompatible with KVM-based nodes).
+[note]
+The majority of testing scripts only work with nodes that are backed by
+physical hardware (e.g. they may be incompatible with KVM-based nodes).
+[/note]
 
 
 ## Apply a hardware test

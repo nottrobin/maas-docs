@@ -1,6 +1,3 @@
-Title: Getting Help
-
-
 # Getting Help
 
 The two channels you can use to get help debugging a MAAS issue are:

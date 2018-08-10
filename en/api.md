@@ -1,6 +1,3 @@
-Title: API | MAAS
-table_of_contents: True
-
 # MAAS API
 
 Restful MAAS API.
