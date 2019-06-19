@@ -1,17 +1,14 @@
-As with block devices (see [Block devices][block-devices]), MAAS and its API
-offer a great deal of control over the creation, formatting, mounting and
-deletion of partitions.
+As with block devices (see [Block devices](installconfig-block.md)), MAAS and its API offer a great deal of control over the creation, formatting, mounting and deletion of partitions.
 
 ### List Partitions
 
-To view all the partitions on a block device, use the 'partitions read' API
-call:
+To view all the partitions on a block device, use the 'partitions read' API call:
 
-```bash
+``` bash
 maas admin partitions read <node-id> 10
 ```
 
-```nohighlight
+``` nohighlight
 Success.
 Machine-readable output follows:
 [
@@ -36,10 +33,9 @@ Machine-readable output follows:
 ]
 ```
 
-To view the metadata for a specific partition on a block device, rather than
-all partitions, use the singular 'partition' API call with an endpoint:
+To view the metadata for a specific partition on a block device, rather than all partitions, use the singular 'partition' API call with an endpoint:
 
-```basg
+``` basg
 maas admin partition read <node-id> 10 9
 ```
 
@@ -47,15 +43,13 @@ maas admin partition read <node-id> 10 9
 
 To create a new partition on a block device, use the 'create' API call:
 
-```bash
+``` bash
 maas admin partitions create <node-id> 10 size=5360320512
 ```
 
-In addition to bytes, as shown above, the 'size' of a partition can also be
-defined with a 'G' for gigabytes or 'M' for megabytes. The output from the
-previous command will look like this:
+In addition to bytes, as shown above, the 'size' of a partition can also be defined with a 'G' for gigabytes or 'M' for megabytes. The output from the previous command will look like this:
 
-```nohighlight
+``` nohighlight
 Success.
 Machine-readable output follows:
 {
@@ -73,17 +67,15 @@ Machine-readable output follows:
 
 ### Delete Partition
 
-Partitions can be deleted from a block device with the 'delete' API call.
-Make sure you double check the partition details as the partition is deleted
-immediately, with no further confirmation:
+Partitions can be deleted from a block device with the 'delete' API call. Make sure you double check the partition details as the partition is deleted immediately, with no further confirmation:
 
-```bash
+``` bash
 maas admin partition delete <node-id> 10 9
 ```
 
 Successful output from the 'delete' command will look like this:
 
-```bash
+``` bash
 Success.
 Machine-readable output follows:
 ```
@@ -92,13 +84,13 @@ Machine-readable output follows:
 
 Partitions can be formatted in a similar way to block devices:
 
-```bash
+``` bash
 maas admin partition format <node-id> 10 9 fstype=ext4
 ```
 
 The output from the 'format' command will be similar to the following:
 
-```nohighlight
+``` nohighlight
 Success.
 Machine-readable output follows:
 {
@@ -120,21 +112,17 @@ Machine-readable output follows:
 }
 ```
 
-[note]
-You cannot format partitions that are used to make another virtual
-block device.
-[/note]
+[note] You cannot format partitions that are used to make another virtual block device. [/note]
 
 ### Unformat Partition
 
-You can also remove the filesystem from a partition with the 'unformat' API
-call:
+You can also remove the filesystem from a partition with the 'unformat' API call:
 
-```bash
+``` bash
 maas admin partition unformat <node-id> 10 10 fstype=ext4
 ```
 
-```nohighlight
+``` nohighlight
 Success.
 Machine-readable output follows:
 {
@@ -152,16 +140,15 @@ Machine-readable output follows:
 
 ### Mount Partition
 
-A formatted partition can be mounted at a given mount point with the 'mount'
-command.
+A formatted partition can be mounted at a given mount point with the 'mount' command.
 
-```bash
+``` bash
 maas admin partition mount <node-id> 10 10 mount_point=/srv
 ```
 
 The mount point and the filesystem is visible in the output from the command:
 
-```nohighlight
+``` nohighlight
 Success.
 Machine-readable output follows:
 {
@@ -187,14 +174,13 @@ Machine-readable output follows:
 
 A previous mounted partition can be unmounted with the 'unmount' command:
 
-```bash
+``` bash
 maas admin partition unmount 4y3h8a 10 10
 ```
 
-After successfully running this command, the mount point will show as 'null' in
-the output:
+After successfully running this command, the mount point will show as 'null' in the output:
 
-```nohighlight
+``` nohighlight
 Success.
 Machine-readable output follows:
 {
@@ -219,18 +205,13 @@ Machine-readable output follows:
 }
 ```
 
-
 ## Restrictions
 
-There are only a couple of restrictions that exists in the storage
-configuration. These restrictions are only in place because they are known to
-not allow a successful deployment.
+There are only a couple of restrictions that exists in the storage configuration. These restrictions are only in place because they are known to not allow a successful deployment.
 
-- An EFI partition is required to be on the boot disk for UEFI.
-- You cannot place partitions on logical volumes.
-- You cannot use a logical volume as a Bcache backing device.
-
+-   An EFI partition is required to be on the boot disk for UEFI.
+-   You cannot place partitions on logical volumes.
+-   You cannot use a logical volume as a Bcache backing device.
 
 <!-- LINKS -->
 
-[block-devices]: installconfig-block.md

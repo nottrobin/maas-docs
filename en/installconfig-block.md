@@ -1,32 +1,24 @@
-Once the initial storage layout has been configure on a node you can perform
-many operations to view and adjust the entire storage layout for the node. In
-MAAS there are two different types of block devices.
+Once the initial storage layout has been configure on a node you can perform many operations to view and adjust the entire storage layout for the node. In MAAS there are two different types of block devices.
 
 **Physical**
 
-A physical block device is a physically attached block device such as a 100GB
-hard drive connected to a server.
+A physical block device is a physically attached block device such as a 100GB hard drive connected to a server.
 
 **Virtual**
 
-A virtual block device is a block device that is exposed by the Linux kernel
-when an operation is performed. Almost all the operations on a physical block
-device can be performed on a virtual block device, such as a RAID device exposed
-as md0.
+A virtual block device is a block device that is exposed by the Linux kernel when an operation is performed. Almost all the operations on a physical block device can be performed on a virtual block device, such as a RAID device exposed as md0.
 
 ### List Block Devices
 
-To view all block devices on a node use the read operation. This list both
-physical and virtual block devices, as you can see in the output from the
-following command:
+To view all block devices on a node use the read operation. This list both physical and virtual block devices, as you can see in the output from the following command:
 
-```bash
+``` bash
 maas admin block-devices read <node-id>
 ```
 
 Output:
 
-```nohighlight
+``` nohighlight
 Success.
 Machine-readable output follows:
 [
@@ -101,18 +93,15 @@ Machine-readable output follows:
 
 ### Read Block Device
 
-If you want to read just one block device instead of listing all block devices
-the read operation on the block device endpoint provides that information. To
-display the details on device '11' from the previous output, for example, we
-could enter:
+If you want to read just one block device instead of listing all block devices the read operation on the block device endpoint provides that information. To display the details on device '11' from the previous output, for example, we could enter:
 
-```bash
+``` bash
 maas admin block-device read <node-id> 11
 ```
 
 The above command generates the following output:
 
-```nohighlight
+``` nohighlight
 Success.
 Machine-readable output follows:
 {
@@ -141,34 +130,29 @@ Machine-readable output follows:
     "size": 3221225472,
     "model": null
 }
-
 ```
-It is also possible to use the name of the block device, such as 'sda' or
-'vda', instead of its 'id':
 
-```bash
+It is also possible to use the name of the block device, such as 'sda' or 'vda', instead of its 'id':
+
+``` bash
 s admin block-device read <node-id> vda
-``` 
+```
 
-[note]
-MAAS allows the name of a block device to be changed. If the
-block device name has changed then the API call needs to use the new name.
-[/note]
-    
+[note] MAAS allows the name of a block device to be changed. If the block device name has changed then the API call needs to use the new name. [/note]
+
     Using the ID is safer as it never changes.
 
 ### Create Block Device
 
-MAAS gathers the required information itself on block devices when re-
-commissioning a machine. If this doesn't provide the required information,
-it is also possible - though not recommended - for an administrator to use the
-API to manually add a physical block device to a node. 
+MAAS gathers the required information itself on block devices when re- commissioning a machine. If this doesn't provide the required information, it is also possible - though not recommended - for an administrator to use the API to manually add a physical block device to a node.
 
-```bash
+``` bash
 maas admin block-devices create <node-id> name=vdb model="QEMU" serial="QM00001" size=21474836480 block_size=4096
 ```
+
 Depending on your configuration, output should be similar to the following:
-```nohighlight
+
+``` nohighlight
 Success.
 Machine-readable output follows:
 {
@@ -192,26 +176,20 @@ Machine-readable output follows:
     "model": "QEMU"
 }
 ```
-[note]
-The serial number is what MAAS will use when a node is deployed to
-find the specific block device. It's important that this be correct. In a rare
-chance that your block device does not provide a model or serial number you can
-provide an id\_path. The id\_path should be a path that is always the same, no
-matter the kernel version.
-[/note]
+
+[note] The serial number is what MAAS will use when a node is deployed to find the specific block device. It's important that this be correct. In a rare chance that your block device does not provide a model or serial number you can provide an id_path. The id_path should be a path that is always the same, no matter the kernel version. [/note]
 
 ### Update Block Device
 
-An administrator can also update the details held on a physical block device,
-such as its name, from the API:
+An administrator can also update the details held on a physical block device, such as its name, from the API:
 
-```bash
+``` bash
 maas admin block-device update <node-id> 12 name=newroot
 ```
 
 Output from this command will show that the 'name' has changed:
 
-```nohighlight
+``` nohighlight
 Success.
 Machine-readable output follows:
 {
@@ -235,27 +213,26 @@ Machine-readable output follows:
     "serial": "QM00001"
 }
 ```
+
 ### Delete Block Device
 
-Physical and virtual block devices can be deleted by an administrator, while
-ordinary users can only delete virtual block devices:
+Physical and virtual block devices can be deleted by an administrator, while ordinary users can only delete virtual block devices:
 
-```bash
+``` bash
 maas admin block-device delete <node-id> 12
 ```
 
 ### Format Block Device
 
-An entire block device can be formatted by defining a filesystem with the
-'format' API call:
+An entire block device can be formatted by defining a filesystem with the 'format' API call:
 
-```bash
+``` bash
 maas admin block-device format <node-id> 11 fstype=ext4
 ```
 
 Successful output from this command will look similar to this:
 
-```nohighlight
+``` nohighlight
 Success.
 Machine-readable output follows:
 {
@@ -285,21 +262,20 @@ Machine-readable output follows:
     "serial": null
 }
 ```
-[note]
-You cannot format a block device that contains partitions or is used
-to make another virtual block device.
-[/note]
+
+[note] You cannot format a block device that contains partitions or is used to make another virtual block device. [/note]
 
 ### Unformat Block Device
 
 You can remove the filesystem from a block device with the 'unformat' API call:
 
-```bash
+``` bash
 maas admin block-device unformat <node-id> 11
 ```
+
 The output from this command should show the filesystem is now 'null':
 
-```nohighlight
+``` nohighlight
 Success.
 Machine-readable output follows:
 {
@@ -323,18 +299,18 @@ Machine-readable output follows:
     "model": null
 }
 ```
+
 ### Mount Block Device
 
-If a block device has a filesystem, you can use the 'maas' command to mount a block devices at a given mount
-point:
+If a block device has a filesystem, you can use the 'maas' command to mount a block devices at a given mount point:
 
-```bash
+``` bash
 maas admin block-device mount <node-id> 11 mount_point=/srv
 ```
 
 The mount point is included in the successful output from the command:
 
-```nohighlight
+``` nohighlight
 Success.
 Machine-readable output follows:
 {
@@ -363,21 +339,19 @@ Machine-readable output follows:
     "size": 3221225472,
     "model": null
 }
-
 ```
 
 ### Unmount Block Device
 
 To remove the mount point from the block device, use the 'unmount' call:
 
-```bash
+``` bash
 maas admin block-device unmount <node-id> 11 mount_point=/srv
-
 ```
 
 The previous command will include a nullified 'mount_point' in its output:
 
-```nohighlight
+``` nohighlight
 Success.
 Machine-readable output follows:
 {
@@ -410,19 +384,10 @@ Machine-readable output follows:
 
 ### Set as Boot Disk
 
-By default, MAAS picks the first added block device to the node as the boot
-disk. In most cases this works as expected as the BIOS usually enumerates the
-boot disk as the first block device. There are cases where this fails and the
-boot disk needs to be set to another disk. This API allow setting which block
-device on a node MAAS should use as the boot disk.:
+By default, MAAS picks the first added block device to the node as the boot disk. In most cases this works as expected as the BIOS usually enumerates the boot disk as the first block device. There are cases where this fails and the boot disk needs to be set to another disk. This API allow setting which block device on a node MAAS should use as the boot disk.:
 
-```bash
+``` bash
 maas admin block-device set-boot-disk <node-id> 10
 ```
 
-[note]
-Only an administrator can set which block device should be used as
-the boot disk and only a physical block device can be set as as the boot disk.
-This operation should be done before a node is acquired or the storage layout
-will be applied to the previous boot disk.
-[/note]
+[note] Only an administrator can set which block device should be used as the boot disk and only a physical block device can be set as as the boot disk. This operation should be done before a node is acquired or the storage layout will be applied to the previous boot disk. [/note]

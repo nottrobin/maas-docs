@@ -1,24 +1,18 @@
-This is a list of interface management tasks which can be performed by the MAAS
-CLI. See [MAAS CLI][manage-cli] on how to get started.
+This is a list of interface management tasks which can be performed by the MAAS CLI. See [MAAS CLI](manage-cli.md) on how to get started.
 
-See [Networking][networking] for an overview of networking and 
-[Commission Nodes][commission-nodes] for more details on managing interfaces
-from the MAAS web UI.
-
+See [Networking](installconfig-networking.md) for an overview of networking and [Commission Nodes](nodes-commission.md) for more details on managing interfaces from the MAAS web UI.
 
 ## Interface identifiers
 
-A numeric interface identifier is used by the MAAS CLI for many interface
-operations. Use the following command to retrieve the identifier(s):
+A numeric interface identifier is used by the MAAS CLI for many interface operations. Use the following command to retrieve the identifier(s):
 
-```bash
+``` bash
 maas $PROFILE interfaces read $SYSTEM_ID
 ```
 
-Look for either *id* or the number at the end of an interface's resource URI,
-such as **15** in the following example output:
+Look for either *id* or the number at the end of an interface's resource URI, such as **15** in the following example output:
 
-```json
+``` json
 "id": 15,
 "mac_address": "52:54:00:55:06:40",
 ...
@@ -29,94 +23,84 @@ such as **15** in the following example output:
 
 ## Create a Bond interface
 
-A bond interface is used to aggregate two or more more physical interfaces into
-a single logical interface. A bond can be created with the following command:
+A bond interface is used to aggregate two or more more physical interfaces into a single logical interface. A bond can be created with the following command:
 
-```bash
+``` bash
 maas $PROFILE interfaces create-bond $SYSTEM_ID name=$BOND_NAME \
 parents=$IFACE1_ID mac_address=$MAC_ADDR \ 
 parents=$IFACE2_ID bond_mode=$BOND_MODE \
 bond_updelay=$BOND_UP bond_downdelay=$BOND_DOWN mtu=$MTU
 ```
 
-Use the 'parents' parameters to define which interfaces form the aggregate
-interface.
+Use the 'parents' parameters to define which interfaces form the aggregate interface.
 
-The 'bond_updelay' and 'bond_downdelay' parameters specify the milliseconds to
-wait before either enabling or disabling a slave after a failure has been
-detected.
+The 'bond_updelay' and 'bond_downdelay' parameters specify the milliseconds to wait before either enabling or disabling a slave after a failure has been detected.
 
 The following is an example of 'create-bond' in action:
 
-```bash
+``` bash
 maas admin interfaces create-bond 4efwb4 name=bond0 parents=4 \
 mac_address=52:52:00:00:00:00 parents=15 bond_mode=802.3ad \
 bond_updelay=200 bond_downdelay=200 mtu=9000
 ```
 
-See [Bond interfaces][commission-nodes-bond] for details on supported bond
-modes and their actions.
+See [Bond interfaces](nodes-commission.md#bond-interfaces) for details on supported bond modes and their actions.
 
 ## Create a Bridge interface
 
 A bridge interface is created with the following syntax:
 
-```bash
+``` bash
 maas $PROFILE interfaces create-bridge $SYSTEM_ID name=$BRIDGE_NAME \
 parent=$IFACE_ID
 ```
 
 Use 'parent' to define the primary interface used for the bridge:
 
-```bash
+``` bash
 maas admin interfaces create-bridge 4efwb4 name=bridged0 parent=4
 ```
 
 ## Delete an interface
 
-The 'delete' command can be used to delete a bridge interface, a bond interface
-or a physical interface:
+The 'delete' command can be used to delete a bridge interface, a bond interface or a physical interface:
 
-```bash
+``` bash
 maas $PROFILE interface delete $SYSTEM_ID $IFACE_ID
 ```
 
 For example:
 
-```bash
+``` bash
 maas admin interface delete 4efwb4 15
 ```
 
 The following is output after the successful deletion of an interface:
 
-```no-highlight
+``` no-highlight
 Success.
 Machine-readable output follows:
-
 ```
 
-[note]
-There is no machine-readable output after the successful execution of the
-delete command.
-[/note]
+[note] There is no machine-readable output after the successful execution of the delete command. [/note]
 
 ## Create a VLAN interface
 
 To create a VLAN interface, use the following syntax:
 
-```bash
+``` bash
 maas $PROFILE vlans create $FABRIC_ID name=$NAME vid=$VLAN_ID
 ```
 
 For example, the following command creates a VLAN called '*Storage network*:
 
-```bash
+``` bash
 maas admin vlans create 0 name="Storage network" vid=100
 ```
 
 The above command generates the following output:
 
-```no-output
+``` no-output
 Success.
 Machine-readable output follows:
 {
@@ -136,29 +120,24 @@ Machine-readable output follows:
 }
 ```
 
-Be aware that the $VLAN_ID parameter does not indicate a VLAN ID that
-corresponds to the VLAN tag. You must first create the VLAN and then associate
-it with the interface:
+Be aware that the $VLAN_ID parameter does not indicate a VLAN ID that corresponds to the VLAN tag. You must first create the VLAN and then associate it with the interface:
 
-```bash
+``` bash
 maas $PROFILE interfaces create-vlan $SYSTEM_ID vlan=$OUTPUT_VLAN_ID \
 parent=$IFACE_ID
 ```
 
-[note]
-**OUTPUT_VLAN_ID** corresponds to the *id* value output when the VLAN was
-created.
-[/note]
+[note] **OUTPUT_VLAN_ID** corresponds to the *id* value output when the VLAN was created. [/note]
 
 The following example contains values that correspond to the output above:
 
-```bash
+``` bash
 maas admin interfaces create-vlan 4efwb4 vlan=5004 parent=4
 ```
 
 The above command generates the following output:
 
-```json
+``` json
 Success.
 Machine-readable output follows:
 {
@@ -203,24 +182,17 @@ Machine-readable output follows:
 
 ## Delete a VLAN interface
 
-The following command outlines the syntax required to delete a VLAN interface
-from the command line:
+The following command outlines the syntax required to delete a VLAN interface from the command line:
 
-```bash
+``` bash
 maas $PROFILE vlan delete $FABRIC__ID $VLAN_ID
 ```
 
 Using the values from previous examples, this is executed as:
 
-```bash
+``` bash
 maas admin vlan delete 0 100
 ```
 
 <!-- LINKS -->
 
-[manage-cli]: manage-cli.md
-[manage-cli-sysid]: manage-cli-common.md#determine-a-node's-system-id
-[networking]: installconfig-networking.md
-[commission-nodes]: nodes-commission.md
-[commission-nodes-bond]: nodes-commission.md#bond-interfaces
-[interface-api]: api.md#put-api20nodessystem_idinterfacesid

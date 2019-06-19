@@ -2,84 +2,60 @@
 Todo:
 - Confirm whether kernel boot options really override default/global options such as those given by GRUB's GRUB_CMDLINE_LINUX_DEFAULT variable
 -->
+This is a list of kernel tasks to perform with the MAAS CLI. See [MAAS CLI](manage-cli.md) on how to get started. These resources will also be helpful:
 
-This is a list of kernel tasks to perform with the MAAS CLI. See
-[MAAS CLI][manage-cli] on how to get started. These resources will also be
-helpful:
-
-- [Ubuntu kernels][ubuntu-kernels] for background on Ubuntu kernels within a
-  MAAS context.
-- [Kernel boot options][kernel-boot-options] for help on kernel boot options.
-
+-   [Ubuntu kernels](nodes-kernels.md) for background on Ubuntu kernels within a MAAS context.
+-   [Kernel boot options](nodes-kernel-options.md) for help on kernel boot options.
 
 ## Set a default minimum kernel for enlistment and commissioning
 
 To set a default minimum kernel for all new and commissioned machines:
 
-```bash
+``` bash
 maas $PROFILE maas set-config name=default_min_hwe_kernel value=$KERNEL
 ```
 
 For example, to set it to the 16.04 GA kernel:
 
-```bash
+``` bash
 maas $PROFILE maas set-config name=default_min_hwe_kernel value=ga-16.04
 ```
 
-[note]
-The command option `default_min_hwe_kernel` appears to apply to only 
-HWE kernels but this is not the case.
-[/note]
-
+[note] The command option `default_min_hwe_kernel` appears to apply to only HWE kernels but this is not the case. [/note]
 
 ## Set a minimum deploy kernel for a machine
 
 To set the minimum deploy kernel on a per machine basis:
 
-```bash
+``` bash
 maas $PROFILE machine update $SYSTEM_ID min_hwe_kernel=$HWE_KERNEL
 ```
 
 For example, to set it to the HWE 16.04 kernel:
 
-```bash
+``` bash
 maas $PROFILE machine update $SYSTEM_ID min_hwe_kernel=hwe-16.04
 ```
 
-[note]
-The command option `default_min_hwe_kernel` appears to apply to only 
-HWE kernels but this is not the case.
-[/note]
-
+[note] The command option `default_min_hwe_kernel` appears to apply to only HWE kernels but this is not the case. [/note]
 
 ## Set a specific kernel during machine deployment
 
 To set a specific kernel during the deployment of a machine:
 
-```bash
+``` bash
 maas $PROFILE machine deploy $SYSTEM_ID distro_series=$SERIES hwe_kernel=$KERNEL
 ```
 
-The operation will fail if the kernel specified by `hwe_kernel` is older than
-the kernel (possibly) given by `default_min_hwe_kernel`. Similarly, it will not
-work if the kernel is simply not available for the given distro series (such as
-'hwe-16.10' for 'xenial').
+The operation will fail if the kernel specified by `hwe_kernel` is older than the kernel (possibly) given by `default_min_hwe_kernel`. Similarly, it will not work if the kernel is simply not available for the given distro series (such as 'hwe-16.10' for 'xenial').
 
 For example, to deploy a Xenial node with the HWE 16.04 edge kernel:
 
-```bash
+``` bash
 maas $PROFILE machine deploy $SYSTEM_ID distro_series=xenial hwe_kernel=hwe-16.04-edge
 ```
 
-[note]
-The command option `hwe_kernel` appears to apply to only HWE kernels but
-this is not the case.
-[/note]
-
+[note] The command option `hwe_kernel` appears to apply to only HWE kernels but this is not the case. [/note]
 
 <!-- LINKS -->
 
-[manage-cli]: manage-cli.md
-[ubuntu-kernels]: nodes-kernels.md
-[kernel-boot-options]: nodes-kernel-options.md
-[cli-manual-tag-assignment]: manage-cli-tags.md#manual-tag-assignment

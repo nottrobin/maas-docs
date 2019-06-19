@@ -1,27 +1,18 @@
-MAAS API
-========
+# MAAS API
 
 Restful MAAS API.
 
-This is the documentation for the API that lets you control and query
-MAAS. The API is "Restful", which means that you access it through
-normal HTTP requests.
+This is the documentation for the API that lets you control and query MAAS. The API is "Restful", which means that you access it through normal HTTP requests.
 
-API versions
-------------
+## API versions
 
-At any given time, MAAS may support multiple versions of its API. The
-version number is included in the API's URL, e.g. /api/2.0/
+At any given time, MAAS may support multiple versions of its API. The version number is included in the API's URL, e.g. /api/2.0/
 
 For now, 2.0 is the only supported version.
 
-The current API version number can be retrieved by issuing a GET to
-"/api/version/". Accessing an old or unknown API version URL will result
-in a "410 GONE" being returned, along with a descriptive error message.
-Both the error message and the api version are returned as plaintext.
+The current API version number can be retrieved by issuing a GET to "/api/version/". Accessing an old or unknown API version URL will result in a "410 GONE" being returned, along with a descriptive error message. Both the error message and the api version are returned as plaintext.
 
-HTTP methods and parameter-passing
-----------------------------------
+## HTTP methods and parameter-passing
 
 The following HTTP methods are available for accessing the API:
 
@@ -30,36 +21,23 @@ The following HTTP methods are available for accessing the API:
 -   PUT (for updating objects), and
 -   DELETE (for deleting objects).
 
-All methods except DELETE may take parameters, but they are not all
-passed in the same way. GET parameters are passed in the URL, as is
-normal with a GET: "/item/?foo=bar" passes parameter "foo" with value
-"bar".
+All methods except DELETE may take parameters, but they are not all passed in the same way. GET parameters are passed in the URL, as is normal with a GET: "/item/?foo=bar" passes parameter "foo" with value "bar".
 
-POST and PUT are different. Your request should have MIME type
-"multipart/form-data"; each part represents one parameter (for POST) or
-attribute (for PUT). Each part is named after the parameter or attribute
-it contains, and its contents are the conveyed value.
+POST and PUT are different. Your request should have MIME type "multipart/form-data"; each part represents one parameter (for POST) or attribute (for PUT). Each part is named after the parameter or attribute it contains, and its contents are the conveyed value.
 
-All parameters are in text form. If you need to submit binary data to
-the API, don't send it as any MIME binary format; instead, send it as a
-plain text part containing base64-encoded data.
+All parameters are in text form. If you need to submit binary data to the API, don't send it as any MIME binary format; instead, send it as a plain text part containing base64-encoded data.
 
-Most resources offer a choice of GET or POST operations. In those cases
-these methods will take one special parameter, called op, to indicate
-what it is you want to do.
+Most resources offer a choice of GET or POST operations. In those cases these methods will take one special parameter, called op, to indicate what it is you want to do.
 
-For example, to list all machines, you might GET
-"/MAAS/api/2.0/machines".
+For example, to list all machines, you might GET "/MAAS/api/2.0/machines".
 
-Operations
-----------
+## Operations
 
 ### Logged-in user
 
 Manage the current logged-in user.
 
-<details>
-  <summary>``GET /MAAS/api/2.0/account/?op=list_authorisation_tokens``</summary>
+<details> <summary>`GET /MAAS/api/2.0/account/?op=list_authorisation_tokens`</summary>
 
 ------------------------------------------------------------------------
 
@@ -85,9 +63,7 @@ List authorisation tokens available to the currently logged-in user.
     ]
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/account/?op=create_authorisation_token``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/account/?op=create_authorisation_token`</summary>
 
 ------------------------------------------------------------------------
 
@@ -97,8 +73,7 @@ Create an authorisation OAuth token and OAuth consumer.
 
 ------------------------------------------------------------------------
 
-**name** (*String*): Optional. Optional name of the token that will be
-generated.
+**name** (*String*): Optional. Optional name of the token that will be generated.
 
 **Success**
 
@@ -116,9 +91,7 @@ generated.
     }
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/account/?op=delete_authorisation_token``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/account/?op=delete_authorisation_token`</summary>
 
 ------------------------------------------------------------------------
 
@@ -128,7 +101,7 @@ Delete an authorisation OAuth token and the related OAuth consumer.
 
 ------------------------------------------------------------------------
 
-**token\_key** (*String*): Required. The key of the token to be deleted.
+**token_key** (*String*): Required. The key of the token to be deleted.
 
 **Success**
 
@@ -137,9 +110,7 @@ Delete an authorisation OAuth token and the related OAuth consumer.
 *HTTP Status Code* : 204
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/account/?op=update_token_name``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/account/?op=update_token_name`</summary>
 
 ------------------------------------------------------------------------
 
@@ -149,8 +120,7 @@ Modify the consumer name of an authorisation OAuth token.
 
 ------------------------------------------------------------------------
 
-**token** (*String*): Required. Can be the whole token or only the token
-key.
+**token** (*String*): Required. Can be the whole token or only the token key.
 
 **name** (*String*): Required. New name of the token.
 
@@ -164,12 +134,12 @@ key.
 
 <p>&nbsp;</p>
 </details>
+
 ### Bcache Cache Set
 
 Manage bcache cache set on a machine.
 
-<details>
-  <summary>``DELETE /MAAS/api/2.0/nodes/{system_id}/bcache-cache-set/{id}/``</summary>
+<details> <summary>`DELETE /MAAS/api/2.0/nodes/{system_id}/bcache-cache-set/{id}/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -179,9 +149,9 @@ Delete bcache cache set on a machine.
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. A machine system\_id.
+**{system_id}** (*String*): Required. A machine system_id.
 
-**{id}** (*String*): Required. A cache\_set\_id.
+**{id}** (*String*): Required. A cache_set_id.
 
 **Success**
 
@@ -208,9 +178,7 @@ Delete bcache cache set on a machine.
 *Content* : The requested machine is not ready.
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``GET /MAAS/api/2.0/nodes/{system_id}/bcache-cache-set/{id}/``</summary>
+</details> <details> <summary>`GET /MAAS/api/2.0/nodes/{system_id}/bcache-cache-set/{id}/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -220,9 +188,9 @@ Read bcache cache set on a machine.
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. A machine system\_id.
+**{system_id}** (*String*): Required. A machine system_id.
 
-**{id}** (*String*): Required. A cache\_set\_id.
+**{id}** (*String*): Required. A cache_set_id.
 
 **Success**
 
@@ -247,30 +215,25 @@ Read bcache cache set on a machine.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``PUT /MAAS/api/2.0/nodes/{system_id}/bcache-cache-set/{id}/``</summary>
+</details> <details> <summary>`PUT /MAAS/api/2.0/nodes/{system_id}/bcache-cache-set/{id}/`</summary>
 
 ------------------------------------------------------------------------
 
 Update bcache cache set on a machine.
 
-Note: specifying both a cache\_device and a cache\_partition is not
-allowed.
+Note: specifying both a cache_device and a cache_partition is not allowed.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. A machine system\_id.
+**{system_id}** (*String*): Required. A machine system_id.
 
-**{id}** (*String*): Required. A cache\_set\_id.
+**{id}** (*String*): Required. A cache_set_id.
 
-**cache\_device** (*String*): Optional. Cache block device to replace
-current one.
+**cache_device** (*String*): Optional. Cache block device to replace current one.
 
-**cache\_partition** (*String*): Optional. Cache partition to replace
-current one.
+**cache_partition** (*String*): Optional. Cache partition to replace current one.
 
 **Success**
 
@@ -300,12 +263,12 @@ current one.
 
 <p>&nbsp;</p>
 </details>
+
 ### Bcache Cache Sets
 
 Manage bcache cache sets on a machine.
 
-<details>
-  <summary>``GET /MAAS/api/2.0/nodes/{system_id}/bcache-cache-sets/``</summary>
+<details> <summary>`GET /MAAS/api/2.0/nodes/{system_id}/bcache-cache-sets/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -315,7 +278,7 @@ List all bcache cache sets belonging to a machine.
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. A machine system\_id.
+**{system_id}** (*String*): Required. A machine system_id.
 
 **Success**
 
@@ -340,26 +303,23 @@ List all bcache cache sets belonging to a machine.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/nodes/{system_id}/bcache-cache-sets/``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/nodes/{system_id}/bcache-cache-sets/`</summary>
 
 ------------------------------------------------------------------------
 
 Creates a bcache cache set.
 
-Note: specifying both a cache\_device and a cache\_partition is not
-allowed.
+Note: specifying both a cache_device and a cache_partition is not allowed.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. A machine system\_id.
+**{system_id}** (*String*): Required. A machine system_id.
 
-**cache\_device** (*String*): Optional. Cache block device.
+**cache_device** (*String*): Optional. Cache block device.
 
-**cache\_partition** (*String*): Optional. Cache partition.
+**cache_partition** (*String*): Optional. Cache partition.
 
 **Success**
 
@@ -389,12 +349,12 @@ allowed.
 
 <p>&nbsp;</p>
 </details>
+
 ### Bcache Device
 
 Manage bcache device on a machine.
 
-<details>
-  <summary>``DELETE /MAAS/api/2.0/nodes/{system_id}/bcache/{id}/``</summary>
+<details> <summary>`DELETE /MAAS/api/2.0/nodes/{system_id}/bcache/{id}/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -404,7 +364,7 @@ Delete bcache on a machine.
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. The machine's system\_id.
+**{system_id}** (*String*): Required. The machine's system_id.
 
 **{id}** (*String*): Required. The bcache id.
 
@@ -429,9 +389,7 @@ Delete bcache on a machine.
 *Content* : The requested machine is not ready.
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``GET /MAAS/api/2.0/nodes/{system_id}/bcache/{id}/``</summary>
+</details> <details> <summary>`GET /MAAS/api/2.0/nodes/{system_id}/bcache/{id}/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -441,7 +399,7 @@ Read bcache device on a machine.
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. The machine's system\_id.
+**{system_id}** (*String*): Required. The machine's system_id.
 
 **{id}** (*String*): Required. The bcache id.
 
@@ -468,22 +426,19 @@ Read bcache device on a machine.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``PUT /MAAS/api/2.0/nodes/{system_id}/bcache/{id}/``</summary>
+</details> <details> <summary>`PUT /MAAS/api/2.0/nodes/{system_id}/bcache/{id}/`</summary>
 
 ------------------------------------------------------------------------
 
 Update bcache on a machine.
 
-Specifying both a device and a partition for a given role (cache or
-backing) is not allowed.
+Specifying both a device and a partition for a given role (cache or backing) is not allowed.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. The machine's system\_id.
+**{system_id}** (*String*): Required. The machine's system_id.
 
 **{id}** (*String*): Required. The bcache id.
 
@@ -491,16 +446,13 @@ backing) is not allowed.
 
 **uuid** (*String*): Optional. UUID of the Bcache.
 
-**cache\_set** (*String*): Optional. Cache set to replace current one.
+**cache_set** (*String*): Optional. Cache set to replace current one.
 
-**backing\_device** (*String*): Optional. Backing block device to
-replace current one.
+**backing_device** (*String*): Optional. Backing block device to replace current one.
 
-**backing\_partition** (*String*): Optional. Backing partition to
-replace current one.
+**backing_partition** (*String*): Optional. Backing partition to replace current one.
 
-**cache\_mode** (*String*): Optional. Cache mode: `WRITEBACK`,
-`WRITETHROUGH`, `WRITEAROUND`.
+**cache_mode** (*String*): Optional. Cache mode: `WRITEBACK`, `WRITETHROUGH`, `WRITEAROUND`.
 
 **Success**
 
@@ -530,12 +482,12 @@ replace current one.
 
 <p>&nbsp;</p>
 </details>
+
 ### Bcache Devices
 
 Manage bcache devices on a machine.
 
-<details>
-  <summary>``GET /MAAS/api/2.0/nodes/{system_id}/bcaches/``</summary>
+<details> <summary>`GET /MAAS/api/2.0/nodes/{system_id}/bcaches/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -545,7 +497,7 @@ List all bcache devices belonging to a machine.
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. The machine's system\_id.
+**{system_id}** (*String*): Required. The machine's system_id.
 
 **Success**
 
@@ -570,35 +522,31 @@ List all bcache devices belonging to a machine.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/nodes/{system_id}/bcaches/``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/nodes/{system_id}/bcaches/`</summary>
 
 ------------------------------------------------------------------------
 
 Creates a bcache.
 
-Specifying both a device and a partition for a given role (cache or
-backing) is not allowed.
+Specifying both a device and a partition for a given role (cache or backing) is not allowed.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. The machine's system\_id.
+**{system_id}** (*String*): Required. The machine's system_id.
 
 **name** (*String*): Optional. Name of the Bcache.
 
 **uuid** (*String*): Optional. UUID of the Bcache.
 
-**cache\_set** (*String*): Optional. Cache set.
+**cache_set** (*String*): Optional. Cache set.
 
-**backing\_device** (*String*): Optional. Backing block device.
+**backing_device** (*String*): Optional. Backing block device.
 
-**backing\_partition** (*String*): Optional. Backing partition.
+**backing_partition** (*String*): Optional. Backing partition.
 
-**cache\_mode** (*String*): Optional. Cache mode: `WRITEBACK`,
-`WRITETHROUGH`, `WRITEAROUND`.
+**cache_mode** (*String*): Optional. Cache mode: `WRITEBACK`, `WRITETHROUGH`, `WRITEAROUND`.
 
 **Success**
 
@@ -628,12 +576,12 @@ backing) is not allowed.
 
 <p>&nbsp;</p>
 </details>
+
 ### Block device
 
 Manage a block device on a machine.
 
-<details>
-  <summary>``DELETE /MAAS/api/2.0/nodes/{system_id}/blockdevices/{id}/``</summary>
+<details> <summary>`DELETE /MAAS/api/2.0/nodes/{system_id}/blockdevices/{id}/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -643,7 +591,7 @@ Delete block device on a given machine.
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. The machine system\_id.
+**{system_id}** (*String*): Required. The machine system_id.
 
 **{id}** (*String*): Required. The block device's id.
 
@@ -659,8 +607,7 @@ Delete block device on a given machine.
 
 *HTTP Status Code* : 403
 
-*Content* : The user does not have permissions to delete the block
-device.
+*Content* : The user does not have permissions to delete the block device.
 
 *HTTP Status Code* : 404
 
@@ -673,9 +620,7 @@ device.
 *Content* : The requested machine is not ready.
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``GET /MAAS/api/2.0/nodes/{system_id}/blockdevices/{id}/``</summary>
+</details> <details> <summary>`GET /MAAS/api/2.0/nodes/{system_id}/blockdevices/{id}/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -685,7 +630,7 @@ Read a block device on a given machine.
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. The machine system\_id.
+**{system_id}** (*String*): Required. The machine system_id.
 
 **{id}** (*String*): Required. The block device's id.
 
@@ -732,9 +677,7 @@ Read a block device on a given machine.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/nodes/{system_id}/blockdevices/{id}/?op=add_tag``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/nodes/{system_id}/blockdevices/{id}/?op=add_tag`</summary>
 
 ------------------------------------------------------------------------
 
@@ -744,7 +687,7 @@ Add a tag to block device on a given machine.
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. The machine system\_id.
+**{system_id}** (*String*): Required. The machine system_id.
 
 **{id}** (*String*): Required. The block device's id.
 
@@ -806,9 +749,7 @@ Add a tag to block device on a given machine.
 *Content* : The requested machine is not ready.
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/nodes/{system_id}/blockdevices/{id}/?op=format``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/nodes/{system_id}/blockdevices/{id}/?op=format`</summary>
 
 ------------------------------------------------------------------------
 
@@ -818,7 +759,7 @@ Format block device with filesystem.
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. The machine system\_id.
+**{system_id}** (*String*): Required. The machine system_id.
 
 **{id}** (*String*): Required. The block device's id.
 
@@ -874,8 +815,7 @@ Format block device with filesystem.
 
 *HTTP Status Code* : 403
 
-*Content* : The user does not have permissions to format the block
-device.
+*Content* : The user does not have permissions to format the block device.
 
 *HTTP Status Code* : 404
 
@@ -888,9 +828,7 @@ device.
 *Content* : The requested machine is not ready.
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/nodes/{system_id}/blockdevices/{id}/?op=mount``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/nodes/{system_id}/blockdevices/{id}/?op=mount`</summary>
 
 ------------------------------------------------------------------------
 
@@ -900,13 +838,13 @@ Mount the filesystem on block device.
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. The machine system\_id.
+**{system_id}** (*String*): Required. The machine system_id.
 
 **{id}** (*String*): Required. The block device's id.
 
-**mount\_point** (*String*): Required. Path on the filesystem to mount.
+**mount_point** (*String*): Required. Path on the filesystem to mount.
 
-**mount\_options** (*String*): Optional. Options to pass to mount(8).
+**mount_options** (*String*): Optional. Options to pass to mount(8).
 
 **Success**
 
@@ -969,9 +907,7 @@ Mount the filesystem on block device.
 *Content* : The requested machine is not ready.
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/nodes/{system_id}/blockdevices/{id}/?op=remove_tag``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/nodes/{system_id}/blockdevices/{id}/?op=remove_tag`</summary>
 
 ------------------------------------------------------------------------
 
@@ -981,7 +917,7 @@ Remove a tag from block device on a given machine.
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. The machine system\_id.
+**{system_id}** (*String*): Required. The machine system_id.
 
 **{id}** (*String*): Required. The block device's id.
 
@@ -1042,9 +978,7 @@ Remove a tag from block device on a given machine.
 *Content* : The requested machine is not ready.
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/nodes/{system_id}/blockdevices/{id}/?op=set_boot_disk``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/nodes/{system_id}/blockdevices/{id}/?op=set_boot_disk`</summary>
 
 ------------------------------------------------------------------------
 
@@ -1054,7 +988,7 @@ Set a block device as the boot disk for the machine.
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. The machine system\_id.
+**{system_id}** (*String*): Required. The machine system_id.
 
 **{id}** (*String*): Required. The block device's id.
 
@@ -1091,9 +1025,7 @@ Set a block device as the boot disk for the machine.
 *Content* : The requested machine is not ready.
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/nodes/{system_id}/blockdevices/{id}/?op=unformat``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/nodes/{system_id}/blockdevices/{id}/?op=unformat`</summary>
 
 ------------------------------------------------------------------------
 
@@ -1103,7 +1035,7 @@ Unformat a previously formatted block device.
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. The machine system\_id.
+**{system_id}** (*String*): Required. The machine system_id.
 
 **{id}** (*String*): Required. The block device's id.
 
@@ -1149,13 +1081,11 @@ Unformat a previously formatted block device.
 
 *HTTP Status Code* : 400
 
-*Content* : The block device is not formatted, currently mounted, or
-part of a filesystem group.
+*Content* : The block device is not formatted, currently mounted, or part of a filesystem group.
 
 *HTTP Status Code* : 403
 
-*Content* : The user does not have permissions to unformat the block
-device.
+*Content* : The user does not have permissions to unformat the block device.
 
 *HTTP Status Code* : 404
 
@@ -1168,9 +1098,7 @@ device.
 *Content* : The requested machine is not ready.
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/nodes/{system_id}/blockdevices/{id}/?op=unmount``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/nodes/{system_id}/blockdevices/{id}/?op=unmount`</summary>
 
 ------------------------------------------------------------------------
 
@@ -1180,7 +1108,7 @@ Unmount the filesystem on block device.
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. The machine system\_id.
+**{system_id}** (*String*): Required. The machine system_id.
 
 **{id}** (*String*): Required. The block device's id.
 
@@ -1249,54 +1177,39 @@ Unmount the filesystem on block device.
 *Content* : The requested machine is not ready.
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``PUT /MAAS/api/2.0/nodes/{system_id}/blockdevices/{id}/``</summary>
+</details> <details> <summary>`PUT /MAAS/api/2.0/nodes/{system_id}/blockdevices/{id}/`</summary>
 
 ------------------------------------------------------------------------
 
 Update block device on a given machine.
 
-Machines must have a status of Ready to have access to all options.
-Machines with Deployed status can only have the name, model, serial,
-and/or id\_path updated for a block device. This is intented to allow a
-bad block device to be replaced while the machine remains deployed.
+Machines must have a status of Ready to have access to all options. Machines with Deployed status can only have the name, model, serial, and/or id_path updated for a block device. This is intented to allow a bad block device to be replaced while the machine remains deployed.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. The machine system\_id.
+**{system_id}** (*String*): Required. The machine system_id.
 
 **{id}** (*String*): Required. The block device's id.
 
-**name** (*String*): Optional. (Physical devices) Name of the block
-device.
+**name** (*String*): Optional. (Physical devices) Name of the block device.
 
-**model** (*String*): Optional. (Physical devices) Model of the block
-device.
+**model** (*String*): Optional. (Physical devices) Model of the block device.
 
-**serial** (*String*): Optional. (Physical devices) Serial number of the
-block device.
+**serial** (*String*): Optional. (Physical devices) Serial number of the block device.
 
-**id\_path** (*String*): Optional. (Physical devices) Only used if model
-and serial cannot be provided. This should be a path that is fixed and
-doesn't change depending on the boot order or kernel version.
+**id_path** (*String*): Optional. (Physical devices) Only used if model and serial cannot be provided. This should be a path that is fixed and doesn't change depending on the boot order or kernel version.
 
-**size** (*String*): Optional. (Physical devices) Size of the block
-device.
+**size** (*String*): Optional. (Physical devices) Size of the block device.
 
-**block\_size** (*String*): Optional. (Physical devices) Block size of
-the block device.
+**block_size** (*String*): Optional. (Physical devices) Block size of the block device.
 
-**name** (*String*): Optional. (Virtual devices) Name of the block
-device.
+**name** (*String*): Optional. (Virtual devices) Name of the block device.
 
-**uuid** (*String*): Optional. (Virtual devices) UUID of the block
-device.
+**uuid** (*String*): Optional. (Virtual devices) UUID of the block device.
 
-**size** (*String*): Optional. (Virtual devices) Size of the block
-device. (Only allowed for logical volumes.)
+**size** (*String*): Optional. (Virtual devices) Size of the block device. (Only allowed for logical volumes.)
 
 **Success**
 
@@ -1340,8 +1253,7 @@ device. (Only allowed for logical volumes.)
 
 *HTTP Status Code* : 403
 
-*Content* : The user does not have permissions to update the block
-device.
+*Content* : The user does not have permissions to update the block device.
 
 *HTTP Status Code* : 404
 
@@ -1355,12 +1267,12 @@ device.
 
 <p>&nbsp;</p>
 </details>
+
 ### Block devices
 
 Manage block devices on a machine.
 
-<details>
-  <summary>``GET /MAAS/api/2.0/nodes/{system_id}/blockdevices/``</summary>
+<details> <summary>`GET /MAAS/api/2.0/nodes/{system_id}/blockdevices/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -1370,7 +1282,7 @@ List all block devices belonging to a machine.
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. The machine system\_id.
+**{system_id}** (*String*): Required. The machine system_id.
 
 **Success**
 
@@ -1446,9 +1358,7 @@ List all block devices belonging to a machine.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/nodes/{system_id}/blockdevices/``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/nodes/{system_id}/blockdevices/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -1458,7 +1368,7 @@ Create a physical block device.
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. The machine system\_id.
+**{system_id}** (*String*): Required. The machine system_id.
 
 **name** (*String*): Required. Name of the block device.
 
@@ -1466,13 +1376,11 @@ Create a physical block device.
 
 **serial** (*String*): Optional. Serial number of the block device.
 
-**id\_path** (*String*): Optional. Only used if model and serial cannot
-be provided. This should be a path that is fixed and doesn't change
-depending on the boot order or kernel version.
+**id_path** (*String*): Optional. Only used if model and serial cannot be provided. This should be a path that is fixed and doesn't change depending on the boot order or kernel version.
 
 **size** (*String*): Required. Size of the block device.
 
-**block\_size** (*String*): Required. Block size of the block device.
+**block_size** (*String*): Required. Block size of the block device.
 
 **Success**
 
@@ -1518,12 +1426,12 @@ depending on the boot order or kernel version.
 
 <p>&nbsp;</p>
 </details>
+
 ### Boot resource
 
 Manage a boot resource.
 
-<details>
-  <summary>``DELETE /MAAS/api/2.0/boot-resources/{id}/``</summary>
+<details> <summary>`DELETE /MAAS/api/2.0/boot-resources/{id}/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -1552,9 +1460,7 @@ Delete a boot resource by id.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``GET /MAAS/api/2.0/boot-resources/{id}/``</summary>
+</details> <details> <summary>`GET /MAAS/api/2.0/boot-resources/{id}/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -1616,12 +1522,12 @@ Reads a boot resource by id
 
 <p>&nbsp;</p>
 </details>
+
 ### Boot resources
 
 Manage the boot resources.
 
-<details>
-  <summary>``GET /MAAS/api/2.0/boot-resources/``</summary>
+<details> <summary>`GET /MAAS/api/2.0/boot-resources/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -1631,8 +1537,7 @@ List all boot resources
 
 ------------------------------------------------------------------------
 
-**type** (*String*): Optional. Type of boot resources to list. If not
-provided, returns all types.
+**type** (*String*): Optional. Type of boot resources to list. If not provided, returns all types.
 
 **Success**
 
@@ -1690,9 +1595,7 @@ provided, returns all types.
     ]
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``GET /MAAS/api/2.0/boot-resources/?op=is_importing``</summary>
+</details> <details> <summary>`GET /MAAS/api/2.0/boot-resources/?op=is_importing`</summary>
 
 ------------------------------------------------------------------------
 
@@ -1709,9 +1612,7 @@ Get the status of importing resources.
 *Content* : false
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/boot-resources/``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/boot-resources/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -1723,8 +1624,7 @@ Uploads a new boot resource.
 
 **name** (*String*): Required. Name of the boot resource.
 
-**architecture** (*String*): Required. Architecture the boot resource
-supports.
+**architecture** (*String*): Required. Architecture the boot resource supports.
 
 **sha256** (*String*): Required. The `sha256` hash of the resource.
 
@@ -1732,12 +1632,9 @@ supports.
 
 **title** (*String*): Optional. Title for the boot resource.
 
-**filetype** (*String*): Optional. Filetype for uploaded content.
-(Default: `tgz`. Supported: `tgz`, `ddtgz`, `ddtbz`, `ddtxz`, `ddtar`,
-`ddbz2`, `ddgz`, `ddxz`, `ddraw`)
+**filetype** (*String*): Optional. Filetype for uploaded content. (Default: `tgz`. Supported: `tgz`, `ddtgz`, `ddtbz`, `ddtxz`, `ddtar`, `ddbz2`, `ddgz`, `ddxz`, `ddraw`)
 
-**content** (*String*): Optional. Image content. Note: this is not a
-normal parameter, but an `application/octet-stream` file upload.
+**content** (*String*): Optional. Image content. Note: this is not a normal parameter, but an `application/octet-stream` file upload.
 
 **Success**
 
@@ -1778,9 +1675,7 @@ normal parameter, but an `application/octet-stream` file upload.
     }
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/boot-resources/?op=import``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/boot-resources/?op=import`</summary>
 
 ------------------------------------------------------------------------
 
@@ -1795,9 +1690,7 @@ Import the boot resources.
 *Content* : Import of boot resources started
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/boot-resources/?op=stop_import``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/boot-resources/?op=stop_import`</summary>
 
 ------------------------------------------------------------------------
 
@@ -1813,12 +1706,12 @@ Stop import the boot resources.
 
 <p>&nbsp;</p>
 </details>
+
 ### Boot source
 
 Manage a boot source.
 
-<details>
-  <summary>``DELETE /MAAS/api/2.0/boot-sources/{id}/``</summary>
+<details> <summary>`DELETE /MAAS/api/2.0/boot-sources/{id}/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -1847,9 +1740,7 @@ Delete a boot source with the given id.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``GET /MAAS/api/2.0/boot-sources/{id}/``</summary>
+</details> <details> <summary>`GET /MAAS/api/2.0/boot-sources/{id}/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -1890,9 +1781,7 @@ Read a boot source with the given id.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``PUT /MAAS/api/2.0/boot-sources/{id}/``</summary>
+</details> <details> <summary>`PUT /MAAS/api/2.0/boot-sources/{id}/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -1906,11 +1795,9 @@ Update a boot source with the given id.
 
 **url** (*String*): Optional. The URL of the BootSource.
 
-**keyring\_filename** (*String*): Optional. The path to the keyring file
-for this BootSource.
+**keyring_filename** (*String*): Optional. The path to the keyring file for this BootSource.
 
-**keyring\_data** (*String*): Optional. The GPG keyring for this
-BootSource, base64-encoded data.
+**keyring_data** (*String*): Optional. The GPG keyring for this BootSource, base64-encoded data.
 
 **Success**
 
@@ -1942,12 +1829,12 @@ BootSource, base64-encoded data.
 
 <p>&nbsp;</p>
 </details>
+
 ### Boot source selection
 
 Manage a boot source selection.
 
-<details>
-  <summary>``DELETE /MAAS/api/2.0/boot-sources/{boot_source_id}/selections/{id}/``</summary>
+<details> <summary>`DELETE /MAAS/api/2.0/boot-sources/{boot_source_id}/selections/{id}/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -1957,7 +1844,7 @@ Delete a boot source with the given id.
 
 ------------------------------------------------------------------------
 
-**{boot\_source\_id}** (*String*): Required. A boot-source id.
+**{boot_source_id}** (*String*): Required. A boot-source id.
 
 **{id}** (*String*): Required. A boot-source selection id.
 
@@ -1978,9 +1865,7 @@ Delete a boot source with the given id.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``GET /MAAS/api/2.0/boot-sources/{boot_source_id}/selections/{id}/``</summary>
+</details> <details> <summary>`GET /MAAS/api/2.0/boot-sources/{boot_source_id}/selections/{id}/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -1990,7 +1875,7 @@ Read a boot source selection with the given id.
 
 ------------------------------------------------------------------------
 
-**{boot\_source\_id}** (*String*): Required. A boot-source id.
+**{boot_source_id}** (*String*): Required. A boot-source id.
 
 **{id}** (*String*): Required. A boot-source selection id.
 
@@ -2030,9 +1915,7 @@ Read a boot source selection with the given id.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``PUT /MAAS/api/2.0/boot-sources/{boot_source_id}/selections/{id}/``</summary>
+</details> <details> <summary>`PUT /MAAS/api/2.0/boot-sources/{boot_source_id}/selections/{id}/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -2042,24 +1925,19 @@ Update a boot source selection with the given id.
 
 ------------------------------------------------------------------------
 
-**{boot\_source\_id}** (*String*): Required. A boot-source id.
+**{boot_source_id}** (*String*): Required. A boot-source id.
 
 **{id}** (*String*): Required. A boot-source selection id.
 
-**os** (*String*): Optional. The OS (e.g. ubuntu, centos) for which to
-import resources.
+**os** (*String*): Optional. The OS (e.g. ubuntu, centos) for which to import resources.
 
-**release** (*String*): Optional. The release for which to import
-resources.
+**release** (*String*): Optional. The release for which to import resources.
 
-**arches** (*String*): Optional. The list of architectures for which to
-import resources.
+**arches** (*String*): Optional. The list of architectures for which to import resources.
 
-**subarches** (*String*): Optional. The list of sub-architectures for
-which to import resources.
+**subarches** (*String*): Optional. The list of sub-architectures for which to import resources.
 
-**labels** (*String*): Optional. The list of labels for which to import
-resources.
+**labels** (*String*): Optional. The list of labels for which to import resources.
 
 **Success**
 
@@ -2098,12 +1976,12 @@ resources.
 
 <p>&nbsp;</p>
 </details>
+
 ### Boot source selections
 
 Manage the collection of boot source selections.
 
-<details>
-  <summary>``GET /MAAS/api/2.0/boot-sources/{boot_source_id}/selections/``</summary>
+<details> <summary>`GET /MAAS/api/2.0/boot-sources/{boot_source_id}/selections/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -2113,7 +1991,7 @@ List all available boot-source selections.
 
 ------------------------------------------------------------------------
 
-**{boot\_source\_id}** (*String*): Required. A boot-source id.
+**{boot_source_id}** (*String*): Required. A boot-source id.
 
 **Success**
 
@@ -2151,9 +2029,7 @@ List all available boot-source selections.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/boot-sources/{boot_source_id}/selections/``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/boot-sources/{boot_source_id}/selections/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -2163,22 +2039,17 @@ Create a new boot source selection.
 
 ------------------------------------------------------------------------
 
-**{boot\_source\_id}** (*String*): Required. A boot-source id.
+**{boot_source_id}** (*String*): Required. A boot-source id.
 
-**os** (*String*): Optional. The OS (e.g. ubuntu, centos) for which to
-import resources.
+**os** (*String*): Optional. The OS (e.g. ubuntu, centos) for which to import resources.
 
-**release** (*String*): Optional. The release for which to import
-resources.
+**release** (*String*): Optional. The release for which to import resources.
 
-**arches** (*String*): Optional. The architecture list for which to
-import resources.
+**arches** (*String*): Optional. The architecture list for which to import resources.
 
-**subarches** (*String*): Optional. The subarchitecture list for which
-to import resources.
+**subarches** (*String*): Optional. The subarchitecture list for which to import resources.
 
-**labels** (*String*): Optional. The label lists for which to import
-resources.
+**labels** (*String*): Optional. The label lists for which to import resources.
 
 **Success**
 
@@ -2217,12 +2088,12 @@ resources.
 
 <p>&nbsp;</p>
 </details>
+
 ### Boot sources
 
 Manage the collection of boot sources.
 
-<details>
-  <summary>``GET /MAAS/api/2.0/boot-sources/``</summary>
+<details> <summary>`GET /MAAS/api/2.0/boot-sources/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -2249,14 +2120,11 @@ List all boot sources.
     ]
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/boot-sources/``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/boot-sources/`</summary>
 
 ------------------------------------------------------------------------
 
-Create a new boot source. Note that in addition to `url`, you must
-supply either `keyring_data` or `keyring_filename`.
+Create a new boot source. Note that in addition to `url`, you must supply either `keyring_data` or `keyring_filename`.
 
 **Parameters**
 
@@ -2264,11 +2132,9 @@ supply either `keyring_data` or `keyring_filename`.
 
 **url** (*String*): Required. The URL of the BootSource.
 
-**keyring\_filename** (*String*): Optional. The path to the keyring file
-for this BootSource.
+**keyring_filename** (*String*): Optional. The path to the keyring file for this BootSource.
 
-**keyring\_data** (*String*): Optional. The GPG keyring for this
-BootSource, base64-encoded.
+**keyring_data** (*String*): Optional. The GPG keyring for this BootSource, base64-encoded.
 
 **Success**
 
@@ -2290,14 +2156,14 @@ BootSource, base64-encoded.
 
 <p>&nbsp;</p>
 </details>
+
 ### Commissioning script
 
 Manage a custom commissioning script.
 
 > This functionality is only available to administrators.
 >
-> This endpoint has been deprecated in favor of the node-script
-> endpoint.
+> This endpoint has been deprecated in favor of the node-script endpoint.
 
 #### `DELETE /MAAS/api/2.0/commissioning-scripts/{name}`
 
@@ -2317,8 +2183,7 @@ Manage custom commissioning scripts.
 
 > This functionality is only available to administrators.
 >
-> This endpoint has been deprecated in favor of the node-scripts
-> endpoint.
+> This endpoint has been deprecated in favor of the node-scripts endpoint.
 
 #### `GET /MAAS/api/2.0/commissioning-scripts/`
 
@@ -2330,37 +2195,21 @@ Create a new commissioning script.
 
 Each commissioning script is identified by a unique name.
 
-By convention the name should consist of a two-digit number, a dash, and
-a brief descriptive identifier consisting only of ASCII characters. You
-don't need to follow this convention, but not doing so opens you up to
-risks w.r.t. encoding and ordering. The name must not contain any
-whitespace, quotes, or apostrophes.
+By convention the name should consist of a two-digit number, a dash, and a brief descriptive identifier consisting only of ASCII characters. You don't need to follow this convention, but not doing so opens you up to risks w.r.t. encoding and ordering. The name must not contain any whitespace, quotes, or apostrophes.
 
-A commissioning machine will run each of the scripts in lexicographical
-order. There are no promises about how non-ASCII characters are sorted,
-or even how upper-case letters are sorted relative to lower-case
-letters. So where ordering matters, use unique numbers.
+A commissioning machine will run each of the scripts in lexicographical order. There are no promises about how non-ASCII characters are sorted, or even how upper-case letters are sorted relative to lower-case letters. So where ordering matters, use unique numbers.
 
-Scripts built into MAAS will have names starting with "00-maas" or
-"99-maas" to ensure that they run first or last, respectively.
+Scripts built into MAAS will have names starting with "00-maas" or "99-maas" to ensure that they run first or last, respectively.
 
-Usually a commissioning script will be just that, a script. Ideally a
-script should be ASCII text to avoid any confusion over encoding. But in
-some cases a commissioning script might consist of a binary tool
-provided by a hardware vendor. Either way, the script gets passed to the
-commissioning machine in the exact form in which it was uploaded.
+Usually a commissioning script will be just that, a script. Ideally a script should be ASCII text to avoid any confusion over encoding. But in some cases a commissioning script might consist of a binary tool provided by a hardware vendor. Either way, the script gets passed to the commissioning machine in the exact form in which it was uploaded.
 
 param name
 
-:   Unique identifying name for the script. Names should follow the
-    pattern of "25-burn-in-hard-disk" (all ASCII, and with numbers
-    greater than zero, and generally no "weird" characters).
+:   Unique identifying name for the script. Names should follow the pattern of "25-burn-in-hard-disk" (all ASCII, and with numbers greater than zero, and generally no "weird" characters).
 
 param content
 
-:   A script file, to be uploaded in binary form. Note: this is not a
-    normal parameter, but a file upload. Its filename is ignored; MAAS
-    will know it by the name you pass to the request.
+:   A script file, to be uploaded in binary form. Note: this is not a normal parameter, but a file upload. Its filename is ignored; MAAS will know it by the name you pass to the request.
 
 ### DHCP Snippet
 
@@ -2368,8 +2217,7 @@ Manage an individual DHCP snippet.
 
 The DHCP snippet is identified by its id.
 
-<details>
-  <summary>``DELETE /MAAS/api/2.0/dhcp-snippets/{id}/``</summary>
+<details> <summary>`DELETE /MAAS/api/2.0/dhcp-snippets/{id}/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -2398,9 +2246,7 @@ Delete a DHCP snippet with the given id.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``GET /MAAS/api/2.0/dhcp-snippets/{id}/``</summary>
+</details> <details> <summary>`GET /MAAS/api/2.0/dhcp-snippets/{id}/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -2520,14 +2366,11 @@ Read a DHCP snippet with the given id.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/dhcp-snippets/{id}/?op=revert``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/dhcp-snippets/{id}/?op=revert`</summary>
 
 ------------------------------------------------------------------------
 
-Revert the value of a DHCP snippet with the given id to an earlier
-revision.
+Revert the value of a DHCP snippet with the given id to an earlier revision.
 
 **Parameters**
 
@@ -2535,9 +2378,7 @@ revision.
 
 **{id}** (*Int*): Required. A DHCP snippet id.
 
-**to** (*Int*): Required. What revision in the DHCP snippet's history to
-revert to. This can either be an ID or a negative number representing
-how far back to go.
+**to** (*Int*): Required. What revision in the DHCP snippet's history to revert to. This can either be an ID or a negative number representing how far back to go.
 
 **Success**
 
@@ -2607,9 +2448,7 @@ how far back to go.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``PUT /MAAS/api/2.0/dhcp-snippets/{id}/``</summary>
+</details> <details> <summary>`PUT /MAAS/api/2.0/dhcp-snippets/{id}/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -2623,23 +2462,17 @@ Update a DHCP snippet with the given id.
 
 **name** (*String*): Optional. The name of the DHCP snippet.
 
-**value** (*String*): Optional. The new value of the DHCP snippet to be
-used in dhcpd.conf. Previous values are stored and can be reverted.
+**value** (*String*): Optional. The new value of the DHCP snippet to be used in dhcpd.conf. Previous values are stored and can be reverted.
 
-**description** (*String*): Optional. A description of what the DHCP
-snippet does.
+**description** (*String*): Optional. A description of what the DHCP snippet does.
 
-**enabled** (*Boolean*): Optional. Whether or not the DHCP snippet is
-currently enabled.
+**enabled** (*Boolean*): Optional. Whether or not the DHCP snippet is currently enabled.
 
-**node** (*String*): Optional. The node the DHCP snippet is to be used
-for. Can not be set if subnet is set.
+**node** (*String*): Optional. The node the DHCP snippet is to be used for. Can not be set if subnet is set.
 
-**subnet** (*String*): Optional. The subnet the DHCP snippet is to be
-used for. Can not be set if node is set.
+**subnet** (*String*): Optional. The subnet the DHCP snippet is to be used for. Can not be set if node is set.
 
-**global\_snippet** (*Boolean*): Optional. Set the DHCP snippet to be a
-global option. This removes any node or subnet links.
+**global_snippet** (*Boolean*): Optional. Set the DHCP snippet to be a global option. This removes any node or subnet links.
 
 **Success**
 
@@ -2750,12 +2583,12 @@ global option. This removes any node or subnet links.
 
 <p>&nbsp;</p>
 </details>
+
 ### DHCP Snippets
 
 Manage the collection of all DHCP snippets in MAAS.
 
-<details>
-  <summary>``GET /MAAS/api/2.0/dhcp-snippets/``</summary>
+<details> <summary>`GET /MAAS/api/2.0/dhcp-snippets/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -2907,9 +2740,7 @@ List all available DHCP snippets.
     ]
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/dhcp-snippets/``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/dhcp-snippets/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -2921,23 +2752,17 @@ Creates a DHCP snippet.
 
 **name** (*String*): Required. The name of the DHCP snippet.
 
-**value** (*String*): Required. The snippet of config inserted into
-dhcpd.conf.
+**value** (*String*): Required. The snippet of config inserted into dhcpd.conf.
 
-**description** (*String*): Optional. A description of what the snippet
-does.
+**description** (*String*): Optional. A description of what the snippet does.
 
-**enabled** (*Boolean*): Optional. Whether or not the snippet is
-currently enabled.
+**enabled** (*Boolean*): Optional. Whether or not the snippet is currently enabled.
 
-**node** (*String*): Optional. The node this snippet applies to. Cannot
-be used with subnet or global\_snippet.
+**node** (*String*): Optional. The node this snippet applies to. Cannot be used with subnet or global_snippet.
 
-**subnet** (*String*): Optional. The subnet this snippet applies to.
-Cannot be used with node or global\_snippet.
+**subnet** (*String*): Optional. The subnet this snippet applies to. Cannot be used with node or global_snippet.
 
-**global\_snippet** (*Boolean*): Optional. Whether or not this snippet
-is to be applied globally. Cannot be used with node or subnet.
+**global_snippet** (*Boolean*): Optional. Whether or not this snippet is to be applied globally. Cannot be used with node or subnet.
 
 **Success**
 
@@ -3000,12 +2825,12 @@ is to be applied globally. Cannot be used with node or subnet.
 
 <p>&nbsp;</p>
 </details>
+
 ### DNSResource
 
 Manage dnsresource.
 
-<details>
-  <summary>``DELETE /MAAS/api/2.0/dnsresources/{id}/``</summary>
+<details> <summary>`DELETE /MAAS/api/2.0/dnsresources/{id}/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -3029,8 +2854,7 @@ Delete a DNS resource with the given id.
 
 *HTTP Status Code* : 403
 
-*Content* : The user does not have permission to update the requested
-DNS resource.
+*Content* : The user does not have permission to update the requested DNS resource.
 
 *HTTP Status Code* : 404
 
@@ -3039,9 +2863,7 @@ DNS resource.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``GET /MAAS/api/2.0/dnsresources/{id}/``</summary>
+</details> <details> <summary>`GET /MAAS/api/2.0/dnsresources/{id}/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -3081,9 +2903,7 @@ Read a DNS resource by id.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``PUT /MAAS/api/2.0/dnsresources/{id}/``</summary>
+</details> <details> <summary>`PUT /MAAS/api/2.0/dnsresources/{id}/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -3095,11 +2915,9 @@ Update a DNS resource with the given id.
 
 **{id}** (*Int*): Required. The DNS resource id.
 
-**fqdn** (*String*): Optional. Hostname (with domain) for the
-dnsresource.
+**fqdn** (*String*): Optional. Hostname (with domain) for the dnsresource.
 
-**ip\_address** (*String*): Optional. Address to assign to the
-dnsresource.
+**ip_address** (*String*): Optional. Address to assign to the dnsresource.
 
 **Success**
 
@@ -3124,8 +2942,7 @@ dnsresource.
 
 *HTTP Status Code* : 403
 
-*Content* : The user does not have permission to update the requested
-DNS resource.
+*Content* : The user does not have permission to update the requested DNS resource.
 
 *HTTP Status Code* : 404
 
@@ -3135,12 +2952,12 @@ DNS resource.
 
 <p>&nbsp;</p>
 </details>
+
 ### DNSResourceRecord
 
 Manage dnsresourcerecord.
 
-<details>
-  <summary>``DELETE /MAAS/api/2.0/dnsresourcerecords/{id}/``</summary>
+<details> <summary>`DELETE /MAAS/api/2.0/dnsresourcerecords/{id}/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -3164,8 +2981,7 @@ Delete a DNS resource record with the given id.
 
 *HTTP Status Code* : 403
 
-*Content* : The user does not have permission to delete the requested
-DNS resource record.
+*Content* : The user does not have permission to delete the requested DNS resource record.
 
 *HTTP Status Code* : 404
 
@@ -3174,14 +2990,11 @@ DNS resource record.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``GET /MAAS/api/2.0/dnsresourcerecords/{id}/``</summary>
+</details> <details> <summary>`GET /MAAS/api/2.0/dnsresourcerecords/{id}/`</summary>
 
 ------------------------------------------------------------------------
 
-Read a DNS resource record description Read a DNS resource record with
-the given id.
+Read a DNS resource record description Read a DNS resource record with the given id.
 
 **Parameters**
 
@@ -3217,9 +3030,7 @@ the given id.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``PUT /MAAS/api/2.0/dnsresourcerecords/{id}/``</summary>
+</details> <details> <summary>`PUT /MAAS/api/2.0/dnsresourcerecords/{id}/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -3233,8 +3044,7 @@ Update a DNS resource record with the given id.
 
 **rrtype** (*String*): Optional. Resource type.
 
-**rrdata** (*String*): Optional. Resource data (everything to the right
-of type.)
+**rrdata** (*String*): Optional. Resource data (everything to the right of type.)
 
 **Success**
 
@@ -3259,8 +3069,7 @@ of type.)
 
 *HTTP Status Code* : 403
 
-*Content* : The user does not have permission to update the requested
-DNS resource record.
+*Content* : The user does not have permission to update the requested DNS resource record.
 
 *HTTP Status Code* : 404
 
@@ -3270,12 +3079,12 @@ DNS resource record.
 
 <p>&nbsp;</p>
 </details>
+
 ### DNSResourceRecords
 
 Manage DNS resource records (e.g. CNAME, MX, NS, SRV, TXT)
 
-<details>
-  <summary>``GET /MAAS/api/2.0/dnsresourcerecords/``</summary>
+<details> <summary>`GET /MAAS/api/2.0/dnsresourcerecords/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -3285,14 +3094,11 @@ List all DNS resource records.
 
 ------------------------------------------------------------------------
 
-**domain** (*String*): Optional. Restricts the listing to entries for
-the domain.
+**domain** (*String*): Optional. Restricts the listing to entries for the domain.
 
-**name** (*String*): Optional. Restricts the listing to entries of the
-given name.
+**name** (*String*): Optional. Restricts the listing to entries of the given name.
 
-**rrtype** (*String*): Optional. Restricts the listing to entries which
-have records of the given rrtype.
+**rrtype** (*String*): Optional. Restricts the listing to entries which have records of the given rrtype.
 
 **Success**
 
@@ -3314,9 +3120,7 @@ have records of the given rrtype.
     ]
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/dnsresourcerecords/``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/dnsresourcerecords/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -3326,22 +3130,15 @@ Create a new DNS resource record.
 
 ------------------------------------------------------------------------
 
-**fqdn** (*String*): Optional. Hostname (with domain) for the
-dnsresource. Either `fqdn` or `name` and `domain` must be specified.
-`fqdn` is ignored if either name or domain is given (e.g.
-www.your-maas.maas).
+**fqdn** (*String*): Optional. Hostname (with domain) for the dnsresource. Either `fqdn` or `name` and `domain` must be specified. `fqdn` is ignored if either name or domain is given (e.g. www.your-maas.maas).
 
-**name** (*String*): Optional. The name (or hostname without a domain)
-of the DNS resource record (e.g. www.your-maas)
+**name** (*String*): Optional. The name (or hostname without a domain) of the DNS resource record (e.g. www.your-maas)
 
-**domain** (*String*): Optional. The domain (name or id) where to create
-the DNS resource record (Domain (e.g. 'maas')
+**domain** (*String*): Optional. The domain (name or id) where to create the DNS resource record (Domain (e.g. 'maas')
 
-**rrtype** (*String*): Optional. The resource record type (e.g `cname`,
-`mx`, `ns`, `srv`, `sshfp`, `txt`).
+**rrtype** (*String*): Optional. The resource record type (e.g `cname`, `mx`, `ns`, `srv`, `sshfp`, `txt`).
 
-**rrdata** (*String*): Optional. The resource record data (e.g.
-'your-maas', '10 mail.your-maas.maas')
+**rrdata** (*String*): Optional. The resource record data (e.g. 'your-maas', '10 mail.your-maas.maas')
 
 **Success**
 
@@ -3362,12 +3159,12 @@ the DNS resource record (Domain (e.g. 'maas')
 
 <p>&nbsp;</p>
 </details>
+
 ### DNSResources
 
 Manage dnsresources.
 
-<details>
-  <summary>``GET /MAAS/api/2.0/dnsresources/``</summary>
+<details> <summary>`GET /MAAS/api/2.0/dnsresources/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -3377,17 +3174,13 @@ List all resources for the specified criteria.
 
 ------------------------------------------------------------------------
 
-**domain** (*String*): Optional. Restricts the listing to entries for
-the domain.
+**domain** (*String*): Optional. Restricts the listing to entries for the domain.
 
-**name** (*String*): Optional. Restricts the listing to entries of the
-given name.
+**name** (*String*): Optional. Restricts the listing to entries of the given name.
 
-**rrtype** (*String*): Optional. Restricts the listing to entries which
-have records of the given rrtype.
+**rrtype** (*String*): Optional. Restricts the listing to entries which have records of the given rrtype.
 
-**all** (*Boolean*): Optional. Include implicit DNS records created for
-nodes registered in MAAS if true.
+**all** (*Boolean*): Optional. Include implicit DNS records created for nodes registered in MAAS if true.
 
 **Success**
 
@@ -3430,9 +3223,7 @@ nodes registered in MAAS if true.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/dnsresources/``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/dnsresources/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -3442,19 +3233,15 @@ Create a DNS resource.
 
 ------------------------------------------------------------------------
 
-**fqdn** (*String*): Optional. Hostname (with domain) for the
-dnsresource. Either `fqdn` or `name` and `domain` must be specified.
-`fqdn` is ignored if either `name` or `domain` is given.
+**fqdn** (*String*): Optional. Hostname (with domain) for the dnsresource. Either `fqdn` or `name` and `domain` must be specified. `fqdn` is ignored if either `name` or `domain` is given.
 
 **name** (*String*): Required. Hostname (without domain).
 
 **domain** (*String*): Required. Domain (name or id).
 
-**address\_ttl** (*String*): Optional. Default TTL for entries in this
-zone.
+**address_ttl** (*String*): Optional. Default TTL for entries in this zone.
 
-**ip\_addresses** (*String*): Optional. Address (ip or id) to assign to
-the dnsresource.
+**ip_addresses** (*String*): Optional. Address (ip or id) to assign to the dnsresource.
 
 **Success**
 
@@ -3475,24 +3262,24 @@ the dnsresource.
 
 <p>&nbsp;</p>
 </details>
+
 ### Device
 
 Manage an individual device.
 
-The device is identified by its system\_id.
+The device is identified by its system_id.
 
-<details>
-  <summary>``DELETE /MAAS/api/2.0/devices/{system_id}/``</summary>
+<details> <summary>`DELETE /MAAS/api/2.0/devices/{system_id}/`</summary>
 
 ------------------------------------------------------------------------
 
-Delete a device with the given system\_id.
+Delete a device with the given system_id.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. A device system\_id.
+**{system_id}** (*String*): Required. A device system_id.
 
 **Success**
 
@@ -3506,8 +3293,7 @@ Delete a device with the given system\_id.
 
 *HTTP Status Code* : 403
 
-*Content* : The user does not have the permissions required to delete
-the device.
+*Content* : The user does not have the permissions required to delete the device.
 
 *HTTP Status Code* : 404
 
@@ -3516,19 +3302,17 @@ the device.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``GET /MAAS/api/2.0/devices/{system_id}/``</summary>
+</details> <details> <summary>`GET /MAAS/api/2.0/devices/{system_id}/`</summary>
 
 ------------------------------------------------------------------------
 
-Reads a node with the given system\_id.
+Reads a node with the given system_id.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. A node's system\_id.
+**{system_id}** (*String*): Required. A node's system_id.
 
 **Success**
 
@@ -3993,28 +3777,21 @@ Reads a node with the given system\_id.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``GET /MAAS/api/2.0/devices/{system_id}/?op=details``</summary>
+</details> <details> <summary>`GET /MAAS/api/2.0/devices/{system_id}/?op=details`</summary>
 
 ------------------------------------------------------------------------
 
 Returns system details -- for example, LLDP and `lshw` XML dumps.
 
-Returns a `{detail_type: xml, ...}` map, where `detail_type` is
-something like "lldp" or "lshw".
+Returns a `{detail_type: xml, ...}` map, where `detail_type` is something like "lldp" or "lshw".
 
-Note that this is returned as BSON and not JSON. This is for efficiency,
-but mainly because JSON can't do binary content without applying
-additional encoding like base-64. The example output below is
-represented in ASCII using `bsondump example.bson` and is for
-demonstrative purposes.
+Note that this is returned as BSON and not JSON. This is for efficiency, but mainly because JSON can't do binary content without applying additional encoding like base-64. The example output below is represented in ASCII using `bsondump example.bson` and is for demonstrative purposes.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. The node's system\_id.
+**{system_id}** (*String*): Required. The node's system_id.
 
 **Success**
 
@@ -4046,18 +3823,13 @@ demonstrative purposes.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``GET /MAAS/api/2.0/devices/{system_id}/?op=power_parameters``</summary>
+</details> <details> <summary>`GET /MAAS/api/2.0/devices/{system_id}/?op=power_parameters`</summary>
 
 ------------------------------------------------------------------------
 
-Gets power parameters for a given system\_id, if any. For some types of
-power control this will include private information such as passwords
-and secret keys.
+Gets power parameters for a given system_id, if any. For some types of power control this will include private information such as passwords and secret keys.
 
-Note that this method is reserved for admin users and returns a 403 if
-the user is not one.
+Note that this method is reserved for admin users and returns a 403 if the user is not one.
 
 **Success**
 
@@ -4082,20 +3854,17 @@ the user is not one.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/devices/{system_id}/?op=restore_default_configuration``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/devices/{system_id}/?op=restore_default_configuration`</summary>
 
 ------------------------------------------------------------------------
 
-Restore the configuration options of a device with the given system\_id
-to default values.
+Restore the configuration options of a device with the given system_id to default values.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. A device system\_id.
+**{system_id}** (*String*): Required. A device system_id.
 
 **Success**
 
@@ -4187,8 +3956,7 @@ to default values.
 
 *HTTP Status Code* : 403
 
-*Content* : The user does not have the permissions required to update
-the device.
+*Content* : The user does not have the permissions required to update the device.
 
 *HTTP Status Code* : 404
 
@@ -4197,20 +3965,17 @@ the device.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/devices/{system_id}/?op=restore_networking_configuration``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/devices/{system_id}/?op=restore_networking_configuration`</summary>
 
 ------------------------------------------------------------------------
 
-Restore the networking options of a device with the given system\_id to
-default values.
+Restore the networking options of a device with the given system_id to default values.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. A device system\_id.
+**{system_id}** (*String*): Required. A device system_id.
 
 **Success**
 
@@ -4302,8 +4067,7 @@ default values.
 
 *HTTP Status Code* : 403
 
-*Content* : The user does not have the permissions required to update
-the device.
+*Content* : The user does not have the permissions required to update the device.
 
 *HTTP Status Code* : 404
 
@@ -4312,20 +4076,15 @@ the device.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/devices/{system_id}/?op=set_owner_data``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/devices/{system_id}/?op=set_owner_data`</summary>
 
 ------------------------------------------------------------------------
 
 Set key=value data for the current owner.
 
-Pass any key=value form data to this method to add, modify, or remove. A
-key is removed when the value for that key is set to an empty string.
+Pass any key=value form data to this method to add, modify, or remove. A key is removed when the value for that key is set to an empty string.
 
-This operation will not remove any previous keys unless explicitly
-passed with an empty string. All owner data is removed when the machine
-is no longer allocated to a user.
+This operation will not remove any previous keys unless explicitly passed with an empty string. All owner data is removed when the machine is no longer allocated to a user.
 
 **Parameters**
 
@@ -4352,33 +4111,27 @@ is no longer allocated to a user.
 *Content* : The user does not have set the zone.
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``PUT /MAAS/api/2.0/devices/{system_id}/``</summary>
+</details> <details> <summary>`PUT /MAAS/api/2.0/devices/{system_id}/`</summary>
 
 ------------------------------------------------------------------------
 
-Update a device with a given system\_id.
+Update a device with a given system_id.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. A device system\_id.
+**{system_id}** (*String*): Required. A device system_id.
 
 **hostname** (*String*): Optional. The hostname for this device.
 
-**description** (*String*): Optional. The optional description for this
-machine.
+**description** (*String*): Optional. The optional description for this machine.
 
 **domain** (*String*): Optional. The domain for this device.
 
-**parent** (*String*): Optional. Optional system\_id to indicate this
-device's parent. If the parent is already set and this parameter is
-omitted, the parent will be unchanged.
+**parent** (*String*): Optional. Optional system_id to indicate this device's parent. If the parent is already set and this parameter is omitted, the parent will be unchanged.
 
-**zone** (*String*): Optional. Name of a valid physical zone in which to
-place this node.
+**zone** (*String*): Optional. Name of a valid physical zone in which to place this node.
 
 **Success**
 
@@ -4465,8 +4218,7 @@ place this node.
 
 *HTTP Status Code* : 403
 
-*Content* : The user does not have the permissions required to update
-the device.
+*Content* : The user does not have the permissions required to update the device.
 
 *HTTP Status Code* : 404
 
@@ -4476,12 +4228,12 @@ the device.
 
 <p>&nbsp;</p>
 </details>
+
 ### Devices
 
 Manage the collection of all the devices in the MAAS.
 
-<details>
-  <summary>``GET /MAAS/api/2.0/devices/``</summary>
+<details> <summary>`GET /MAAS/api/2.0/devices/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -4493,28 +4245,19 @@ Nodes are sorted by id (i.e. most recent last) and grouped by type.
 
 ------------------------------------------------------------------------
 
-**hostname** (*String*): Optional. Only nodes relating to the node with
-the matching hostname will be returned. This can be specified multiple
-times to see multiple nodes.
+**hostname** (*String*): Optional. Only nodes relating to the node with the matching hostname will be returned. This can be specified multiple times to see multiple nodes.
 
-**mac\_address** (*String*): Optional. Only nodes relating to the node
-owning the specified MAC address will be returned. This can be specified
-multiple times to see multiple nodes.
+**mac_address** (*String*): Optional. Only nodes relating to the node owning the specified MAC address will be returned. This can be specified multiple times to see multiple nodes.
 
-**id** (*String*): Optional. Only nodes relating to the nodes with
-matching system ids will be returned.
+**id** (*String*): Optional. Only nodes relating to the nodes with matching system ids will be returned.
 
-**domain** (*String*): Optional. Only nodes relating to the nodes in the
-domain will be returned.
+**domain** (*String*): Optional. Only nodes relating to the nodes in the domain will be returned.
 
-**zone** (*String*): Optional. Only nodes relating to the nodes in the
-zone will be returned.
+**zone** (*String*): Optional. Only nodes relating to the nodes in the zone will be returned.
 
-**pool** (*String*): Optional. Only nodes belonging to the pool will be
-returned.
+**pool** (*String*): Optional. Only nodes belonging to the pool will be returned.
 
-**agent\_name** (*String*): Optional. Only nodes relating to the nodes
-with matching agent names will be returned.
+**agent_name** (*String*): Optional. Only nodes relating to the nodes with matching agent names will be returned.
 
 **Success**
 
@@ -4808,21 +4551,17 @@ with matching agent names will be returned.
     ]
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``GET /MAAS/api/2.0/devices/?op=is_registered``</summary>
+</details> <details> <summary>`GET /MAAS/api/2.0/devices/?op=is_registered`</summary>
 
 ------------------------------------------------------------------------
 
-Returns whether or not the given MAC address is registered within this
-MAAS (and attached to a non-retired node).
+Returns whether or not the given MAC address is registered within this MAAS (and attached to a non-retired node).
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**mac\_address** (*URL String*): Required. The MAC address to be
-checked.
+**mac_address** (*URL String*): Required. The MAC address to be checked.
 
 **Success**
 
@@ -4845,9 +4584,7 @@ checked.
     No provided mac_address!
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/devices/``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/devices/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -4857,16 +4594,13 @@ Create a new device.
 
 ------------------------------------------------------------------------
 
-**hostname** (*String*): Optional. A hostname. If not given, one will be
-generated.
+**hostname** (*String*): Optional. A hostname. If not given, one will be generated.
 
 **description** (*String*): Optional. A optional description.
 
-**domain** (*String*): Optional. The domain of the device. If not given
-the default domain is used.
+**domain** (*String*): Optional. The domain of the device. If not given the default domain is used.
 
-**mac\_addresses** (*String*): Required. One or more MAC addresses for
-the device.
+**mac_addresses** (*String*): Required. One or more MAC addresses for the device.
 
 **parent** (*String*): Optional. The system id of the parent.
 
@@ -4940,9 +4674,7 @@ the device.
 *Content* : There was a problem with the given parameters.
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/devices/?op=set_zone``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/devices/?op=set_zone`</summary>
 
 ------------------------------------------------------------------------
 
@@ -4978,17 +4710,16 @@ Assigns a given node to a given zone.
 
 <p>&nbsp;</p>
 </details>
+
 ### Discoveries
 
 Query observed discoveries.
 
-<details>
-  <summary>``GET /MAAS/api/2.0/discovery/``</summary>
+<details> <summary>`GET /MAAS/api/2.0/discovery/`</summary>
 
 ------------------------------------------------------------------------
 
-Lists all the devices MAAS has discovered. Discoveries are listed in the
-order they were last observed on the network (most recent first).
+Lists all the devices MAAS has discovered. Discoveries are listed in the order they were last observed on the network (most recent first).
 
 **Success**
 
@@ -5036,21 +4767,15 @@ order they were last observed on the network (most recent first).
     ]
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``GET /MAAS/api/2.0/discovery/?op=by_unknown_ip``</summary>
+</details> <details> <summary>`GET /MAAS/api/2.0/discovery/?op=by_unknown_ip`</summary>
 
 ------------------------------------------------------------------------
 
 Lists all discovered devices with an unknown IP address.
 
-Filters the list of discovered devices by excluding any discoveries
-where a known MAAS node is configured with the IP address of a
-discovery, or has been observed using it after it was assigned by a
-MAAS-managed DHCP server.
+Filters the list of discovered devices by excluding any discoveries where a known MAAS node is configured with the IP address of a discovery, or has been observed using it after it was assigned by a MAAS-managed DHCP server.
 
-Discoveries are listed in the order they were last observed on the
-network (most recent first).
+Discoveries are listed in the order they were last observed on the network (most recent first).
 
 **Success**
 
@@ -5098,20 +4823,15 @@ network (most recent first).
     ]
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``GET /MAAS/api/2.0/discovery/?op=by_unknown_ip_and_mac``</summary>
+</details> <details> <summary>`GET /MAAS/api/2.0/discovery/?op=by_unknown_ip_and_mac`</summary>
 
 ------------------------------------------------------------------------
 
 Lists all discovered devices completely unknown to MAAS.
 
-Filters the list of discovered devices by excluding any discoveries
-where a known MAAS node is configured with either the MAC address or the
-IP address of a discovery.
+Filters the list of discovered devices by excluding any discoveries where a known MAAS node is configured with either the MAC address or the IP address of a discovery.
 
-Discoveries are listed in the order they were last observed on the
-network (most recent first).
+Discoveries are listed in the order they were last observed on the network (most recent first).
 
 **Success**
 
@@ -5159,18 +4879,13 @@ network (most recent first).
     ]
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``GET /MAAS/api/2.0/discovery/?op=by_unknown_mac``</summary>
+</details> <details> <summary>`GET /MAAS/api/2.0/discovery/?op=by_unknown_mac`</summary>
 
 ------------------------------------------------------------------------
 
-Filters the list of discovered devices by excluding any discoveries
-where an interface known to MAAS is configured with a discovered MAC
-address.
+Filters the list of discovered devices by excluding any discoveries where an interface known to MAAS is configured with a discovered MAC address.
 
-Discoveries are listed in the order they were last observed on the
-network (most recent first).
+Discoveries are listed in the order they were last observed on the network (most recent first).
 
 **Success**
 
@@ -5218,9 +4933,7 @@ network (most recent first).
     ]
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/discovery/?op=clear``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/discovery/?op=clear`</summary>
 
 ------------------------------------------------------------------------
 
@@ -5245,14 +4958,11 @@ Note: One of `mdns`, `neighbours`, or `all` parameters must be supplied.
 *HTTP Status Code* : 204
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/discovery/?op=clear_by_mac_and_ip``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/discovery/?op=clear_by_mac_and_ip`</summary>
 
 ------------------------------------------------------------------------
 
-Deletes all discovered neighbours (and associated reverse DNS entries)
-associated with the given IP address and MAC address.
+Deletes all discovered neighbours (and associated reverse DNS entries) associated with the given IP address and MAC address.
 
 **Parameters**
 
@@ -5269,70 +4979,45 @@ associated with the given IP address and MAC address.
 *HTTP Status Code* : 204
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/discovery/?op=scan``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/discovery/?op=scan`</summary>
 
 ------------------------------------------------------------------------
 
 Immediately run a neighbour discovery scan on all rack networks.
 
-This command causes each connected rack controller to execute the
-'maas-rack scan-network' command, which will scan all CIDRs configured
-on the rack controller using 'nmap' (if it is installed) or 'ping'.
+This command causes each connected rack controller to execute the 'maas-rack scan-network' command, which will scan all CIDRs configured on the rack controller using 'nmap' (if it is installed) or 'ping'.
 
-Network discovery must not be set to 'disabled' for this command to be
-useful.
+Network discovery must not be set to 'disabled' for this command to be useful.
 
-Scanning will be started in the background, and could take a long time
-on rack controllers that do not have 'nmap' installed and are connected
-to large networks.
+Scanning will be started in the background, and could take a long time on rack controllers that do not have 'nmap' installed and are connected to large networks.
 
-If the call is a success, this method will return a dictionary of
-results with the following keys:
+If the call is a success, this method will return a dictionary of results with the following keys:
 
 `result`: A human-readable string summarizing the results.
 
-`scan_attempted_on`: A list of rack system\_id values where a scan was
-attempted. (That is, an RPC connection was successful and a subsequent
-call was intended.)
+`scan_attempted_on`: A list of rack system_id values where a scan was attempted. (That is, an RPC connection was successful and a subsequent call was intended.)
 
-`failed_to_connect_to`: A list of rack system\_id values where the RPC
-connection failed.
+`failed_to_connect_to`: A list of rack system_id values where the RPC connection failed.
 
-`scan_started_on`: A list of rack system\_id values where a scan was
-successfully started.
+`scan_started_on`: A list of rack system_id values where a scan was successfully started.
 
-`scan_failed_on`: A list of rack system\_id values where a scan was
-attempted, but failed because a scan was already in progress.
+`scan_failed_on`: A list of rack system_id values where a scan was attempted, but failed because a scan was already in progress.
 
-`rpc_call_timed_out_on`: A list of rack system\_id values where the RPC
-connection was made, but the call timed out before a ten second timeout
-elapsed.
+`rpc_call_timed_out_on`: A list of rack system_id values where the RPC connection was made, but the call timed out before a ten second timeout elapsed.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**cidr** (*String*): Optional. The subnet CIDR(s) to scan (can be
-specified multiple times). If not specified, defaults to all networks.
+**cidr** (*String*): Optional. The subnet CIDR(s) to scan (can be specified multiple times). If not specified, defaults to all networks.
 
-**force** (*Boolean*): Optional. If True, will force the scan, even if
-all networks are specified. (This may not be the best idea, depending on
-acceptable use agreements, and the politics of the organization that
-owns the network.) Note that this parameter is required if all networks
-are specified. Default: False.
+**force** (*Boolean*): Optional. If True, will force the scan, even if all networks are specified. (This may not be the best idea, depending on acceptable use agreements, and the politics of the organization that owns the network.) Note that this parameter is required if all networks are specified. Default: False.
 
-**always\_use\_ping** (*String*): Optional. If True, will force the scan
-to use 'ping' even if 'nmap' is installed. Default: False.
+**always_use_ping** (*String*): Optional. If True, will force the scan to use 'ping' even if 'nmap' is installed. Default: False.
 
-**slow** (*String*): Optional. If True, and 'nmap' is being used, will
-limit the scan to nine packets per second. If the scanner is 'ping',
-this option has no effect. Default: False.
+**slow** (*String*): Optional. If True, and 'nmap' is being used, will limit the scan to nine packets per second. If the scanner is 'ping', this option has no effect. Default: False.
 
-**threads** (*String*): Optional. The number of threads to use during
-scanning. If 'nmap' is the scanner, the default is one thread per 'nmap'
-process. If 'ping' is the scanner, the default is four threads per CPU.
+**threads** (*String*): Optional. The number of threads to use during scanning. If 'nmap' is the scanner, the default is one thread per 'nmap' process. If 'ping' is the scanner, the default is four threads per CPU.
 
 **Success**
 
@@ -5364,22 +5049,22 @@ process. If 'ping' is the scanner, the default is four threads per CPU.
 
 <p>&nbsp;</p>
 </details>
+
 ### Discovery
 
 Read or delete an observed discovery.
 
-<details>
-  <summary>``GET /MAAS/api/2.0/discovery/{discovery_id}/``</summary>
+<details> <summary>`GET /MAAS/api/2.0/discovery/{discovery_id}/`</summary>
 
 ------------------------------------------------------------------------
 
-Read a discovery with the given discovery\_id.
+Read a discovery with the given discovery_id.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**{discovery\_id** (*String*): Required. A discovery\_id.
+**{discovery_id** (*String*): Required. A discovery_id.
 
 **Success**
 
@@ -5419,12 +5104,12 @@ Read a discovery with the given discovery\_id.
 
 <p>&nbsp;</p>
 </details>
+
 ### Domain
 
 Manage domain.
 
-<details>
-  <summary>``DELETE /MAAS/api/2.0/domains/{id}/``</summary>
+<details> <summary>`DELETE /MAAS/api/2.0/domains/{id}/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -5448,8 +5133,7 @@ Delete a domain with the given id.
 
 *HTTP Status Code* : 403
 
-*Content* : The user does not have the permissions required to update
-the domain.
+*Content* : The user does not have the permissions required to update the domain.
 
 *HTTP Status Code* : 404
 
@@ -5458,9 +5142,7 @@ the domain.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``GET /MAAS/api/2.0/domains/{id}/``</summary>
+</details> <details> <summary>`GET /MAAS/api/2.0/domains/{id}/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -5521,9 +5203,7 @@ Read a domain with the given id.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/domains/{id}/?op=set_default``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/domains/{id}/?op=set_default`</summary>
 
 ------------------------------------------------------------------------
 
@@ -5533,9 +5213,7 @@ Set the specified domain to be the default.
 
 ------------------------------------------------------------------------
 
-**{id}** (*Int*): Required. A domain id. If any unallocated nodes are
-using the previous default domain, changes them to use the new default
-domain.
+**{id}** (*Int*): Required. A domain id. If any unallocated nodes are using the previous default domain, changes them to use the new default domain.
 
 **Success**
 
@@ -5561,8 +5239,7 @@ domain.
 
 *HTTP Status Code* : 403
 
-*Content* : The user does not have the permissions required to update
-the domain.
+*Content* : The user does not have the permissions required to update the domain.
 
 *HTTP Status Code* : 404
 
@@ -5571,9 +5248,7 @@ the domain.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``PUT /MAAS/api/2.0/domains/{id}/``</summary>
+</details> <details> <summary>`PUT /MAAS/api/2.0/domains/{id}/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -5587,8 +5262,7 @@ Update a domain with the given id.
 
 **name** (*String*): Required. Name of the domain.
 
-**authoritative** (*String*): Optional. True if we are authoritative for
-this domain.
+**authoritative** (*String*): Optional. True if we are authoritative for this domain.
 
 **ttl** (*String*): Optional. The default TTL for this domain.
 
@@ -5616,8 +5290,7 @@ this domain.
 
 *HTTP Status Code* : 403
 
-*Content* : The user does not have the permissions required to update
-the domain.
+*Content* : The user does not have the permissions required to update the domain.
 
 *HTTP Status Code* : 404
 
@@ -5627,12 +5300,12 @@ the domain.
 
 <p>&nbsp;</p>
 </details>
+
 ### Domains
 
 Manage domains.
 
-<details>
-  <summary>``GET /MAAS/api/2.0/domains/``</summary>
+<details> <summary>`GET /MAAS/api/2.0/domains/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -5677,9 +5350,7 @@ List all domains.
     ]
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/domains/``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/domains/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -5712,9 +5383,7 @@ Create a domain.
     }
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/domains/?op=set_serial``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/domains/?op=set_serial`</summary>
 
 ------------------------------------------------------------------------
 
@@ -5736,57 +5405,42 @@ Set the SOA serial number for all DNS zones.
 
 <p>&nbsp;</p>
 </details>
+
 ### Events
 
 Retrieve filtered node events.
 
-A specific Node's events is identified by specifying one or more ids,
-hostnames, or mac addresses as a list.
+A specific Node's events is identified by specifying one or more ids, hostnames, or mac addresses as a list.
 
-<details>
-  <summary>``GET /MAAS/api/2.0/events/?op=query``</summary>
+<details> <summary>`GET /MAAS/api/2.0/events/?op=query`</summary>
 
 ------------------------------------------------------------------------
 
-List node events, optionally filtered by various criteria via URL query
-parameters.
+List node events, optionally filtered by various criteria via URL query parameters.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**hostname** (*String*): Optional. An optional hostname. Only events
-relating to the node with the matching hostname will be returned. This
-can be specified multiple times to get events relating to more than one
-node.
+**hostname** (*String*): Optional. An optional hostname. Only events relating to the node with the matching hostname will be returned. This can be specified multiple times to get events relating to more than one node.
 
-**mac\_address** (*String*): Optional. An optional list of MAC
-addresses. Only nodes with matching MAC addresses will be returned.
+**mac_address** (*String*): Optional. An optional list of MAC addresses. Only nodes with matching MAC addresses will be returned.
 
-**id** (*String*): Optional. An optional list of system ids. Only nodes
-with matching system ids will be returned.
+**id** (*String*): Optional. An optional list of system ids. Only nodes with matching system ids will be returned.
 
-**zone** (*String*): Optional. An optional name for a physical zone.
-Only nodes in the zone will be returned.
+**zone** (*String*): Optional. An optional name for a physical zone. Only nodes in the zone will be returned.
 
-**agent\_name** (*String*): Optional. An optional agent name. Only nodes
-with matching agent names will be returned.
+**agent_name** (*String*): Optional. An optional agent name. Only nodes with matching agent names will be returned.
 
-**level** (*String*): Optional. Desired minimum log level of returned
-events. Returns this level of events and greater. Choose from: AUDIT,
-CRITICAL, DEBUG, ERROR, INFO, WARNING. The default is INFO.
+**level** (*String*): Optional. Desired minimum log level of returned events. Returns this level of events and greater. Choose from: AUDIT, CRITICAL, DEBUG, ERROR, INFO, WARNING. The default is INFO.
 
-**limit** (*String*): Optional. Optional number of events to return.
-Default 100. Maximum: 1000.
+**limit** (*String*): Optional. Optional number of events to return. Default 100. Maximum: 1000.
 
-**before** (*String*): Optional. Optional event id. Defines where to
-start returning older events.
+**before** (*String*): Optional. Optional event id. Defines where to start returning older events.
 
-**after** (*String*): Optional. Optional event id. Defines where to
-start returning newer events.
+**after** (*String*): Optional. Optional event id. Defines where to start returning newer events.
 
-**owner** (*String*): Optional. If specified, filters the list to show
-only events owned by the specified username.
+**owner** (*String*): Optional. If specified, filters the list to show only events owned by the specified username.
 
 **Success**
 
@@ -5856,12 +5510,12 @@ only events owned by the specified username.
 
 <p>&nbsp;</p>
 </details>
+
 ### Fabric
 
 Manage fabric.
 
-<details>
-  <summary>``DELETE /MAAS/api/2.0/fabrics/{id}/``</summary>
+<details> <summary>`DELETE /MAAS/api/2.0/fabrics/{id}/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -5890,9 +5544,7 @@ Delete a fabric with the given id.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``GET /MAAS/api/2.0/fabrics/{id}/``</summary>
+</details> <details> <summary>`GET /MAAS/api/2.0/fabrics/{id}/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -5947,9 +5599,7 @@ Read a fabric with the given id.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``PUT /MAAS/api/2.0/fabrics/{id}/``</summary>
+</details> <details> <summary>`PUT /MAAS/api/2.0/fabrics/{id}/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -5965,7 +5615,7 @@ Update a fabric with the given id.
 
 **description** (*String*): Optional. Description of the fabric.
 
-**class\_type** (*String*): Optional. Class type of the fabric.
+**class_type** (*String*): Optional. Class type of the fabric.
 
 **Success**
 
@@ -6011,12 +5661,12 @@ Update a fabric with the given id.
 
 <p>&nbsp;</p>
 </details>
+
 ### Fabrics
 
 Manage fabrics.
 
-<details>
-  <summary>``GET /MAAS/api/2.0/fabrics/``</summary>
+<details> <summary>`GET /MAAS/api/2.0/fabrics/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -6401,9 +6051,7 @@ List all fabrics.
     ]
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/fabrics/``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/fabrics/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -6417,7 +6065,7 @@ Create a fabric.
 
 **description** (*String*): Optional. Description of the fabric.
 
-**class\_type** (*String*): Optional. Class type of the fabric.
+**class_type** (*String*): Optional. Class type of the fabric.
 
 **Success**
 
@@ -6453,12 +6101,12 @@ Create a fabric.
 
 <p>&nbsp;</p>
 </details>
+
 ### Fan Network
 
 Manage Fan Network.
 
-<details>
-  <summary>``DELETE /MAAS/api/2.0/fannetworks/{id}/``</summary>
+<details> <summary>`DELETE /MAAS/api/2.0/fannetworks/{id}/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -6487,9 +6135,7 @@ Deletes a fan network with the given id.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``GET /MAAS/api/2.0/fannetworks/{id}/``</summary>
+</details> <details> <summary>`GET /MAAS/api/2.0/fannetworks/{id}/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -6532,9 +6178,7 @@ Read a fan network with the given id.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``PUT /MAAS/api/2.0/fannetworks/{id}/``</summary>
+</details> <details> <summary>`PUT /MAAS/api/2.0/fannetworks/{id}/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -6552,16 +6196,13 @@ Update a fan network with the given id.
 
 **underlay** (*String*): Optional. The underlay network.
 
-**dhcp** (*Boolean*): Optional. Configure DHCP server for overlay
-network.
+**dhcp** (*Boolean*): Optional. Configure DHCP server for overlay network.
 
-**host\_reserve** (*Int*): Optional. The number of IP addresses to
-reserve for host.
+**host_reserve** (*Int*): Optional. The number of IP addresses to reserve for host.
 
 **bridge** (*String*): Optional. Override bridge name.
 
-**off** (*Boolean*): Optional. Put this fan network in the
-configuration, but disable it.
+**off** (*Boolean*): Optional. Put this fan network in the configuration, but disable it.
 
 **Success**
 
@@ -6595,12 +6236,12 @@ configuration, but disable it.
 
 <p>&nbsp;</p>
 </details>
+
 ### Fan Networks
 
 Manage Fan Networks.
 
-<details>
-  <summary>``GET /MAAS/api/2.0/fannetworks/``</summary>
+<details> <summary>`GET /MAAS/api/2.0/fannetworks/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -6629,9 +6270,7 @@ List all fan networks.
     ]
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/fannetworks/``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/fannetworks/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -6647,16 +6286,13 @@ Create a fan network
 
 **underlay** (*String*): Required. The underlay network.
 
-**dhcp** (*Boolean*): Optional. Configure DHCP server for overlay
-network.
+**dhcp** (*Boolean*): Optional. Configure DHCP server for overlay network.
 
-**host\_reserve** (*Int*): Optional. The number of IP addresses to
-reserve for host.
+**host_reserve** (*Int*): Optional. The number of IP addresses to reserve for host.
 
 **bridge** (*String*): Optional. Override bridge name.
 
-**off** (*Boolean*): Optional. Put this fan network in the
-configuration, but disable it.
+**off** (*Boolean*): Optional. Put this fan network in the configuration, but disable it.
 
 **Success**
 
@@ -6682,14 +6318,14 @@ configuration, but disable it.
 
 <p>&nbsp;</p>
 </details>
+
 ### File
 
 Manage a FileStorage object.
 
 The file is identified by its filename and owner.
 
-<details>
-  <summary>``DELETE /MAAS/api/2.0/files/{filename}/``</summary>
+<details> <summary>`DELETE /MAAS/api/2.0/files/{filename}/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -6718,9 +6354,7 @@ Delete a file with the given file name.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``GET /MAAS/api/2.0/files/{filename}/``</summary>
+</details> <details> <summary>`GET /MAAS/api/2.0/files/{filename}/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -6758,12 +6392,12 @@ The content of the file is base64-encoded.
 
 <p>&nbsp;</p>
 </details>
+
 ### Files
 
 Manage the collection of all the files in this MAAS.
 
-<details>
-  <summary>``DELETE /MAAS/api/2.0/files/``</summary>
+<details> <summary>`DELETE /MAAS/api/2.0/files/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -6773,8 +6407,7 @@ Delete a stored file.
 
 ------------------------------------------------------------------------
 
-**filename** (*String*): Required. The filename of the object to be
-deleted.
+**filename** (*String*): Required. The filename of the object to be deleted.
 
 **Success**
 
@@ -6793,9 +6426,7 @@ deleted.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``GET /MAAS/api/2.0/files/``</summary>
+</details> <details> <summary>`GET /MAAS/api/2.0/files/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -6822,9 +6453,7 @@ The returned files are ordered by file name and the content is excluded.
     }
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``GET /MAAS/api/2.0/files/?op=get``</summary>
+</details> <details> <summary>`GET /MAAS/api/2.0/files/?op=get`</summary>
 
 ------------------------------------------------------------------------
 
@@ -6859,9 +6488,7 @@ Get a named file from the file storage.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``GET /MAAS/api/2.0/files/?op=get_by_key``</summary>
+</details> <details> <summary>`GET /MAAS/api/2.0/files/?op=get_by_key`</summary>
 
 ------------------------------------------------------------------------
 
@@ -6896,9 +6523,7 @@ Get a file from the file storage with the given key.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/files/``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/files/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -6910,8 +6535,7 @@ Add a new file to the file storage.
 
 **filename** (*String*): Required. The file name to use in storage.
 
-**file** (*String*): Required. File data. Content type must be
-`application/octet-stream`.
+**file** (*String*): Required. File data. Content type must be `application/octet-stream`.
 
 **Success**
 
@@ -6931,38 +6555,32 @@ Add a new file to the file storage.
 
 *HTTP Status Code* : 400
 
-*Content* : The filename is missing, the file data is missing or more
-than one file is supplied.
+*Content* : The filename is missing, the file data is missing or more than one file is supplied.
 
 <p>&nbsp;</p>
 </details>
+
 ### IP Addresses
 
 Manage IP addresses allocated by MAAS.
 
-<details>
-  <summary>``GET /MAAS/api/2.0/ipaddresses/``</summary>
+<details> <summary>`GET /MAAS/api/2.0/ipaddresses/`</summary>
 
 ------------------------------------------------------------------------
 
 List all IP addresses known to MAAS.
 
-By default, gets a listing of all IP addresses allocated to the
-requesting user.
+By default, gets a listing of all IP addresses allocated to the requesting user.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**ip** (*String*): Optional. If specified, will only display information
-for the specified IP address.
+**ip** (*String*): Optional. If specified, will only display information for the specified IP address.
 
-**all** (*Boolean*): Optional. (Admin users only) If True, all reserved
-IP addresses will be shown. (By default, only addresses of type 'User
-reserved' that are assigned to the requesting user are shown.)
+**all** (*Boolean*): Optional. (Admin users only) If True, all reserved IP addresses will be shown. (By default, only addresses of type 'User reserved' that are assigned to the requesting user are shown.)
 
-**owner** (*String*): Optional. (Admin users only) If specified, filters
-the list to show only IP addresses owned by the specified username.
+**owner** (*String*): Optional. (Admin users only) If specified, filters the list to show only IP addresses owned by the specified username.
 
 **Success**
 
@@ -7022,9 +6640,7 @@ the list to show only IP addresses owned by the specified username.
     ]
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/ipaddresses/?op=release``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/ipaddresses/?op=release`</summary>
 
 ------------------------------------------------------------------------
 
@@ -7036,14 +6652,9 @@ Release an IP address that was previously reserved by the user.
 
 **ip** (*String*): Required. The IP address to release.
 
-**force** (*Boolean*): Optional. If True, allows a MAAS administrator to
-force an IP address to be released, even if it is not a user-reserved IP
-address or does not belong to the requesting user. Use with caution.
+**force** (*Boolean*): Optional. If True, allows a MAAS administrator to force an IP address to be released, even if it is not a user-reserved IP address or does not belong to the requesting user. Use with caution.
 
-**discovered** (*Boolean*): Optional. If True, allows a MAAS
-administrator to release a discovered address. Only valid if 'force' is
-specified. If not specified, MAAS will attempt to release any type of
-address except for discovered addresses.
+**discovered** (*Boolean*): Optional. If True, allows a MAAS administrator to release a discovered address. Only valid if 'force' is specified. If not specified, MAAS will attempt to release any type of address except for discovered addresses.
 
 **Success**
 
@@ -7062,40 +6673,29 @@ address except for discovered addresses.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/ipaddresses/?op=reserve``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/ipaddresses/?op=reserve`</summary>
 
 ------------------------------------------------------------------------
 
 Reserve an IP address for use outside of MAAS.
 
-Returns an IP adddress that MAAS will not allow any of its known nodes
-to use; it is free for use by the requesting user until released by the
-user.
+Returns an IP adddress that MAAS will not allow any of its known nodes to use; it is free for use by the requesting user until released by the user.
 
-The user must supply either a subnet or a specific IP address within a
-subnet.
+The user must supply either a subnet or a specific IP address within a subnet.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**subnet** (*String*): Optional. CIDR representation of the subnet on
-which the IP reservation is required. E.g. 10.1.2.0/24
+**subnet** (*String*): Optional. CIDR representation of the subnet on which the IP reservation is required. E.g. 10.1.2.0/24
 
-**ip** (*String*): Optional. The IP address, which must be within a
-known subnet.
+**ip** (*String*): Optional. The IP address, which must be within a known subnet.
 
-**ip\_address** (*String*): Optional. (Deprecated.) Alias for 'ip'
-parameter. Provided for backward compatibility.
+**ip_address** (*String*): Optional. (Deprecated.) Alias for 'ip' parameter. Provided for backward compatibility.
 
-**hostname** (*String*): Optional. The hostname to use for the specified
-IP address. If no domain component is given, the default domain will be
-used.
+**hostname** (*String*): Optional. The hostname to use for the specified IP address. If no domain component is given, the default domain will be used.
 
-**mac** (*String*): Optional. The MAC address that should be linked to
-this reservation.
+**mac** (*String*): Optional. The MAC address that should be linked to this reservation.
 
 **Success**
 
@@ -7158,8 +6758,7 @@ this reservation.
 
 *HTTP Status Code* : 400
 
-*Content* : No subnet in MAAS matching the provided one, or an
-ip\_address was supplied, but a corresponding subnet could not be found.
+*Content* : No subnet in MAAS matching the provided one, or an ip_address was supplied, but a corresponding subnet could not be found.
 
 *HTTP Status Code* : 503
 
@@ -7167,12 +6766,12 @@ ip\_address was supplied, but a corresponding subnet could not be found.
 
 <p>&nbsp;</p>
 </details>
+
 ### IP Range
 
 Manage IP range.
 
-<details>
-  <summary>``DELETE /MAAS/api/2.0/ipranges/{id}/``</summary>
+<details> <summary>`DELETE /MAAS/api/2.0/ipranges/{id}/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -7196,8 +6795,7 @@ Delete an IP range with the given id.
 
 *HTTP Status Code* : 403
 
-*Content* : The user does not have the permissions required to delete
-the IP range.
+*Content* : The user does not have the permissions required to delete the IP range.
 
 *HTTP Status Code* : 404
 
@@ -7206,9 +6804,7 @@ the IP range.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``GET /MAAS/api/2.0/ipranges/{id}/``</summary>
+</details> <details> <summary>`GET /MAAS/api/2.0/ipranges/{id}/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -7286,9 +6882,7 @@ Read an IP range with the given id.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``PUT /MAAS/api/2.0/ipranges/{id}/``</summary>
+</details> <details> <summary>`PUT /MAAS/api/2.0/ipranges/{id}/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -7300,14 +6894,11 @@ Update an IP range with the given id.
 
 **{id}** (*Int*): Required. An IP range id.
 
-**start\_ip** (*String*): Optional. Start IP address of this range
-(inclusive).
+**start_ip** (*String*): Optional. Start IP address of this range (inclusive).
 
-**end\_ip** (*String*): Optional. End IP address of this range
-(inclusive).
+**end_ip** (*String*): Optional. End IP address of this range (inclusive).
 
-**comment** (*String*): Optional. A description of this range.
-(optional)
+**comment** (*String*): Optional. A description of this range. (optional)
 
 **Success**
 
@@ -7370,8 +6961,7 @@ Update an IP range with the given id.
 
 *HTTP Status Code* : 403
 
-*Content* : The user does not have the permissions required to update
-the IP range.
+*Content* : The user does not have the permissions required to update the IP range.
 
 *HTTP Status Code* : 404
 
@@ -7381,12 +6971,12 @@ the IP range.
 
 <p>&nbsp;</p>
 </details>
+
 ### IP Ranges
 
 Manage IP ranges.
 
-<details>
-  <summary>``GET /MAAS/api/2.0/ipranges/``</summary>
+<details> <summary>`GET /MAAS/api/2.0/ipranges/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -7450,9 +7040,7 @@ List all available IP ranges.
     ]
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/ipranges/``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/ipranges/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -7462,14 +7050,11 @@ Create a new IP range.
 
 ------------------------------------------------------------------------
 
-**type** (*String*): Required. Type of this range. (`dynamic` or
-`reserved`)
+**type** (*String*): Required. Type of this range. (`dynamic` or `reserved`)
 
-**start\_ip** (*String*): Required. Start IP address of this range
-(inclusive).
+**start_ip** (*String*): Required. Start IP address of this range (inclusive).
 
-**end\_ip** (*String*): Required. End IP address of this range
-(inclusive).
+**end_ip** (*String*): Required. End IP address of this range (inclusive).
 
 **subnet** (*String*): Required. Subnet associated with this range.
 
@@ -7536,27 +7121,26 @@ Create a new IP range.
 
 *HTTP Status Code* : 403
 
-*Content* : The user does not have the permissions required to create an
-IP range.
+*Content* : The user does not have the permissions required to create an IP range.
 
 <p>&nbsp;</p>
 </details>
+
 ### Interface
 
 Manage a node's or device's interface.
 
-<details>
-  <summary>``DELETE /MAAS/api/2.0/nodes/{system_id}/interfaces/{id}/``</summary>
+<details> <summary>`DELETE /MAAS/api/2.0/nodes/{system_id}/interfaces/{id}/`</summary>
 
 ------------------------------------------------------------------------
 
-Delete an interface with the given system\_id and interface id.
+Delete an interface with the given system_id and interface id.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. A system\_id.
+**{system_id}** (*String*): Required. A system_id.
 
 **{id}** (*Int*): Required. An interface id.
 
@@ -7577,19 +7161,17 @@ Delete an interface with the given system\_id and interface id.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``GET /MAAS/api/2.0/nodes/{system_id}/interfaces/{id}/``</summary>
+</details> <details> <summary>`GET /MAAS/api/2.0/nodes/{system_id}/interfaces/{id}/`</summary>
 
 ------------------------------------------------------------------------
 
-Read an interface with the given system\_id and interface id.
+Read an interface with the given system_id and interface id.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. A system\_id.
+**{system_id}** (*String*): Required. A system_id.
 
 **{id}** (*Int*): Required. An interface id.
 
@@ -7635,19 +7217,17 @@ Read an interface with the given system\_id and interface id.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/nodes/{system_id}/interfaces/{id}/?op=add_tag``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/nodes/{system_id}/interfaces/{id}/?op=add_tag`</summary>
 
 ------------------------------------------------------------------------
 
-Add a tag to an interface with the given system\_id and interface id.
+Add a tag to an interface with the given system_id and interface id.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. A system\_id.
+**{system_id}** (*String*): Required. A system_id.
 
 **{id}** (*Int*): Required. An interface id.
 
@@ -7756,16 +7336,13 @@ Add a tag to an interface with the given system\_id and interface id.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/nodes/{system_id}/interfaces/{id}/?op=disconnect``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/nodes/{system_id}/interfaces/{id}/?op=disconnect`</summary>
 
 ------------------------------------------------------------------------
 
-Disconnect an interface with the given system\_id and interface id.
+Disconnect an interface with the given system_id and interface id.
 
-Deletes any linked subnets and IP addresses, and disconnects the
-interface from any associated VLAN.
+Deletes any linked subnets and IP addresses, and disconnects the interface from any associated VLAN.
 
 **Success**
 
@@ -7809,56 +7386,36 @@ interface from any associated VLAN.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/nodes/{system_id}/interfaces/{id}/?op=link_subnet``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/nodes/{system_id}/interfaces/{id}/?op=link_subnet`</summary>
 
 ------------------------------------------------------------------------
 
-Link an interface with the given system\_id and interface id to a
-subnet.
+Link an interface with the given system_id and interface id to a subnet.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. A system\_id.
+**{system_id}** (*String*): Required. A system_id.
 
 **{id}** (*Int*): Required. An interface id.
 
-**mode** (*String*): Required. `AUTO`, `DHCP`, `STATIC` or `LINK_UP`
-connection to subnet.
+**mode** (*String*): Required. `AUTO`, `DHCP`, `STATIC` or `LINK_UP` connection to subnet.
 
 Mode definitions:
 
--   `AUTO`: Assign this interface a static IP address from the provided
-    subnet. The subnet must be a managed subnet. The IP address will not
-    be assigned until the node goes to be deployed.
--   `DHCP`: Bring this interface up with DHCP on the given subnet. Only
-    one subnet can be set to `DHCP`. If the subnet is managed this
-    interface will pull from the dynamic IP range.
--   `STATIC`: Bring this interface up with a static IP address on the
-    given subnet. Any number of static links can exist on an interface.
--   `LINK_UP`: Bring this interface up only on the given subnet. No IP
-    address will be assigned to this interface. The interface cannot
-    have any current `AUTO`, `DHCP` or `STATIC` links.
+-   `AUTO`: Assign this interface a static IP address from the provided subnet. The subnet must be a managed subnet. The IP address will not be assigned until the node goes to be deployed.
+-   `DHCP`: Bring this interface up with DHCP on the given subnet. Only one subnet can be set to `DHCP`. If the subnet is managed this interface will pull from the dynamic IP range.
+-   `STATIC`: Bring this interface up with a static IP address on the given subnet. Any number of static links can exist on an interface.
+-   `LINK_UP`: Bring this interface up only on the given subnet. No IP address will be assigned to this interface. The interface cannot have any current `AUTO`, `DHCP` or `STATIC` links.
 
 **subnet** (*Int*): Required. Subnet id linked to interface.
 
-**ip\_address** (*String*): Optional. IP address for the interface in
-subnet. Only used when mode is `STATIC`. If not provided an IP address
-from subnet will be auto selected.
+**ip_address** (*String*): Optional. IP address for the interface in subnet. Only used when mode is `STATIC`. If not provided an IP address from subnet will be auto selected.
 
-**force** (*Boolean*): Optional. If True, allows `LINK_UP` to be set on
-the interface even if other links already exist. Also allows the
-selection of any VLAN, even a VLAN MAAS does not believe the interface
-to currently be on. Using this option will cause all other links on the
-interface to be deleted. (Defaults to False.)
+**force** (*Boolean*): Optional. If True, allows `LINK_UP` to be set on the interface even if other links already exist. Also allows the selection of any VLAN, even a VLAN MAAS does not believe the interface to currently be on. Using this option will cause all other links on the interface to be deleted. (Defaults to False.)
 
-**default\_gateway** (*String*): Optional. True sets the gateway IP
-address for the subnet as the default gateway for the node this
-interface belongs to. Option can only be used with the `AUTO` and
-`STATIC` modes.
+**default_gateway** (*String*): Optional. True sets the gateway IP address for the subnet as the default gateway for the node this interface belongs to. Option can only be used with the `AUTO` and `STATIC` modes.
 
 **Success**
 
@@ -7952,20 +7509,17 @@ interface belongs to. Option can only be used with the `AUTO` and
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/nodes/{system_id}/interfaces/{id}/?op=remove_tag``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/nodes/{system_id}/interfaces/{id}/?op=remove_tag`</summary>
 
 ------------------------------------------------------------------------
 
-Remove a tag from an interface with the given system\_id and interface
-id.
+Remove a tag from an interface with the given system_id and interface id.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. A system\_id.
+**{system_id}** (*String*): Required. A system_id.
 
 **{id}** (*Int*): Required. An interface id.
 
@@ -8073,29 +7627,23 @@ id.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/nodes/{system_id}/interfaces/{id}/?op=set_default_gateway``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/nodes/{system_id}/interfaces/{id}/?op=set_default_gateway`</summary>
 
 ------------------------------------------------------------------------
 
-Set the given interface id on the given system\_id as the default
-gateway.
+Set the given interface id on the given system_id as the default gateway.
 
-If this interface has more than one subnet with a gateway IP in the same
-IP address family then specifying the ID of the link on this interface
-is required.
+If this interface has more than one subnet with a gateway IP in the same IP address family then specifying the ID of the link on this interface is required.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. A system\_id.
+**{system_id}** (*String*): Required. A system_id.
 
 **{id}** (*Int*): Required. An interface id.
 
-**link\_id** (*Int*): Optional. ID of the link on this interface to
-select the default gateway IP address from.
+**link_id** (*Int*): Optional. ID of the link on this interface to select the default gateway IP address from.
 
 **Success**
 
@@ -8199,25 +7747,21 @@ select the default gateway IP address from.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/nodes/{system_id}/interfaces/{id}/?op=unlink_subnet``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/nodes/{system_id}/interfaces/{id}/?op=unlink_subnet`</summary>
 
 ------------------------------------------------------------------------
 
-Unlink an interface with the given system\_id and interface id from a
-subnet.
+Unlink an interface with the given system_id and interface id from a subnet.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. A system\_id.
+**{system_id}** (*String*): Required. A system_id.
 
 **{id}** (*Int*): Required. An interface id.
 
-**id** (*Int*): Optional. ID of the subnet link on the interface to
-remove.
+**id** (*Int*): Optional. ID of the subnet link on the interface to remove.
 
 **Success**
 
@@ -8280,138 +7824,87 @@ remove.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``PUT /MAAS/api/2.0/nodes/{system_id}/interfaces/{id}/``</summary>
+</details> <details> <summary>`PUT /MAAS/api/2.0/nodes/{system_id}/interfaces/{id}/`</summary>
 
 ------------------------------------------------------------------------
 
-Update an interface with the given system\_id and interface id.
+Update an interface with the given system_id and interface id.
 
-Note: machines must have a status of Ready or Broken to have access to
-all options. Machines with Deployed status can only have the name and/or
-mac\_address updated for an interface. This is intented to allow a bad
-interface to be replaced while the machine remains deployed.
+Note: machines must have a status of Ready or Broken to have access to all options. Machines with Deployed status can only have the name and/or mac_address updated for an interface. This is intented to allow a bad interface to be replaced while the machine remains deployed.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. A system\_id.
+**{system_id}** (*String*): Required. A system_id.
 
 **{id}** (*Int*): Required. An interface id.
 
-**name** (*String*): Optional. (Physical interfaces) Name of the
-interface.
+**name** (*String*): Optional. (Physical interfaces) Name of the interface.
 
-**mac\_address** (*String*): Optional. (Physical interfaces) MAC address
-of the interface.
+**mac_address** (*String*): Optional. (Physical interfaces) MAC address of the interface.
 
-**tags** (*String*): Optional. (Physical interfaces) Tags for the
-interface.
+**tags** (*String*): Optional. (Physical interfaces) Tags for the interface.
 
-**vlan** (*Int*): Optional. (Physical interfaces) Untagged VLAN id the
-interface is connected to. If not set then the interface is considered
-disconnected.
+**vlan** (*Int*): Optional. (Physical interfaces) Untagged VLAN id the interface is connected to. If not set then the interface is considered disconnected.
 
 **name** (*String*): Optional. (Bond interfaces) Name of the interface.
 
-**mac\_address** (*String*): Optional. (Bond interfaces) MAC address of
-the interface.
+**mac_address** (*String*): Optional. (Bond interfaces) MAC address of the interface.
 
 **tags** (*String*): Optional. (Bond interfaces) Tags for the interface.
 
-**vlan** (*Int*): Optional. (Bond interfaces) Untagged VLAN id the
-interface is connected to. If not set then the interface is considered
-disconnected.
+**vlan** (*Int*): Optional. (Bond interfaces) Untagged VLAN id the interface is connected to. If not set then the interface is considered disconnected.
 
-**parents** (*Int*): Optional. (Bond interfaces) Parent interface ids
-that make this bond.
+**parents** (*Int*): Optional. (Bond interfaces) Parent interface ids that make this bond.
 
 **tags** (*String*): Optional. (VLAN interfaces) Tags for the interface.
 
-**vlan** (*Int*): Optional. (VLAN interfaces) Tagged VLAN id the
-interface is connected to.
+**vlan** (*Int*): Optional. (VLAN interfaces) Tagged VLAN id the interface is connected to.
 
-**parent** (*Int*): Optional. (VLAN interfaces) Parent interface ids for
-the VLAN interface.
+**parent** (*Int*): Optional. (VLAN interfaces) Parent interface ids for the VLAN interface.
 
-**name** (*String*): Optional. (Bridge interfaces) Name of the
-interface.
+**name** (*String*): Optional. (Bridge interfaces) Name of the interface.
 
-**mac\_address** (*String*): Optional. (Bridge interfaces) MAC address
-of the interface.
+**mac_address** (*String*): Optional. (Bridge interfaces) MAC address of the interface.
 
-**tags** (*String*): Optional. (Bridge interfaces) Tags for the
-interface.
+**tags** (*String*): Optional. (Bridge interfaces) Tags for the interface.
 
-**vlan** (*Int*): Optional. (Bridge interfaces) VLAN id the interface is
-connected to.
+**vlan** (*Int*): Optional. (Bridge interfaces) VLAN id the interface is connected to.
 
-**parent** (*Int*): Optional. (Bridge interfaces) Parent interface ids
-for this bridge interface.
+**parent** (*Int*): Optional. (Bridge interfaces) Parent interface ids for this bridge interface.
 
-**bridge\_stp** (*Boolean*): Optional. (Bridge interfaces) Turn spanning
-tree protocol on or off. (Default: False).
+**bridge_stp** (*Boolean*): Optional. (Bridge interfaces) Turn spanning tree protocol on or off. (Default: False).
 
-**bridge\_fd** (*Int*): Optional. (Bridge interfaces) Set bridge forward
-delay to time seconds. (Default: 15).
+**bridge_fd** (*Int*): Optional. (Bridge interfaces) Set bridge forward delay to time seconds. (Default: 15).
 
-**bond\_miimon** (*Int*): Optional. (Bonds) The link monitoring
-freqeuncy in milliseconds. (Default: 100).
+**bond_miimon** (*Int*): Optional. (Bonds) The link monitoring freqeuncy in milliseconds. (Default: 100).
 
-**bond\_downdelay** (*Int*): Optional. (Bonds) Specifies the time, in
-milliseconds, to wait before disabling a slave after a link failure has
-been detected.
+**bond_downdelay** (*Int*): Optional. (Bonds) Specifies the time, in milliseconds, to wait before disabling a slave after a link failure has been detected.
 
-**bond\_updelay** (*Int*): Optional. (Bonds) Specifies the time, in
-milliseconds, to wait before enabling a slave after a link recovery has
-been detected.
+**bond_updelay** (*Int*): Optional. (Bonds) Specifies the time, in milliseconds, to wait before enabling a slave after a link recovery has been detected.
 
-**bond\_lacp\_rate** (*String*): Optional. (Bonds) Option specifying the
-rate in which we'll ask our link partner to transmit LACPDU packets in
-802.3ad mode. Available options are `fast` or `slow`. (Default: `slow`).
+**bond_lacp_rate** (*String*): Optional. (Bonds) Option specifying the rate in which we'll ask our link partner to transmit LACPDU packets in 802.3ad mode. Available options are `fast` or `slow`. (Default: `slow`).
 
-**bond\_xmit\_hash\_policy** (*String*): Optional. (Bonds) The transmit
-hash policy to use for slave selection in balance-xor, 802.3ad, and tlb
-modes. Possible values are: `layer2`, `layer2+3`, `layer3+4`,
-`encap2+3`, `encap3+4`.
+**bond_xmit_hash_policy** (*String*): Optional. (Bonds) The transmit hash policy to use for slave selection in balance-xor, 802.3ad, and tlb modes. Possible values are: `layer2`, `layer2+3`, `layer3+4`, `encap2+3`, `encap3+4`.
 
-**bond\_mode** (*String*): Optional. (Bonds) The operating mode of the
-bond. (Default: `active-backup`).
+**bond_mode** (*String*): Optional. (Bonds) The operating mode of the bond. (Default: `active-backup`).
 
 Supported bonding modes (bond-mode):
 
--   `balance-rr`: Transmit packets in sequential order from the first
-    available slave through the last. This mode provides load balancing
-    and fault tolerance.
--   `active-backup`: Only one slave in the bond is active. A different
-    slave becomes active if, and only if, the active slave fails. The
-    bond's MAC address is externally visible on only one port (network
-    adapter) to avoid confusing the switch.
--   `balance-xor`: Transmit based on the selected transmit hash policy.
-    The default policy is a simple \[(source MAC address XOR'd with
-    destination MAC address XOR packet type ID) modulo slave count\].
--   `broadcast`: Transmits everything on all slave interfaces. This mode
-    provides fault tolerance.
--   `802.3ad`: IEEE 802.3ad Dynamic link aggregation. Creates
-    aggregation groups that share the same speed and duplex settings.
-    Utilizes all slaves in the active aggregator according to the
-    802.3ad specification.
--   `balance-tlb`: Adaptive transmit load balancing: channel bonding
-    that does not require any special switch support.
--   `balance-alb`: Adaptive load balancing: includes balance-tlb plus
-    receive load balancing (rlb) for IPV4 traffic, and does not require
-    any special switch support. The receive load balancing is achieved
-    by ARP negotiation.
+-   `balance-rr`: Transmit packets in sequential order from the first available slave through the last. This mode provides load balancing and fault tolerance.
+-   `active-backup`: Only one slave in the bond is active. A different slave becomes active if, and only if, the active slave fails. The bond's MAC address is externally visible on only one port (network adapter) to avoid confusing the switch.
+-   `balance-xor`: Transmit based on the selected transmit hash policy. The default policy is a simple [(source MAC address XOR'd with destination MAC address XOR packet type ID) modulo slave count].
+-   `broadcast`: Transmits everything on all slave interfaces. This mode provides fault tolerance.
+-   `802.3ad`: IEEE 802.3ad Dynamic link aggregation. Creates aggregation groups that share the same speed and duplex settings. Utilizes all slaves in the active aggregator according to the 802.3ad specification.
+-   `balance-tlb`: Adaptive transmit load balancing: channel bonding that does not require any special switch support.
+-   `balance-alb`: Adaptive load balancing: includes balance-tlb plus receive load balancing (rlb) for IPV4 traffic, and does not require any special switch support. The receive load balancing is achieved by ARP negotiation.
 
 **mtu** (*String*): Optional. Maximum transmission unit.
 
-**accept\_ra** (*String*): Optional. Accept router advertisements. (IPv6
-only)
+**accept_ra** (*String*): Optional. Accept router advertisements. (IPv6 only)
 
-**autoconf** (*String*): Optional. Perform stateless autoconfiguration.
-(IPv6 only)
+**autoconf** (*String*): Optional. Perform stateless autoconfiguration. (IPv6 only)
 
 **Success**
 
@@ -8456,12 +7949,12 @@ only)
 
 <p>&nbsp;</p>
 </details>
+
 ### Interfaces
 
 Manage interfaces on a node.
 
-<details>
-  <summary>``GET /MAAS/api/2.0/nodes/{system_id}/interfaces/``</summary>
+<details> <summary>`GET /MAAS/api/2.0/nodes/{system_id}/interfaces/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -8471,7 +7964,7 @@ List all interfaces belonging to a machine, device, or rack controller.
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. A system\_id.
+**{system_id}** (*String*): Required. A system_id.
 
 **Success**
 
@@ -8962,9 +8455,7 @@ List all interfaces belonging to a machine, device, or rack controller.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/nodes/{system_id}/interfaces/?op=create_bond``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/nodes/{system_id}/interfaces/?op=create_bond`</summary>
 
 ------------------------------------------------------------------------
 
@@ -8974,78 +8465,47 @@ Create a bond interface on a machine.
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. A system\_id.
+**{system_id}** (*String*): Required. A system_id.
 
 **name** (*String*): Required. Name of the interface.
 
-**mac\_address** (*String*): Optional. MAC address of the interface.
+**mac_address** (*String*): Optional. MAC address of the interface.
 
 **tags** (*String*): Optional. Tags for the interface.
 
-**vlan** (*String*): Optional. VLAN the interface is connected to. If
-not provided then the interface is considered disconnected.
+**vlan** (*String*): Optional. VLAN the interface is connected to. If not provided then the interface is considered disconnected.
 
 **parents** (*Int*): Required. Parent interface ids that make this bond.
 
-**bond\_mode** (*String*): Optional. The operating mode of the bond.
-(Default: active-backup).
+**bond_mode** (*String*): Optional. The operating mode of the bond. (Default: active-backup).
 
 Supported bonding modes:
 
--   `balance-rr`: Transmit packets in sequential order from the first
-    available slave through the last. This mode provides load balancing
-    and fault tolerance.
--   `active-backup`: Only one slave in the bond is active. A different
-    slave becomes active if, and only if, the active slave fails. The
-    bond's MAC address is externally visible on only one port (network
-    adapter) to avoid confusing the switch.
--   `balance-xor`: Transmit based on the selected transmit hash policy.
-    The default policy is a simple \[(source MAC address XOR'd with
-    destination MAC address XOR packet type ID) modulo slave count\].
--   `broadcast`: Transmits everything on all slave interfaces. This mode
-    provides fault tolerance.
--   `802.3ad`: IEEE 802.3ad dynamic link aggregation. Creates
-    aggregation groups that share the same speed and duplex settings.
-    Uses all slaves in the active aggregator according to the 802.3ad
-    specification.
--   `balance-tlb`: Adaptive transmit load balancing: channel bonding
-    that does not require any special switch support.
--   `balance-alb`: Adaptive load balancing: includes balance-tlb plus
-    receive load balancing (rlb) for IPV4 traffic, and does not require
-    any special switch support. The receive load balancing is achieved
-    by ARP negotiation.
+-   `balance-rr`: Transmit packets in sequential order from the first available slave through the last. This mode provides load balancing and fault tolerance.
+-   `active-backup`: Only one slave in the bond is active. A different slave becomes active if, and only if, the active slave fails. The bond's MAC address is externally visible on only one port (network adapter) to avoid confusing the switch.
+-   `balance-xor`: Transmit based on the selected transmit hash policy. The default policy is a simple [(source MAC address XOR'd with destination MAC address XOR packet type ID) modulo slave count].
+-   `broadcast`: Transmits everything on all slave interfaces. This mode provides fault tolerance.
+-   `802.3ad`: IEEE 802.3ad dynamic link aggregation. Creates aggregation groups that share the same speed and duplex settings. Uses all slaves in the active aggregator according to the 802.3ad specification.
+-   `balance-tlb`: Adaptive transmit load balancing: channel bonding that does not require any special switch support.
+-   `balance-alb`: Adaptive load balancing: includes balance-tlb plus receive load balancing (rlb) for IPV4 traffic, and does not require any special switch support. The receive load balancing is achieved by ARP negotiation.
 
-**bond\_miimon** (*Int*): Optional. The link monitoring freqeuncy in
-milliseconds. (Default: 100).
+**bond_miimon** (*Int*): Optional. The link monitoring freqeuncy in milliseconds. (Default: 100).
 
-**bond\_downdelay** (*Int*): Optional. Specifies the time, in
-milliseconds, to wait before disabling a slave after a link failure has
-been detected.
+**bond_downdelay** (*Int*): Optional. Specifies the time, in milliseconds, to wait before disabling a slave after a link failure has been detected.
 
-**bond\_updelay** (*Int*): Optional. Specifies the time, in
-milliseconds, to wait before enabling a slave after a link recovery has
-been detected.
+**bond_updelay** (*Int*): Optional. Specifies the time, in milliseconds, to wait before enabling a slave after a link recovery has been detected.
 
-**bond\_lacp\_rate** (*String*): Optional. Option specifying the rate at
-which to ask the link partner to transmit LACPDU packets in 802.3ad
-mode. Available options are `fast` or `slow`. (Default: `slow`).
+**bond_lacp_rate** (*String*): Optional. Option specifying the rate at which to ask the link partner to transmit LACPDU packets in 802.3ad mode. Available options are `fast` or `slow`. (Default: `slow`).
 
-**bond\_xmit\_hash\_policy** (*String*): Optional. The transmit hash
-policy to use for slave selection in balance-xor, 802.3ad, and tlb
-modes. Possible values are: `layer2`, `layer2+3`, `layer3+4`,
-`encap2+3`, `encap3+4`. (Default: `layer2`)
+**bond_xmit_hash_policy** (*String*): Optional. The transmit hash policy to use for slave selection in balance-xor, 802.3ad, and tlb modes. Possible values are: `layer2`, `layer2+3`, `layer3+4`, `encap2+3`, `encap3+4`. (Default: `layer2`)
 
-**bond\_num\_grat\_arp** (*Int*): Optional. The number of peer
-notifications (IPv4 ARP or IPv6 Neighbour Advertisements) to be issued
-after a failover. (Default: 1)
+**bond_num_grat_arp** (*Int*): Optional. The number of peer notifications (IPv4 ARP or IPv6 Neighbour Advertisements) to be issued after a failover. (Default: 1)
 
 **mtu** (*Int*): Optional. Maximum transmission unit.
 
-**accept\_ra** (*Boolean*): Optional. Accept router advertisements.
-(IPv6 only)
+**accept_ra** (*Boolean*): Optional. Accept router advertisements. (IPv6 only)
 
-**autoconf** (*Boolean*): Optional. Perform stateless autoconfiguration.
-(IPv6 only)
+**autoconf** (*Boolean*): Optional. Perform stateless autoconfiguration. (IPv6 only)
 
 **Success**
 
@@ -9097,9 +8557,7 @@ after a failover. (Default: 1)
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/nodes/{system_id}/interfaces/?op=create_bridge``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/nodes/{system_id}/interfaces/?op=create_bridge`</summary>
 
 ------------------------------------------------------------------------
 
@@ -9109,32 +8567,27 @@ Create a bridge interface on a machine.
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. A system\_id.
+**{system_id}** (*String*): Required. A system_id.
 
 **name** (*String*): Optional. Name of the interface.
 
-**mac\_address** (*String*): Optional. MAC address of the interface.
+**mac_address** (*String*): Optional. MAC address of the interface.
 
 **tags** (*String*): Optional. Tags for the interface.
 
 **vlan** (*String*): Optional. VLAN the interface is connected to.
 
-**parent** (*Int*): Optional. Parent interface id for this bridge
-interface.
+**parent** (*Int*): Optional. Parent interface id for this bridge interface.
 
-**bridge\_stp** (*Boolean*): Optional. Turn spanning tree protocol on or
-off. (Default: False).
+**bridge_stp** (*Boolean*): Optional. Turn spanning tree protocol on or off. (Default: False).
 
-**bridge\_fd** (*Int*): Optional. Set bridge forward delay to time
-seconds. (Default: 15).
+**bridge_fd** (*Int*): Optional. Set bridge forward delay to time seconds. (Default: 15).
 
 **mtu** (*Int*): Optional. Maximum transmission unit.
 
-**accept\_ra** (*Boolean*): Optional. Accept router advertisements.
-(IPv6 only)
+**accept_ra** (*Boolean*): Optional. Accept router advertisements. (IPv6 only)
 
-**autoconf** (*Boolean*): Optional. Perform stateless autoconfiguration.
-(IPv6 only)
+**autoconf** (*Boolean*): Optional. Perform stateless autoconfiguration. (IPv6 only)
 
 **Success**
 
@@ -9181,9 +8634,7 @@ seconds. (Default: 15).
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/nodes/{system_id}/interfaces/?op=create_physical``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/nodes/{system_id}/interfaces/?op=create_physical`</summary>
 
 ------------------------------------------------------------------------
 
@@ -9193,24 +8644,21 @@ Create a physical interface on a machine and device.
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. A system\_id.
+**{system_id}** (*String*): Required. A system_id.
 
 **name** (*String*): Optional. Name of the interface.
 
-**mac\_address** (*String*): Required. MAC address of the interface.
+**mac_address** (*String*): Required. MAC address of the interface.
 
 **tags** (*String*): Optional. Tags for the interface.
 
-**vlan** (*String*): Optional. Untagged VLAN the interface is connected
-to. If not provided then the interface is considered disconnected.
+**vlan** (*String*): Optional. Untagged VLAN the interface is connected to. If not provided then the interface is considered disconnected.
 
 **mtu** (*Int*): Optional. Maximum transmission unit.
 
-**accept\_ra** (*Boolean*): Optional. Accept router advertisements.
-(IPv6 only)
+**accept_ra** (*Boolean*): Optional. Accept router advertisements. (IPv6 only)
 
-**autoconf** (*Boolean*): Optional. Perform stateless autoconfiguration.
-(IPv6 only)
+**autoconf** (*Boolean*): Optional. Perform stateless autoconfiguration. (IPv6 only)
 
 **Success**
 
@@ -9252,9 +8700,7 @@ to. If not provided then the interface is considered disconnected.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/nodes/{system_id}/interfaces/?op=create_vlan``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/nodes/{system_id}/interfaces/?op=create_vlan`</summary>
 
 ------------------------------------------------------------------------
 
@@ -9264,23 +8710,19 @@ Create a VLAN interface on a machine.
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. A system\_id.
+**{system_id}** (*String*): Required. A system_id.
 
 **tags** (*String*): Optional. Tags for the interface.
 
-**vlan** (*String*): Required. Tagged VLAN the interface is connected
-to.
+**vlan** (*String*): Required. Tagged VLAN the interface is connected to.
 
-**parent** (*Int*): Required. Parent interface id for this VLAN
-interface.
+**parent** (*Int*): Required. Parent interface id for this VLAN interface.
 
 **mtu** (*Int*): Optional. Maximum transmission unit.
 
-**accept\_ra** (*Boolean*): Optional. Accept router advertisements.
-(IPv6 only)
+**accept_ra** (*Boolean*): Optional. Accept router advertisements. (IPv6 only)
 
-**autoconf** (*Boolean*): Optional. Perform stateless autoconfiguration.
-(IPv6 only)
+**autoconf** (*Boolean*): Optional. Perform stateless autoconfiguration. (IPv6 only)
 
 **Success**
 
@@ -9306,12 +8748,12 @@ interface.
 
 <p>&nbsp;</p>
 </details>
+
 ### License Key
 
 Manage a license key.
 
-<details>
-  <summary>``DELETE /MAAS/api/2.0/license-key/{osystem}/{distro_series}``</summary>
+<details> <summary>`DELETE /MAAS/api/2.0/license-key/{osystem}/{distro_series}`</summary>
 
 ------------------------------------------------------------------------
 
@@ -9321,11 +8763,9 @@ Delete license key for the given operation system and distro series.
 
 ------------------------------------------------------------------------
 
-**{osystem}** (*String*): Optional. Operating system that the key
-belongs to.
+**{osystem}** (*String*): Optional. Operating system that the key belongs to.
 
-**{distro\_series}** (*String*): Optional. OS release that the key
-belongs to.
+**{distro_series}** (*String*): Optional. OS release that the key belongs to.
 
 **Success**
 
@@ -9344,9 +8784,7 @@ belongs to.
     Unknown API endpoint: /MAAS/api/2.0/license-key/windows/win2012/.
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``GET /MAAS/api/2.0/license-key/{osystem}/{distro_series}``</summary>
+</details> <details> <summary>`GET /MAAS/api/2.0/license-key/{osystem}/{distro_series}`</summary>
 
 ------------------------------------------------------------------------
 
@@ -9356,11 +8794,9 @@ Read a license key for the given operating sytem and distro series.
 
 ------------------------------------------------------------------------
 
-**{osystem}** (*String*): Required. Operating system that the key
-belongs to.
+**{osystem}** (*String*): Required. Operating system that the key belongs to.
 
-**{distro\_series}** (*String*): Required. OS release that the key
-belongs to.
+**{distro_series}** (*String*): Required. OS release that the key belongs to.
 
 **Success**
 
@@ -9385,9 +8821,7 @@ belongs to.
     Unknown API endpoint: /MAAS/api/2.0/license-key/windows/win2012/.
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``PUT /MAAS/api/2.0/license-key/{osystem}/{distro_series}``</summary>
+</details> <details> <summary>`PUT /MAAS/api/2.0/license-key/{osystem}/{distro_series}`</summary>
 
 ------------------------------------------------------------------------
 
@@ -9397,14 +8831,11 @@ Update a license key for the given operating system and distro series.
 
 ------------------------------------------------------------------------
 
-**{osystem}** (*String*): Required. Operating system that the key
-belongs to.
+**{osystem}** (*String*): Required. Operating system that the key belongs to.
 
-**{distro\_series}** (*String*): Required. OS release that the key
-belongs to.
+**{distro_series}** (*String*): Required. OS release that the key belongs to.
 
-**license\_key** (*String*): Optional. License key for
-osystem/distro\_series combo.
+**license_key** (*String*): Optional. License key for osystem/distro_series combo.
 
 **Success**
 
@@ -9430,12 +8861,12 @@ osystem/distro\_series combo.
 
 <p>&nbsp;</p>
 </details>
+
 ### License Keys
 
 Manage the license keys.
 
-<details>
-  <summary>``GET /MAAS/api/2.0/license-keys/``</summary>
+<details> <summary>`GET /MAAS/api/2.0/license-keys/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -9454,9 +8885,7 @@ List all available license keys.
     }
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/license-keys/``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/license-keys/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -9466,14 +8895,11 @@ Define a license key.
 
 ------------------------------------------------------------------------
 
-**osystem** (*String*): Required. Operating system that the key belongs
-to.
+**osystem** (*String*): Required. Operating system that the key belongs to.
 
-**distro\_series** (*String*): Required. OS release that the key belongs
-to.
+**distro_series** (*String*): Required. OS release that the key belongs to.
 
-**license\_key** (*String*): Required. License key for
-osystem/distro\_series combo.
+**license_key** (*String*): Required. License key for osystem/distro_series combo.
 
 **Success**
 
@@ -9489,12 +8915,12 @@ osystem/distro\_series combo.
 
 <p>&nbsp;</p>
 </details>
+
 ### MAAS server
 
 Manage the MAAS server.
 
-<details>
-  <summary>``GET /MAAS/api/2.0/maas/?op=get_config``</summary>
+<details> <summary>`GET /MAAS/api/2.0/maas/?op=get_config`</summary>
 
 ------------------------------------------------------------------------
 
@@ -9504,288 +8930,201 @@ Get a configuration value.
 
 ------------------------------------------------------------------------
 
-**name** (*String*): Required. The name of the configuration item to be
-retrieved.
+**name** (*String*): Required. The name of the configuration item to be retrieved.
 
 Available configuration items:
 
-active\_discovery\_interval
+active_discovery_interval
 
-:   Active subnet mapping interval. When enabled, each rack will scan
-    subnets enabled for active mapping. This helps ensure discovery
-    information is accurate and complete.
+:   Active subnet mapping interval. When enabled, each rack will scan subnets enabled for active mapping. This helps ensure discovery information is accurate and complete.
 
-boot\_images\_auto\_import
+boot_images_auto_import
 
 :   Automatically import/refresh the boot images every 60 minutes.
 
-boot\_images\_no\_proxy
+boot_images_no_proxy
 
-:   Set no\_proxy with the image repository address when MAAS is behind
-    (or set with) a proxy.. By default, when MAAS is behind (and set
-    with) a proxy, it is used to download images from the image
-    repository. In some situations (e.g. when using a local image
-    repository) it doesn't make sense for MAAS to use the proxy to
-    download images because it can access them directly. Setting this
-    option allows MAAS to access the (local) image repository directly
-    by setting the no\_proxy variable for the MAAS env with the address
-    of the image repository.
+:   Set no_proxy with the image repository address when MAAS is behind (or set with) a proxy.. By default, when MAAS is behind (and set with) a proxy, it is used to download images from the image repository. In some situations (e.g. when using a local image repository) it doesn't make sense for MAAS to use the proxy to download images because it can access them directly. Setting this option allows MAAS to access the (local) image repository directly by setting the no_proxy variable for the MAAS env with the address of the image repository.
 
-commissioning\_distro\_series
+commissioning_distro_series
 
 :   Default Ubuntu release used for commissioning.
 
-completed\_intro
+completed_intro
 
 :   Marks if the initial intro has been completed.
 
-curtin\_verbose
+curtin_verbose
 
-:   Run the fast-path installer with higher verbosity. This provides
-    more detail in the installation logs.
+:   Run the fast-path installer with higher verbosity. This provides more detail in the installation logs.
 
-default\_distro\_series
+default_distro_series
 
 :   Default OS release used for deployment.
 
-default\_dns\_ttl
+default_dns_ttl
 
-:   Default Time-To-Live for the DNS. If no TTL value is specified at a
-    more specific point this is how long DNS responses are valid, in
-    seconds.
+:   Default Time-To-Live for the DNS. If no TTL value is specified at a more specific point this is how long DNS responses are valid, in seconds.
 
-default\_min\_hwe\_kernel
+default_min_hwe_kernel
 
-:   Default Minimum Kernel Version. The default minimum kernel version
-    used on all new and commissioned nodes.
+:   Default Minimum Kernel Version. The default minimum kernel version used on all new and commissioned nodes.
 
-default\_osystem
+default_osystem
 
 :   Default operating system used for deployment.
 
-default\_storage\_layout
+default_storage_layout
 
-:   Default storage layout. Storage layout that is applied to a node
-    when it is commissioned. Available choices are: 'bcache' (Bcache
-    layout), 'blank' (No storage (blank) layout), 'flat' (Flat layout),
-    'lvm' (LVM layout), 'vmfs6' (VMFS6 layout).
+:   Default storage layout. Storage layout that is applied to a node when it is commissioned. Available choices are: 'bcache' (Bcache layout), 'blank' (No storage (blank) layout), 'flat' (Flat layout), 'lvm' (LVM layout), 'vmfs6' (VMFS6 layout).
 
-disk\_erase\_with\_quick\_erase
+disk_erase_with_quick_erase
 
-:   Use quick erase by default when erasing disks.. This is not a secure
-    erase; it wipes only the beginning and end of each disk.
+:   Use quick erase by default when erasing disks.. This is not a secure erase; it wipes only the beginning and end of each disk.
 
-disk\_erase\_with\_secure\_erase
+disk_erase_with_secure_erase
 
-:   Use secure erase by default when erasing disks. Will only be used on
-    devices that support secure erase. Other devices will fall back to
-    full wipe or quick erase depending on the selected options.
+:   Use secure erase by default when erasing disks. Will only be used on devices that support secure erase. Other devices will fall back to full wipe or quick erase depending on the selected options.
 
-dns\_trusted\_acl
+dns_trusted_acl
 
-:   List of external networks (not previously known), that will be
-    allowed to use MAAS for DNS resolution.. MAAS keeps a list of
-    networks that are allowed to use MAAS for DNS resolution. This
-    option allows to add extra networks (not previously known) to the
-    trusted ACL where this list of networks is kept. It also supports
-    specifying IPs or ACL names.
+:   List of external networks (not previously known), that will be allowed to use MAAS for DNS resolution.. MAAS keeps a list of networks that are allowed to use MAAS for DNS resolution. This option allows to add extra networks (not previously known) to the trusted ACL where this list of networks is kept. It also supports specifying IPs or ACL names.
 
-dnssec\_validation
+dnssec_validation
 
-:   Enable DNSSEC validation of upstream zones. Only used when MAAS is
-    running its own DNS server. This value is used as the value of
-    'dnssec\_validation' in the DNS server config.
+:   Enable DNSSEC validation of upstream zones. Only used when MAAS is running its own DNS server. This value is used as the value of 'dnssec_validation' in the DNS server config.
 
-enable\_analytics
+enable_analytics
 
-:   Enable Google Analytics in MAAS UI to shape improvements in user
-    experience.
+:   Enable Google Analytics in MAAS UI to shape improvements in user experience.
 
-enable\_disk\_erasing\_on\_release
+enable_disk_erasing_on_release
 
-:   Erase nodes' disks prior to releasing. Forces users to always erase
-    disks when releasing.
+:   Erase nodes' disks prior to releasing. Forces users to always erase disks when releasing.
 
-enable\_http\_proxy
+enable_http_proxy
 
-:   Enable the use of an APT or YUM and HTTP/HTTPS proxy. Provision
-    nodes to use the built-in HTTP proxy (or user specified proxy) for
-    APT or YUM. MAAS also uses the proxy for downloading boot images.
+:   Enable the use of an APT or YUM and HTTP/HTTPS proxy. Provision nodes to use the built-in HTTP proxy (or user specified proxy) for APT or YUM. MAAS also uses the proxy for downloading boot images.
 
-enable\_third\_party\_drivers
+enable_third_party_drivers
 
 :   Enable the installation of proprietary drivers (i.e. HPVSA).
 
-enlist\_commissioning
+enlist_commissioning
 
-:   Whether to run commissioning during enlistment.. Enables running all
-    built-in commissioning scripts during enlistment.
+:   Whether to run commissioning during enlistment.. Enables running all built-in commissioning scripts during enlistment.
 
-force\_v1\_network\_yaml
+force_v1_network_yaml
 
-:   Always use the legacy v1 YAML (rather than Netplan format, also
-    known as v2 YAML) when composing the network configuration for a
-    machine..
+:   Always use the legacy v1 YAML (rather than Netplan format, also known as v2 YAML) when composing the network configuration for a machine..
 
-http\_proxy
+http_proxy
 
-:   Proxy for APT or YUM and HTTP/HTTPS. This will be passed onto
-    provisioned nodes to use as a proxy for APT or YUM traffic. MAAS
-    also uses the proxy for downloading boot images. If no URL is
-    provided, the built-in MAAS proxy will be used.
+:   Proxy for APT or YUM and HTTP/HTTPS. This will be passed onto provisioned nodes to use as a proxy for APT or YUM traffic. MAAS also uses the proxy for downloading boot images. If no URL is provided, the built-in MAAS proxy will be used.
 
-kernel\_opts
+kernel_opts
 
 :   Boot parameters to pass to the kernel by default.
 
-maas\_internal\_domain
+maas_internal_domain
 
-:   Domain name used by MAAS for internal mapping of MAAS provided
-    services.. This domain should not collide with an upstream domain
-    provided by the set upstream DNS.
+:   Domain name used by MAAS for internal mapping of MAAS provided services.. This domain should not collide with an upstream domain provided by the set upstream DNS.
 
-maas\_name
+maas_name
 
 :   MAAS name.
 
-maas\_proxy\_port
+maas_proxy_port
 
-:   Port to bind the MAAS built-in proxy (default: 8000). Defines the
-    port used to bind the built-in proxy. The default port is 8000.
+:   Port to bind the MAAS built-in proxy (default: 8000). Defines the port used to bind the built-in proxy. The default port is 8000.
 
-maas\_syslog\_port
+maas_syslog_port
 
-:   Port to bind the MAAS built-in syslog (default: 5247). Defines the
-    port used to bind the built-in syslog. The default port is 5247.
+:   Port to bind the MAAS built-in syslog (default: 5247). Defines the port used to bind the built-in syslog. The default port is 5247.
 
-max\_node\_commissioning\_results
+max_node_commissioning_results
 
 :   The maximum number of commissioning results runs which are stored.
 
-max\_node\_installation\_results
+max_node_installation_results
 
 :   The maximum number of installation result runs which are stored.
 
-max\_node\_testing\_results
+max_node_testing_results
 
 :   The maximum number of testing results runs which are stored.
 
-network\_discovery
+network_discovery
 
-:   . When enabled, MAAS will use passive techniques (such as listening
-    to ARP requests and mDNS advertisements) to observe networks
-    attached to rack controllers. Active subnet mapping will also be
-    available to be enabled on the configured subnets.
+:   . When enabled, MAAS will use passive techniques (such as listening to ARP requests and mDNS advertisements) to observe networks attached to rack controllers. Active subnet mapping will also be available to be enabled on the configured subnets.
 
-node\_timeout
+node_timeout
 
-:   Time, in minutes, until the node times out during commissioning,
-    testing, deploying, or entering rescue mode.. Commissioning,
-    testing, deploying, and entering rescue mode all set a timeout when
-    beginning. If MAAS does not hear from the node within the specified
-    number of minutes the node is powered off and set into a failed
-    status.
+:   Time, in minutes, until the node times out during commissioning, testing, deploying, or entering rescue mode.. Commissioning, testing, deploying, and entering rescue mode all set a timeout when beginning. If MAAS does not hear from the node within the specified number of minutes the node is powered off and set into a failed status.
 
-ntp\_external\_only
+ntp_external_only
 
-:   Use external NTP servers only. Configure all region controller
-    hosts, rack controller hosts, and subsequently deployed machines to
-    refer directly to the configured external NTP servers. Otherwise
-    only region controller hosts will be configured to use those
-    external NTP servers, rack contoller hosts will in turn refer to the
-    regions' NTP servers, and deployed machines will refer to the racks'
-    NTP servers.
+:   Use external NTP servers only. Configure all region controller hosts, rack controller hosts, and subsequently deployed machines to refer directly to the configured external NTP servers. Otherwise only region controller hosts will be configured to use those external NTP servers, rack contoller hosts will in turn refer to the regions' NTP servers, and deployed machines will refer to the racks' NTP servers.
 
-ntp\_servers
+ntp_servers
 
-:   Addresses of NTP servers. NTP servers, specified as IP addresses or
-    hostnames delimited by commas and/or spaces, to be used as time
-    references for MAAS itself, the machines MAAS deploys, and devices
-    that make use of MAAS's DHCP services.
+:   Addresses of NTP servers. NTP servers, specified as IP addresses or hostnames delimited by commas and/or spaces, to be used as time references for MAAS itself, the machines MAAS deploys, and devices that make use of MAAS's DHCP services.
 
-prefer\_v4\_proxy
+prefer_v4_proxy
 
-:   Sets IPv4 DNS resolution before IPv6. If prefer\_v4\_proxy is set,
-    the proxy will be set to prefer IPv4 DNS resolution before it
-    attempts to perform IPv6 DNS resolution.
+:   Sets IPv4 DNS resolution before IPv6. If prefer_v4_proxy is set, the proxy will be set to prefer IPv4 DNS resolution before it attempts to perform IPv6 DNS resolution.
 
-prometheus\_enabled
+prometheus_enabled
 
-:   Enable sending stats to a prometheus gateway.. Allows MAAS to send
-    statistics to Prometheus. This requires the
-    'prometheus\_push\_gateway' to be set.
+:   Enable sending stats to a prometheus gateway.. Allows MAAS to send statistics to Prometheus. This requires the 'prometheus_push_gateway' to be set.
 
-prometheus\_push\_gateway
+prometheus_push_gateway
 
-:   Address or hostname of the Prometheus push gateway.. Defines the
-    address or hostname of the Prometheus push gateway where MAAS will
-    send data to.
+:   Address or hostname of the Prometheus push gateway.. Defines the address or hostname of the Prometheus push gateway where MAAS will send data to.
 
-prometheus\_push\_interval
+prometheus_push_interval
 
-:   Interval of how often to send data to Prometheus (default: to 60
-    minutes).. The internal of how often MAAS will send stats to
-    Prometheus in minutes.
+:   Interval of how often to send data to Prometheus (default: to 60 minutes).. The internal of how often MAAS will send stats to Prometheus in minutes.
 
-remote\_syslog
+remote_syslog
 
-:   Remote syslog server to forward machine logs. A remote syslog server
-    that MAAS will set on enlisting, commissioning, testing, and
-    deploying machines to send all log messages. Clearing this value
-    will restore the default behaviour of forwarding syslog to MAAS.
+:   Remote syslog server to forward machine logs. A remote syslog server that MAAS will set on enlisting, commissioning, testing, and deploying machines to send all log messages. Clearing this value will restore the default behaviour of forwarding syslog to MAAS.
 
-subnet\_ip\_exhaustion\_threshold\_count
+subnet_ip_exhaustion_threshold_count
 
-:   If the number of free IP addresses on a subnet becomes less than or
-    equal to this threshold, an IP exhaustion warning will appear for
-    that subnet.
+:   If the number of free IP addresses on a subnet becomes less than or equal to this threshold, an IP exhaustion warning will appear for that subnet.
 
-upstream\_dns
+upstream_dns
 
-:   Upstream DNS used to resolve domains not managed by this MAAS
-    (space-separated IP addresses). Only used when MAAS is running its
-    own DNS server. This value is used as the value of 'forwarders' in
-    the DNS server config.
+:   Upstream DNS used to resolve domains not managed by this MAAS (space-separated IP addresses). Only used when MAAS is running its own DNS server. This value is used as the value of 'forwarders' in the DNS server config.
 
-use\_peer\_proxy
+use_peer_proxy
 
-:   Use the built-in proxy with an external proxy as a peer. If
-    enable\_http\_proxy is set, the built-in proxy will be configured to
-    use http\_proxy as a peer proxy. The deployed machines will be
-    configured to use the built-in proxy.
+:   Use the built-in proxy with an external proxy as a peer. If enable_http_proxy is set, the built-in proxy will be configured to use http_proxy as a peer proxy. The deployed machines will be configured to use the built-in proxy.
 
-use\_rack\_proxy
+use_rack_proxy
 
-:   Use DNS and HTTP metadata proxy on the rack controllers when a
-    machine is booted.. All DNS and HTTP metadata traffic will flow
-    through the rack controller that a machine is booting from. This
-    isolated region controllers from machines.
+:   Use DNS and HTTP metadata proxy on the rack controllers when a machine is booted.. All DNS and HTTP metadata traffic will flow through the rack controller that a machine is booting from. This isolated region controllers from machines.
 
-vcenter\_datacenter
+vcenter_datacenter
 
-:   VMware vCenter datacenter. VMware vCenter datacenter which is passed
-    to a deployed VMware ESXi host.
+:   VMware vCenter datacenter. VMware vCenter datacenter which is passed to a deployed VMware ESXi host.
 
-vcenter\_password
+vcenter_password
 
-:   VMware vCenter password. VMware vCenter server password which is
-    passed to a deployed VMware ESXi host.
+:   VMware vCenter password. VMware vCenter server password which is passed to a deployed VMware ESXi host.
 
-vcenter\_server
+vcenter_server
 
-:   VMware vCenter server FQDN or IP address. VMware vCenter server FQDN
-    or IP address which is passed to a deployed VMware ESXi host.
+:   VMware vCenter server FQDN or IP address. VMware vCenter server FQDN or IP address which is passed to a deployed VMware ESXi host.
 
-vcenter\_username
+vcenter_username
 
-:   VMware vCenter username. VMware vCenter server username which is
-    passed to a deployed VMware ESXi host.
+:   VMware vCenter username. VMware vCenter server username which is passed to a deployed VMware ESXi host.
 
-windows\_kms\_host
+windows_kms_host
 
-:   Windows KMS activation host. FQDN or IP address of the host that
-    provides the KMS Windows activation service. (Only needed for
-    Windows deployments using KMS activation.)
+:   Windows KMS activation host. FQDN or IP address of the host that provides the KMS Windows activation service. (Only needed for Windows deployments using KMS activation.)
 
 **Success**
 
@@ -9798,9 +9137,7 @@ windows\_kms\_host
     "bionic"
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/maas/?op=set_config``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/maas/?op=set_config`</summary>
 
 ------------------------------------------------------------------------
 
@@ -9810,291 +9147,203 @@ Set a configuration value.
 
 ------------------------------------------------------------------------
 
-**value** (*String*): Optional. The value of the configuration item to
-be set.
+**value** (*String*): Optional. The value of the configuration item to be set.
 
-**name** (*String*): Required. The name of the configuration item to be
-set.
+**name** (*String*): Required. The name of the configuration item to be set.
 
 Available configuration items:
 
-active\_discovery\_interval
+active_discovery_interval
 
-:   Active subnet mapping interval. When enabled, each rack will scan
-    subnets enabled for active mapping. This helps ensure discovery
-    information is accurate and complete.
+:   Active subnet mapping interval. When enabled, each rack will scan subnets enabled for active mapping. This helps ensure discovery information is accurate and complete.
 
-boot\_images\_auto\_import
+boot_images_auto_import
 
 :   Automatically import/refresh the boot images every 60 minutes.
 
-boot\_images\_no\_proxy
+boot_images_no_proxy
 
-:   Set no\_proxy with the image repository address when MAAS is behind
-    (or set with) a proxy.. By default, when MAAS is behind (and set
-    with) a proxy, it is used to download images from the image
-    repository. In some situations (e.g. when using a local image
-    repository) it doesn't make sense for MAAS to use the proxy to
-    download images because it can access them directly. Setting this
-    option allows MAAS to access the (local) image repository directly
-    by setting the no\_proxy variable for the MAAS env with the address
-    of the image repository.
+:   Set no_proxy with the image repository address when MAAS is behind (or set with) a proxy.. By default, when MAAS is behind (and set with) a proxy, it is used to download images from the image repository. In some situations (e.g. when using a local image repository) it doesn't make sense for MAAS to use the proxy to download images because it can access them directly. Setting this option allows MAAS to access the (local) image repository directly by setting the no_proxy variable for the MAAS env with the address of the image repository.
 
-commissioning\_distro\_series
+commissioning_distro_series
 
 :   Default Ubuntu release used for commissioning.
 
-completed\_intro
+completed_intro
 
 :   Marks if the initial intro has been completed.
 
-curtin\_verbose
+curtin_verbose
 
-:   Run the fast-path installer with higher verbosity. This provides
-    more detail in the installation logs.
+:   Run the fast-path installer with higher verbosity. This provides more detail in the installation logs.
 
-default\_distro\_series
+default_distro_series
 
 :   Default OS release used for deployment.
 
-default\_dns\_ttl
+default_dns_ttl
 
-:   Default Time-To-Live for the DNS. If no TTL value is specified at a
-    more specific point this is how long DNS responses are valid, in
-    seconds.
+:   Default Time-To-Live for the DNS. If no TTL value is specified at a more specific point this is how long DNS responses are valid, in seconds.
 
-default\_min\_hwe\_kernel
+default_min_hwe_kernel
 
-:   Default Minimum Kernel Version. The default minimum kernel version
-    used on all new and commissioned nodes.
+:   Default Minimum Kernel Version. The default minimum kernel version used on all new and commissioned nodes.
 
-default\_osystem
+default_osystem
 
 :   Default operating system used for deployment.
 
-default\_storage\_layout
+default_storage_layout
 
-:   Default storage layout. Storage layout that is applied to a node
-    when it is commissioned. Available choices are: 'bcache' (Bcache
-    layout), 'blank' (No storage (blank) layout), 'flat' (Flat layout),
-    'lvm' (LVM layout), 'vmfs6' (VMFS6 layout).
+:   Default storage layout. Storage layout that is applied to a node when it is commissioned. Available choices are: 'bcache' (Bcache layout), 'blank' (No storage (blank) layout), 'flat' (Flat layout), 'lvm' (LVM layout), 'vmfs6' (VMFS6 layout).
 
-disk\_erase\_with\_quick\_erase
+disk_erase_with_quick_erase
 
-:   Use quick erase by default when erasing disks.. This is not a secure
-    erase; it wipes only the beginning and end of each disk.
+:   Use quick erase by default when erasing disks.. This is not a secure erase; it wipes only the beginning and end of each disk.
 
-disk\_erase\_with\_secure\_erase
+disk_erase_with_secure_erase
 
-:   Use secure erase by default when erasing disks. Will only be used on
-    devices that support secure erase. Other devices will fall back to
-    full wipe or quick erase depending on the selected options.
+:   Use secure erase by default when erasing disks. Will only be used on devices that support secure erase. Other devices will fall back to full wipe or quick erase depending on the selected options.
 
-dns\_trusted\_acl
+dns_trusted_acl
 
-:   List of external networks (not previously known), that will be
-    allowed to use MAAS for DNS resolution.. MAAS keeps a list of
-    networks that are allowed to use MAAS for DNS resolution. This
-    option allows to add extra networks (not previously known) to the
-    trusted ACL where this list of networks is kept. It also supports
-    specifying IPs or ACL names.
+:   List of external networks (not previously known), that will be allowed to use MAAS for DNS resolution.. MAAS keeps a list of networks that are allowed to use MAAS for DNS resolution. This option allows to add extra networks (not previously known) to the trusted ACL where this list of networks is kept. It also supports specifying IPs or ACL names.
 
-dnssec\_validation
+dnssec_validation
 
-:   Enable DNSSEC validation of upstream zones. Only used when MAAS is
-    running its own DNS server. This value is used as the value of
-    'dnssec\_validation' in the DNS server config.
+:   Enable DNSSEC validation of upstream zones. Only used when MAAS is running its own DNS server. This value is used as the value of 'dnssec_validation' in the DNS server config.
 
-enable\_analytics
+enable_analytics
 
-:   Enable Google Analytics in MAAS UI to shape improvements in user
-    experience.
+:   Enable Google Analytics in MAAS UI to shape improvements in user experience.
 
-enable\_disk\_erasing\_on\_release
+enable_disk_erasing_on_release
 
-:   Erase nodes' disks prior to releasing. Forces users to always erase
-    disks when releasing.
+:   Erase nodes' disks prior to releasing. Forces users to always erase disks when releasing.
 
-enable\_http\_proxy
+enable_http_proxy
 
-:   Enable the use of an APT or YUM and HTTP/HTTPS proxy. Provision
-    nodes to use the built-in HTTP proxy (or user specified proxy) for
-    APT or YUM. MAAS also uses the proxy for downloading boot images.
+:   Enable the use of an APT or YUM and HTTP/HTTPS proxy. Provision nodes to use the built-in HTTP proxy (or user specified proxy) for APT or YUM. MAAS also uses the proxy for downloading boot images.
 
-enable\_third\_party\_drivers
+enable_third_party_drivers
 
 :   Enable the installation of proprietary drivers (i.e. HPVSA).
 
-enlist\_commissioning
+enlist_commissioning
 
-:   Whether to run commissioning during enlistment.. Enables running all
-    built-in commissioning scripts during enlistment.
+:   Whether to run commissioning during enlistment.. Enables running all built-in commissioning scripts during enlistment.
 
-force\_v1\_network\_yaml
+force_v1_network_yaml
 
-:   Always use the legacy v1 YAML (rather than Netplan format, also
-    known as v2 YAML) when composing the network configuration for a
-    machine..
+:   Always use the legacy v1 YAML (rather than Netplan format, also known as v2 YAML) when composing the network configuration for a machine..
 
-http\_proxy
+http_proxy
 
-:   Proxy for APT or YUM and HTTP/HTTPS. This will be passed onto
-    provisioned nodes to use as a proxy for APT or YUM traffic. MAAS
-    also uses the proxy for downloading boot images. If no URL is
-    provided, the built-in MAAS proxy will be used.
+:   Proxy for APT or YUM and HTTP/HTTPS. This will be passed onto provisioned nodes to use as a proxy for APT or YUM traffic. MAAS also uses the proxy for downloading boot images. If no URL is provided, the built-in MAAS proxy will be used.
 
-kernel\_opts
+kernel_opts
 
 :   Boot parameters to pass to the kernel by default.
 
-maas\_internal\_domain
+maas_internal_domain
 
-:   Domain name used by MAAS for internal mapping of MAAS provided
-    services.. This domain should not collide with an upstream domain
-    provided by the set upstream DNS.
+:   Domain name used by MAAS for internal mapping of MAAS provided services.. This domain should not collide with an upstream domain provided by the set upstream DNS.
 
-maas\_name
+maas_name
 
 :   MAAS name.
 
-maas\_proxy\_port
+maas_proxy_port
 
-:   Port to bind the MAAS built-in proxy (default: 8000). Defines the
-    port used to bind the built-in proxy. The default port is 8000.
+:   Port to bind the MAAS built-in proxy (default: 8000). Defines the port used to bind the built-in proxy. The default port is 8000.
 
-maas\_syslog\_port
+maas_syslog_port
 
-:   Port to bind the MAAS built-in syslog (default: 5247). Defines the
-    port used to bind the built-in syslog. The default port is 5247.
+:   Port to bind the MAAS built-in syslog (default: 5247). Defines the port used to bind the built-in syslog. The default port is 5247.
 
-max\_node\_commissioning\_results
+max_node_commissioning_results
 
 :   The maximum number of commissioning results runs which are stored.
 
-max\_node\_installation\_results
+max_node_installation_results
 
 :   The maximum number of installation result runs which are stored.
 
-max\_node\_testing\_results
+max_node_testing_results
 
 :   The maximum number of testing results runs which are stored.
 
-network\_discovery
+network_discovery
 
-:   . When enabled, MAAS will use passive techniques (such as listening
-    to ARP requests and mDNS advertisements) to observe networks
-    attached to rack controllers. Active subnet mapping will also be
-    available to be enabled on the configured subnets.
+:   . When enabled, MAAS will use passive techniques (such as listening to ARP requests and mDNS advertisements) to observe networks attached to rack controllers. Active subnet mapping will also be available to be enabled on the configured subnets.
 
-node\_timeout
+node_timeout
 
-:   Time, in minutes, until the node times out during commissioning,
-    testing, deploying, or entering rescue mode.. Commissioning,
-    testing, deploying, and entering rescue mode all set a timeout when
-    beginning. If MAAS does not hear from the node within the specified
-    number of minutes the node is powered off and set into a failed
-    status.
+:   Time, in minutes, until the node times out during commissioning, testing, deploying, or entering rescue mode.. Commissioning, testing, deploying, and entering rescue mode all set a timeout when beginning. If MAAS does not hear from the node within the specified number of minutes the node is powered off and set into a failed status.
 
-ntp\_external\_only
+ntp_external_only
 
-:   Use external NTP servers only. Configure all region controller
-    hosts, rack controller hosts, and subsequently deployed machines to
-    refer directly to the configured external NTP servers. Otherwise
-    only region controller hosts will be configured to use those
-    external NTP servers, rack contoller hosts will in turn refer to the
-    regions' NTP servers, and deployed machines will refer to the racks'
-    NTP servers.
+:   Use external NTP servers only. Configure all region controller hosts, rack controller hosts, and subsequently deployed machines to refer directly to the configured external NTP servers. Otherwise only region controller hosts will be configured to use those external NTP servers, rack contoller hosts will in turn refer to the regions' NTP servers, and deployed machines will refer to the racks' NTP servers.
 
-ntp\_servers
+ntp_servers
 
-:   Addresses of NTP servers. NTP servers, specified as IP addresses or
-    hostnames delimited by commas and/or spaces, to be used as time
-    references for MAAS itself, the machines MAAS deploys, and devices
-    that make use of MAAS's DHCP services.
+:   Addresses of NTP servers. NTP servers, specified as IP addresses or hostnames delimited by commas and/or spaces, to be used as time references for MAAS itself, the machines MAAS deploys, and devices that make use of MAAS's DHCP services.
 
-prefer\_v4\_proxy
+prefer_v4_proxy
 
-:   Sets IPv4 DNS resolution before IPv6. If prefer\_v4\_proxy is set,
-    the proxy will be set to prefer IPv4 DNS resolution before it
-    attempts to perform IPv6 DNS resolution.
+:   Sets IPv4 DNS resolution before IPv6. If prefer_v4_proxy is set, the proxy will be set to prefer IPv4 DNS resolution before it attempts to perform IPv6 DNS resolution.
 
-prometheus\_enabled
+prometheus_enabled
 
-:   Enable sending stats to a prometheus gateway.. Allows MAAS to send
-    statistics to Prometheus. This requires the
-    'prometheus\_push\_gateway' to be set.
+:   Enable sending stats to a prometheus gateway.. Allows MAAS to send statistics to Prometheus. This requires the 'prometheus_push_gateway' to be set.
 
-prometheus\_push\_gateway
+prometheus_push_gateway
 
-:   Address or hostname of the Prometheus push gateway.. Defines the
-    address or hostname of the Prometheus push gateway where MAAS will
-    send data to.
+:   Address or hostname of the Prometheus push gateway.. Defines the address or hostname of the Prometheus push gateway where MAAS will send data to.
 
-prometheus\_push\_interval
+prometheus_push_interval
 
-:   Interval of how often to send data to Prometheus (default: to 60
-    minutes).. The internal of how often MAAS will send stats to
-    Prometheus in minutes.
+:   Interval of how often to send data to Prometheus (default: to 60 minutes).. The internal of how often MAAS will send stats to Prometheus in minutes.
 
-remote\_syslog
+remote_syslog
 
-:   Remote syslog server to forward machine logs. A remote syslog server
-    that MAAS will set on enlisting, commissioning, testing, and
-    deploying machines to send all log messages. Clearing this value
-    will restore the default behaviour of forwarding syslog to MAAS.
+:   Remote syslog server to forward machine logs. A remote syslog server that MAAS will set on enlisting, commissioning, testing, and deploying machines to send all log messages. Clearing this value will restore the default behaviour of forwarding syslog to MAAS.
 
-subnet\_ip\_exhaustion\_threshold\_count
+subnet_ip_exhaustion_threshold_count
 
-:   If the number of free IP addresses on a subnet becomes less than or
-    equal to this threshold, an IP exhaustion warning will appear for
-    that subnet.
+:   If the number of free IP addresses on a subnet becomes less than or equal to this threshold, an IP exhaustion warning will appear for that subnet.
 
-upstream\_dns
+upstream_dns
 
-:   Upstream DNS used to resolve domains not managed by this MAAS
-    (space-separated IP addresses). Only used when MAAS is running its
-    own DNS server. This value is used as the value of 'forwarders' in
-    the DNS server config.
+:   Upstream DNS used to resolve domains not managed by this MAAS (space-separated IP addresses). Only used when MAAS is running its own DNS server. This value is used as the value of 'forwarders' in the DNS server config.
 
-use\_peer\_proxy
+use_peer_proxy
 
-:   Use the built-in proxy with an external proxy as a peer. If
-    enable\_http\_proxy is set, the built-in proxy will be configured to
-    use http\_proxy as a peer proxy. The deployed machines will be
-    configured to use the built-in proxy.
+:   Use the built-in proxy with an external proxy as a peer. If enable_http_proxy is set, the built-in proxy will be configured to use http_proxy as a peer proxy. The deployed machines will be configured to use the built-in proxy.
 
-use\_rack\_proxy
+use_rack_proxy
 
-:   Use DNS and HTTP metadata proxy on the rack controllers when a
-    machine is booted.. All DNS and HTTP metadata traffic will flow
-    through the rack controller that a machine is booting from. This
-    isolated region controllers from machines.
+:   Use DNS and HTTP metadata proxy on the rack controllers when a machine is booted.. All DNS and HTTP metadata traffic will flow through the rack controller that a machine is booting from. This isolated region controllers from machines.
 
-vcenter\_datacenter
+vcenter_datacenter
 
-:   VMware vCenter datacenter. VMware vCenter datacenter which is passed
-    to a deployed VMware ESXi host.
+:   VMware vCenter datacenter. VMware vCenter datacenter which is passed to a deployed VMware ESXi host.
 
-vcenter\_password
+vcenter_password
 
-:   VMware vCenter password. VMware vCenter server password which is
-    passed to a deployed VMware ESXi host.
+:   VMware vCenter password. VMware vCenter server password which is passed to a deployed VMware ESXi host.
 
-vcenter\_server
+vcenter_server
 
-:   VMware vCenter server FQDN or IP address. VMware vCenter server FQDN
-    or IP address which is passed to a deployed VMware ESXi host.
+:   VMware vCenter server FQDN or IP address. VMware vCenter server FQDN or IP address which is passed to a deployed VMware ESXi host.
 
-vcenter\_username
+vcenter_username
 
-:   VMware vCenter username. VMware vCenter server username which is
-    passed to a deployed VMware ESXi host.
+:   VMware vCenter username. VMware vCenter server username which is passed to a deployed VMware ESXi host.
 
-windows\_kms\_host
+windows_kms_host
 
-:   Windows KMS activation host. FQDN or IP address of the host that
-    provides the KMS Windows activation service. (Only needed for
-    Windows deployments using KMS activation.)
+:   Windows KMS activation host. FQDN or IP address of the host that provides the KMS Windows activation service. (Only needed for Windows deployments using KMS activation.)
 
 **Success**
 
@@ -10108,28 +9357,26 @@ windows\_kms\_host
 
 <p>&nbsp;</p>
 </details>
+
 ### Machine
 
 Manage an individual machine.
 
-A machine is identified by its system\_id.
+A machine is identified by its system_id.
 
-<details>
-  <summary>``DELETE /MAAS/api/2.0/machines/{system_id}/``</summary>
+<details> <summary>`DELETE /MAAS/api/2.0/machines/{system_id}/`</summary>
 
 ------------------------------------------------------------------------
 
-Deletes a machine with the given system\_id.
+Deletes a machine with the given system_id.
 
-Note: A machine cannot be deleted if it hosts pod virtual machines. Use
-`force` to override this behavior. Forcing deletion will also remove
-hosted pods. E.g. `/machines/abc123/?force=1`.
+Note: A machine cannot be deleted if it hosts pod virtual machines. Use `force` to override this behavior. Forcing deletion will also remove hosted pods. E.g. `/machines/abc123/?force=1`.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. The machines's system\_id.
+**{system_id}** (*String*): Required. The machines's system_id.
 
 **Success**
 
@@ -10156,19 +9403,17 @@ hosted pods. E.g. `/machines/abc123/?force=1`.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``GET /MAAS/api/2.0/machines/{system_id}/``</summary>
+</details> <details> <summary>`GET /MAAS/api/2.0/machines/{system_id}/`</summary>
 
 ------------------------------------------------------------------------
 
-Reads a node with the given system\_id.
+Reads a node with the given system_id.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. A node's system\_id.
+**{system_id}** (*String*): Required. A node's system_id.
 
 **Success**
 
@@ -10633,28 +9878,21 @@ Reads a node with the given system\_id.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``GET /MAAS/api/2.0/machines/{system_id}/?op=details``</summary>
+</details> <details> <summary>`GET /MAAS/api/2.0/machines/{system_id}/?op=details`</summary>
 
 ------------------------------------------------------------------------
 
 Returns system details -- for example, LLDP and `lshw` XML dumps.
 
-Returns a `{detail_type: xml, ...}` map, where `detail_type` is
-something like "lldp" or "lshw".
+Returns a `{detail_type: xml, ...}` map, where `detail_type` is something like "lldp" or "lshw".
 
-Note that this is returned as BSON and not JSON. This is for efficiency,
-but mainly because JSON can't do binary content without applying
-additional encoding like base-64. The example output below is
-represented in ASCII using `bsondump example.bson` and is for
-demonstrative purposes.
+Note that this is returned as BSON and not JSON. This is for efficiency, but mainly because JSON can't do binary content without applying additional encoding like base-64. The example output below is represented in ASCII using `bsondump example.bson` and is for demonstrative purposes.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. The node's system\_id.
+**{system_id}** (*String*): Required. The node's system_id.
 
 **Success**
 
@@ -10686,9 +9924,7 @@ demonstrative purposes.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``GET /MAAS/api/2.0/machines/{system_id}/?op=get_curtin_config``</summary>
+</details> <details> <summary>`GET /MAAS/api/2.0/machines/{system_id}/?op=get_curtin_config`</summary>
 
 ------------------------------------------------------------------------
 
@@ -10698,7 +9934,7 @@ Return the rendered curtin configuration for the machine.
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. The machines's system\_id.
+**{system_id}** (*String*): Required. The machines's system_id.
 
 **Success**
 
@@ -10718,8 +9954,7 @@ Return the rendered curtin configuration for the machine.
 
 *HTTP Status Code* : 403
 
-*Content* : The user does not have permission to see curtin
-configuration on this machine.
+*Content* : The user does not have permission to see curtin configuration on this machine.
 
 *HTTP Status Code* : 404
 
@@ -10728,18 +9963,13 @@ configuration on this machine.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``GET /MAAS/api/2.0/machines/{system_id}/?op=power_parameters``</summary>
+</details> <details> <summary>`GET /MAAS/api/2.0/machines/{system_id}/?op=power_parameters`</summary>
 
 ------------------------------------------------------------------------
 
-Gets power parameters for a given system\_id, if any. For some types of
-power control this will include private information such as passwords
-and secret keys.
+Gets power parameters for a given system_id, if any. For some types of power control this will include private information such as passwords and secret keys.
 
-Note that this method is reserved for admin users and returns a 403 if
-the user is not one.
+Note that this method is reserved for admin users and returns a 403 if the user is not one.
 
 **Success**
 
@@ -10764,23 +9994,17 @@ the user is not one.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``GET /MAAS/api/2.0/machines/{system_id}/?op=query_power_state``</summary>
+</details> <details> <summary>`GET /MAAS/api/2.0/machines/{system_id}/?op=query_power_state`</summary>
 
 ------------------------------------------------------------------------
 
-Gets the power state of a given node. MAAS sends a request to the node's
-power controller, which asks it about the node's state. The reply to
-this could be delayed by up to 30 seconds while waiting for the power
-controller to respond. Use this method sparingly as it ties up an
-appserver thread while waiting.
+Gets the power state of a given node. MAAS sends a request to the node's power controller, which asks it about the node's state. The reply to this could be delayed by up to 30 seconds while waiting for the power controller to respond. Use this method sparingly as it ties up an appserver thread while waiting.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**system\_id** (*String*): Required. The node to query.
+**system_id** (*String*): Required. The node to query.
 
 **Success**
 
@@ -10805,9 +10029,7 @@ appserver thread while waiting.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/machines/{system_id}/?op=abort``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/machines/{system_id}/?op=abort`</summary>
 
 ------------------------------------------------------------------------
 
@@ -10840,17 +10062,13 @@ Abort a node's current operation.
 *Content* : The user is not authorized to abort the current operation.
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/machines/{system_id}/?op=clear_default_gateways``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/machines/{system_id}/?op=clear_default_gateways`</summary>
 
 ------------------------------------------------------------------------
 
-Clear any set default gateways on a machine with the given system\_id.
+Clear any set default gateways on a machine with the given system_id.
 
-This will clear both IPv4 and IPv6 gateways on the machine. This will
-transition the logic of identifing the best gateway to MAAS. This logic
-is determined based the following criteria:
+This will clear both IPv4 and IPv6 gateways on the machine. This will transition the logic of identifing the best gateway to MAAS. This logic is determined based the following criteria:
 
 1.  Managed subnets over unmanaged subnets.
 2.  Bond interfaces over physical interfaces.
@@ -10859,15 +10077,13 @@ is determined based the following criteria:
 5.  Sticky IP links over user reserved IP links.
 6.  User reserved IP links over auto IP links.
 
-If the default gateways need to be specific for this machine you can set
-which interface and subnet's gateway to use when this machine is
-deployed with the interfaces set-default-gateway API.
+If the default gateways need to be specific for this machine you can set which interface and subnet's gateway to use when this machine is deployed with the interfaces set-default-gateway API.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. The machines's system\_id.
+**{system_id}** (*String*): Required. The machines's system_id.
 
 **Success**
 
@@ -11789,8 +11005,7 @@ deployed with the interfaces set-default-gateway API.
 
 *HTTP Status Code* : 403
 
-*Content* : The user does not have permission to clear default gateways
-on this machine.
+*Content* : The user does not have permission to clear default gateways on this machine.
 
 *HTTP Status Code* : 404
 
@@ -11799,51 +11014,31 @@ on this machine.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/machines/{system_id}/?op=commission``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/machines/{system_id}/?op=commission`</summary>
 
 ------------------------------------------------------------------------
 
 Begin commissioning process for a machine.
 
-A machine in the 'ready', 'declared' or 'failed test' state may initiate
-a commissioning cycle where it is checked out and tested in preparation
-for transitioning to the 'ready' state. If it is already in the 'ready'
-state this is considered a re-commissioning process which is useful if
-commissioning tests were changed after it previously commissioned.
+A machine in the 'ready', 'declared' or 'failed test' state may initiate a commissioning cycle where it is checked out and tested in preparation for transitioning to the 'ready' state. If it is already in the 'ready' state this is considered a re-commissioning process which is useful if commissioning tests were changed after it previously commissioned.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. The machines's system\_id.
+**{system_id}** (*String*): Required. The machines's system_id.
 
-**enable\_ssh** (*Int*): Optional. Whether to enable SSH for the
-commissioning environment using the user's SSH key(s). '1' == True, '0'
-== False.
+**enable_ssh** (*Int*): Optional. Whether to enable SSH for the commissioning environment using the user's SSH key(s). '1' == True, '0' == False.
 
-**skip\_bmc\_config** (*Int*): Optional. Whether to skip
-re-configuration of the BMC for IPMI based machines. '1' == True, '0' ==
-False.
+**skip_bmc_config** (*Int*): Optional. Whether to skip re-configuration of the BMC for IPMI based machines. '1' == True, '0' == False.
 
-**skip\_networking** (*Int*): Optional. Whether to skip re-configuring
-the networking on the machine after the commissioning has completed. '1'
-== True, '0' == False.
+**skip_networking** (*Int*): Optional. Whether to skip re-configuring the networking on the machine after the commissioning has completed. '1' == True, '0' == False.
 
-**skip\_storage** (*Int*): Optional. Whether to skip re-configuring the
-storage on the machine after the commissioning has completed. '1' ==
-True, '0' == False.
+**skip_storage** (*Int*): Optional. Whether to skip re-configuring the storage on the machine after the commissioning has completed. '1' == True, '0' == False.
 
-**commissioning\_scripts** (*String*): Optional. A comma seperated list
-of commissioning script names and tags to be run. By default all custom
-commissioning scripts are run. Built-in commissioning scripts always
-run. Selecting 'update\_firmware' or 'configure\_hba' will run firmware
-updates or configure HBA's on matching machines.
+**commissioning_scripts** (*String*): Optional. A comma seperated list of commissioning script names and tags to be run. By default all custom commissioning scripts are run. Built-in commissioning scripts always run. Selecting 'update_firmware' or 'configure_hba' will run firmware updates or configure HBA's on matching machines.
 
-**testing\_scripts** (*String*): Optional. A comma seperated list of
-testing script names and tags to be run. By default all tests tagged
-'commissioning' will be run. Set to 'none' to disable running tests.
+**testing_scripts** (*String*): Optional. A comma seperated list of testing script names and tags to be run. By default all tests tagged 'commissioning' will be run. Set to 'none' to disable running tests.
 
 **Success**
 
@@ -12117,57 +11312,41 @@ testing script names and tags to be run. By default all tests tagged
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/machines/{system_id}/?op=deploy``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/machines/{system_id}/?op=deploy`</summary>
 
 ------------------------------------------------------------------------
 
-Deploys an operating system to a machine with the given system\_id.
+Deploys an operating system to a machine with the given system_id.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. The machines's system\_id.
+**{system_id}** (*String*): Required. The machines's system_id.
 
-**user\_data** (*String*): Optional. If present, this blob of
-base64-encoded user-data to be made available to the machines through
-the metadata service.
+**user_data** (*String*): Optional. If present, this blob of base64-encoded user-data to be made available to the machines through the metadata service.
 
-**distro\_series** (*String*): Optional. If present, this parameter
-specifies the OS release the machine will use.
+**distro_series** (*String*): Optional. If present, this parameter specifies the OS release the machine will use.
 
-**hwe\_kernel** (*String*): Optional. If present, this parameter
-specified the kernel to be used on the machine
+**hwe_kernel** (*String*): Optional. If present, this parameter specified the kernel to be used on the machine
 
-**agent\_name** (*String*): Optional. An optional agent name to attach
-to the acquired machine.
+**agent_name** (*String*): Optional. An optional agent name to attach to the acquired machine.
 
-**bridge\_all** (*Boolean*): Optional. Optionally create a bridge
-interface for every configured interface on the machine. The created
-bridges will be removed once the machine is released. (Default: false)
+**bridge_all** (*Boolean*): Optional. Optionally create a bridge interface for every configured interface on the machine. The created bridges will be removed once the machine is released. (Default: false)
 
-**bridge\_stp** (*Boolean*): Optional. Optionally turn spanning tree
-protocol on or off for the bridges created on every configured
-interface. (Default: false)
+**bridge_stp** (*Boolean*): Optional. Optionally turn spanning tree protocol on or off for the bridges created on every configured interface. (Default: false)
 
-**bridge\_fd** (*Int*): Optional. Optionally adjust the forward delay to
-time seconds. (Default: 15)
+**bridge_fd** (*Int*): Optional. Optionally adjust the forward delay to time seconds. (Default: 15)
 
 **comment** (*String*): Optional. Optional comment for the event log.
 
-**install\_rackd** (*Boolean*): Optional. If true, the rack controller
-will be installed on this machine.
+**install_rackd** (*Boolean*): Optional. If true, the rack controller will be installed on this machine.
 
-**install\_kvm** (*Boolean*): Optional. If true, KVM will be installed
-on this machine and added to MAAS.
+**install_kvm** (*Boolean*): Optional. If true, KVM will be installed on this machine and added to MAAS.
 
-**ephemeral\_deploy** (*Boolean*): Optional. If true, machine will be
-deployed ephemerally even if it has disks.
+**ephemeral_deploy** (*Boolean*): Optional. If true, machine will be deployed ephemerally even if it has disks.
 
-**vcenter\_registration** (*Boolean*): Optional. If false, do not send
-globally defined VMware vCenter credentials to the machine.
+**vcenter_registration** (*Boolean*): Optional. If false, do not send globally defined VMware vCenter credentials to the machine.
 
 **Success**
 
@@ -12643,17 +11822,14 @@ globally defined VMware vCenter credentials to the machine.
 
 *HTTP Status Code* : 503
 
-*Content* : MAAS attempted to allocate an IP address, and there were no
-IP addresses available on the relevant cluster interface.
+*Content* : MAAS attempted to allocate an IP address, and there were no IP addresses available on the relevant cluster interface.
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/machines/{system_id}/?op=exit_rescue_mode``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/machines/{system_id}/?op=exit_rescue_mode`</summary>
 
 ------------------------------------------------------------------------
 
-Exits the rescue mode process on a machine with the given system\_id.
+Exits the rescue mode process on a machine with the given system_id.
 
 A machine in the 'rescue mode' state may exit the rescue mode process.
 
@@ -12661,7 +11837,7 @@ A machine in the 'rescue mode' state may exit the rescue mode process.
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. The machines's system\_id.
+**{system_id}** (*String*): Required. The machines's system_id.
 
 **Success**
 
@@ -12930,8 +12106,7 @@ A machine in the 'rescue mode' state may exit the rescue mode process.
 
 *HTTP Status Code* : 403
 
-*Content* : The user does not have permission to exit rescue mode on the
-machine.
+*Content* : The user does not have permission to exit rescue mode on the machine.
 
 *HTTP Status Code* : 404
 
@@ -12940,19 +12115,17 @@ machine.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/machines/{system_id}/?op=lock``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/machines/{system_id}/?op=lock`</summary>
 
 ------------------------------------------------------------------------
 
-Mark a machine with the given system\_id as 'Locked' to prevent changes.
+Mark a machine with the given system_id as 'Locked' to prevent changes.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. The machines's system\_id.
+**{system_id}** (*String*): Required. The machines's system_id.
 
 **comment** (*String*): Optional. Optional comment for the event log.
 
@@ -13899,13 +13072,11 @@ Mark a machine with the given system\_id as 'Locked' to prevent changes.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/machines/{system_id}/?op=mark_broken``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/machines/{system_id}/?op=mark_broken`</summary>
 
 ------------------------------------------------------------------------
 
-Mark a machine with the given system\_id as 'Broken'.
+Mark a machine with the given system_id as 'Broken'.
 
 If the node is allocated, release it first.
 
@@ -13913,11 +13084,9 @@ If the node is allocated, release it first.
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. The machines's system\_id.
+**{system_id}** (*String*): Required. The machines's system_id.
 
-**comment** (*String*): Optional. Optional comment for the event log.
-Will be displayed on the node as an error description until marked
-fixed.
+**comment** (*String*): Optional. Optional comment for the event log. Will be displayed on the node as an error description until marked fixed.
 
 **Success**
 
@@ -14300,19 +13469,17 @@ fixed.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/machines/{system_id}/?op=mark_fixed``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/machines/{system_id}/?op=mark_fixed`</summary>
 
 ------------------------------------------------------------------------
 
-Mark a machine with the given system\_id as 'Fixed'.
+Mark a machine with the given system_id as 'Fixed'.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. The machines's system\_id.
+**{system_id}** (*String*): Required. The machines's system_id.
 
 **comment** (*String*): Optional. Optional comment for the event log.
 
@@ -14697,27 +13864,23 @@ Mark a machine with the given system\_id as 'Fixed'.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/machines/{system_id}/?op=mount_special``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/machines/{system_id}/?op=mount_special`</summary>
 
 ------------------------------------------------------------------------
 
-Mount a special-purpose filesystem, like tmpfs on a machine with the
-given system\_id.
+Mount a special-purpose filesystem, like tmpfs on a machine with the given system_id.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. The machines's system\_id.
+**{system_id}** (*String*): Required. The machines's system_id.
 
-**fstype** (*String*): Required. The filesystem type. This must be a
-filesystem that does not require a block special device.
+**fstype** (*String*): Required. The filesystem type. This must be a filesystem that does not require a block special device.
 
-**mount\_point** (*String*): Required. Path on the filesystem to mount.
+**mount_point** (*String*): Required. Path on the filesystem to mount.
 
-**mount\_option** (*String*): Optional. Options to pass to mount(8).
+**mount_option** (*String*): Optional. Options to pass to mount(8).
 
 **Success**
 
@@ -15647,8 +14810,7 @@ filesystem that does not require a block special device.
 
 *HTTP Status Code* : 403
 
-*Content* : The user does not have permission to mount the special
-filesystem on this machine.
+*Content* : The user does not have permission to mount the special filesystem on this machine.
 
 *HTTP Status Code* : 404
 
@@ -15657,9 +14819,7 @@ filesystem on this machine.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/machines/{system_id}/?op=override_failed_testing``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/machines/{system_id}/?op=override_failed_testing`</summary>
 
 ------------------------------------------------------------------------
 
@@ -15692,9 +14852,7 @@ Ignore failed tests and put node back into a usable state.
 *Content* : The user is not authorized to override tests.
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/machines/{system_id}/?op=power_off``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/machines/{system_id}/?op=power_off`</summary>
 
 ------------------------------------------------------------------------
 
@@ -15704,12 +14862,7 @@ Powers off a given node.
 
 ------------------------------------------------------------------------
 
-**stop\_mode** (*String*): Optional. Power-off mode. If 'soft', perform
-a soft power down if the node's power type supports it, otherwise
-perform a hard power off. For all values other than 'soft', and by
-default, perform a hard power off. A soft power off generally asks the
-OS to shutdown the system gracefully before powering off, while a hard
-power off occurs immediately without any warning to the OS.
+**stop_mode** (*String*): Optional. Power-off mode. If 'soft', perform a soft power down if the node's power type supports it, otherwise perform a hard power off. For all values other than 'soft', and by default, perform a hard power off. A soft power off generally asks the OS to shutdown the system gracefully before powering off, while a hard power off occurs immediately without any warning to the OS.
 
 **comment** (*String*): Optional. Comment for the event log.
 
@@ -16125,9 +15278,7 @@ power off occurs immediately without any warning to the OS.
 *Content* : The user is not authorized to power off the node.
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/machines/{system_id}/?op=power_on``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/machines/{system_id}/?op=power_on`</summary>
 
 ------------------------------------------------------------------------
 
@@ -16137,8 +15288,7 @@ Turn on the given node with optional user-data and comment.
 
 ------------------------------------------------------------------------
 
-**user\_data** (*String*): Optional. Base64-encoded blob of data to be
-made available to the nodes through the metadata service.
+**user_data** (*String*): Optional. Base64-encoded blob of data to be made available to the nodes through the metadata service.
 
 **comment** (*String*): Optional. Comment for the event log.
 
@@ -16555,56 +15705,38 @@ made available to the nodes through the metadata service.
 
 *HTTP Status Code* : 503
 
-*Content* : Returns 503 if the start-up attempted to allocate an IP
-address, and there were no IP addresses available on the relevant
-cluster interface.
+*Content* : Returns 503 if the start-up attempted to allocate an IP address, and there were no IP addresses available on the relevant cluster interface.
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/machines/{system_id}/?op=release``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/machines/{system_id}/?op=release`</summary>
 
 ------------------------------------------------------------------------
 
-Releases a machine with the given system\_id. Note that this operation
-is the opposite of allocating a machine.
+Releases a machine with the given system_id. Note that this operation is the opposite of allocating a machine.
 
 **Erasing drives**:
 
-If neither `secure_erase` nor `quick_erase` are specified, MAAS will
-overwrite the whole disk with null bytes. This can be very slow.
+If neither `secure_erase` nor `quick_erase` are specified, MAAS will overwrite the whole disk with null bytes. This can be very slow.
 
-If both `secure_erase` and `quick_erase` are specified and the drive
-does NOT have a secure erase feature, MAAS will behave as if only
-`quick_erase` was specified.
+If both `secure_erase` and `quick_erase` are specified and the drive does NOT have a secure erase feature, MAAS will behave as if only `quick_erase` was specified.
 
-If `secure_erase` is specified and `quick_erase` is NOT specified and
-the drive does NOT have a secure erase feature, MAAS will behave as if
-`secure_erase` was NOT specified, i.e. MAAS will overwrite the whole
-disk with null bytes. This can be very slow.
+If `secure_erase` is specified and `quick_erase` is NOT specified and the drive does NOT have a secure erase feature, MAAS will behave as if `secure_erase` was NOT specified, i.e. MAAS will overwrite the whole disk with null bytes. This can be very slow.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. The machines's system\_id.
+**{system_id}** (*String*): Required. The machines's system_id.
 
 **comment** (*String*): Required. Optional comment for the event log.
 
 **erase** (*Boolean*): Optional. Erase the disk when releasing.
 
-**secure\_erase** (*Boolean*): Optional. Use the drive's secure erase
-feature if available. In some cases, this can be much faster than
-overwriting the drive. Some drives implement secure erasure by
-overwriting themselves so this could still be slow.
+**secure_erase** (*Boolean*): Optional. Use the drive's secure erase feature if available. In some cases, this can be much faster than overwriting the drive. Some drives implement secure erasure by overwriting themselves so this could still be slow.
 
-**quick\_erase** (*Boolean*): Optional. Wipe 2MiB at the start and at
-the end of the drive to make data recovery inconvenient and unlikely to
-happen by accident. This is not secure.
+**quick_erase** (*Boolean*): Optional. Wipe 2MiB at the start and at the end of the drive to make data recovery inconvenient and unlikely to happen by accident. This is not secure.
 
-**force** (*Boolean*): Optional. Will force the release of a machine. If
-the machine was deployed as a KVM host, this will be deleted as well as
-all machines inside the KVM host. USE WITH CAUTION.
+**force** (*Boolean*): Optional. Will force the release of a machine. If the machine was deployed as a KVM host, this will be deleted as well as all machines inside the KVM host. USE WITH CAUTION.
 
 **Success**
 
@@ -17536,26 +16668,22 @@ all machines inside the KVM host. USE WITH CAUTION.
 
 *HTTP Status Code* : 409
 
-*Content* : The machine is in a state that prevents it from being
-released.
+*Content* : The machine is in a state that prevents it from being released.
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/machines/{system_id}/?op=rescue_mode``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/machines/{system_id}/?op=rescue_mode`</summary>
 
 ------------------------------------------------------------------------
 
-Begins the rescue mode process on a machine with the given system\_id.
+Begins the rescue mode process on a machine with the given system_id.
 
-A machine in the 'deployed' or 'broken' state may initiate the rescue
-mode process.
+A machine in the 'deployed' or 'broken' state may initiate the rescue mode process.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. The machines's system\_id.
+**{system_id}** (*String*): Required. The machines's system_id.
 
 **Success**
 
@@ -17824,8 +16952,7 @@ mode process.
 
 *HTTP Status Code* : 403
 
-*Content* : The user does not have permission to begin rescue mode on
-the machine.
+*Content* : The user does not have permission to begin rescue mode on the machine.
 
 *HTTP Status Code* : 404
 
@@ -17834,20 +16961,17 @@ the machine.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/machines/{system_id}/?op=restore_default_configuration``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/machines/{system_id}/?op=restore_default_configuration`</summary>
 
 ------------------------------------------------------------------------
 
-Restores the default configuration options on a machine with the given
-system\_id.
+Restores the default configuration options on a machine with the given system_id.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. The machines's system\_id.
+**{system_id}** (*String*): Required. The machines's system_id.
 
 **Success**
 
@@ -18221,8 +17345,7 @@ system\_id.
 
 *HTTP Status Code* : 403
 
-*Content* : The user does not have permission to restore default options
-on this machine.
+*Content* : The user does not have permission to restore default options on this machine.
 
 *HTTP Status Code* : 404
 
@@ -18231,20 +17354,17 @@ on this machine.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/machines/{system_id}/?op=restore_networking_configuration``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/machines/{system_id}/?op=restore_networking_configuration`</summary>
 
 ------------------------------------------------------------------------
 
-Restores networking options to their initial state on a machine with the
-given system\_id.
+Restores networking options to their initial state on a machine with the given system_id.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. The machines's system\_id.
+**{system_id}** (*String*): Required. The machines's system_id.
 
 **Success**
 
@@ -18618,8 +17738,7 @@ given system\_id.
 
 *HTTP Status Code* : 403
 
-*Content* : The user does not have permission to restore networking
-options on this machine.
+*Content* : The user does not have permission to restore networking options on this machine.
 
 *HTTP Status Code* : 404
 
@@ -18628,20 +17747,17 @@ options on this machine.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/machines/{system_id}/?op=restore_storage_configuration``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/machines/{system_id}/?op=restore_storage_configuration`</summary>
 
 ------------------------------------------------------------------------
 
-Restores storage configuration options to their initial state on a
-machine with the given system\_id.
+Restores storage configuration options to their initial state on a machine with the given system_id.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. The machines's system\_id.
+**{system_id}** (*String*): Required. The machines's system_id.
 
 **Success**
 
@@ -19015,8 +18131,7 @@ machine with the given system\_id.
 
 *HTTP Status Code* : 403
 
-*Content* : The user does not have permission to restore storage options
-on this machine.
+*Content* : The user does not have permission to restore storage options on this machine.
 
 *HTTP Status Code* : 404
 
@@ -19025,20 +18140,15 @@ on this machine.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/machines/{system_id}/?op=set_owner_data``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/machines/{system_id}/?op=set_owner_data`</summary>
 
 ------------------------------------------------------------------------
 
 Set key=value data for the current owner.
 
-Pass any key=value form data to this method to add, modify, or remove. A
-key is removed when the value for that key is set to an empty string.
+Pass any key=value form data to this method to add, modify, or remove. A key is removed when the value for that key is set to an empty string.
 
-This operation will not remove any previous keys unless explicitly
-passed with an empty string. All owner data is removed when the machine
-is no longer allocated to a user.
+This operation will not remove any previous keys unless explicitly passed with an empty string. All owner data is removed when the machine is no longer allocated to a user.
 
 **Parameters**
 
@@ -19065,58 +18175,43 @@ is no longer allocated to a user.
 *Content* : The user does not have set the zone.
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/machines/{system_id}/?op=set_storage_layout``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/machines/{system_id}/?op=set_storage_layout`</summary>
 
 ------------------------------------------------------------------------
 
-Changes the storage layout on machine with the given system\_id.
+Changes the storage layout on machine with the given system_id.
 
-This operation can only be performed on a machine with a status of
-'Ready'.
+This operation can only be performed on a machine with a status of 'Ready'.
 
-Note: This will clear the current storage layout and any extra
-configuration and replace it will the new layout.
+Note: This will clear the current storage layout and any extra configuration and replace it will the new layout.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. The machines's system\_id.
+**{system_id}** (*String*): Required. The machines's system_id.
 
-**storage\_layout** (*String*): Required. Storage layout for the
-machine: `flat`, `lvm`, `bcache`, `vmfs6`, or `blank`.
+**storage_layout** (*String*): Required. Storage layout for the machine: `flat`, `lvm`, `bcache`, `vmfs6`, or `blank`.
 
-**boot\_size** (*String*): Optional. All layouts. Size of the boot
-partition (e.g. 512M, 1G).
+**boot_size** (*String*): Optional. All layouts. Size of the boot partition (e.g. 512M, 1G).
 
-**root\_size** (*String*): Optional. All layouts. Size of the root
-partition (e.g. 24G).
+**root_size** (*String*): Optional. All layouts. Size of the root partition (e.g. 24G).
 
-**root\_device** (*String*): Optional. All layouts. Physical block
-device to place the root partition (e.g. /dev/sda).
+**root_device** (*String*): Optional. All layouts. Physical block device to place the root partition (e.g. /dev/sda).
 
-**vg\_name** (*String*): Optional. LVM only. Name of created volume
-group.
+**vg_name** (*String*): Optional. LVM only. Name of created volume group.
 
-**lv\_name** (*String*): Optional. LVM only. Name of created logical
-volume.
+**lv_name** (*String*): Optional. LVM only. Name of created logical volume.
 
-**lv\_size** (*String*): Optional. LVM only. Size of created logical
-volume.
+**lv_size** (*String*): Optional. LVM only. Size of created logical volume.
 
-**cache\_device** (*String*): Optional. Bcache only. Physical block
-device to use as the cache device (e.g. /dev/sda).
+**cache_device** (*String*): Optional. Bcache only. Physical block device to use as the cache device (e.g. /dev/sda).
 
-**cache\_mode** (*String*): Optional. Bcache only. Cache mode for bcache
-device: `writeback`, `writethrough`, `writearound`.
+**cache_mode** (*String*): Optional. Bcache only. Cache mode for bcache device: `writeback`, `writethrough`, `writearound`.
 
-**cache\_size** (*String*): Optional. Bcache only. Size of the cache
-partition to create on the cache device (e.g. 48G).
+**cache_size** (*String*): Optional. Bcache only. Size of the cache partition to create on the cache device (e.g. 48G).
 
-**cache\_no\_part** (*Boolean*): Optional. Bcache only. Don't create a
-partition on the cache device. Use the entire disk as the cache device.
+**cache_no_part** (*Boolean*): Optional. Bcache only. Don't create a partition on the cache device. Use the entire disk as the cache device.
 
 **Success**
 
@@ -19395,34 +18490,24 @@ partition on the cache device. Use the entire disk as the cache device.
 
 *HTTP Status Code* : 403
 
-*Content* : The user does not have permission to set the storage layout
-of this machine.
+*Content* : The user does not have permission to set the storage layout of this machine.
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/machines/{system_id}/?op=test``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/machines/{system_id}/?op=test`</summary>
 
 ------------------------------------------------------------------------
 
 Begins the testing process for a given node.
 
-A node in the 'ready', 'allocated', 'deployed', 'broken', or any failed
-state may run tests. If testing is started and successfully passes from
-'broken' or any failed state besides 'failed commissioning' the node
-will be returned to a ready state. Otherwise the node will return to the
-state it was when testing started.
+A node in the 'ready', 'allocated', 'deployed', 'broken', or any failed state may run tests. If testing is started and successfully passes from 'broken' or any failed state besides 'failed commissioning' the node will be returned to a ready state. Otherwise the node will return to the state it was when testing started.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**enable\_ssh** (*Int*): Optional. Whether to enable SSH for the testing
-environment using the user's SSH key(s). 0 == false. 1 == true.
+**enable_ssh** (*Int*): Optional. Whether to enable SSH for the testing environment using the user's SSH key(s). 0 == false. 1 == true.
 
-**testing\_scripts** (*String*): Optional. A comma-separated list of
-testing script names and tags to be run. By default all tests tagged
-'commissioning' will be run.
+**testing_scripts** (*String*): Optional. A comma-separated list of testing script names and tags to be run. By default all tests tagged 'commissioning' will be run.
 
 **Success**
 
@@ -19832,19 +18917,17 @@ testing script names and tags to be run. By default all tests tagged
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/machines/{system_id}/?op=unlock``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/machines/{system_id}/?op=unlock`</summary>
 
 ------------------------------------------------------------------------
 
-Mark a machine with the given system\_id as 'Unlocked' to allow changes.
+Mark a machine with the given system_id as 'Unlocked' to allow changes.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. The machines's system\_id.
+**{system_id}** (*String*): Required. The machines's system_id.
 
 **comment** (*String*): Optional. Optional comment for the event log.
 
@@ -20791,23 +19874,19 @@ Mark a machine with the given system\_id as 'Unlocked' to allow changes.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/machines/{system_id}/?op=unmount_special``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/machines/{system_id}/?op=unmount_special`</summary>
 
 ------------------------------------------------------------------------
 
-Unmount a special-purpose filesystem, like tmpfs, on a machine with the
-given system\_id.
+Unmount a special-purpose filesystem, like tmpfs, on a machine with the given system_id.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. The machines's system\_id.
+**{system_id}** (*String*): Required. The machines's system_id.
 
-**mount\_point** (*String*): Required. Path on the filesystem to
-unmount.
+**mount_point** (*String*): Required. Path on the filesystem to unmount.
 
 **Success**
 
@@ -21737,8 +20816,7 @@ unmount.
 
 *HTTP Status Code* : 403
 
-*Content* : The user does not have permission to unmount the special
-filesystem on this machine.
+*Content* : The user does not have permission to unmount the special filesystem on this machine.
 
 *HTTP Status Code* : 404
 
@@ -21747,70 +20825,45 @@ filesystem on this machine.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``PUT /MAAS/api/2.0/machines/{system_id}/``</summary>
+</details> <details> <summary>`PUT /MAAS/api/2.0/machines/{system_id}/`</summary>
 
 ------------------------------------------------------------------------
 
-Updates a machine with the given system\_id.
+Updates a machine with the given system_id.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. The machines's system\_id.
+**{system_id}** (*String*): Required. The machines's system_id.
 
 **hostname** (*String*): Optional. The new hostname for this machine.
 
-**description** (*String*): Optional. The new description for this
-machine.
+**description** (*String*): Optional. The new description for this machine.
 
-**domain** (*String*): Optional. The domain for this machine. If not
-given the default domain is used.
+**domain** (*String*): Optional. The domain for this machine. If not given the default domain is used.
 
-**architecture** (*String*): Optional. The new architecture for this
-machine.
+**architecture** (*String*): Optional. The new architecture for this machine.
 
-**min\_hwe\_kernel** (*String*): Optional. A string containing the
-minimum kernel version allowed to be ran on this machine.
+**min_hwe_kernel** (*String*): Optional. A string containing the minimum kernel version allowed to be ran on this machine.
 
-**power\_type** (*String*): Optional. The new power type for this
-machine. If you use the default value, power\_parameters will be set to
-the empty string. Available to admin users. See the [Power types]()
-section for a list of the available power types.
+**power_type** (*String*): Optional. The new power type for this machine. If you use the default value, power_parameters will be set to the empty string. Available to admin users. See the [Power types]() section for a list of the available power types.
 
-**[power\_parameters](){param1}** (*String*): Optional. The new value
-for the 'param1' power parameter. Note that this is dynamic as the
-available parameters depend on the selected value of the Machine's
-power\_type. Available to admin users. See the [Power types]() section
-for a list of the available power parameters for each power type.
+**[power_parameters](){param1}** (*String*): Optional. The new value for the 'param1' power parameter. Note that this is dynamic as the available parameters depend on the selected value of the Machine's power_type. Available to admin users. See the [Power types]() section for a list of the available power parameters for each power type.
 
-**power\_parameters\_skip\_check** (*Boolean*): Optional. Whether or not
-the new power parameters for this machine should be checked against the
-expected power parameters for the machine's power type ('true' or
-'false'). The default is 'false'.
+**power_parameters_skip_check** (*Boolean*): Optional. Whether or not the new power parameters for this machine should be checked against the expected power parameters for the machine's power type ('true' or 'false'). The default is 'false'.
 
-**pool** (*String*): Optional. The resource pool to which the machine
-should belong. All machines belong to the 'default' resource pool if
-they do not belong to any other resource pool.
+**pool** (*String*): Optional. The resource pool to which the machine should belong. All machines belong to the 'default' resource pool if they do not belong to any other resource pool.
 
-**zone** (*String*): Optional. Name of a valid physical zone in which to
-place this machine.
+**zone** (*String*): Optional. Name of a valid physical zone in which to place this machine.
 
-**swap\_size** (*String*): Optional. Specifies the size of the swap
-file, in bytes. Field accept K, M, G and T suffixes for values expressed
-respectively in kilobytes, megabytes, gigabytes and terabytes.
+**swap_size** (*String*): Optional. Specifies the size of the swap file, in bytes. Field accept K, M, G and T suffixes for values expressed respectively in kilobytes, megabytes, gigabytes and terabytes.
 
-**disable\_ipv4** (*Boolean*): Optional. Deprecated. If specified, must
-be false.
+**disable_ipv4** (*Boolean*): Optional. Deprecated. If specified, must be false.
 
-**cpu\_count** (*Int*): Optional. The amount of CPU cores the machine
-has.
+**cpu_count** (*Int*): Optional. The amount of CPU cores the machine has.
 
-**memory** (*String*): Optional. How much memory the machine has. Field
-accept K, M, G and T suffixes for values expressed respectively in
-kilobytes, megabytes, gigabytes and terabytes.
+**memory** (*String*): Optional. How much memory the machine has. Field accept K, M, G and T suffixes for values expressed respectively in kilobytes, megabytes, gigabytes and terabytes.
 
 **Success**
 
@@ -22286,12 +21339,12 @@ kilobytes, megabytes, gigabytes and terabytes.
 
 <p>&nbsp;</p>
 </details>
+
 ### Machines
 
 Manage the collection of all the machines in the MAAS.
 
-<details>
-  <summary>``GET /MAAS/api/2.0/machines/``</summary>
+<details> <summary>`GET /MAAS/api/2.0/machines/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -22303,28 +21356,19 @@ Nodes are sorted by id (i.e. most recent last) and grouped by type.
 
 ------------------------------------------------------------------------
 
-**hostname** (*String*): Optional. Only nodes relating to the node with
-the matching hostname will be returned. This can be specified multiple
-times to see multiple nodes.
+**hostname** (*String*): Optional. Only nodes relating to the node with the matching hostname will be returned. This can be specified multiple times to see multiple nodes.
 
-**mac\_address** (*String*): Optional. Only nodes relating to the node
-owning the specified MAC address will be returned. This can be specified
-multiple times to see multiple nodes.
+**mac_address** (*String*): Optional. Only nodes relating to the node owning the specified MAC address will be returned. This can be specified multiple times to see multiple nodes.
 
-**id** (*String*): Optional. Only nodes relating to the nodes with
-matching system ids will be returned.
+**id** (*String*): Optional. Only nodes relating to the nodes with matching system ids will be returned.
 
-**domain** (*String*): Optional. Only nodes relating to the nodes in the
-domain will be returned.
+**domain** (*String*): Optional. Only nodes relating to the nodes in the domain will be returned.
 
-**zone** (*String*): Optional. Only nodes relating to the nodes in the
-zone will be returned.
+**zone** (*String*): Optional. Only nodes relating to the nodes in the zone will be returned.
 
-**pool** (*String*): Optional. Only nodes belonging to the pool will be
-returned.
+**pool** (*String*): Optional. Only nodes belonging to the pool will be returned.
 
-**agent\_name** (*String*): Optional. Only nodes relating to the nodes
-with matching agent names will be returned.
+**agent_name** (*String*): Optional. Only nodes relating to the nodes with matching agent names will be returned.
 
 **Success**
 
@@ -22618,21 +21662,17 @@ with matching agent names will be returned.
     ]
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``GET /MAAS/api/2.0/machines/?op=is_registered``</summary>
+</details> <details> <summary>`GET /MAAS/api/2.0/machines/?op=is_registered`</summary>
 
 ------------------------------------------------------------------------
 
-Returns whether or not the given MAC address is registered within this
-MAAS (and attached to a non-retired node).
+Returns whether or not the given MAC address is registered within this MAAS (and attached to a non-retired node).
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**mac\_address** (*URL String*): Required. The MAC address to be
-checked.
+**mac_address** (*URL String*): Required. The MAC address to be checked.
 
 **Success**
 
@@ -22655,9 +21695,7 @@ checked.
     No provided mac_address!
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``GET /MAAS/api/2.0/machines/?op=list_allocated``</summary>
+</details> <details> <summary>`GET /MAAS/api/2.0/machines/?op=list_allocated`</summary>
 
 ------------------------------------------------------------------------
 
@@ -22676,23 +21714,17 @@ List machines that were allocated to the User/oauth token.
     }
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``GET /MAAS/api/2.0/machines/?op=power_parameters``</summary>
+</details> <details> <summary>`GET /MAAS/api/2.0/machines/?op=power_parameters`</summary>
 
 ------------------------------------------------------------------------
 
-Get power parameters for multiple machines. To request power parameters
-for a specific machine or more than one machine:
-`op=power_parameters&id=abc123&id=def456`.
+Get power parameters for multiple machines. To request power parameters for a specific machine or more than one machine: `op=power_parameters&id=abc123&id=def456`.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**id** (*URL String*): Optional. A system ID. To request more than one
-machine, provide multiple `id` arguments in the request. Only machines
-with matching system ids will be returned.
+**id** (*URL String*): Optional. A system ID. To request more than one machine, provide multiple `id` arguments in the request. Only machines with matching system ids will be returned.
 
 **Success**
 
@@ -22722,91 +21754,53 @@ with matching system ids will be returned.
 *Content* : The user is not authorized to view the power parameters.
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/machines/``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/machines/`</summary>
 
 ------------------------------------------------------------------------
 
 Create a new machine.
 
-Adding a server to MAAS wipes its disks and re-installs its operating
-system, in the event that it PXE boots. In anonymous enlistment (and
-when the enlistment is done by a non-admin), the machine is held in the
-"New" state for approval by a MAAS admin.
+Adding a server to MAAS wipes its disks and re-installs its operating system, in the event that it PXE boots. In anonymous enlistment (and when the enlistment is done by a non-admin), the machine is held in the "New" state for approval by a MAAS admin.
 
 The minimum data required is:
 
-architecture=&lt;arch string&gt; (e.g. "i386/generic")
-mac\_addresses=&lt;value&gt; (e.g. "aa:bb:cc:dd:ee:ff")
+architecture=&lt;arch string&gt; (e.g. "i386/generic") mac_addresses=&lt;value&gt; (e.g. "aa:bb:cc:dd:ee:ff")
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**architecture** (*String*): Required. A string containing the
-architecture type of the machine. (For example, "i386", or "amd64".) To
-:type architecture: unicode
+**architecture** (*String*): Required. A string containing the architecture type of the machine. (For example, "i386", or "amd64".) To :type architecture: unicode
 
-**min\_hwe\_kernel** (*String*): Optional. A string containing the
-minimum kernel version allowed to be ran on this machine.
+**min_hwe_kernel** (*String*): Optional. A string containing the minimum kernel version allowed to be ran on this machine.
 
-**subarchitecture** (*String*): Optional. A string containing the
-subarchitecture type of the machine. (For example, "generic" or
-"hwe-t".) To determine the supported subarchitectures, use the
-boot-resources endpoint.
+**subarchitecture** (*String*): Optional. A string containing the subarchitecture type of the machine. (For example, "generic" or "hwe-t".) To determine the supported subarchitectures, use the boot-resources endpoint.
 
-**mac\_addresses** (*String*): Required. One or more MAC addresses for
-the machine. To specify more than one MAC address, the parameter must be
-specified twice. (such as "machines new mac\_addresses=01:02:03:04:05:06
-mac\_addresses=02:03:04:05:06:07")
+**mac_addresses** (*String*): Required. One or more MAC addresses for the machine. To specify more than one MAC address, the parameter must be specified twice. (such as "machines new mac_addresses=01:02:03:04:05:06 mac_addresses=02:03:04:05:06:07")
 
-**hostname** (*String*): Optional. A hostname. If not given, one will be
-generated.
+**hostname** (*String*): Optional. A hostname. If not given, one will be generated.
 
 **description** (*String*): Optional. A optional description.
 
-**domain** (*String*): Optional. The domain of the machine. If not given
-the default domain is used.
+**domain** (*String*): Optional. The domain of the machine. If not given the default domain is used.
 
-**power\_type** (*String*): Optional. A power management type, if
-applicable (e.g. "virsh", "ipmi").
+**power_type** (*String*): Optional. A power management type, if applicable (e.g. "virsh", "ipmi").
 
-**[power\_parameters](){param}** (*String*): Optional. The parameter(s)
-for the power\_type. Note that this is dynamic as the available
-parameters depend on the selected value of the Machine's power\_type.
-[Power types]() section for a list of the available power parameters for
-each power type.
+**[power_parameters](){param}** (*String*): Optional. The parameter(s) for the power_type. Note that this is dynamic as the available parameters depend on the selected value of the Machine's power_type. [Power types]() section for a list of the available power parameters for each power type.
 
-**commission** (*Boolean*): Optional. Request the newly created machine
-to be created with status set to COMMISSIONING. Machines will wait for
-COMMISSIONING results and not time out.
+**commission** (*Boolean*): Optional. Request the newly created machine to be created with status set to COMMISSIONING. Machines will wait for COMMISSIONING results and not time out.
 
-**enable\_ssh** (*Int*): Optional. Whether to enable SSH for the
-commissioning environment using the user's SSH key(s). '1' == True, '0'
-== False.
+**enable_ssh** (*Int*): Optional. Whether to enable SSH for the commissioning environment using the user's SSH key(s). '1' == True, '0' == False.
 
-**skip\_bmc\_config** (*Int*): Optional. Whether to skip
-re-configuration of the BMC for IPMI based machines. '1' == True, '0' ==
-False.
+**skip_bmc_config** (*Int*): Optional. Whether to skip re-configuration of the BMC for IPMI based machines. '1' == True, '0' == False.
 
-**skip\_networking** (*Int*): Optional. Whether to skip re-configuring
-the networking on the machine after the commissioning has completed. '1'
-== True, '0' == False.
+**skip_networking** (*Int*): Optional. Whether to skip re-configuring the networking on the machine after the commissioning has completed. '1' == True, '0' == False.
 
-**skip\_storage** (*Int*): Optional. Whether to skip re-configuring the
-storage on the machine after the commissioning has completed. '1' ==
-True, '0' == False.
+**skip_storage** (*Int*): Optional. Whether to skip re-configuring the storage on the machine after the commissioning has completed. '1' == True, '0' == False.
 
-**commissioning\_scripts** (*String*): Optional. A comma seperated list
-of commissioning script names and tags to be run. By default all custom
-commissioning scripts are run. Built-in commissioning scripts always
-run. Selecting 'update\_firmware' or 'configure\_hba' will run firmware
-updates or configure HBA's on matching machines.
+**commissioning_scripts** (*String*): Optional. A comma seperated list of commissioning script names and tags to be run. By default all custom commissioning scripts are run. Built-in commissioning scripts always run. Selecting 'update_firmware' or 'configure_hba' will run firmware updates or configure HBA's on matching machines.
 
-**testing\_scripts** (*String*): Optional. A comma seperated list of
-testing script names and tags to be run. By default all tests tagged
-'commissioning' will be run. Set to 'none' to disable running tests.
+**testing_scripts** (*String*): Optional. A comma seperated list of testing script names and tags to be run. By default all tests tagged 'commissioning' will be run. Set to 'none' to disable running tests.
 
 **Success**
 
@@ -22961,29 +21955,21 @@ testing script names and tags to be run. By default all tests tagged
     }
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/machines/?op=accept``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/machines/?op=accept`</summary>
 
 ------------------------------------------------------------------------
 
 Accept declared machines into MAAS.
 
-Machines can be enlisted in the MAAS anonymously or by non-admin users,
-as opposed to by an admin. These machines are held in the New state; a
-MAAS admin must first verify the authenticity of these enlistments, and
-accept them.
+Machines can be enlisted in the MAAS anonymously or by non-admin users, as opposed to by an admin. These machines are held in the New state; a MAAS admin must first verify the authenticity of these enlistments, and accept them.
 
-Enlistments can be accepted en masse, by passing multiple machines to
-this call. Accepting an already accepted machine is not an error, but
-accepting one that is already allocated, broken, etc. is.
+Enlistments can be accepted en masse, by passing multiple machines to this call. Accepting an already accepted machine is not an error, but accepting one that is already allocated, broken, etc. is.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**machines** (*String*): Optional. A list of system\_ids of the machines
-whose enlistment is to be accepted. (An empty list is acceptable).
+**machines** (*String*): Optional. A list of system_ids of the machines whose enlistment is to be accepted. (An empty list is acceptable).
 
 **Success**
 
@@ -23010,18 +21996,13 @@ whose enlistment is to be accepted. (An empty list is acceptable).
 *Content* : The user does not have permission to accept machines.
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/machines/?op=accept_all``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/machines/?op=accept_all`</summary>
 
 ------------------------------------------------------------------------
 
 Accept all declared machines into MAAS.
 
-Machines can be enlisted in the MAAS anonymously or by non-admin users,
-as opposed to by an admin. These machines are held in the New state; a
-MAAS admin must first verify the authenticity of these enlistments, and
-accept them.
+Machines can be enlisted in the MAAS anonymously or by non-admin users, as opposed to by an admin. These machines are held in the New state; a MAAS admin must first verify the authenticity of these enlistments, and accept them.
 
 **Success**
 
@@ -23036,9 +22017,7 @@ accept them.
     }
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/machines/?op=add_chassis``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/machines/?op=add_chassis`</summary>
 
 ------------------------------------------------------------------------
 
@@ -23048,7 +22027,7 @@ Add special hardware types.
 
 ------------------------------------------------------------------------
 
-**chassis\_type** (*String*): Required. The type of hardware:
+**chassis_type** (*String*): Required. The type of hardware:
 
 -   `mscm`: Moonshot Chassis Manager.
 -   `msftocs`: Microsoft OCS Chassis Manager.
@@ -23059,42 +22038,25 @@ Add special hardware types.
 -   `virsh`: virtual machines managed by Virsh.
 -   `vmware` is the type for virtual machines managed by VMware.
 
-**hostname** (*String*): Required. The URL, hostname, or IP address to
-access the chassis.
+**hostname** (*String*): Required. The URL, hostname, or IP address to access the chassis.
 
-**username** (*String*): Optional. The username used to access the
-chassis. This field is required for the recs\_box, seamicro15k, vmware,
-mscm, msftocs, and ucsm chassis types.
+**username** (*String*): Optional. The username used to access the chassis. This field is required for the recs_box, seamicro15k, vmware, mscm, msftocs, and ucsm chassis types.
 
-**password** (*String*): Optional. The password used to access the
-chassis. This field is required for the `recs_box`, `seamicro15k`,
-`vmware`, `mscm`, `msftocs`, and `ucsm` chassis types.
+**password** (*String*): Optional. The password used to access the chassis. This field is required for the `recs_box`, `seamicro15k`, `vmware`, `mscm`, `msftocs`, and `ucsm` chassis types.
 
-**accept\_all** (*String*): Optional. If true, all enlisted machines
-will be commissioned.
+**accept_all** (*String*): Optional. If true, all enlisted machines will be commissioned.
 
-**rack\_controller** (*String*): Optional. The system\_id of the rack
-controller to send the add chassis command through. If none is specifed
-MAAS will automatically determine the rack controller to use.
+**rack_controller** (*String*): Optional. The system_id of the rack controller to send the add chassis command through. If none is specifed MAAS will automatically determine the rack controller to use.
 
-**domain** (*String*): Optional. The domain that each new machine added
-should use.
+**domain** (*String*): Optional. The domain that each new machine added should use.
 
-**prefix\_filter** (*String*): Optional. (`virsh`, `vmware`, `powerkvm`
-only.) Filter machines with supplied prefix.
+**prefix_filter** (*String*): Optional. (`virsh`, `vmware`, `powerkvm` only.) Filter machines with supplied prefix.
 
-**power\_control** (*String*): Optional. (`seamicro15k` only) The
-power\_control to use, either ipmi (default), restapi, or restapi2. The
-following are optional if you are adding a recs\_box, vmware or msftocs
-chassis.
+**power_control** (*String*): Optional. (`seamicro15k` only) The power_control to use, either ipmi (default), restapi, or restapi2. The following are optional if you are adding a recs_box, vmware or msftocs chassis.
 
-**port** (*Int*): Optional. (`recs_box`, `vmware`, `msftocs` only) The
-port to use when accessing the chassis. The following are optioanl if
-you are adding a vmware chassis:
+**port** (*Int*): Optional. (`recs_box`, `vmware`, `msftocs` only) The port to use when accessing the chassis. The following are optioanl if you are adding a vmware chassis:
 
-**protocol** (*String*): Optional. (`vmware` only) The protocol to use
-when accessing the VMware chassis (default: https). :return: A string
-containing the chassis powered on by which rack controller.
+**protocol** (*String*): Optional. (`vmware` only) The protocol to use when accessing the VMware chassis (default: https). :return: A string containing the chassis powered on by which rack controller.
 
 **Success**
 
@@ -23110,8 +22072,7 @@ containing the chassis powered on by which rack controller.
 
 *HTTP Status Code* : 403
 
-*Content* : The user does not have permission to access the rack
-controller.
+*Content* : The user does not have permission to access the rack controller.
 
 *HTTP Status Code* : 404
 
@@ -23124,220 +22085,124 @@ controller.
 *Content* : Required parameters are missing.
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/machines/?op=allocate``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/machines/?op=allocate`</summary>
 
 ------------------------------------------------------------------------
 
 Allocates an available machine for deployment.
 
-Constraints parameters can be used to allocate a machine that possesses
-certain characteristics. All the constraints are optional and when
-multiple constraints are provided, they are combined using 'AND'
-semantics.
+Constraints parameters can be used to allocate a machine that possesses certain characteristics. All the constraints are optional and when multiple constraints are provided, they are combined using 'AND' semantics.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**name** (*String*): Optional. Hostname or FQDN of the desired machine.
-If a FQDN is specified, both the domain and the hostname portions must
-match.
+**name** (*String*): Optional. Hostname or FQDN of the desired machine. If a FQDN is specified, both the domain and the hostname portions must match.
 
-**system\_id** (*String*): Optional. system\_id of the desired machine.
+**system_id** (*String*): Optional. system_id of the desired machine.
 
-**arch** (*String*): Optional. Architecture of the returned machine
-(e.g. 'i386/generic', 'amd64', 'armhf/highbank', etc.).
+**arch** (*String*): Optional. Architecture of the returned machine (e.g. 'i386/generic', 'amd64', 'armhf/highbank', etc.).
 
-If multiple architectures are specified, the machine to acquire may
-match any of the given architectures. To request multiple architectures,
-this parameter must be repeated in the request with each value.
+If multiple architectures are specified, the machine to acquire may match any of the given architectures. To request multiple architectures, this parameter must be repeated in the request with each value.
 
-**cpu\_count** (*Int*): Optional. Minimum number of CPUs a returned
-machine must have.
+**cpu_count** (*Int*): Optional. Minimum number of CPUs a returned machine must have.
 
-A machine with additional CPUs may be allocated if there is no exact
-match, or if the 'mem' constraint is not also specified.
+A machine with additional CPUs may be allocated if there is no exact match, or if the 'mem' constraint is not also specified.
 
-**mem** (*Int*): Optional. The minimum amount of memory (expressed in
-MB) the returned machine must have. A machine with additional memory may
-be allocated if there is no exact match, or the 'cpu\_count' constraint
-is not also specified.
+**mem** (*Int*): Optional. The minimum amount of memory (expressed in MB) the returned machine must have. A machine with additional memory may be allocated if there is no exact match, or the 'cpu_count' constraint is not also specified.
 
-**tags** (*String*): Optional. Tags the machine must match in order to
-be acquired.
+**tags** (*String*): Optional. Tags the machine must match in order to be acquired.
 
-If multiple tag names are specified, the machine must be tagged with all
-of them. To request multiple tags, this parameter must be repeated in
-the request with each value.
+If multiple tag names are specified, the machine must be tagged with all of them. To request multiple tags, this parameter must be repeated in the request with each value.
 
-**not\_tags** (*String*): Optional. Tags the machine must NOT match. If
-multiple tag names are specified, the machine must NOT be tagged with
-ANY of them. To request exclusion of multiple tags, this parameter must
-be repeated in the request with each value.
+**not_tags** (*String*): Optional. Tags the machine must NOT match. If multiple tag names are specified, the machine must NOT be tagged with ANY of them. To request exclusion of multiple tags, this parameter must be repeated in the request with each value.
 
-**zone** (*String*): Optional. Physical zone name the machine must be
-located in.
+**zone** (*String*): Optional. Physical zone name the machine must be located in.
 
-**not\_in\_zone** (*String*): Optional. List of physical zones from
-which the machine must not be acquired. If multiple zones are specified,
-the machine must NOT be associated with ANY of them. To request multiple
-zones to exclude, this parameter must be repeated in the request with
-each value.
+**not_in_zone** (*String*): Optional. List of physical zones from which the machine must not be acquired. If multiple zones are specified, the machine must NOT be associated with ANY of them. To request multiple zones to exclude, this parameter must be repeated in the request with each value.
 
-**pool** (*String*): Optional. Resource pool name the machine must
-belong to.
+**pool** (*String*): Optional. Resource pool name the machine must belong to.
 
-**not\_in\_pool** (*String*): Optional. List of resource pool from which
-the machine must not be acquired. If multiple pools are specified, the
-machine must NOT be associated with ANY of them. To request multiple
-pools to exclude, this parameter must be repeated in the request with
-each value.
+**not_in_pool** (*String*): Optional. List of resource pool from which the machine must not be acquired. If multiple pools are specified, the machine must NOT be associated with ANY of them. To request multiple pools to exclude, this parameter must be repeated in the request with each value.
 
 **pod** (*String*): Optional. Pod the machine must be located in.
 
-**not\_pod** (*String*): Optional. Pod the machine must not be located
-in.
+**not_pod** (*String*): Optional. Pod the machine must not be located in.
 
-**pod\_type** (*String*): Optional. Pod type the machine must be located
-in.
+**pod_type** (*String*): Optional. Pod type the machine must be located in.
 
-**not\_pod\_type** (*String*): Optional. Pod type the machine must not
-be located in.
+**not_pod_type** (*String*): Optional. Pod type the machine must not be located in.
 
-**subnets** (*String*): Optional. Subnets that must be linked to the
-machine.
+**subnets** (*String*): Optional. Subnets that must be linked to the machine.
 
-"Linked to" means the node must be configured to acquire an address in
-the specified subnet, have a static IP address in the specified subnet,
-or have been observed to DHCP from the specified subnet during
-commissioning time (which implies that it *could* have an address on the
-specified subnet).
+"Linked to" means the node must be configured to acquire an address in the specified subnet, have a static IP address in the specified subnet, or have been observed to DHCP from the specified subnet during commissioning time (which implies that it *could* have an address on the specified subnet).
 
 Subnets can be specified by one of the following criteria:
 
 -   &lt;id&gt;: Match the subnet by its 'id' field
 -   fabric:&lt;fabric-spec&gt;: Match all subnets in a given fabric.
--   ip:&lt;ip-address&gt;: Match the subnet containing
-    &lt;ip-address&gt; with the with the longest-prefix match.
+-   ip:&lt;ip-address&gt;: Match the subnet containing &lt;ip-address&gt; with the with the longest-prefix match.
 -   name:&lt;subnet-name&gt;: Match a subnet with the given name.
 -   space:&lt;space-spec&gt;: Match all subnets in a given space.
--   vid:&lt;vid-integer&gt;: Match a subnet on a VLAN with the specified
-    VID. Valid values range from 0 through 4094 (inclusive). An untagged
-    VLAN can be specified by using the value "0".
+-   vid:&lt;vid-integer&gt;: Match a subnet on a VLAN with the specified VID. Valid values range from 0 through 4094 (inclusive). An untagged VLAN can be specified by using the value "0".
 -   vlan:&lt;vlan-spec&gt;: Match all subnets on the given VLAN.
 
-Note that (as of this writing), the 'fabric', 'space', 'vid', and 'vlan'
-specifiers are only useful for the 'not\_spaces' version of this
-constraint, because they will most likely force the query to match ALL
-the subnets in each fabric, space, or VLAN, and thus not return any
-nodes. (This is not a particularly useful behavior, so may be changed in
-the future.)
+Note that (as of this writing), the 'fabric', 'space', 'vid', and 'vlan' specifiers are only useful for the 'not_spaces' version of this constraint, because they will most likely force the query to match ALL the subnets in each fabric, space, or VLAN, and thus not return any nodes. (This is not a particularly useful behavior, so may be changed in the future.)
 
-If multiple subnets are specified, the machine must be associated with
-all of them. To request multiple subnets, this parameter must be
-repeated in the request with each value.
+If multiple subnets are specified, the machine must be associated with all of them. To request multiple subnets, this parameter must be repeated in the request with each value.
 
 Note that this replaces the legacy 'networks' constraint in MAAS 1.x.
 
-**not\_subnets** (*String*): Optional. Subnets that must NOT be linked
-to the machine.
+**not_subnets** (*String*): Optional. Subnets that must NOT be linked to the machine.
 
-See the 'subnets' constraint documentation above for more information
-about how each subnet can be specified.
+See the 'subnets' constraint documentation above for more information about how each subnet can be specified.
 
-If multiple subnets are specified, the machine must NOT be associated
-with ANY of them. To request multiple subnets to exclude, this parameter
-must be repeated in the request with each value. (Or a fabric, space, or
-VLAN specifier may be used to match multiple subnets).
+If multiple subnets are specified, the machine must NOT be associated with ANY of them. To request multiple subnets to exclude, this parameter must be repeated in the request with each value. (Or a fabric, space, or VLAN specifier may be used to match multiple subnets).
 
-Note that this replaces the legacy 'not\_networks' constraint in MAAS
-1.x.
+Note that this replaces the legacy 'not_networks' constraint in MAAS 1.x.
 
-**storage** (*String*): Optional. A list of storage constraint
-identifiers, in the form: `label:size(tag[,tag[,...])][,label:...]`.
+**storage** (*String*): Optional. A list of storage constraint identifiers, in the form: `label:size(tag[,tag[,...])][,label:...]`.
 
-**interfaces** (*String*): Optional. A labeled constraint map
-associating constraint labels with interface properties that should be
-matched. Returned nodes must have one or more interface matching the
-specified constraints. The labeled constraint map must be in the format:
-`label:key=value[,key2=value2[,...]]`.
+**interfaces** (*String*): Optional. A labeled constraint map associating constraint labels with interface properties that should be matched. Returned nodes must have one or more interface matching the specified constraints. The labeled constraint map must be in the format: `label:key=value[,key2=value2[,...]]`.
 
 Each key can be one of the following:
 
 -   `id`: Matches an interface with the specific id
 -   `fabric`: Matches an interface attached to the specified fabric.
--   `fabric_class`: Matches an interface attached to a fabric with the
-    specified class.
--   `ip`: Matches an interface with the specified IP address assigned to
-    it.
--   `mode`: Matches an interface with the specified mode. (Currently,
-    the only supported mode is "unconfigured".)
--   `name`: Matches an interface with the specified name. (For example,
-    "eth0".)
--   `hostname`: Matches an interface attached to the node with the
-    specified hostname.
+-   `fabric_class`: Matches an interface attached to a fabric with the specified class.
+-   `ip`: Matches an interface with the specified IP address assigned to it.
+-   `mode`: Matches an interface with the specified mode. (Currently, the only supported mode is "unconfigured".)
+-   `name`: Matches an interface with the specified name. (For example, "eth0".)
+-   `hostname`: Matches an interface attached to the node with the specified hostname.
 -   `subnet`: Matches an interface attached to the specified subnet.
 -   `space`: Matches an interface attached to the specified space.
--   `subnet_cidr`: Matches an interface attached to the specified subnet
-    CIDR. (For example, "192.168.0.0/24".)
--   `type`: Matches an interface of the specified type. (Valid types:
-    "physical", "vlan", "bond", "bridge", or "unknown".)
+-   `subnet_cidr`: Matches an interface attached to the specified subnet CIDR. (For example, "192.168.0.0/24".)
+-   `type`: Matches an interface of the specified type. (Valid types: "physical", "vlan", "bond", "bridge", or "unknown".)
 -   `vlan`: Matches an interface on the specified VLAN.
 -   `vid`: Matches an interface on a VLAN with the specified VID.
 -   `tag`: Matches an interface tagged with the specified tag.
 
-**fabrics** (*String*): Optional. Set of fabrics that the machine must
-be associated with in order to be acquired. If multiple fabrics names
-are specified, the machine can be in any of the specified fabrics. To
-request multiple possible fabrics to match, this parameter must be
-repeated in the request with each value.
+**fabrics** (*String*): Optional. Set of fabrics that the machine must be associated with in order to be acquired. If multiple fabrics names are specified, the machine can be in any of the specified fabrics. To request multiple possible fabrics to match, this parameter must be repeated in the request with each value.
 
-**not\_fabrics** (*String*): Optional. Fabrics the machine must NOT be
-associated with in order to be acquired. If multiple fabrics names are
-specified, the machine must NOT be in ANY of them. To request exclusion
-of multiple fabrics, this parameter must be repeated in the request with
-each value.
+**not_fabrics** (*String*): Optional. Fabrics the machine must NOT be associated with in order to be acquired. If multiple fabrics names are specified, the machine must NOT be in ANY of them. To request exclusion of multiple fabrics, this parameter must be repeated in the request with each value.
 
-**fabric\_classes** (*String*): Optional. Set of fabric class types
-whose fabrics the machine must be associated with in order to be
-acquired. If multiple fabrics class types are specified, the machine can
-be in any matching fabric. To request multiple possible fabrics class
-types to match, this parameter must be repeated in the request with each
-value.
+**fabric_classes** (*String*): Optional. Set of fabric class types whose fabrics the machine must be associated with in order to be acquired. If multiple fabrics class types are specified, the machine can be in any matching fabric. To request multiple possible fabrics class types to match, this parameter must be repeated in the request with each value.
 
-**not\_fabric\_classes** (*String*): Optional. Fabric class types whose
-fabrics the machine must NOT be associated with in order to be acquired.
-If multiple fabrics names are specified, the machine must NOT be in ANY
-of them. To request exclusion of multiple fabrics, this parameter must
-be repeated in the request with each value.
+**not_fabric_classes** (*String*): Optional. Fabric class types whose fabrics the machine must NOT be associated with in order to be acquired. If multiple fabrics names are specified, the machine must NOT be in ANY of them. To request exclusion of multiple fabrics, this parameter must be repeated in the request with each value.
 
-**agent\_name** (*String*): Optional. An optional agent name to attach
-to the acquired machine.
+**agent_name** (*String*): Optional. An optional agent name to attach to the acquired machine.
 
 **comment** (*String*): Optional. Comment for the event log.
 
-**bridge\_all** (*Boolean*): Optional. Optionally create a bridge
-interface for every configured interface on the machine. The created
-bridges will be removed once the machine is released. (Default: False)
+**bridge_all** (*Boolean*): Optional. Optionally create a bridge interface for every configured interface on the machine. The created bridges will be removed once the machine is released. (Default: False)
 
-**bridge\_stp** (*Boolean*): Optional. Optionally turn spanning tree
-protocol on or off for the bridges created on every configured
-interface. (Default: off)
+**bridge_stp** (*Boolean*): Optional. Optionally turn spanning tree protocol on or off for the bridges created on every configured interface. (Default: off)
 
-**bridge\_fd** (*Int*): Optional. Optionally adjust the forward delay to
-time seconds. (Default: 15)
+**bridge_fd** (*Int*): Optional. Optionally adjust the forward delay to time seconds. (Default: 15)
 
-**dry\_run** (*Boolean*): Optional. Optional boolean to indicate that
-the machine should not actually be acquired (this is for
-support/troubleshooting, or users who want to see which machine would
-match a constraint, without acquiring a machine). Defaults to False.
+**dry_run** (*Boolean*): Optional. Optional boolean to indicate that the machine should not actually be acquired (this is for support/troubleshooting, or users who want to see which machine would match a constraint, without acquiring a machine). Defaults to False.
 
-**verbose** (*Boolean*): Optional. Optional boolean to indicate that the
-user would like additional verbosity in the constraints\_by\_type field
-(each constraint will be prefixed by `verbose_`, and contain the full
-data structure that indicates which machine(s) matched).
+**verbose** (*Boolean*): Optional. Optional boolean to indicate that the user would like additional verbosity in the constraints_by_type field (each constraint will be prefixed by `verbose_`, and contain the full data structure that indicates which machine(s) matched).
 
 **Success**
 
@@ -24263,42 +23128,29 @@ data structure that indicates which machine(s) matched).
 *Content* : No machine matching the given constraints could be found.
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/machines/?op=clone``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/machines/?op=clone`</summary>
 
 ------------------------------------------------------------------------
 
 Clone storage and/or interface configurations
 
-A machine storage and/or interface configuration can be cloned to a set
-of destination machines.
+A machine storage and/or interface configuration can be cloned to a set of destination machines.
 
-For storage configuration, cloning the destination machine must have at
-least the same number of physical block devices or more, along with the
-physical block devices being the same size or greater.
+For storage configuration, cloning the destination machine must have at least the same number of physical block devices or more, along with the physical block devices being the same size or greater.
 
-For interface configuration, cloning the destination machine must have
-at least the same number of interfaces with the same names. The
-destination machine can have more interfaces than the source, as long as
-the subset of interfaces on the destination have the same matching names
-as the source.
+For interface configuration, cloning the destination machine must have at least the same number of interfaces with the same names. The destination machine can have more interfaces than the source, as long as the subset of interfaces on the destination have the same matching names as the source.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**source** (*String*): Required. The system\_id of the machine that is
-the source of the configuration.
+**source** (*String*): Required. The system_id of the machine that is the source of the configuration.
 
-**destination** (*String*): Required. A list of system\_ids to clone the
-configuration to.
+**destination** (*String*): Required. A list of system_ids to clone the configuration to.
 
-**interfaces** (*String*): Optional. Whether to clone interface
-configuration. Defaults to False.
+**interfaces** (*String*): Optional. Whether to clone interface configuration. Defaults to False.
 
-**storage** (*String*): Optional. Whether to clone storage
-configuration. Defaults to False.
+**storage** (*String*): Optional. Whether to clone storage configuration. Defaults to False.
 
 **Success**
 
@@ -24319,21 +23171,17 @@ configuration. Defaults to False.
 *Content* : The user not authenticated.
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/machines/?op=release``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/machines/?op=release`</summary>
 
 ------------------------------------------------------------------------
 
-Release multiple machines. Places the machines back into the pool, ready
-to be reallocated.
+Release multiple machines. Places the machines back into the pool, ready to be reallocated.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**machines** (*String*): Required. A list of system\_ids of the machines
-which are to be released. (An empty list is acceptable).
+**machines** (*String*): Required. A list of system_ids of the machines which are to be released. (An empty list is acceptable).
 
 **comment** (*String*): Optional. Optional comment for the event log.
 
@@ -24363,13 +23211,10 @@ which are to be released. (An empty list is acceptable).
 
 *HTTP Status Code* : 409
 
-*Content* : The current state of the machine prevents it from being
-released.
+*Content* : The current state of the machine prevents it from being released.
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/machines/?op=set_zone``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/machines/?op=set_zone`</summary>
 
 ------------------------------------------------------------------------
 
@@ -24405,6 +23250,7 @@ Assigns a given node to a given zone.
 
 <p>&nbsp;</p>
 </details>
+
 ### Network
 
 Manage a network.
@@ -24425,8 +23271,7 @@ Read network definition.
 
 Returns the list of MAC addresses connected to this network.
 
-Only MAC addresses for nodes visible to the requesting user are
-returned.
+Only MAC addresses for nodes visible to the requesting user are returned.
 
 #### `POST /MAAS/api/2.0/networks/{name}/ op=connect_macs`
 
@@ -24448,28 +23293,23 @@ This endpoint is no longer available. Use the 'subnet' endpoint instead.
 
 param name
 
-:   A simple name for the network, to make it easier to refer to. Must
-    consist only of letters, digits, dashes, and underscores.
+:   A simple name for the network, to make it easier to refer to. Must consist only of letters, digits, dashes, and underscores.
 
 param ip
 
-:   Base IP address for the network, e.g. 10.1.0.0. The host bits will
-    be zeroed.
+:   Base IP address for the network, e.g. 10.1.0.0. The host bits will be zeroed.
 
 param netmask
 
-:   Subnet mask to indicate which parts of an IP address are part of the
-    network address. For example, 255.255.255.0.
+:   Subnet mask to indicate which parts of an IP address are part of the network address. For example, 255.255.255.0.
 
-param vlan\_tag
+param vlan_tag
 
-:   Optional VLAN tag: a number between 1 and 0xffe (4094) inclusive, or
-    zero for an untagged network.
+:   Optional VLAN tag: a number between 1 and 0xffe (4094) inclusive, or zero for an untagged network.
 
 param description
 
-:   Detailed description of the network for the benefit of users and
-    administrators.
+:   Detailed description of the network for the benefit of users and administrators.
 
 ### Networks
 
@@ -24483,35 +23323,31 @@ List networks.
 
 param node
 
-:   Optionally, nodes which must be attached to any returned networks.
-    If more than one node is given, the result will be restricted to
-    networks that these nodes have in common.
+:   Optionally, nodes which must be attached to any returned networks. If more than one node is given, the result will be restricted to networks that these nodes have in common.
 
 #### `POST /MAAS/api/2.0/networks/`
 
 Define a network.
 
-This endpoint is no longer available. Use the 'subnets' endpoint
-instead.
+This endpoint is no longer available. Use the 'subnets' endpoint instead.
 
 ### Node
 
 Manage an individual Node.
 
-The Node is identified by its system\_id.
+The Node is identified by its system_id.
 
-<details>
-  <summary>``DELETE /MAAS/api/2.0/nodes/{system_id}/``</summary>
+<details> <summary>`DELETE /MAAS/api/2.0/nodes/{system_id}/`</summary>
 
 ------------------------------------------------------------------------
 
-Deletes a node with a given system\_id.
+Deletes a node with a given system_id.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. A node's system\_id.
+**{system_id}** (*String*): Required. A node's system_id.
 
 **Success**
 
@@ -24534,19 +23370,17 @@ Deletes a node with a given system\_id.
 *Content* : The user is not authorized to delete the node.
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``GET /MAAS/api/2.0/nodes/{system_id}/``</summary>
+</details> <details> <summary>`GET /MAAS/api/2.0/nodes/{system_id}/`</summary>
 
 ------------------------------------------------------------------------
 
-Reads a node with the given system\_id.
+Reads a node with the given system_id.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. A node's system\_id.
+**{system_id}** (*String*): Required. A node's system_id.
 
 **Success**
 
@@ -25011,28 +23845,21 @@ Reads a node with the given system\_id.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``GET /MAAS/api/2.0/nodes/{system_id}/?op=details``</summary>
+</details> <details> <summary>`GET /MAAS/api/2.0/nodes/{system_id}/?op=details`</summary>
 
 ------------------------------------------------------------------------
 
 Returns system details -- for example, LLDP and `lshw` XML dumps.
 
-Returns a `{detail_type: xml, ...}` map, where `detail_type` is
-something like "lldp" or "lshw".
+Returns a `{detail_type: xml, ...}` map, where `detail_type` is something like "lldp" or "lshw".
 
-Note that this is returned as BSON and not JSON. This is for efficiency,
-but mainly because JSON can't do binary content without applying
-additional encoding like base-64. The example output below is
-represented in ASCII using `bsondump example.bson` and is for
-demonstrative purposes.
+Note that this is returned as BSON and not JSON. This is for efficiency, but mainly because JSON can't do binary content without applying additional encoding like base-64. The example output below is represented in ASCII using `bsondump example.bson` and is for demonstrative purposes.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. The node's system\_id.
+**{system_id}** (*String*): Required. The node's system_id.
 
 **Success**
 
@@ -25064,18 +23891,13 @@ demonstrative purposes.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``GET /MAAS/api/2.0/nodes/{system_id}/?op=power_parameters``</summary>
+</details> <details> <summary>`GET /MAAS/api/2.0/nodes/{system_id}/?op=power_parameters`</summary>
 
 ------------------------------------------------------------------------
 
-Gets power parameters for a given system\_id, if any. For some types of
-power control this will include private information such as passwords
-and secret keys.
+Gets power parameters for a given system_id, if any. For some types of power control this will include private information such as passwords and secret keys.
 
-Note that this method is reserved for admin users and returns a 403 if
-the user is not one.
+Note that this method is reserved for admin users and returns a 403 if the user is not one.
 
 **Success**
 
@@ -25101,31 +23923,26 @@ the user is not one.
 
 <p>&nbsp;</p>
 </details>
+
 ### Commissioning results
 
 Read the collection of commissioning script results.
 
-<details>
-  <summary>``GET /MAAS/api/2.0/installation-results/``</summary>
+<details> <summary>`GET /MAAS/api/2.0/installation-results/`</summary>
 
 ------------------------------------------------------------------------
 
-Read the commissioning results per node visible to the user, optionally
-filtered.
+Read the commissioning results per node visible to the user, optionally filtered.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**system\_id** (*String*): Optional. An optional list of system ids.
-Only the results related to the nodes with these system ids will be
-returned.
+**system_id** (*String*): Optional. An optional list of system ids. Only the results related to the nodes with these system ids will be returned.
 
-**name** (*String*): Optional. An optional list of names. Only the
-results with the specified names will be returned.
+**name** (*String*): Optional. An optional list of names. Only the results with the specified names will be returned.
 
-**result\_type** (*String*): Optional. An optional result\_type. Only
-the results with the specified result\_type will be returned.
+**result_type** (*String*): Optional. An optional result_type. Only the results with the specified result_type will be returned.
 
 **Success**
 
@@ -25192,12 +24009,12 @@ the results with the specified result\_type will be returned.
 
 <p>&nbsp;</p>
 </details>
+
 ### Node Script
 
 Manage or view a custom script.
 
-<details>
-  <summary>``DELETE /MAAS/api/2.0/scripts/{name}``</summary>
+<details> <summary>`DELETE /MAAS/api/2.0/scripts/{name}`</summary>
 
 ------------------------------------------------------------------------
 
@@ -25226,9 +24043,7 @@ Deletes a script with the given name.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``GET /MAAS/api/2.0/scripts/{name}``</summary>
+</details> <details> <summary>`GET /MAAS/api/2.0/scripts/{name}`</summary>
 
 ------------------------------------------------------------------------
 
@@ -25240,8 +24055,7 @@ Return metadata belonging to the script with the given name.
 
 **{name}** (*String*): Required. The script's name.
 
-**include\_script** (*String*): Optional. Include the base64 encoded
-script content if any value is given for include\_script.
+**include_script** (*String*): Optional. Include the base64 encoded script content if any value is given for include_script.
 
 **Success**
 
@@ -25338,9 +24152,7 @@ script content if any value is given for include\_script.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``GET /MAAS/api/2.0/scripts/{name}?op=download``</summary>
+</details> <details> <summary>`GET /MAAS/api/2.0/scripts/{name}?op=download`</summary>
 
 ------------------------------------------------------------------------
 
@@ -25352,8 +24164,7 @@ Download a script with the given name.
 
 **{name}** (*String*): Required. The name of the script.
 
-**revision** (*Int*): Optional. What revision to download, latest by
-default. Can use rev as a shortcut.
+**revision** (*Int*): Optional. What revision to download, latest by default. Can use rev as a shortcut.
 
 **Success**
 
@@ -25376,9 +24187,7 @@ default. Can use rev as a shortcut.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/scripts/{name}?op=add_tag``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/scripts/{name}?op=add_tag`</summary>
 
 ------------------------------------------------------------------------
 
@@ -25445,9 +24254,7 @@ Add a single tag to a script with the given name.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/scripts/{name}?op=remove_tag``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/scripts/{name}?op=remove_tag`</summary>
 
 ------------------------------------------------------------------------
 
@@ -25513,9 +24320,7 @@ Remove a tag from a script with the given name.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/scripts/{name}?op=revert``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/scripts/{name}?op=revert`</summary>
 
 ------------------------------------------------------------------------
 
@@ -25527,9 +24332,7 @@ Revert a script with the given name to an earlier version.
 
 **{name}** (*String*): Required. The name of the script.
 
-**to** (*Int*): Optional. What revision in the script's history to
-revert to. This can either be an ID or a negative number representing
-how far back to go.
+**to** (*Int*): Optional. What revision in the script's history to revert to. This can either be an ID or a negative number representing how far back to go.
 
 **Success**
 
@@ -25583,9 +24386,7 @@ how far back to go.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``PUT /MAAS/api/2.0/scripts/{name}``</summary>
+</details> <details> <summary>`PUT /MAAS/api/2.0/scripts/{name}`</summary>
 
 ------------------------------------------------------------------------
 
@@ -25599,48 +24400,29 @@ Update a script with the given name.
 
 **title** (*String*): Optional. The title of the script.
 
-**description** (*String*): Optional. A description of what the script
-does.
+**description** (*String*): Optional. A description of what the script does.
 
-**tags** (*String*): Optional. A comma seperated list of tags for this
-script.
+**tags** (*String*): Optional. A comma seperated list of tags for this script.
 
-**type** (*String*): Optional. The type defines when the script should
-be used. Can be `testing` or `commissioning`, defaults to `testing`.
+**type** (*String*): Optional. The type defines when the script should be used. Can be `testing` or `commissioning`, defaults to `testing`.
 
-**hardware\_type** (*String*): Optional. The hardware\_type defines what
-type of hardware the script is assoicated with. May be `cpu`, `memory`,
-`storage`, or `node`.
+**hardware_type** (*String*): Optional. The hardware_type defines what type of hardware the script is assoicated with. May be `cpu`, `memory`, `storage`, or `node`.
 
-**parallel** (*Int*): Optional. Whether the script may be run in
-parallel with other scripts. May be disabled to run by itself, instance
-to run along scripts with the same name, or any to run along any script.
-`1` == True, `0` == False.
+**parallel** (*Int*): Optional. Whether the script may be run in parallel with other scripts. May be disabled to run by itself, instance to run along scripts with the same name, or any to run along any script. `1` == True, `0` == False.
 
-**timeout** (*Int*): Optional. How long the script is allowed to run
-before failing. 0 gives unlimited time, defaults to 0.
+**timeout** (*Int*): Optional. How long the script is allowed to run before failing. 0 gives unlimited time, defaults to 0.
 
-**destructive** (*Boolean*): Optional. Whether or not the script
-overwrites data on any drive on the running system. Destructive scripts
-can not be run on deployed systems. Defaults to false.
+**destructive** (*Boolean*): Optional. Whether or not the script overwrites data on any drive on the running system. Destructive scripts can not be run on deployed systems. Defaults to false.
 
-**script** (*String*): Optional. The content of the script to be
-uploaded in binary form. Note: this is not a normal parameter, but a
-file upload. Its filename is ignored; MAAS will know it by the name you
-pass to the request. Optionally you can ignore the name and script
-parameter in favor of uploading a single file as part of the request.
+**script** (*String*): Optional. The content of the script to be uploaded in binary form. Note: this is not a normal parameter, but a file upload. Its filename is ignored; MAAS will know it by the name you pass to the request. Optionally you can ignore the name and script parameter in favor of uploading a single file as part of the request.
 
 **comment** (*String*): Optional. A comment about what this change does.
 
-**for\_hardware** (*String*): Optional. A list of modalias, PCI IDs,
-and/or USB IDs the script will automatically run on. Must start with
-`modalias:`, `pci:`, or `usb:`.
+**for_hardware** (*String*): Optional. A list of modalias, PCI IDs, and/or USB IDs the script will automatically run on. Must start with `modalias:`, `pci:`, or `usb:`.
 
-**may\_reboot** (*Boolean*): Optional. Whether or not the script may
-reboot the system while running.
+**may_reboot** (*Boolean*): Optional. Whether or not the script may reboot the system while running.
 
-**recommission** (*Boolean*): Optional. Whether built-in commissioning
-scripts should be rerun after successfully running this scripts.
+**recommission** (*Boolean*): Optional. Whether built-in commissioning scripts should be rerun after successfully running this scripts.
 
 **Success**
 
@@ -25695,25 +24477,24 @@ scripts should be rerun after successfully running this scripts.
 
 <p>&nbsp;</p>
 </details>
+
 ### Node Script Result
 
 Manage node script results.
 
-<details>
-  <summary>``DELETE /MAAS/api/2.0/nodes/{system_id}/results/{id}/``</summary>
+<details> <summary>`DELETE /MAAS/api/2.0/nodes/{system_id}/results/{id}/`</summary>
 
 ------------------------------------------------------------------------
 
-Delete script results from the given system\_id with the given id.
+Delete script results from the given system_id with the given id.
 
-"id" can either by the script set id, `current-commissioning`,
-`current-testing`, or `current-installation`.
+"id" can either by the script set id, `current-commissioning`, `current-testing`, or `current-installation`.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. The machine's system\_id.
+**{system_id}** (*String*): Required. The machine's system_id.
 
 **{id}** (*String*): Required. The script result id.
 
@@ -25734,34 +24515,27 @@ Delete script results from the given system\_id with the given id.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``GET /MAAS/api/2.0/nodes/{system_id}/results/{id}/``</summary>
+</details> <details> <summary>`GET /MAAS/api/2.0/nodes/{system_id}/results/{id}/`</summary>
 
 ------------------------------------------------------------------------
 
-View a set of test results for a given system\_id and script id.
+View a set of test results for a given system_id and script id.
 
-"id" can either by the script set id, `current-commissioning`,
-`current-testing`, or `current-installation`.
+"id" can either by the script set id, `current-commissioning`, `current-testing`, or `current-installation`.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. The machine's system\_id.
+**{system_id}** (*String*): Required. The machine's system_id.
 
 **{id}** (*String*): Required. The script result id.
 
-**hardware\_type** (*String*): Optional. Only return scripts for the
-given hardware type. Can be `node`, `cpu`, `memory`, or `storage`.
-Defaults to all.
+**hardware_type** (*String*): Optional. Only return scripts for the given hardware type. Can be `node`, `cpu`, `memory`, or `storage`. Defaults to all.
 
-**include\_output** (*String*): Optional. Include the base64 encoded
-output from the script if any value for include\_output is given.
+**include_output** (*String*): Optional. Include the base64 encoded output from the script if any value for include_output is given.
 
-**filters** (*String*): Optional. A comma seperated list to show only
-results that ran with a script name, tag, or id.
+**filters** (*String*): Optional. A comma seperated list to show only results that ran with a script name, tag, or id.
 
 **Success**
 
@@ -26332,38 +25106,29 @@ results that ran with a script name, tag, or id.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``GET /MAAS/api/2.0/nodes/{system_id}/results/{id}/?op=download``</summary>
+</details> <details> <summary>`GET /MAAS/api/2.0/nodes/{system_id}/results/{id}/?op=download`</summary>
 
 ------------------------------------------------------------------------
 
-Download a compressed tar containing all results from the given
-system\_id with the given id.
+Download a compressed tar containing all results from the given system_id with the given id.
 
-"id" can either by the script set id, `current-commissioning`,
-`current-testing`, or `current-installation`.
+"id" can either by the script set id, `current-commissioning`, `current-testing`, or `current-installation`.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. The machine's system\_id.
+**{system_id}** (*String*): Required. The machine's system_id.
 
 **{id}** (*String*): Required. The script result id.
 
-**hardware\_type** (*String*): Optional. Only return scripts for the
-given hardware type. Can be `node`, `cpu`, `memory`, or `storage`.
-Defaults to all.
+**hardware_type** (*String*): Optional. Only return scripts for the given hardware type. Can be `node`, `cpu`, `memory`, or `storage`. Defaults to all.
 
-**filters** (*String*): Optional. A comma seperated list to show only
-results that ran with a script name or tag.
+**filters** (*String*): Optional. A comma seperated list to show only results that ran with a script name or tag.
 
-**output** (*String*): Optional. Can be either `combined`, `stdout`,
-`stderr`, or `all`. By default only the combined output is returned.
+**output** (*String*): Optional. Can be either `combined`, `stdout`, `stderr`, or `all`. By default only the combined output is returned.
 
-**filetype** (*String*): Optional. Filetype to output, can be `txt` or
-`tar.xz`.
+**filetype** (*String*): Optional. Filetype to output, can be `txt` or `tar.xz`.
 
 **Success**
 
@@ -26386,37 +25151,29 @@ results that ran with a script name or tag.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``PUT /MAAS/api/2.0/nodes/{system_id}/results/{id}/``</summary>
+</details> <details> <summary>`PUT /MAAS/api/2.0/nodes/{system_id}/results/{id}/`</summary>
 
 ------------------------------------------------------------------------
 
-Update a set of test results for a given system\_id and script id.
+Update a set of test results for a given system_id and script id.
 
-"id" can either be the script set id, `current-commissioning`,
-`current-testing`, or `current-installation`.
+"id" can either be the script set id, `current-commissioning`, `current-testing`, or `current-installation`.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. The machine's system\_id.
+**{system_id}** (*String*): Required. The machine's system_id.
 
 **{id}** (*String*): Required. The script result id.
 
-**hardware\_type** (*String*): Optional. Only return scripts for the
-given hardware type. Can be `node`, `cpu`, `memory`, or `storage`.
-Defaults to all.
+**hardware_type** (*String*): Optional. Only return scripts for the given hardware type. Can be `node`, `cpu`, `memory`, or `storage`. Defaults to all.
 
-**filters** (*String*): Optional. A comma seperated list to show only
-results that ran with a script name, tag, or id.
+**filters** (*String*): Optional. A comma seperated list to show only results that ran with a script name, tag, or id.
 
-**include\_output** (*String*): Optional. Include the base64 encoded
-output from the script if any value for include\_output is given.
+**include_output** (*String*): Optional. Include the base64 encoded output from the script if any value for include_output is given.
 
-**suppressed** (*Boolean*): Optional. Set whether or not this script
-result should be suppressed using 'true' or 'false'.
+**suppressed** (*Boolean*): Optional. Set whether or not this script result should be suppressed using 'true' or 'false'.
 
 **Success**
 
@@ -26988,37 +25745,30 @@ result should be suppressed using 'true' or 'false'.
 
 <p>&nbsp;</p>
 </details>
+
 ### Node Script Result
 
 Manage node script results.
 
-<details>
-  <summary>``GET /MAAS/api/2.0/nodes/{system_id}/results/``</summary>
+<details> <summary>`GET /MAAS/api/2.0/nodes/{system_id}/results/`</summary>
 
 ------------------------------------------------------------------------
 
-Return a list of script results grouped by run for the given system\_id.
+Return a list of script results grouped by run for the given system_id.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. The machine's system\_id.
+**{system_id}** (*String*): Required. The machine's system_id.
 
-**type** (*String*): Optional. Only return scripts with the given type.
-This can be `commissioning`, `testing`, or `installion`. Defaults to
-showing all.
+**type** (*String*): Optional. Only return scripts with the given type. This can be `commissioning`, `testing`, or `installion`. Defaults to showing all.
 
-**hardware\_type** (*String*): Optional. Only return scripts for the
-given hardware type. Can be `node`, `cpu`, `memory`, or `storage`.
-Defaults to all.
+**hardware_type** (*String*): Optional. Only return scripts for the given hardware type. Can be `node`, `cpu`, `memory`, or `storage`. Defaults to all.
 
-**include\_output** (*String*): Optional. Include base64 encoded output
-from the script. Note that any value of include\_output will include the
-encoded output from the script.
+**include_output** (*String*): Optional. Include base64 encoded output from the script. Note that any value of include_output will include the encoded output from the script.
 
-**filters** (*String*): Optional. A comma seperated list to show only
-results with a script name or tag.
+**filters** (*String*): Optional. A comma seperated list to show only results with a script name or tag.
 
 **Success**
 
@@ -27849,38 +26599,32 @@ results with a script name or tag.
 
 <p>&nbsp;</p>
 </details>
+
 ### Node Scripts
 
 Manage custom scripts.
 
 This functionality is only available to administrators.
 
-<details>
-  <summary>``GET /MAAS/api/2.0/scripts/``</summary>
+<details> <summary>`GET /MAAS/api/2.0/scripts/`</summary>
 
 ------------------------------------------------------------------------
 
 Return a list of stored scripts.
 
-Note that parameters should be passed in the URI. E.g.
-`/script/?type=testing`.
+Note that parameters should be passed in the URI. E.g. `/script/?type=testing`.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**type** (*String*): Optional. Only return scripts with the given type.
-This can be `testing` or `commissioning`. Defaults to showing both.
+**type** (*String*): Optional. Only return scripts with the given type. This can be `testing` or `commissioning`. Defaults to showing both.
 
-**hardware\_type** (*String*): Optional. Only return scripts for the
-given hardware type. Can be `node`, `cpu`, `memory`, or `storage`.
-Defaults to all.
+**hardware_type** (*String*): Optional. Only return scripts for the given hardware type. Can be `node`, `cpu`, `memory`, or `storage`. Defaults to all.
 
-**include\_script** (*String*): Optional. Include the base64- encoded
-script content.
+**include_script** (*String*): Optional. Include the base64- encoded script content.
 
-**filters** (*String*): Optional. A comma seperated list to show only
-results with a script name or tag.
+**filters** (*String*): Optional. A comma seperated list to show only results with a script name or tag.
 
 **Success**
 
@@ -28002,9 +26746,7 @@ results with a script name or tag.
     ]
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/scripts/``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/scripts/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -28018,48 +26760,29 @@ Create a new script.
 
 **title** (*String*): Optional. The title of the script.
 
-**description** (*String*): Optional. A description of what the script
-does.
+**description** (*String*): Optional. A description of what the script does.
 
-**tags** (*String*): Optional. A comma seperated list of tags for this
-script.
+**tags** (*String*): Optional. A comma seperated list of tags for this script.
 
-**type** (*String*): Optional. The script\_type defines when the script
-should be used: `testing` or `commissioning`. Defaults to `testing`.
+**type** (*String*): Optional. The script_type defines when the script should be used: `testing` or `commissioning`. Defaults to `testing`.
 
-**hardware\_type** (*String*): Optional. The hardware\_type defines what
-type of hardware the script is assoicated with. May be CPU, memory,
-storage, or node.
+**hardware_type** (*String*): Optional. The hardware_type defines what type of hardware the script is assoicated with. May be CPU, memory, storage, or node.
 
-**parallel** (*Int*): Optional. Whether the script may be run in
-parallel with other scripts. May be disabled to run by itself, instance
-to run along scripts with the same name, or any to run along any script.
-1 == True, 0 == False.
+**parallel** (*Int*): Optional. Whether the script may be run in parallel with other scripts. May be disabled to run by itself, instance to run along scripts with the same name, or any to run along any script. 1 == True, 0 == False.
 
-**timeout** (*Int*): Optional. How long the script is allowed to run
-before failing. 0 gives unlimited time, defaults to 0.
+**timeout** (*Int*): Optional. How long the script is allowed to run before failing. 0 gives unlimited time, defaults to 0.
 
-**destructive** (*Boolean*): Optional. Whether or not the script
-overwrites data on any drive on the running system. Destructive scripts
-can not be run on deployed systems. Defaults to false.
+**destructive** (*Boolean*): Optional. Whether or not the script overwrites data on any drive on the running system. Destructive scripts can not be run on deployed systems. Defaults to false.
 
-**script** (*String*): Optional. The content of the script to be
-uploaded in binary form. Note: this is not a normal parameter, but a
-file upload. Its filename is ignored; MAAS will know it by the name you
-pass to the request. Optionally you can ignore the name and script
-parameter in favor of uploading a single file as part of the request.
+**script** (*String*): Optional. The content of the script to be uploaded in binary form. Note: this is not a normal parameter, but a file upload. Its filename is ignored; MAAS will know it by the name you pass to the request. Optionally you can ignore the name and script parameter in favor of uploading a single file as part of the request.
 
 **comment** (*String*): Optional. A comment about what this change does.
 
-**for\_hardware** (*String*): Optional. A list of modalias, PCI IDs,
-and/or USB IDs the script will automatically run on. Must start with
-`modalias:`, `pci:`, or `usb:`.
+**for_hardware** (*String*): Optional. A list of modalias, PCI IDs, and/or USB IDs the script will automatically run on. Must start with `modalias:`, `pci:`, or `usb:`.
 
-**may\_reboot** (*Boolean*): Optional. Whether or not the script may
-reboot the system while running.
+**may_reboot** (*Boolean*): Optional. Whether or not the script may reboot the system while running.
 
-**recommission** (*String*): Optional. Whether builtin commissioning
-scripts should be rerun after successfully running this scripts.
+**recommission** (*String*): Optional. Whether builtin commissioning scripts should be rerun after successfully running this scripts.
 
 **Success**
 
@@ -28104,12 +26827,12 @@ scripts should be rerun after successfully running this scripts.
 
 <p>&nbsp;</p>
 </details>
+
 ### Nodes
 
 Manage the collection of all the nodes in the MAAS.
 
-<details>
-  <summary>``GET /MAAS/api/2.0/nodes/``</summary>
+<details> <summary>`GET /MAAS/api/2.0/nodes/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -28121,28 +26844,19 @@ Nodes are sorted by id (i.e. most recent last) and grouped by type.
 
 ------------------------------------------------------------------------
 
-**hostname** (*String*): Optional. Only nodes relating to the node with
-the matching hostname will be returned. This can be specified multiple
-times to see multiple nodes.
+**hostname** (*String*): Optional. Only nodes relating to the node with the matching hostname will be returned. This can be specified multiple times to see multiple nodes.
 
-**mac\_address** (*String*): Optional. Only nodes relating to the node
-owning the specified MAC address will be returned. This can be specified
-multiple times to see multiple nodes.
+**mac_address** (*String*): Optional. Only nodes relating to the node owning the specified MAC address will be returned. This can be specified multiple times to see multiple nodes.
 
-**id** (*String*): Optional. Only nodes relating to the nodes with
-matching system ids will be returned.
+**id** (*String*): Optional. Only nodes relating to the nodes with matching system ids will be returned.
 
-**domain** (*String*): Optional. Only nodes relating to the nodes in the
-domain will be returned.
+**domain** (*String*): Optional. Only nodes relating to the nodes in the domain will be returned.
 
-**zone** (*String*): Optional. Only nodes relating to the nodes in the
-zone will be returned.
+**zone** (*String*): Optional. Only nodes relating to the nodes in the zone will be returned.
 
-**pool** (*String*): Optional. Only nodes belonging to the pool will be
-returned.
+**pool** (*String*): Optional. Only nodes belonging to the pool will be returned.
 
-**agent\_name** (*String*): Optional. Only nodes relating to the nodes
-with matching agent names will be returned.
+**agent_name** (*String*): Optional. Only nodes relating to the nodes with matching agent names will be returned.
 
 **Success**
 
@@ -28436,21 +27150,17 @@ with matching agent names will be returned.
     ]
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``GET /MAAS/api/2.0/nodes/?op=is_registered``</summary>
+</details> <details> <summary>`GET /MAAS/api/2.0/nodes/?op=is_registered`</summary>
 
 ------------------------------------------------------------------------
 
-Returns whether or not the given MAC address is registered within this
-MAAS (and attached to a non-retired node).
+Returns whether or not the given MAC address is registered within this MAAS (and attached to a non-retired node).
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**mac\_address** (*URL String*): Required. The MAC address to be
-checked.
+**mac_address** (*URL String*): Required. The MAC address to be checked.
 
 **Success**
 
@@ -28473,9 +27183,7 @@ checked.
     No provided mac_address!
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/nodes/?op=set_zone``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/nodes/?op=set_zone`</summary>
 
 ------------------------------------------------------------------------
 
@@ -28511,12 +27219,12 @@ Assigns a given node to a given zone.
 
 <p>&nbsp;</p>
 </details>
+
 ### Notification
 
 Manage an individual notification.
 
-<details>
-  <summary>``DELETE /MAAS/api/2.0/notifications/{id}/``</summary>
+<details> <summary>`DELETE /MAAS/api/2.0/notifications/{id}/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -28545,9 +27253,7 @@ Delete a notification with a given id.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``GET /MAAS/api/2.0/notifications/{id}/``</summary>
+</details> <details> <summary>`GET /MAAS/api/2.0/notifications/{id}/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -28590,9 +27296,7 @@ Read a notification with the given id.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/notifications/{id}/?op=dismiss``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/notifications/{id}/?op=dismiss`</summary>
 
 ------------------------------------------------------------------------
 
@@ -28627,9 +27331,7 @@ It is safe to call multiple times for the same notification.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``PUT /MAAS/api/2.0/notifications/{id}/``</summary>
+</details> <details> <summary>`PUT /MAAS/api/2.0/notifications/{id}/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -28637,8 +27339,7 @@ Update a notification with a given id.
 
 This is available to admins *only*.
 
-Note: One of the `user`, `users` or `admins` parameters must be set to
-True for the notification to be visible to anyone.
+Note: One of the `user`, `users` or `admins` parameters must be set to True for the notification to be visible to anyone.
 
 **Parameters**
 
@@ -28646,27 +27347,19 @@ True for the notification to be visible to anyone.
 
 **{id}** (*Int*): Required. The notification id.
 
-**message** (*String*): Required. The message for this notification. May
-contain basic HTML, such as formatting. This string will be sanitised
-before display so that it doesn't break MAAS HTML.
+**message** (*String*): Required. The message for this notification. May contain basic HTML, such as formatting. This string will be sanitised before display so that it doesn't break MAAS HTML.
 
-**context** (*String*): Optional. Optional JSON context. The root object
-*must* be an object (i.e. a mapping). The values herein can be
-referenced by `message` with Python's "format" (not %) codes.
+**context** (*String*): Optional. Optional JSON context. The root object *must* be an object (i.e. a mapping). The values herein can be referenced by `message` with Python's "format" (not %) codes.
 
-**category** (*String*): Optional. Choose from: `error`, `warning`,
-`success`, or `info`. Defaults to `info`.
+**category** (*String*): Optional. Choose from: `error`, `warning`, `success`, or `info`. Defaults to `info`.
 
 **ident** (*String*): Optional. Unique identifier for this notification.
 
-**user** (*String*): Optional. User ID this notification is intended
-for. By default it will not be targeted to any individual user.
+**user** (*String*): Optional. User ID this notification is intended for. By default it will not be targeted to any individual user.
 
-**users** (*Boolean*): Optional. True to notify all users, defaults to
-false, i.e. not targeted to all users.
+**users** (*Boolean*): Optional. True to notify all users, defaults to false, i.e. not targeted to all users.
 
-**admins** (*Boolean*): Optional. True to notify all admins, defaults to
-false, i.e. not targeted to all admins.
+**admins** (*Boolean*): Optional. True to notify all admins, defaults to false, i.e. not targeted to all admins.
 
 **Success**
 
@@ -28700,12 +27393,12 @@ false, i.e. not targeted to all admins.
 
 <p>&nbsp;</p>
 </details>
+
 ### Notifications
 
 Manage the collection of all the notifications in MAAS.
 
-<details>
-  <summary>``GET /MAAS/api/2.0/notifications/``</summary>
+<details> <summary>`GET /MAAS/api/2.0/notifications/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -28820,9 +27513,7 @@ Notifications that have been dismissed are *not* returned.
     ]
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/notifications/``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/notifications/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -28830,34 +27521,25 @@ Create a new notification.
 
 This is available to admins *only*.
 
-Note: One of the `user`, `users` or `admins` parameters must be set to
-True for the notification to be visible to anyone.
+Note: One of the `user`, `users` or `admins` parameters must be set to True for the notification to be visible to anyone.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**message** (*String*): Required. The message for this notification. May
-contain basic HTML, such as formatting. This string will be sanitised
-before display so that it doesn't break MAAS HTML.
+**message** (*String*): Required. The message for this notification. May contain basic HTML, such as formatting. This string will be sanitised before display so that it doesn't break MAAS HTML.
 
-**context** (*String*): Optional. Optional JSON context. The root object
-*must* be an object (i.e. a mapping). The values herein can be
-referenced by `message` with Python's "format" (not %) codes.
+**context** (*String*): Optional. Optional JSON context. The root object *must* be an object (i.e. a mapping). The values herein can be referenced by `message` with Python's "format" (not %) codes.
 
-**category** (*String*): Optional. Choose from: `error`, `warning`,
-`success`, or `info`. Defaults to `info`.
+**category** (*String*): Optional. Choose from: `error`, `warning`, `success`, or `info`. Defaults to `info`.
 
 **ident** (*String*): Optional. Unique identifier for this notification.
 
-**user** (*String*): Optional. User ID this notification is intended
-for. By default it will not be targeted to any individual user.
+**user** (*String*): Optional. User ID this notification is intended for. By default it will not be targeted to any individual user.
 
-**users** (*Boolean*): Optional. True to notify all users, defaults to
-false, i.e. not targeted to all users.
+**users** (*Boolean*): Optional. True to notify all users, defaults to false, i.e. not targeted to all users.
 
-**admins** (*Boolean*): Optional. True to notify all admins, defaults to
-false, i.e. not targeted to all admins.
+**admins** (*Boolean*): Optional. True to notify all admins, defaults to false, i.e. not targeted to all admins.
 
 **Success**
 
@@ -28881,12 +27563,12 @@ false, i.e. not targeted to all admins.
 
 <p>&nbsp;</p>
 </details>
+
 ### Package Repositories
 
 Manage the collection of all Package Repositories in MAAS.
 
-<details>
-  <summary>``GET /MAAS/api/2.0/package-repositories/``</summary>
+<details> <summary>`GET /MAAS/api/2.0/package-repositories/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -28921,9 +27603,7 @@ List all available package repositories.
     }
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/package-repositories/``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/package-repositories/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -28937,25 +27617,19 @@ Create a new package repository.
 
 **url** (*String*): Required. The url of the package repository.
 
-**distributions** (*String*): Optional. Which package distributions to
-include.
+**distributions** (*String*): Optional. Which package distributions to include.
 
-**disabled\_pockets** (*String*): Optional. The list of pockets to
-disable.
+**disabled_pockets** (*String*): Optional. The list of pockets to disable.
 
-**disabled\_components** (*String*): Optional. The list of components to
-disable. Only applicable to the default Ubuntu repositories.
+**disabled_components** (*String*): Optional. The list of components to disable. Only applicable to the default Ubuntu repositories.
 
-**components** (*String*): Optional. The list of components to enable.
-Only applicable to custom repositories.
+**components** (*String*): Optional. The list of components to enable. Only applicable to custom repositories.
 
 **arches** (*String*): Optional. The list of supported architectures.
 
-**key** (*String*): Optional. The authentication key to use with the
-repository.
+**key** (*String*): Optional. The authentication key to use with the repository.
 
-**enabled** (*Boolean*): Optional. Whether or not the repository is
-enabled.
+**enabled** (*Boolean*): Optional. Whether or not the repository is enabled.
 
 **Success**
 
@@ -28987,14 +27661,14 @@ enabled.
 
 <p>&nbsp;</p>
 </details>
+
 ### Package Repository
 
 Manage an individual package repository.
 
 A package repository is identified by its id.
 
-<details>
-  <summary>``DELETE /MAAS/api/2.0/package-repositories/{id}/``</summary>
+<details> <summary>`DELETE /MAAS/api/2.0/package-repositories/{id}/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -29023,9 +27697,7 @@ Delete a package repository with the given id.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``GET /MAAS/api/2.0/package-repositories/{id}/``</summary>
+</details> <details> <summary>`GET /MAAS/api/2.0/package-repositories/{id}/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -29076,9 +27748,7 @@ Read a package repository with the given id.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``PUT /MAAS/api/2.0/package-repositories/{id}/``</summary>
+</details> <details> <summary>`PUT /MAAS/api/2.0/package-repositories/{id}/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -29094,27 +27764,21 @@ Update the package repository with the given id.
 
 **url** (*String*): Optional. The url of the package repository.
 
-**distributions** (*String*): Optional. Which package distributions to
-include.
+**distributions** (*String*): Optional. Which package distributions to include.
 
-**disabled\_pockets** (*String*): Optional. The list of pockets to
-disable.
+**disabled_pockets** (*String*): Optional. The list of pockets to disable.
 
-**disabled\_components** (*String*): Optional. The list of components to
-disable. Only applicable to the default Ubuntu repositories.
+**disabled_components** (*String*): Optional. The list of components to disable. Only applicable to the default Ubuntu repositories.
 
-**disable\_sources** (*String*): Optional. Disable deb-src lines.
+**disable_sources** (*String*): Optional. Disable deb-src lines.
 
-**components** (*String*): Optional. The list of components to enable.
-Only applicable to custom repositories.
+**components** (*String*): Optional. The list of components to enable. Only applicable to custom repositories.
 
 **arches** (*String*): Optional. The list of supported architectures.
 
-**key** (*String*): Optional. The authentication key to use with the
-repository.
+**key** (*String*): Optional. The authentication key to use with the repository.
 
-**enabled** (*Boolean*): Optional. Whether or not the repository is
-enabled.
+**enabled** (*Boolean*): Optional. Whether or not the repository is enabled.
 
 **Success**
 
@@ -29156,25 +27820,24 @@ enabled.
 
 <p>&nbsp;</p>
 </details>
+
 ### Partitions
 
 Manage partition on a block device.
 
-<details>
-  <summary>``DELETE /MAAS/api/2.0/nodes/{system_id}/blockdevices/{device_id}/partition/{id}``</summary>
+<details> <summary>`DELETE /MAAS/api/2.0/nodes/{system_id}/blockdevices/{device_id}/partition/{id}`</summary>
 
 ------------------------------------------------------------------------
 
-Delete the partition from machine system\_id and device device\_id with
-the given partition id.
+Delete the partition from machine system_id and device device_id with the given partition id.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. The system\_id.
+**{system_id}** (*String*): Required. The system_id.
 
-**{device\_id}** (*Int*): Required. The block device\_id.
+**{device_id}** (*Int*): Required. The block device_id.
 
 **{id}** (*Int*): Required. The partition id.
 
@@ -29195,22 +27858,19 @@ the given partition id.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``GET /MAAS/api/2.0/nodes/{system_id}/blockdevices/{device_id}/partition/{id}``</summary>
+</details> <details> <summary>`GET /MAAS/api/2.0/nodes/{system_id}/blockdevices/{device_id}/partition/{id}`</summary>
 
 ------------------------------------------------------------------------
 
-Read the partition from machine system\_id and device device\_id with
-the given partition id.
+Read the partition from machine system_id and device device_id with the given partition id.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. The system\_id.
+**{system_id}** (*String*): Required. The system_id.
 
-**{device\_id}** (*Int*): Required. The block device\_id.
+**{device_id}** (*Int*): Required. The block device_id.
 
 **{id}** (*Int*): Required. The partition id.
 
@@ -29281,22 +27941,19 @@ the given partition id.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/nodes/{system_id}/blockdevices/{device_id}/partition/{id}?op=add_tag``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/nodes/{system_id}/blockdevices/{device_id}/partition/{id}?op=add_tag`</summary>
 
 ------------------------------------------------------------------------
 
-Add a tag to a partition on machine system\_id, device device\_id and
-partition id.
+Add a tag to a partition on machine system_id, device device_id and partition id.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. The system\_id.
+**{system_id}** (*String*): Required. The system_id.
 
-**{device\_id}** (*Int*): Required. The block device\_id.
+**{device_id}** (*Int*): Required. The block device_id.
 
 **{id}** (*Int*): Required. The partition id.
 
@@ -29348,22 +28005,19 @@ partition id.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/nodes/{system_id}/blockdevices/{device_id}/partition/{id}?op=format``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/nodes/{system_id}/blockdevices/{device_id}/partition/{id}?op=format`</summary>
 
 ------------------------------------------------------------------------
 
-Format the partition on machine system\_id and device device\_id with
-the given partition id.
+Format the partition on machine system_id and device device_id with the given partition id.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. The system\_id.
+**{system_id}** (*String*): Required. The system_id.
 
-**{device\_id}** (*Int*): Required. The block device\_id.
+**{device_id}** (*Int*): Required. The block device_id.
 
 **{id}** (*Int*): Required. The partition id.
 
@@ -29417,28 +28071,25 @@ the given partition id.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/nodes/{system_id}/blockdevices/{device_id}/partition/{id}?op=mount``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/nodes/{system_id}/blockdevices/{device_id}/partition/{id}?op=mount`</summary>
 
 ------------------------------------------------------------------------
 
-Mount a filesystem on machine system\_id, device device\_id and
-partition id.
+Mount a filesystem on machine system_id, device device_id and partition id.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. The system\_id.
+**{system_id}** (*String*): Required. The system_id.
 
-**{device\_id}** (*Int*): Required. The block device\_id.
+**{device_id}** (*Int*): Required. The block device_id.
 
 **{id}** (*Int*): Required. The partition id.
 
-**mount\_point** (*String*): Required. Path on the filesystem to mount.
+**mount_point** (*String*): Required. Path on the filesystem to mount.
 
-**mount\_options** (*String*): Optional. Options to pass to mount(8).
+**mount_options** (*String*): Optional. Options to pass to mount(8).
 
 **Success**
 
@@ -29484,22 +28135,19 @@ partition id.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/nodes/{system_id}/blockdevices/{device_id}/partition/{id}?op=remove_tag``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/nodes/{system_id}/blockdevices/{device_id}/partition/{id}?op=remove_tag`</summary>
 
 ------------------------------------------------------------------------
 
-Remove a tag from a partition on machine system\_id, device device\_id
-and partition id.
+Remove a tag from a partition on machine system_id, device device_id and partition id.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. The system\_id.
+**{system_id}** (*String*): Required. The system_id.
 
-**{device\_id}** (*Int*): Required. The block device\_id.
+**{device_id}** (*Int*): Required. The block device_id.
 
 **{id}** (*Int*): Required. The partition id.
 
@@ -29549,22 +28197,19 @@ and partition id.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/nodes/{system_id}/blockdevices/{device_id}/partition/{id}?op=unformat``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/nodes/{system_id}/blockdevices/{device_id}/partition/{id}?op=unformat`</summary>
 
 ------------------------------------------------------------------------
 
-Unformat the partition on machine system\_id and device device\_id with
-the given partition id.
+Unformat the partition on machine system_id and device device_id with the given partition id.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. The system\_id.
+**{system_id}** (*String*): Required. The system_id.
 
-**{device\_id}** (*Int*): Required. The block device\_id.
+**{device_id}** (*Int*): Required. The block device_id.
 
 **{id}** (*Int*): Required. The partition id.
 
@@ -29602,22 +28247,19 @@ the given partition id.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/nodes/{system_id}/blockdevices/{device_id}/partition/{id}?op=unmount``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/nodes/{system_id}/blockdevices/{device_id}/partition/{id}?op=unmount`</summary>
 
 ------------------------------------------------------------------------
 
-Unmount a filesystem on machine system\_id, device device\_id and
-partition id.
+Unmount a filesystem on machine system_id, device device_id and partition id.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. The system\_id.
+**{system_id}** (*String*): Required. The system_id.
 
-**{device\_id}** (*Int*): Required. The block device\_id.
+**{device_id}** (*Int*): Required. The block device_id.
 
 **{id}** (*Int*): Required. The partition id.
 
@@ -29660,8 +28302,7 @@ partition id.
 
 *HTTP Status Code* : 403
 
-*Content* : The user does not have permissions to unmount the
-filesystem.
+*Content* : The user does not have permissions to unmount the filesystem.
 
 *HTTP Status Code* : 404
 
@@ -29671,24 +28312,24 @@ filesystem.
 
 <p>&nbsp;</p>
 </details>
+
 ### Partitions
 
 Manage partitions on a block device.
 
-<details>
-  <summary>``GET /MAAS/api/2.0/nodes/{system_id}/blockdevices/{device_id}/partitions/``</summary>
+<details> <summary>`GET /MAAS/api/2.0/nodes/{system_id}/blockdevices/{device_id}/partitions/`</summary>
 
 ------------------------------------------------------------------------
 
-List partitions on a device with the given system\_id and device\_id.
+List partitions on a device with the given system_id and device_id.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. The system\_id.
+**{system_id}** (*String*): Required. The system_id.
 
-**{device\_id}** (*Int*): Required. The block device\_id.
+**{device_id}** (*Int*): Required. The block device_id.
 
 **Success**
 
@@ -29757,9 +28398,7 @@ List partitions on a device with the given system\_id and device\_id.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/nodes/{system_id}/blockdevices/{device_id}/partitions/``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/nodes/{system_id}/blockdevices/{device_id}/partitions/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -29769,18 +28408,15 @@ Create a partition on a block device.
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. The system\_id.
+**{system_id}** (*String*): Required. The system_id.
 
-**{device\_id}** (*Int*): Required. The block device\_id.
+**{device_id}** (*Int*): Required. The block device_id.
 
-**size** (*Int*): Optional. The size of the partition. If not specified,
-all available space will be used.
+**size** (*Int*): Optional. The size of the partition. If not specified, all available space will be used.
 
-**uuid** (*String*): Optional. UUID for the partition. Only used if the
-partition table type for the block device is GPT.
+**uuid** (*String*): Optional. UUID for the partition. Only used if the partition table type for the block device is GPT.
 
-**bootable** (*Boolean*): Optional. If the partition should be marked
-bootable.
+**bootable** (*Boolean*): Optional. If the partition should be marked bootable.
 
 **Success**
 
@@ -29817,14 +28453,14 @@ bootable.
 
 <p>&nbsp;</p>
 </details>
+
 ### Pod
 
 Manage an individual pod.
 
 A pod is identified by its id.
 
-<details>
-  <summary>``DELETE /MAAS/api/2.0/pods/{id}/``</summary>
+<details> <summary>`DELETE /MAAS/api/2.0/pods/{id}/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -29860,15 +28496,14 @@ Deletes a pod with the given pod ID.
 
 <p>&nbsp;</p>
 </details>
+
 #### `GET /MAAS/api/2.0/pods/{id}/`
 
-<details>
-  <summary>``GET /MAAS/api/2.0/pods/{id}/?op=parameters``</summary>
+<details> <summary>`GET /MAAS/api/2.0/pods/{id}/?op=parameters`</summary>
 
 ------------------------------------------------------------------------
 
-This returns a pod's configuration parameters. For some types of pod,
-this will include private information such as passwords and secret keys.
+This returns a pod's configuration parameters. For some types of pod, this will include private information such as passwords and secret keys.
 
 Note: This method is reserved for admin users.
 
@@ -29907,9 +28542,7 @@ Note: This method is reserved for admin users.
     This method is reserved for admin users.
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/pods/{id}/?op=add_tag``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/pods/{id}/?op=add_tag`</summary>
 
 ------------------------------------------------------------------------
 
@@ -30029,9 +28662,7 @@ Adds a tag to a given pod.
     This method is reserved for admin users.
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/pods/{id}/?op=compose``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/pods/{id}/?op=compose`</summary>
 
 ------------------------------------------------------------------------
 
@@ -30043,26 +28674,17 @@ Compose a new machine from a pod.
 
 **cores** (*Int*): Optional. The minimum number of CPU cores.
 
-**memory** (*Int*): Optional. The minimum amount of memory, specified in
-MiB (e.g. 2 MiB == 2\*1024\*1024).
+**memory** (*Int*): Optional. The minimum amount of memory, specified in MiB (e.g. 2 MiB == 2*1024*1024).
 
 **cores** (*Int*): Optional. The minimum number of CPU cores.
 
-**cpu\_speed** (*Int*): Optional. The minimum CPU speed, specified in
-MHz.
+**cpu_speed** (*Int*): Optional. The minimum CPU speed, specified in MHz.
 
-**architecture** (*String*): Optional. The architecture of the new
-machine (e.g. amd64). This must be an architecture the pod supports.
+**architecture** (*String*): Optional. The architecture of the new machine (e.g. amd64). This must be an architecture the pod supports.
 
-**storage** (*String*): Optional. A list of storage constraint
-identifiers in the form
-`label:size(tag,tag,...), label:size(tag,tag,...)`. For more information
-please see the CLI pod management page of the official MAAS
-documentation.
+**storage** (*String*): Optional. A list of storage constraint identifiers in the form `label:size(tag,tag,...), label:size(tag,tag,...)`. For more information please see the CLI pod management page of the official MAAS documentation.
 
-**interfaces** (*String*): Optional. A labeled constraint map
-associating constraint labels with desired interface properties. MAAS
-will assign interfaces that match the given interface properties.
+**interfaces** (*String*): Optional. A labeled constraint map associating constraint labels with desired interface properties. MAAS will assign interfaces that match the given interface properties.
 
 Format: `label:key=value,key=value,...`
 
@@ -30070,38 +28692,26 @@ Keys:
 
 -   `id`: Matches an interface with the specific id
 -   `fabric`: Matches an interface attached to the specified fabric.
--   `fabric_class`: Matches an interface attached to a fabric with the
-    specified class.
--   `ip`: Matches an interface whose VLAN is on the subnet implied by
-    the given IP address, and allocates the specified IP address for the
-    machine on that interface (if it is available).
--   `mode`: Matches an interface with the specified mode. (Currently,
-    the only supported mode is "unconfigured".)
--   `name`: Matches an interface with the specified name. (For example,
-    "eth0".)
--   `hostname`: Matches an interface attached to the node with the
-    specified hostname.
+-   `fabric_class`: Matches an interface attached to a fabric with the specified class.
+-   `ip`: Matches an interface whose VLAN is on the subnet implied by the given IP address, and allocates the specified IP address for the machine on that interface (if it is available).
+-   `mode`: Matches an interface with the specified mode. (Currently, the only supported mode is "unconfigured".)
+-   `name`: Matches an interface with the specified name. (For example, "eth0".)
+-   `hostname`: Matches an interface attached to the node with the specified hostname.
 -   `subnet`: Matches an interface attached to the specified subnet.
 -   `space`: Matches an interface attached to the specified space.
--   `subnet_cidr`: Matches an interface attached to the specified subnet
-    CIDR. (For example, "192.168.0.0/24".)
--   `type`: Matches an interface of the specified type. (Valid types:
-    "physical", "vlan", "bond", "bridge", or "unknown".)
+-   `subnet_cidr`: Matches an interface attached to the specified subnet CIDR. (For example, "192.168.0.0/24".)
+-   `type`: Matches an interface of the specified type. (Valid types: "physical", "vlan", "bond", "bridge", or "unknown".)
 -   `vlan`: Matches an interface on the specified VLAN.
 -   `vid`: Matches an interface on a VLAN with the specified VID.
 -   `tag`: Matches an interface tagged with the specified tag.
 
-**hostname** (*String*): Optional. The hostname of the newly composed
-machine.
+**hostname** (*String*): Optional. The hostname of the newly composed machine.
 
-**domain** (*Int*): Optional. The ID of the domain in which to put the
-newly composed machine.
+**domain** (*Int*): Optional. The ID of the domain in which to put the newly composed machine.
 
-**zone** (*Int*): Optional. The ID of the zone in which to put the newly
-composed machine.
+**zone** (*Int*): Optional. The ID of the zone in which to put the newly composed machine.
 
-**pool** (*Int*): Optional. The ID of the pool in which to put the newly
-composed machine.
+**pool** (*Int*): Optional. The ID of the pool in which to put the newly composed machine.
 
 **Success**
 
@@ -30133,14 +28743,11 @@ composed machine.
     This method is reserved for admin users.
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/pods/{id}/?op=refresh``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/pods/{id}/?op=refresh`</summary>
 
 ------------------------------------------------------------------------
 
-Performs pod discovery and updates all discovered information and
-discovered machines.
+Performs pod discovery and updates all discovered information and discovered machines.
 
 **Parameters**
 
@@ -30236,9 +28843,7 @@ discovered machines.
     This method is reserved for admin users.
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/pods/{id}/?op=remove_tag``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/pods/{id}/?op=remove_tag`</summary>
 
 ------------------------------------------------------------------------
 
@@ -30356,16 +28961,13 @@ Removes a given tag from a pod.
     This method is reserved for admin users.
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``PUT /MAAS/api/2.0/pods/{id}/``</summary>
+</details> <details> <summary>`PUT /MAAS/api/2.0/pods/{id}/`</summary>
 
 ------------------------------------------------------------------------
 
 Update a specific pod by ID.
 
-Note: A pod's 'type' cannot be updated. The pod must be deleted and
-re-added to change the type.
+Note: A pod's 'type' cannot be updated. The pod must be deleted and re-added to change the type.
 
 **Parameters**
 
@@ -30375,32 +28977,23 @@ re-added to change the type.
 
 **name** (*String*): Optional. The pod's name.
 
-**pool** (*String*): Optional. The name of the resource pool associated
-with this pod -- composed machines will be assigned to this resource
-pool by default.
+**pool** (*String*): Optional. The name of the resource pool associated with this pod -- composed machines will be assigned to this resource pool by default.
 
-**cpu\_over\_commit\_ratio** (*Int*): Optional. CPU overcommit ratio
-(0-10)
+**cpu_over_commit_ratio** (*Int*): Optional. CPU overcommit ratio (0-10)
 
-**memory\_over\_commit\_ratio** (*Int*): Optional. CPU overcommit ratio
-(0-10)
+**memory_over_commit_ratio** (*Int*): Optional. CPU overcommit ratio (0-10)
 
-**default\_storage\_pool** (*String*): Optional. Default KVM storage
-pool to use when the pod has storage pools.
+**default_storage_pool** (*String*): Optional. Default KVM storage pool to use when the pod has storage pools.
 
-**power\_address** (*String*): Optional. Address for power control of
-the pod.
+**power_address** (*String*): Optional. Address for power control of the pod.
 
-**power\_pass** (*String*): Optional. Password for access to power
-control of the pod.
+**power_pass** (*String*): Optional. Password for access to power control of the pod.
 
 **zone** (*String*): Optional. The pod's zone.
 
-**default\_macvlan\_mode** (*String*): Optional. Default macvlan mode
-for pods that use it: bridge, passthru, private, vepa.
+**default_macvlan_mode** (*String*): Optional. Default macvlan mode for pods that use it: bridge, passthru, private, vepa.
 
-**tags** (*String*): Optional. Tag or tags (command separated)
-associated with the pod.
+**tags** (*String*): Optional. Tag or tags (command separated) associated with the pod.
 
 **Success**
 
@@ -30481,17 +29074,16 @@ associated with the pod.
 
 *HTTP Status Code* : 404 -- The pod's ID was not found.
 
-*HTTP Status Code* : 403 -- The current user does not have permission to
-update the pod.
+*HTTP Status Code* : 403 -- The current user does not have permission to update the pod.
 
 <p>&nbsp;</p>
 </details>
+
 ### Pods
 
 Manage the collection of all the pod in the MAAS.
 
-<details>
-  <summary>``GET /MAAS/api/2.0/pods/``</summary>
+<details> <summary>`GET /MAAS/api/2.0/pods/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -30587,9 +29179,7 @@ Get a listing of all pods.
     ]
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/pods/``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/pods/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -30599,31 +29189,21 @@ Create or discover a new pod.
 
 ------------------------------------------------------------------------
 
-**type** (*String*): Required. The type of pod to create: `rsd` or
-`virsh`.
+**type** (*String*): Required. The type of pod to create: `rsd` or `virsh`.
 
-**power\_address** (*String*): Required. Address that gives MAAS access
-to the pod's power control. For example:
-`qemu+ssh://172.16.99.2/system`.
+**power_address** (*String*): Required. Address that gives MAAS access to the pod's power control. For example: `qemu+ssh://172.16.99.2/system`.
 
-**power\_user** (*String*): Required. Username to use for power control
-of the pod. Required for `rsd` pods or `virsh` pods that do not have SSH
-set up for public-key authentication.
+**power_user** (*String*): Required. Username to use for power control of the pod. Required for `rsd` pods or `virsh` pods that do not have SSH set up for public-key authentication.
 
-**power\_pass** (*String*): Required. Password to use for power control
-of the pod. Required for `rsd` pods or `virsh` pods that do not have SSH
-set up for public-key authentication.
+**power_pass** (*String*): Required. Password to use for power control of the pod. Required for `rsd` pods or `virsh` pods that do not have SSH set up for public-key authentication.
 
 **name** (*String*): Optional. The new pod's name.
 
 **zone** (*String*): Optional. The new pod's zone.
 
-**pool** (*String*): Optional. The name of the resource pool the new pod
-will belong to. Machines composed from this pod will be assigned to this
-resource pool by default.
+**pool** (*String*): Optional. The name of the resource pool the new pod will belong to. Machines composed from this pod will be assigned to this resource pool by default.
 
-**tags** (*String*): Optional. A tag or list of tags ( comma delimited)
-to assign to the new pod.
+**tags** (*String*): Optional. A tag or list of tags ( comma delimited) to assign to the new pod.
 
 **Success**
 
@@ -30722,35 +29302,28 @@ to assign to the new pod.
 
 <p>&nbsp;</p>
 </details>
+
 ### RackController
 
 Manage an individual rack controller.
 
-The rack controller is identified by its system\_id.
+The rack controller is identified by its system_id.
 
-<details>
-  <summary>``DELETE /MAAS/api/2.0/rackcontrollers/{system_id}/``</summary>
+<details> <summary>`DELETE /MAAS/api/2.0/rackcontrollers/{system_id}/`</summary>
 
 ------------------------------------------------------------------------
 
-Deletes a rack controller with the given system\_id. A rack controller
-cannot be deleted if it is set to primary\_rack on a VLAN and another
-rack controller cannot be used to provide DHCP for said VLAN. Use force
-to override this behavior.
+Deletes a rack controller with the given system_id. A rack controller cannot be deleted if it is set to primary_rack on a VLAN and another rack controller cannot be used to provide DHCP for said VLAN. Use force to override this behavior.
 
-Using force will also allow deleting a rack controller that is hosting
-pod virtual machines. The pod will also be deleted.
+Using force will also allow deleting a rack controller that is hosting pod virtual machines. The pod will also be deleted.
 
-Rack controllers that are also region controllers will be converted to a
-region controller (and hosted pods will not be affected).
+Rack controllers that are also region controllers will be converted to a region controller (and hosted pods will not be affected).
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**force** (*Boolean*): Optional. Always delete the rack controller even
-if it is the primary\_rack on a VLAN and another rack controller cannot
-provide DHCP on that VLAN. This will disable DHCP on those VLANs.
+**force** (*Boolean*): Optional. Always delete the rack controller even if it is the primary_rack on a VLAN and another rack controller cannot provide DHCP on that VLAN. This will disable DHCP on those VLANs.
 
 **Success**
 
@@ -30770,29 +29343,24 @@ provide DHCP on that VLAN. This will disable DHCP on those VLANs.
 
 *HTTP Status Code* : 403
 
-*Content* : The user does not have permssions to delete the rack
-controller.
+*Content* : The user does not have permssions to delete the rack controller.
 
 *HTTP Status Code* : 400
 
-*Content* : Unable to delete 'maas-run'; it is currently set as a
-primary rack controller on VLANs fabric-0.untagged and no other rack
-controller can provide DHCP.
+*Content* : Unable to delete 'maas-run'; it is currently set as a primary rack controller on VLANs fabric-0.untagged and no other rack controller can provide DHCP.
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``GET /MAAS/api/2.0/rackcontrollers/{system_id}/``</summary>
+</details> <details> <summary>`GET /MAAS/api/2.0/rackcontrollers/{system_id}/`</summary>
 
 ------------------------------------------------------------------------
 
-Reads a node with the given system\_id.
+Reads a node with the given system_id.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. A node's system\_id.
+**{system_id}** (*String*): Required. A node's system_id.
 
 **Success**
 
@@ -31257,28 +29825,21 @@ Reads a node with the given system\_id.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``GET /MAAS/api/2.0/rackcontrollers/{system_id}/?op=details``</summary>
+</details> <details> <summary>`GET /MAAS/api/2.0/rackcontrollers/{system_id}/?op=details`</summary>
 
 ------------------------------------------------------------------------
 
 Returns system details -- for example, LLDP and `lshw` XML dumps.
 
-Returns a `{detail_type: xml, ...}` map, where `detail_type` is
-something like "lldp" or "lshw".
+Returns a `{detail_type: xml, ...}` map, where `detail_type` is something like "lldp" or "lshw".
 
-Note that this is returned as BSON and not JSON. This is for efficiency,
-but mainly because JSON can't do binary content without applying
-additional encoding like base-64. The example output below is
-represented in ASCII using `bsondump example.bson` and is for
-demonstrative purposes.
+Note that this is returned as BSON and not JSON. This is for efficiency, but mainly because JSON can't do binary content without applying additional encoding like base-64. The example output below is represented in ASCII using `bsondump example.bson` and is for demonstrative purposes.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. The node's system\_id.
+**{system_id}** (*String*): Required. The node's system_id.
 
 **Success**
 
@@ -31310,21 +29871,17 @@ demonstrative purposes.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``GET /MAAS/api/2.0/rackcontrollers/{system_id}/?op=list_boot_images``</summary>
+</details> <details> <summary>`GET /MAAS/api/2.0/rackcontrollers/{system_id}/?op=list_boot_images`</summary>
 
 ------------------------------------------------------------------------
 
-Lists all available boot images for a given rack controller system\_id
-and whether they are in sync with the region controller.
+Lists all available boot images for a given rack controller system_id and whether they are in sync with the region controller.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. The rack controller system\_id
-for which you want to list boot images.
+**{system_id}** (*String*): Required. The rack controller system_id for which you want to list boot images.
 
 **Error**
 
@@ -31337,18 +29894,13 @@ for which you want to list boot images.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``GET /MAAS/api/2.0/rackcontrollers/{system_id}/?op=power_parameters``</summary>
+</details> <details> <summary>`GET /MAAS/api/2.0/rackcontrollers/{system_id}/?op=power_parameters`</summary>
 
 ------------------------------------------------------------------------
 
-Gets power parameters for a given system\_id, if any. For some types of
-power control this will include private information such as passwords
-and secret keys.
+Gets power parameters for a given system_id, if any. For some types of power control this will include private information such as passwords and secret keys.
 
-Note that this method is reserved for admin users and returns a 403 if
-the user is not one.
+Note that this method is reserved for admin users and returns a 403 if the user is not one.
 
 **Success**
 
@@ -31373,23 +29925,17 @@ the user is not one.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``GET /MAAS/api/2.0/rackcontrollers/{system_id}/?op=query_power_state``</summary>
+</details> <details> <summary>`GET /MAAS/api/2.0/rackcontrollers/{system_id}/?op=query_power_state`</summary>
 
 ------------------------------------------------------------------------
 
-Gets the power state of a given node. MAAS sends a request to the node's
-power controller, which asks it about the node's state. The reply to
-this could be delayed by up to 30 seconds while waiting for the power
-controller to respond. Use this method sparingly as it ties up an
-appserver thread while waiting.
+Gets the power state of a given node. MAAS sends a request to the node's power controller, which asks it about the node's state. The reply to this could be delayed by up to 30 seconds while waiting for the power controller to respond. Use this method sparingly as it ties up an appserver thread while waiting.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**system\_id** (*String*): Required. The node to query.
+**system_id** (*String*): Required. The node to query.
 
 **Success**
 
@@ -31414,9 +29960,7 @@ appserver thread while waiting.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/rackcontrollers/{system_id}/?op=abort``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/rackcontrollers/{system_id}/?op=abort`</summary>
 
 ------------------------------------------------------------------------
 
@@ -31449,9 +29993,7 @@ Abort a node's current operation.
 *Content* : The user is not authorized to abort the current operation.
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/rackcontrollers/{system_id}/?op=import_boot_images``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/rackcontrollers/{system_id}/?op=import_boot_images`</summary>
 
 ------------------------------------------------------------------------
 
@@ -31461,7 +30003,7 @@ Import boot images on a given rack controller or all rack controllers.
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. A rack controller system\_id.
+**{system_id}** (*String*): Required. A rack controller system_id.
 
 **Success**
 
@@ -31469,8 +30011,7 @@ Import boot images on a given rack controller or all rack controllers.
 
 *HTTP Status Code* : 200
 
-*Content* : Import of boot images started on &lt;rack controller
-name&gt;
+*Content* : Import of boot images started on &lt;rack controller name&gt;
 
 **Error**
 
@@ -31483,9 +30024,7 @@ name&gt;
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/rackcontrollers/{system_id}/?op=override_failed_testing``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/rackcontrollers/{system_id}/?op=override_failed_testing`</summary>
 
 ------------------------------------------------------------------------
 
@@ -31518,9 +30057,7 @@ Ignore failed tests and put node back into a usable state.
 *Content* : The user is not authorized to override tests.
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/rackcontrollers/{system_id}/?op=power_off``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/rackcontrollers/{system_id}/?op=power_off`</summary>
 
 ------------------------------------------------------------------------
 
@@ -31530,12 +30067,7 @@ Powers off a given node.
 
 ------------------------------------------------------------------------
 
-**stop\_mode** (*String*): Optional. Power-off mode. If 'soft', perform
-a soft power down if the node's power type supports it, otherwise
-perform a hard power off. For all values other than 'soft', and by
-default, perform a hard power off. A soft power off generally asks the
-OS to shutdown the system gracefully before powering off, while a hard
-power off occurs immediately without any warning to the OS.
+**stop_mode** (*String*): Optional. Power-off mode. If 'soft', perform a soft power down if the node's power type supports it, otherwise perform a hard power off. For all values other than 'soft', and by default, perform a hard power off. A soft power off generally asks the OS to shutdown the system gracefully before powering off, while a hard power off occurs immediately without any warning to the OS.
 
 **comment** (*String*): Optional. Comment for the event log.
 
@@ -31951,9 +30483,7 @@ power off occurs immediately without any warning to the OS.
 *Content* : The user is not authorized to power off the node.
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/rackcontrollers/{system_id}/?op=power_on``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/rackcontrollers/{system_id}/?op=power_on`</summary>
 
 ------------------------------------------------------------------------
 
@@ -31963,8 +30493,7 @@ Turn on the given node with optional user-data and comment.
 
 ------------------------------------------------------------------------
 
-**user\_data** (*String*): Optional. Base64-encoded blob of data to be
-made available to the nodes through the metadata service.
+**user_data** (*String*): Optional. Base64-encoded blob of data to be made available to the nodes through the metadata service.
 
 **comment** (*String*): Optional. Comment for the event log.
 
@@ -32381,35 +30910,24 @@ made available to the nodes through the metadata service.
 
 *HTTP Status Code* : 503
 
-*Content* : Returns 503 if the start-up attempted to allocate an IP
-address, and there were no IP addresses available on the relevant
-cluster interface.
+*Content* : Returns 503 if the start-up attempted to allocate an IP address, and there were no IP addresses available on the relevant cluster interface.
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/rackcontrollers/{system_id}/?op=test``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/rackcontrollers/{system_id}/?op=test`</summary>
 
 ------------------------------------------------------------------------
 
 Begins the testing process for a given node.
 
-A node in the 'ready', 'allocated', 'deployed', 'broken', or any failed
-state may run tests. If testing is started and successfully passes from
-'broken' or any failed state besides 'failed commissioning' the node
-will be returned to a ready state. Otherwise the node will return to the
-state it was when testing started.
+A node in the 'ready', 'allocated', 'deployed', 'broken', or any failed state may run tests. If testing is started and successfully passes from 'broken' or any failed state besides 'failed commissioning' the node will be returned to a ready state. Otherwise the node will return to the state it was when testing started.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**enable\_ssh** (*Int*): Optional. Whether to enable SSH for the testing
-environment using the user's SSH key(s). 0 == false. 1 == true.
+**enable_ssh** (*Int*): Optional. Whether to enable SSH for the testing environment using the user's SSH key(s). 0 == false. 1 == true.
 
-**testing\_scripts** (*String*): Optional. A comma-separated list of
-testing script names and tags to be run. By default all tests tagged
-'commissioning' will be run.
+**testing_scripts** (*String*): Optional. A comma-separated list of testing script names and tags to be run. By default all tests tagged 'commissioning' will be run.
 
 **Success**
 
@@ -32819,40 +31337,25 @@ testing script names and tags to be run. By default all tests tagged
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``PUT /MAAS/api/2.0/rackcontrollers/{system_id}/``</summary>
+</details> <details> <summary>`PUT /MAAS/api/2.0/rackcontrollers/{system_id}/`</summary>
 
 ------------------------------------------------------------------------
 
-Updates a rack controller with the given system\_id.
+Updates a rack controller with the given system_id.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**description** (*String*): Optional. The new description for this given
-rack controller.
+**description** (*String*): Optional. The new description for this given rack controller.
 
-**power\_type** (*String*): Optional. The new power type for the given
-rack controller. If you use the default value, power\_parameters will be
-set to an empty string. See the [Power types]() section for a list of
-available power types. Note that only admin users can set this
-parameter.
+**power_type** (*String*): Optional. The new power type for the given rack controller. If you use the default value, power_parameters will be set to an empty string. See the [Power types]() section for a list of available power types. Note that only admin users can set this parameter.
 
-**[power\_parameters](){param}** (*String*): Required. The new value for
-the 'param' power parameter. This is a dynamic parameter that depends on
-the rack controller's power\_type. See the [Power types]() section for a
-list of available parameters based on power type. Note that only admin
-users can set these parameters.
+**[power_parameters](){param}** (*String*): Required. The new value for the 'param' power parameter. This is a dynamic parameter that depends on the rack controller's power_type. See the [Power types]() section for a list of available parameters based on power type. Note that only admin users can set these parameters.
 
-**power\_parameters\_skip\_check** (*Boolean*): Optional. If true, the
-new power parameters for the given rack controller will be checked
-against the expected parameters for the rack controller's power type.
-Default is false.
+**power_parameters_skip_check** (*Boolean*): Optional. If true, the new power parameters for the given rack controller will be checked against the expected parameters for the rack controller's power type. Default is false.
 
-**zone** (*String*): Optional. The name of a valid zone in which to
-place the given rack controller.
+**zone** (*String*): Optional. The name of a valid zone in which to place the given rack controller.
 
 **Success**
 
@@ -33311,12 +31814,12 @@ place the given rack controller.
 
 <p>&nbsp;</p>
 </details>
+
 ### RackControllers
 
 Manage the collection of all rack controllers in MAAS.
 
-<details>
-  <summary>``GET /MAAS/api/2.0/rackcontrollers/``</summary>
+<details> <summary>`GET /MAAS/api/2.0/rackcontrollers/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -33328,28 +31831,19 @@ Nodes are sorted by id (i.e. most recent last) and grouped by type.
 
 ------------------------------------------------------------------------
 
-**hostname** (*String*): Optional. Only nodes relating to the node with
-the matching hostname will be returned. This can be specified multiple
-times to see multiple nodes.
+**hostname** (*String*): Optional. Only nodes relating to the node with the matching hostname will be returned. This can be specified multiple times to see multiple nodes.
 
-**mac\_address** (*String*): Optional. Only nodes relating to the node
-owning the specified MAC address will be returned. This can be specified
-multiple times to see multiple nodes.
+**mac_address** (*String*): Optional. Only nodes relating to the node owning the specified MAC address will be returned. This can be specified multiple times to see multiple nodes.
 
-**id** (*String*): Optional. Only nodes relating to the nodes with
-matching system ids will be returned.
+**id** (*String*): Optional. Only nodes relating to the nodes with matching system ids will be returned.
 
-**domain** (*String*): Optional. Only nodes relating to the nodes in the
-domain will be returned.
+**domain** (*String*): Optional. Only nodes relating to the nodes in the domain will be returned.
 
-**zone** (*String*): Optional. Only nodes relating to the nodes in the
-zone will be returned.
+**zone** (*String*): Optional. Only nodes relating to the nodes in the zone will be returned.
 
-**pool** (*String*): Optional. Only nodes belonging to the pool will be
-returned.
+**pool** (*String*): Optional. Only nodes belonging to the pool will be returned.
 
-**agent\_name** (*String*): Optional. Only nodes relating to the nodes
-with matching agent names will be returned.
+**agent_name** (*String*): Optional. Only nodes relating to the nodes with matching agent names will be returned.
 
 **Success**
 
@@ -33643,9 +32137,7 @@ with matching agent names will be returned.
     ]
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``GET /MAAS/api/2.0/rackcontrollers/?op=describe_power_types``</summary>
+</details> <details> <summary>`GET /MAAS/api/2.0/rackcontrollers/?op=describe_power_types`</summary>
 
 ------------------------------------------------------------------------
 
@@ -33671,21 +32163,17 @@ Queries all rack controllers for power information.
     }
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``GET /MAAS/api/2.0/rackcontrollers/?op=is_registered``</summary>
+</details> <details> <summary>`GET /MAAS/api/2.0/rackcontrollers/?op=is_registered`</summary>
 
 ------------------------------------------------------------------------
 
-Returns whether or not the given MAC address is registered within this
-MAAS (and attached to a non-retired node).
+Returns whether or not the given MAC address is registered within this MAAS (and attached to a non-retired node).
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**mac\_address** (*URL String*): Required. The MAC address to be
-checked.
+**mac_address** (*URL String*): Required. The MAC address to be checked.
 
 **Success**
 
@@ -33708,23 +32196,17 @@ checked.
     No provided mac_address!
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``GET /MAAS/api/2.0/rackcontrollers/?op=power_parameters``</summary>
+</details> <details> <summary>`GET /MAAS/api/2.0/rackcontrollers/?op=power_parameters`</summary>
 
 ------------------------------------------------------------------------
 
-Get power parameters for multiple machines. To request power parameters
-for a specific machine or more than one machine:
-`op=power_parameters&id=abc123&id=def456`.
+Get power parameters for multiple machines. To request power parameters for a specific machine or more than one machine: `op=power_parameters&id=abc123&id=def456`.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**id** (*URL String*): Optional. A system ID. To request more than one
-machine, provide multiple `id` arguments in the request. Only machines
-with matching system ids will be returned.
+**id** (*URL String*): Optional. A system ID. To request more than one machine, provide multiple `id` arguments in the request. Only machines with matching system ids will be returned.
 
 **Success**
 
@@ -33754,9 +32236,7 @@ with matching system ids will be returned.
 *Content* : The user is not authorized to view the power parameters.
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/rackcontrollers/?op=import_boot_images``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/rackcontrollers/?op=import_boot_images`</summary>
 
 ------------------------------------------------------------------------
 
@@ -33781,9 +32261,7 @@ Imports boot images on all rack controllers.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/rackcontrollers/?op=set_zone``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/rackcontrollers/?op=set_zone`</summary>
 
 ------------------------------------------------------------------------
 
@@ -33819,24 +32297,22 @@ Assigns a given node to a given zone.
 
 <p>&nbsp;</p>
 </details>
+
 ### RAID Device
 
-Manage a specific RAID (Redundant Array of Independent Disks) on a
-machine.
+Manage a specific RAID (Redundant Array of Independent Disks) on a machine.
 
-<details>
-  <summary>``DELETE /MAAS/api/2.0/nodes/{system_id}/raid/{id}/``</summary>
+<details> <summary>`DELETE /MAAS/api/2.0/nodes/{system_id}/raid/{id}/`</summary>
 
 ------------------------------------------------------------------------
 
-Delete a RAID with the given id on a machine with the given system\_id.
+Delete a RAID with the given id on a machine with the given system_id.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. The system\_id of the machine
-containing the RAID.
+**{system_id}** (*String*): Required. The system_id of the machine containing the RAID.
 
 **{id}** (*Int*): Required. A RAID id.
 
@@ -33861,20 +32337,17 @@ containing the RAID.
 *Content* : The requested machine is not ready.
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``GET /MAAS/api/2.0/nodes/{system_id}/raid/{id}/``</summary>
+</details> <details> <summary>`GET /MAAS/api/2.0/nodes/{system_id}/raid/{id}/`</summary>
 
 ------------------------------------------------------------------------
 
-Read RAID with the given id on a machine with the given system\_id.
+Read RAID with the given id on a machine with the given system_id.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. The system\_id of the machine
-containing the RAID.
+**{system_id}** (*String*): Required. The system_id of the machine containing the RAID.
 
 **{id}** (*Int*): Required. A RAID id.
 
@@ -33901,20 +32374,17 @@ containing the RAID.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``PUT /MAAS/api/2.0/nodes/{system_id}/raid/{id}/``</summary>
+</details> <details> <summary>`PUT /MAAS/api/2.0/nodes/{system_id}/raid/{id}/`</summary>
 
 ------------------------------------------------------------------------
 
-Update a RAID with the given id on a machine with the given system\_id.
+Update a RAID with the given id on a machine with the given system_id.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. The system\_id of the machine
-containing the RAID.
+**{system_id}** (*String*): Required. The system_id of the machine containing the RAID.
 
 **{id}** (*Int*): Required. A RAID id.
 
@@ -33922,28 +32392,21 @@ containing the RAID.
 
 **uuid** (*String*): Optional. UUID of the RAID.
 
-**add\_block\_devices** (*String*): Optional. Block devices to add to
-the RAID.
+**add_block_devices** (*String*): Optional. Block devices to add to the RAID.
 
-**remove\_block\_devices** (*String*): Optional. Block devices to remove
-from the RAID.
+**remove_block_devices** (*String*): Optional. Block devices to remove from the RAID.
 
-**add\_spare\_devices** (*String*): Optional. Spare block devices to add
-to the RAID.
+**add_spare_devices** (*String*): Optional. Spare block devices to add to the RAID.
 
-**remove\_spare\_devices** (*String*): Optional. Spare block devices to
-remove from the RAID.
+**remove_spare_devices** (*String*): Optional. Spare block devices to remove from the RAID.
 
-**add\_partitions** (*String*): Optional. Partitions to add to the RAID.
+**add_partitions** (*String*): Optional. Partitions to add to the RAID.
 
-**remove\_partitions** (*String*): Optional. Partitions to remove from
-the RAID.
+**remove_partitions** (*String*): Optional. Partitions to remove from the RAID.
 
-**add\_spare\_partitions** (*String*): Optional. Spare partitions to add
-to the RAID.
+**add_spare_partitions** (*String*): Optional. Spare partitions to add to the RAID.
 
-**remove\_spare\_partitions** (*String*): Optional. Spare partitions to
-remove from the RAID.
+**remove_spare_partitions** (*String*): Optional. Spare partitions to remove from the RAID.
 
 **Success**
 
@@ -33973,23 +32436,22 @@ remove from the RAID.
 
 <p>&nbsp;</p>
 </details>
+
 ### RAID Devices
 
 Manage all RAIDs (Redundant Array of Independent Disks) on a machine.
 
-<details>
-  <summary>``GET /MAAS/api/2.0/nodes/{system_id}/raids/``</summary>
+<details> <summary>`GET /MAAS/api/2.0/nodes/{system_id}/raids/`</summary>
 
 ------------------------------------------------------------------------
 
-List all RAIDs belonging to a machine with the given system\_id.
+List all RAIDs belonging to a machine with the given system_id.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. The system\_id of the machine
-containing the RAIDs.
+**{system_id}** (*String*): Required. The system_id of the machine containing the RAIDs.
 
 **Success**
 
@@ -34014,20 +32476,17 @@ containing the RAIDs.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/nodes/{system_id}/raids/``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/nodes/{system_id}/raids/`</summary>
 
 ------------------------------------------------------------------------
 
-Set up a RAID on a machine with the given system\_id.
+Set up a RAID on a machine with the given system_id.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. The system\_id of the machine on
-which to set up the RAID.
+**{system_id}** (*String*): Required. The system_id of the machine on which to set up the RAID.
 
 **name** (*String*): Optional. Name of the RAID.
 
@@ -34035,16 +32494,13 @@ which to set up the RAID.
 
 **level** (*Int*): Required. RAID level.
 
-**block\_devices** (*String*): Optional. Block devices to add to the
-RAID.
+**block_devices** (*String*): Optional. Block devices to add to the RAID.
 
-**spare\_devices** (*String*): Optional. Spare block devices to add to
-the RAID.
+**spare_devices** (*String*): Optional. Spare block devices to add to the RAID.
 
 **partitions** (*String*): Optional. Partitions to add to the RAID.
 
-**spare\_partitions** (*String*): Optional. Spare partitions to add to
-the RAID.
+**spare_partitions** (*String*): Optional. Spare partitions to add to the RAID.
 
 **Success**
 
@@ -34076,32 +32532,28 @@ the RAID.
 
 <p>&nbsp;</p>
 </details>
+
 ### RegionController
 
 Manage an individual region controller.
 
-The region controller is identified by its system\_id.
+The region controller is identified by its system_id.
 
-<details>
-  <summary>``DELETE /MAAS/api/2.0/regioncontrollers/{system_id}/``</summary>
+<details> <summary>`DELETE /MAAS/api/2.0/regioncontrollers/{system_id}/`</summary>
 
 ------------------------------------------------------------------------
 
-Deletes a region controller with the given system\_id.
+Deletes a region controller with the given system_id.
 
-A region controller cannot be deleted if it hosts pod virtual machines.
-Use force to override this behavior. Forcing deletion will also remove
-hosted pods.
+A region controller cannot be deleted if it hosts pod virtual machines. Use force to override this behavior. Forcing deletion will also remove hosted pods.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. The region controller's
-system\_id.
+**{system_id}** (*String*): Required. The region controller's system_id.
 
-**force** (*Boolean*): Optional. Tells MAAS to override disallowing
-deletion of region controllers that host pod virtual machines.
+**force** (*Boolean*): Optional. Tells MAAS to override disallowing deletion of region controllers that host pod virtual machines.
 
 **Success**
 
@@ -34121,27 +32573,24 @@ deletion of region controllers that host pod virtual machines.
 
 *HTTP Status Code* : 403
 
-*Content* : The user does not have permission to delete the rack
-controller.
+*Content* : The user does not have permission to delete the rack controller.
 
 *HTTP Status Code* : 400
 
 *Content* : If MAAS is unable to delete the region controller.
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``GET /MAAS/api/2.0/regioncontrollers/{system_id}/``</summary>
+</details> <details> <summary>`GET /MAAS/api/2.0/regioncontrollers/{system_id}/`</summary>
 
 ------------------------------------------------------------------------
 
-Reads a node with the given system\_id.
+Reads a node with the given system_id.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. A node's system\_id.
+**{system_id}** (*String*): Required. A node's system_id.
 
 **Success**
 
@@ -34606,28 +33055,21 @@ Reads a node with the given system\_id.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``GET /MAAS/api/2.0/regioncontrollers/{system_id}/?op=details``</summary>
+</details> <details> <summary>`GET /MAAS/api/2.0/regioncontrollers/{system_id}/?op=details`</summary>
 
 ------------------------------------------------------------------------
 
 Returns system details -- for example, LLDP and `lshw` XML dumps.
 
-Returns a `{detail_type: xml, ...}` map, where `detail_type` is
-something like "lldp" or "lshw".
+Returns a `{detail_type: xml, ...}` map, where `detail_type` is something like "lldp" or "lshw".
 
-Note that this is returned as BSON and not JSON. This is for efficiency,
-but mainly because JSON can't do binary content without applying
-additional encoding like base-64. The example output below is
-represented in ASCII using `bsondump example.bson` and is for
-demonstrative purposes.
+Note that this is returned as BSON and not JSON. This is for efficiency, but mainly because JSON can't do binary content without applying additional encoding like base-64. The example output below is represented in ASCII using `bsondump example.bson` and is for demonstrative purposes.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. The node's system\_id.
+**{system_id}** (*String*): Required. The node's system_id.
 
 **Success**
 
@@ -34659,18 +33101,13 @@ demonstrative purposes.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``GET /MAAS/api/2.0/regioncontrollers/{system_id}/?op=power_parameters``</summary>
+</details> <details> <summary>`GET /MAAS/api/2.0/regioncontrollers/{system_id}/?op=power_parameters`</summary>
 
 ------------------------------------------------------------------------
 
-Gets power parameters for a given system\_id, if any. For some types of
-power control this will include private information such as passwords
-and secret keys.
+Gets power parameters for a given system_id, if any. For some types of power control this will include private information such as passwords and secret keys.
 
-Note that this method is reserved for admin users and returns a 403 if
-the user is not one.
+Note that this method is reserved for admin users and returns a 403 if the user is not one.
 
 **Success**
 
@@ -34695,43 +33132,27 @@ the user is not one.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``PUT /MAAS/api/2.0/regioncontrollers/{system_id}/``</summary>
+</details> <details> <summary>`PUT /MAAS/api/2.0/regioncontrollers/{system_id}/`</summary>
 
 ------------------------------------------------------------------------
 
-Updates a region controller with the given system\_id.
+Updates a region controller with the given system_id.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. The region controller's
-system\_id.
+**{system_id}** (*String*): Required. The region controller's system_id.
 
-**description** (*String*): Optional. The new description for this given
-region controller.
+**description** (*String*): Optional. The new description for this given region controller.
 
-**power\_type** (*String*): Optional. The new power type for this region
-controller. If you use the default value, power\_parameters will be set
-to the empty string. Available to admin users. See the [Power types]()
-section for a list of the available power types.
+**power_type** (*String*): Optional. The new power type for this region controller. If you use the default value, power_parameters will be set to the empty string. Available to admin users. See the [Power types]() section for a list of the available power types.
 
-**[power\_parameters](){param1}** (*String*): Required. The new value
-for the 'param1' power parameter. Note that this is dynamic as the
-available parameters depend on the selected value of the region
-controller's power\_type. Available to admin users. See the [Power
-types]() section for a list of the available power parameters for each
-power type.
+**[power_parameters](){param1}** (*String*): Required. The new value for the 'param1' power parameter. Note that this is dynamic as the available parameters depend on the selected value of the region controller's power_type. Available to admin users. See the [Power types]() section for a list of the available power parameters for each power type.
 
-**power\_parameters\_skip\_check** (*Boolean*): Optional. Whether or not
-the new power parameters for this region controller should be checked
-against the expected power parameters for the region controller's power
-type ('true' or 'false'). The default is 'false'.
+**power_parameters_skip_check** (*Boolean*): Optional. Whether or not the new power parameters for this region controller should be checked against the expected power parameters for the region controller's power type ('true' or 'false'). The default is 'false'.
 
-**zone** (*String*): Optional. Name of a valid physical zone in which to
-place this region controller.
+**zone** (*String*): Optional. Name of a valid physical zone in which to place this region controller.
 
 **Success**
 
@@ -35006,12 +33427,12 @@ place this region controller.
 
 <p>&nbsp;</p>
 </details>
+
 ### RegionControllers
 
 Manage the collection of all region controllers in MAAS.
 
-<details>
-  <summary>``GET /MAAS/api/2.0/regioncontrollers/``</summary>
+<details> <summary>`GET /MAAS/api/2.0/regioncontrollers/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -35023,28 +33444,19 @@ Nodes are sorted by id (i.e. most recent last) and grouped by type.
 
 ------------------------------------------------------------------------
 
-**hostname** (*String*): Optional. Only nodes relating to the node with
-the matching hostname will be returned. This can be specified multiple
-times to see multiple nodes.
+**hostname** (*String*): Optional. Only nodes relating to the node with the matching hostname will be returned. This can be specified multiple times to see multiple nodes.
 
-**mac\_address** (*String*): Optional. Only nodes relating to the node
-owning the specified MAC address will be returned. This can be specified
-multiple times to see multiple nodes.
+**mac_address** (*String*): Optional. Only nodes relating to the node owning the specified MAC address will be returned. This can be specified multiple times to see multiple nodes.
 
-**id** (*String*): Optional. Only nodes relating to the nodes with
-matching system ids will be returned.
+**id** (*String*): Optional. Only nodes relating to the nodes with matching system ids will be returned.
 
-**domain** (*String*): Optional. Only nodes relating to the nodes in the
-domain will be returned.
+**domain** (*String*): Optional. Only nodes relating to the nodes in the domain will be returned.
 
-**zone** (*String*): Optional. Only nodes relating to the nodes in the
-zone will be returned.
+**zone** (*String*): Optional. Only nodes relating to the nodes in the zone will be returned.
 
-**pool** (*String*): Optional. Only nodes belonging to the pool will be
-returned.
+**pool** (*String*): Optional. Only nodes belonging to the pool will be returned.
 
-**agent\_name** (*String*): Optional. Only nodes relating to the nodes
-with matching agent names will be returned.
+**agent_name** (*String*): Optional. Only nodes relating to the nodes with matching agent names will be returned.
 
 **Success**
 
@@ -35338,21 +33750,17 @@ with matching agent names will be returned.
     ]
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``GET /MAAS/api/2.0/regioncontrollers/?op=is_registered``</summary>
+</details> <details> <summary>`GET /MAAS/api/2.0/regioncontrollers/?op=is_registered`</summary>
 
 ------------------------------------------------------------------------
 
-Returns whether or not the given MAC address is registered within this
-MAAS (and attached to a non-retired node).
+Returns whether or not the given MAC address is registered within this MAAS (and attached to a non-retired node).
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**mac\_address** (*URL String*): Required. The MAC address to be
-checked.
+**mac_address** (*URL String*): Required. The MAC address to be checked.
 
 **Success**
 
@@ -35375,9 +33783,7 @@ checked.
     No provided mac_address!
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/regioncontrollers/?op=set_zone``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/regioncontrollers/?op=set_zone`</summary>
 
 ------------------------------------------------------------------------
 
@@ -35413,12 +33819,12 @@ Assigns a given node to a given zone.
 
 <p>&nbsp;</p>
 </details>
+
 ### Resource pool
 
 Manage a resource pool.
 
-<details>
-  <summary>``DELETE /MAAS/api/2.0/resourcepool/{id}/``</summary>
+<details> <summary>`DELETE /MAAS/api/2.0/resourcepool/{id}/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -35451,9 +33857,7 @@ Deletes a resource pool.
     <no content>
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``GET /MAAS/api/2.0/resourcepool/{id}/``</summary>
+</details> <details> <summary>`GET /MAAS/api/2.0/resourcepool/{id}/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -35491,9 +33895,7 @@ Returns a resource pool.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``PUT /MAAS/api/2.0/resourcepool/{id}/``</summary>
+</details> <details> <summary>`PUT /MAAS/api/2.0/resourcepool/{id}/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -35507,8 +33909,7 @@ Note that any other given parameters are silently ignored.
 
 **{id}** (*URL String*): Required. The resource pool id/name to update.
 
-**description** (*String*): Optional. A brief description of the
-resource pool.
+**description** (*String*): Optional. A brief description of the resource pool.
 
 **name** (*String*): Optional. The resource pool's new name.
 
@@ -35539,12 +33940,12 @@ resource pool.
 
 <p>&nbsp;</p>
 </details>
+
 ### Resource pools
 
 Manage resource pools.
 
-<details>
-  <summary>``GET /MAAS/api/2.0/resourcepools/``</summary>
+<details> <summary>`GET /MAAS/api/2.0/resourcepools/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -35570,9 +33971,7 @@ Note that there is always at least one resource pool: default.
         ]
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/resourcepools/``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/resourcepools/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -35584,8 +33983,7 @@ Creates a new resource pool.
 
 **name** (*String*): Required. The new resource pool's name.
 
-**description** (*String*): Optional. A brief description of the new
-resource pool.
+**description** (*String*): Optional. A brief description of the new resource pool.
 
 **Success**
 
@@ -35614,14 +34012,14 @@ resource pool.
 
 <p>&nbsp;</p>
 </details>
+
 ### SSH Key
 
 Manage an SSH key.
 
 SSH keys can be retrieved or deleted.
 
-<details>
-  <summary>``DELETE /MAAS/api/2.0/account/prefs/sshkeys/{id}/``</summary>
+<details> <summary>`DELETE /MAAS/api/2.0/account/prefs/sshkeys/{id}/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -35656,9 +34054,7 @@ Deletes the SSH key with the given ID.
     Can't delete a key you don't own.
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``GET /MAAS/api/2.0/account/prefs/sshkeys/{id}/``</summary>
+</details> <details> <summary>`GET /MAAS/api/2.0/account/prefs/sshkeys/{id}/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -35697,12 +34093,12 @@ Retrieves an SSH key with the given ID.
 
 <p>&nbsp;</p>
 </details>
+
 ### SSH Keys
 
 Manage the collection of all the SSH keys in this MAAS.
 
-<details>
-  <summary>``GET /MAAS/api/2.0/account/prefs/sshkeys/``</summary>
+<details> <summary>`GET /MAAS/api/2.0/account/prefs/sshkeys/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -35732,9 +34128,7 @@ List all keys belonging to the requesting user.
     ]
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/account/prefs/sshkeys/``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/account/prefs/sshkeys/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -35744,13 +34138,11 @@ Add a new SSH key to the requesting or supplied user's account.
 
 ------------------------------------------------------------------------
 
-**key** (*String*): Required. A public SSH key should be provided in the
-request payload as form data with the name 'key':
+**key** (*String*): Required. A public SSH key should be provided in the request payload as form data with the name 'key':
 
 > key: "key-type public-key-data"
 
--   `key-type`: ecdsa-sha2-nistp256, ecdsa-sha2-nistp384,
-    ecdsa-sha2-nistp521, ssh-dss, ssh-ed25519, ssh-rsa
+-   `key-type`: ecdsa-sha2-nistp256, ecdsa-sha2-nistp384, ecdsa-sha2-nistp521, ssh-dss, ssh-ed25519, ssh-rsa
 -   `public key data`: Base64-encoded key data.
 
 **Success**
@@ -35768,21 +34160,17 @@ request payload as form data with the name 'key':
     }
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/account/prefs/sshkeys/?op=import``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/account/prefs/sshkeys/?op=import`</summary>
 
 ------------------------------------------------------------------------
 
-Import the requesting user's SSH keys for a given protocol and
-authorization ID in protocol:auth\_id format.
+Import the requesting user's SSH keys for a given protocol and authorization ID in protocol:auth_id format.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**keysource** (*String*): Required. The source of the keys to import
-should be provided in the request payload as form data:
+**keysource** (*String*): Required. The source of the keys to import should be provided in the request payload as form data:
 
 E.g.
 
@@ -35816,14 +34204,14 @@ E.g.
 
 <p>&nbsp;</p>
 </details>
+
 ### SSL Key
 
 Manage an SSL key.
 
 SSL keys can be retrieved or deleted.
 
-<details>
-  <summary>``DELETE /MAAS/api/2.0/account/prefs/sslkeys/{id}/``</summary>
+<details> <summary>`DELETE /MAAS/api/2.0/account/prefs/sslkeys/{id}/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -35858,9 +34246,7 @@ Deletes the SSL key with the given ID.
     Can't delete a key you don't own.
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``GET /MAAS/api/2.0/account/prefs/sslkeys/{id}/``</summary>
+</details> <details> <summary>`GET /MAAS/api/2.0/account/prefs/sslkeys/{id}/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -35903,12 +34289,12 @@ Retrieves an SSL key with the given ID.
 
 <p>&nbsp;</p>
 </details>
+
 ### SSL Keys
 
 Operations on multiple keys.
 
-<details>
-  <summary>``GET /MAAS/api/2.0/account/prefs/sslkeys/``</summary>
+<details> <summary>`GET /MAAS/api/2.0/account/prefs/sslkeys/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -35931,9 +34317,7 @@ List all keys belonging to the requesting user.
     ]
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/account/prefs/sslkeys/``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/account/prefs/sslkeys/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -35943,8 +34327,7 @@ Add a new SSL key to the requesting user's account.
 
 ------------------------------------------------------------------------
 
-**key** (*String*): Required. An SSL key should be provided in the
-request payload as form data with the name 'key':
+**key** (*String*): Required. An SSL key should be provided in the request payload as form data with the name 'key':
 
 > key: "key data"
 
@@ -35965,12 +34348,12 @@ request payload as form data with the name 'key':
 
 <p>&nbsp;</p>
 </details>
+
 ### Space
 
 Manage space.
 
-<details>
-  <summary>``DELETE /MAAS/api/2.0/spaces/{id}/``</summary>
+<details> <summary>`DELETE /MAAS/api/2.0/spaces/{id}/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -35999,9 +34382,7 @@ Deletes a space with the given ID.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``GET /MAAS/api/2.0/spaces/{id}/``</summary>
+</details> <details> <summary>`GET /MAAS/api/2.0/spaces/{id}/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -36040,9 +34421,7 @@ Gets a space with the given ID.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``PUT /MAAS/api/2.0/spaces/{id}/``</summary>
+</details> <details> <summary>`PUT /MAAS/api/2.0/spaces/{id}/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -36086,12 +34465,12 @@ Updates a space with the given ID.
 
 <p>&nbsp;</p>
 </details>
+
 ### Spaces
 
 Manage spaces.
 
-<details>
-  <summary>``GET /MAAS/api/2.0/spaces/``</summary>
+<details> <summary>`GET /MAAS/api/2.0/spaces/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -36611,9 +34990,7 @@ Generates a list of all spaces.
     ]
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/spaces/``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/spaces/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -36653,12 +35030,12 @@ Create a new space.
 
 <p>&nbsp;</p>
 </details>
+
 ### Static route
 
 Manage static route.
 
-<details>
-  <summary>``DELETE /MAAS/api/2.0/static-routes/{id}/``</summary>
+<details> <summary>`DELETE /MAAS/api/2.0/static-routes/{id}/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -36687,9 +35064,7 @@ Deletes the static route with the given ID.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``GET /MAAS/api/2.0/static-routes/{id}/``</summary>
+</details> <details> <summary>`GET /MAAS/api/2.0/static-routes/{id}/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -36791,9 +35166,7 @@ Gets a static route with the given ID.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``PUT /MAAS/api/2.0/static-routes/{id}/``</summary>
+</details> <details> <summary>`PUT /MAAS/api/2.0/static-routes/{id}/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -36807,11 +35180,9 @@ Updates a static route with the given ID.
 
 **source** (*String*): Optional. Source subnet name for the route.
 
-**destination** (*String*): Optional. Destination subnet name for the
-route.
+**destination** (*String*): Optional. Destination subnet name for the route.
 
-**gateway\_ip** (*String*): Optional. IP address of the gateway on the
-source subnet.
+**gateway_ip** (*String*): Optional. IP address of the gateway on the source subnet.
 
 **metric** (*Int*): Optional. Weight of the route on a deployed machine.
 
@@ -36906,12 +35277,12 @@ source subnet.
 
 <p>&nbsp;</p>
 </details>
+
 ### Static routes
 
 Manage static routes.
 
-<details>
-  <summary>``GET /MAAS/api/2.0/static-routes/``</summary>
+<details> <summary>`GET /MAAS/api/2.0/static-routes/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -37069,9 +35440,7 @@ Lists all static routes.
     ]
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/static-routes/``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/static-routes/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -37083,11 +35452,9 @@ Creates a static route.
 
 **source** (*String*): Required. Source subnet name for the route.
 
-**destination** (*String*): Required. Destination subnet name for the
-route.
+**destination** (*String*): Required. Destination subnet name for the route.
 
-**gateway\_ip** (*String*): Required. IP address of the gateway on the
-source subnet.
+**gateway_ip** (*String*): Required. IP address of the gateway on the source subnet.
 
 **metric** (*Int*): Optional. Weight of the route on a deployed machine.
 
@@ -37172,12 +35539,12 @@ source subnet.
 
 <p>&nbsp;</p>
 </details>
+
 ### Subnet
 
 Manage subnet.
 
-<details>
-  <summary>``DELETE /MAAS/api/2.0/subnets/{id}/``</summary>
+<details> <summary>`DELETE /MAAS/api/2.0/subnets/{id}/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -37206,9 +35573,7 @@ Delete a subnet with the given ID.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``GET /MAAS/api/2.0/subnets/{id}/``</summary>
+</details> <details> <summary>`GET /MAAS/api/2.0/subnets/{id}/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -37269,9 +35634,7 @@ Get information about a subnet with the given ID.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``GET /MAAS/api/2.0/subnets/{id}/?op=ip_addresses``</summary>
+</details> <details> <summary>`GET /MAAS/api/2.0/subnets/{id}/?op=ip_addresses`</summary>
 
 ------------------------------------------------------------------------
 
@@ -37283,16 +35646,11 @@ Returns a summary of IP addresses assigned to this subnet.
 
 **{id}** (*Int*): Required. A subnet ID.
 
-**with\_username** (*Int*): Optional. If '0', suppresses the display of
-usernames associated with each address. '1' == True, '0' == False.
-(Default: '1')
+**with_username** (*Int*): Optional. If '0', suppresses the display of usernames associated with each address. '1' == True, '0' == False. (Default: '1')
 
-**with\_summary** (*Int*): Optional. If '0', suppresses the display of
-nodes, BMCs, and and DNS records associated with each address. '1' ==
-True, '0' == False. (Default: True)
+**with_summary** (*Int*): Optional. If '0', suppresses the display of nodes, BMCs, and and DNS records associated with each address. '1' == True, '0' == False. (Default: True)
 
-**with\_node\_summary** (*Int*): Optional. Deprecated. Use
-'with\_summary'.
+**with_node_summary** (*Int*): Optional. Deprecated. Use 'with_summary'.
 
 **Success**
 
@@ -37508,9 +35866,7 @@ True, '0' == False. (Default: True)
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``GET /MAAS/api/2.0/subnets/{id}/?op=reserved_ip_ranges``</summary>
+</details> <details> <summary>`GET /MAAS/api/2.0/subnets/{id}/?op=reserved_ip_ranges`</summary>
 
 ------------------------------------------------------------------------
 
@@ -37664,29 +36020,21 @@ Lists IP ranges currently reserved in the subnet.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``GET /MAAS/api/2.0/subnets/{id}/?op=statistics``</summary>
+</details> <details> <summary>`GET /MAAS/api/2.0/subnets/{id}/?op=statistics`</summary>
 
 ------------------------------------------------------------------------
 
 Returns statistics for the specified subnet, including:
 
--   **num\_available**: the number of available IP addresses
--   **largest\_available**: the largest number of contiguous free IP
-    addresses
--   **num\_unavailable**: the number of unavailable IP addresses
--   **total\_addresses**: the sum of the available plus unavailable
-    addresses
+-   **num_available**: the number of available IP addresses
+-   **largest_available**: the largest number of contiguous free IP addresses
+-   **num_unavailable**: the number of unavailable IP addresses
+-   **total_addresses**: the sum of the available plus unavailable addresses
 -   **usage**: the (floating point) usage percentage of this subnet
--   **usage\_string**: the (formatted unicode) usage percentage of this
-    subnet
--   **ranges**: the specific IP ranges present in ths subnet (if
-    specified)
+-   **usage_string**: the (formatted unicode) usage percentage of this subnet
+-   **ranges**: the specific IP ranges present in ths subnet (if specified)
 
-Note: to supply additional optional parameters for this request, add
-them to the request URI: e.g.
-`/subnets/1/?op=statistics&include_suggestions=1`
+Note: to supply additional optional parameters for this request, add them to the request URI: e.g. `/subnets/1/?op=statistics&include_suggestions=1`
 
 **Parameters**
 
@@ -37694,12 +36042,9 @@ them to the request URI: e.g.
 
 **{id}** (*Int*): Required. A subnet ID.
 
-**include\_ranges** (*Int*): Optional. If '1', includes detailed
-information about the usage of this range. '1' == True, '0' == False.
+**include_ranges** (*Int*): Optional. If '1', includes detailed information about the usage of this range. '1' == True, '0' == False.
 
-**include\_suggestions** (*Int*): Optional. If '1', includes the
-suggested gateway and dynamic range for this subnet, if it were to be
-configured. '1' == True, '0' == False.
+**include_suggestions** (*Int*): Optional. If '1', includes the suggested gateway and dynamic range for this subnet, if it were to be configured. '1' == True, '0' == False.
 
 **Success**
 
@@ -37733,9 +36078,7 @@ configured. '1' == True, '0' == False.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``GET /MAAS/api/2.0/subnets/{id}/?op=unreserved_ip_ranges``</summary>
+</details> <details> <summary>`GET /MAAS/api/2.0/subnets/{id}/?op=unreserved_ip_ranges`</summary>
 
 ------------------------------------------------------------------------
 
@@ -37844,9 +36187,7 @@ Lists IP ranges currently unreserved in the subnet.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``PUT /MAAS/api/2.0/subnets/{id}/``</summary>
+</details> <details> <summary>`PUT /MAAS/api/2.0/subnets/{id}/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -37864,54 +36205,33 @@ Update a subnet with the given ID.
 
 **description** (*String*): Optional. The subnet's description.
 
-**vlan** (*String*): Optional. VLAN this subnet belongs to. Defaults to
-the default VLAN for the provided fabric or defaults to the default VLAN
-in the default fabric (if unspecified).
+**vlan** (*String*): Optional. VLAN this subnet belongs to. Defaults to the default VLAN for the provided fabric or defaults to the default VLAN in the default fabric (if unspecified).
 
-**fabric** (*String*): Optional. Fabric for the subnet. Defaults to the
-fabric the provided VLAN belongs to, or defaults to the default fabric.
+**fabric** (*String*): Optional. Fabric for the subnet. Defaults to the fabric the provided VLAN belongs to, or defaults to the default fabric.
 
-**vid** (*Int*): Optional. VID of the VLAN this subnet belongs to. Only
-used when vlan is not provided. Picks the VLAN with this VID in the
-provided fabric or the default fabric if one is not given.
+**vid** (*Int*): Optional. VID of the VLAN this subnet belongs to. Only used when vlan is not provided. Picks the VLAN with this VID in the provided fabric or the default fabric if one is not given.
 
-**space** (*String*): Optional. Space this subnet is in. Defaults to the
-default space.
+**space** (*String*): Optional. Space this subnet is in. Defaults to the default space.
 
-**gateway\_ip** (*String*): Optional. The gateway IP address for this
-subnet.
+**gateway_ip** (*String*): Optional. The gateway IP address for this subnet.
 
-**rdns\_mode** (*Int*): Optional. How reverse DNS is handled for this
-subnet. One of:
+**rdns_mode** (*Int*): Optional. How reverse DNS is handled for this subnet. One of:
 
 -   `0` Disabled: No reverse zone is created.
 -   `1` Enabled: Generate reverse zone.
--   `2` RFC2317: Extends '1' to create the necessary parent zone with
-    the appropriate CNAME resource records for the network, if the the
-    network is small enough to require the support described in RFC2317.
+-   `2` RFC2317: Extends '1' to create the necessary parent zone with the appropriate CNAME resource records for the network, if the the network is small enough to require the support described in RFC2317.
 
-**allow\_dns** (*Int*): Optional. Configure MAAS DNS to allow DNS
-resolution from this subnet. '0' == False,'1' == True.
+**allow_dns** (*Int*): Optional. Configure MAAS DNS to allow DNS resolution from this subnet. '0' == False,'1' == True.
 
-**allow\_proxy** (*Int*): Optional. Configure maas-proxy to allow
-requests from this subnet. '0' == False, '1' == True.
+**allow_proxy** (*Int*): Optional. Configure maas-proxy to allow requests from this subnet. '0' == False, '1' == True.
 
-**dns\_servers** (*String*): Optional. Comma-seperated list of DNS
-servers for this subnet.
+**dns_servers** (*String*): Optional. Comma-seperated list of DNS servers for this subnet.
 
-**managed** (*Int*): Optional. In MAAS 2.0+, all subnets are assumed to
-be managed by default.
+**managed** (*Int*): Optional. In MAAS 2.0+, all subnets are assumed to be managed by default.
 
-Only managed subnets allow DHCP to be enabled on their related dynamic
-ranges. (Thus, dynamic ranges become "informational only"; an indication
-that another DHCP server is currently handling them, or that MAAS will
-handle them when the subnet is enabled for management.)
+Only managed subnets allow DHCP to be enabled on their related dynamic ranges. (Thus, dynamic ranges become "informational only"; an indication that another DHCP server is currently handling them, or that MAAS will handle them when the subnet is enabled for management.)
 
-Managed subnets do not allow IP allocation by default. The meaning of a
-"reserved" IP range is reversed for an unmanaged subnet. (That is, for
-managed subnets, "reserved" means "MAAS cannot allocate any IP address
-within this reserved block". For unmanaged subnets, "reserved" means
-"MAAS must allocate IP addresses only from reserved IP ranges."
+Managed subnets do not allow IP allocation by default. The meaning of a "reserved" IP range is reversed for an unmanaged subnet. (That is, for managed subnets, "reserved" means "MAAS cannot allocate any IP address within this reserved block". For unmanaged subnets, "reserved" means "MAAS must allocate IP addresses only from reserved IP ranges."
 
 **Success**
 
@@ -37963,12 +36283,12 @@ within this reserved block". For unmanaged subnets, "reserved" means
 
 <p>&nbsp;</p>
 </details>
+
 ### Subnets
 
 Manage subnets.
 
-<details>
-  <summary>``GET /MAAS/api/2.0/subnets/``</summary>
+<details> <summary>`GET /MAAS/api/2.0/subnets/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -38206,9 +36526,7 @@ Get a list of all subnets.
     ]
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/subnets/``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/subnets/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -38224,54 +36542,33 @@ Creates a new subnet.
 
 **description** (*String*): Optional. The subnet's description.
 
-**vlan** (*String*): Optional. VLAN this subnet belongs to. Defaults to
-the default VLAN for the provided fabric or defaults to the default VLAN
-in the default fabric (if unspecified).
+**vlan** (*String*): Optional. VLAN this subnet belongs to. Defaults to the default VLAN for the provided fabric or defaults to the default VLAN in the default fabric (if unspecified).
 
-**fabric** (*String*): Optional. Fabric for the subnet. Defaults to the
-fabric the provided VLAN belongs to, or defaults to the default fabric.
+**fabric** (*String*): Optional. Fabric for the subnet. Defaults to the fabric the provided VLAN belongs to, or defaults to the default fabric.
 
-**vid** (*Int*): Optional. VID of the VLAN this subnet belongs to. Only
-used when vlan is not provided. Picks the VLAN with this VID in the
-provided fabric or the default fabric if one is not given.
+**vid** (*Int*): Optional. VID of the VLAN this subnet belongs to. Only used when vlan is not provided. Picks the VLAN with this VID in the provided fabric or the default fabric if one is not given.
 
-**space** (*String*): Optional. Space this subnet is in. Defaults to the
-default space.
+**space** (*String*): Optional. Space this subnet is in. Defaults to the default space.
 
-**gateway\_ip** (*String*): Optional. The gateway IP address for this
-subnet.
+**gateway_ip** (*String*): Optional. The gateway IP address for this subnet.
 
-**rdns\_mode** (*Int*): Optional. How reverse DNS is handled for this
-subnet. One of:
+**rdns_mode** (*Int*): Optional. How reverse DNS is handled for this subnet. One of:
 
 -   `0` Disabled: No reverse zone is created.
 -   `1` Enabled: Generate reverse zone.
--   `2` RFC2317: Extends '1' to create the necessary parent zone with
-    the appropriate CNAME resource records for the network, if the the
-    network is small enough to require the support described in RFC2317.
+-   `2` RFC2317: Extends '1' to create the necessary parent zone with the appropriate CNAME resource records for the network, if the the network is small enough to require the support described in RFC2317.
 
-**allow\_dns** (*Int*): Optional. Configure MAAS DNS to allow DNS
-resolution from this subnet. '0' == False,'1' == True.
+**allow_dns** (*Int*): Optional. Configure MAAS DNS to allow DNS resolution from this subnet. '0' == False,'1' == True.
 
-**allow\_proxy** (*Int*): Optional. Configure maas-proxy to allow
-requests from this subnet. '0' == False, '1' == True.
+**allow_proxy** (*Int*): Optional. Configure maas-proxy to allow requests from this subnet. '0' == False, '1' == True.
 
-**dns\_servers** (*String*): Optional. Comma-seperated list of DNS
-servers for this subnet.
+**dns_servers** (*String*): Optional. Comma-seperated list of DNS servers for this subnet.
 
-**managed** (*Int*): Optional. In MAAS 2.0+, all subnets are assumed to
-be managed by default.
+**managed** (*Int*): Optional. In MAAS 2.0+, all subnets are assumed to be managed by default.
 
-Only managed subnets allow DHCP to be enabled on their related dynamic
-ranges. (Thus, dynamic ranges become "informational only"; an indication
-that another DHCP server is currently handling them, or that MAAS will
-handle them when the subnet is enabled for management.)
+Only managed subnets allow DHCP to be enabled on their related dynamic ranges. (Thus, dynamic ranges become "informational only"; an indication that another DHCP server is currently handling them, or that MAAS will handle them when the subnet is enabled for management.)
 
-Managed subnets do not allow IP allocation by default. The meaning of a
-"reserved" IP range is reversed for an unmanaged subnet. (That is, for
-managed subnets, "reserved" means "MAAS cannot allocate any IP address
-within this reserved block". For unmanaged subnets, "reserved" means
-"MAAS must allocate IP addresses only from reserved IP ranges."
+Managed subnets do not allow IP allocation by default. The meaning of a "reserved" IP range is reversed for an unmanaged subnet. (That is, for managed subnets, "reserved" means "MAAS cannot allocate any IP address within this reserved block". For unmanaged subnets, "reserved" means "MAAS must allocate IP addresses only from reserved IP ranges."
 
 **Success**
 
@@ -38313,15 +36610,14 @@ within this reserved block". For unmanaged subnets, "reserved" means
 
 <p>&nbsp;</p>
 </details>
+
 ### Tag
 
-Tags are properties that can be associated with a Node and serve as
-criteria for selecting and allocating nodes.
+Tags are properties that can be associated with a Node and serve as criteria for selecting and allocating nodes.
 
 A Tag is identified by its name.
 
-<details>
-  <summary>``DELETE /MAAS/api/2.0/tags/{name}/``</summary>
+<details> <summary>`DELETE /MAAS/api/2.0/tags/{name}/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -38350,9 +36646,7 @@ Deletes a tag by name.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``GET /MAAS/api/2.0/tags/{name}/``</summary>
+</details> <details> <summary>`GET /MAAS/api/2.0/tags/{name}/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -38391,9 +36685,7 @@ Returns a JSON object containing information about a specific tag.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``GET /MAAS/api/2.0/tags/{name}/?op=devices``</summary>
+</details> <details> <summary>`GET /MAAS/api/2.0/tags/{name}/?op=devices`</summary>
 
 ------------------------------------------------------------------------
 
@@ -38496,14 +36788,11 @@ Get a JSON list containing device objects that match the given tag name.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``GET /MAAS/api/2.0/tags/{name}/?op=machines``</summary>
+</details> <details> <summary>`GET /MAAS/api/2.0/tags/{name}/?op=machines`</summary>
 
 ------------------------------------------------------------------------
 
-Get a JSON list containing machine objects that match the given tag
-name.
+Get a JSON list containing machine objects that match the given tag name.
 
 **Parameters**
 
@@ -39267,9 +37556,7 @@ name.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``GET /MAAS/api/2.0/tags/{name}/?op=nodes``</summary>
+</details> <details> <summary>`GET /MAAS/api/2.0/tags/{name}/?op=nodes`</summary>
 
 ------------------------------------------------------------------------
 
@@ -40391,14 +38678,11 @@ Get a JSON list containing node objects that match the given tag name.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``GET /MAAS/api/2.0/tags/{name}/?op=rack_controllers``</summary>
+</details> <details> <summary>`GET /MAAS/api/2.0/tags/{name}/?op=rack_controllers`</summary>
 
 ------------------------------------------------------------------------
 
-Get a JSON list containing rack-controller objects that match the given
-tag name.
+Get a JSON list containing rack-controller objects that match the given tag name.
 
 **Parameters**
 
@@ -40709,14 +38993,11 @@ tag name.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``GET /MAAS/api/2.0/tags/{name}/?op=region_controllers``</summary>
+</details> <details> <summary>`GET /MAAS/api/2.0/tags/{name}/?op=region_controllers`</summary>
 
 ------------------------------------------------------------------------
 
-Get a JSON list containing region-controller objects that match the
-given tag name.
+Get a JSON list containing region-controller objects that match the given tag name.
 
 **Parameters**
 
@@ -41027,16 +39308,11 @@ given tag name.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/tags/{name}/?op=rebuild``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/tags/{name}/?op=rebuild`</summary>
 
 ------------------------------------------------------------------------
 
-Tells MAAS to rebuild the tag-to-node mappings. This is a maintenance
-operation and should not be necessary under normal circumstances. Adding
-nodes or updating a tag definition should automatically trigger the
-mapping rebuild.
+Tells MAAS to rebuild the tag-to-node mappings. This is a maintenance operation and should not be necessary under normal circumstances. Adding nodes or updating a tag definition should automatically trigger the mapping rebuild.
 
 **Parameters**
 
@@ -41065,14 +39341,11 @@ mapping rebuild.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/tags/{name}/?op=update_nodes``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/tags/{name}/?op=update_nodes`</summary>
 
 ------------------------------------------------------------------------
 
-Add or remove nodes associated with the given tag. Note that you must
-supply either the `add` or `remove` parameter.
+Add or remove nodes associated with the given tag. Note that you must supply either the `add` or `remove` parameter.
 
 **Parameters**
 
@@ -41080,19 +39353,13 @@ supply either the `add` or `remove` parameter.
 
 **{name}** (*URL String*): Required. A tag name.
 
-**add** (*String*): Optional. The system\_id to tag.
+**add** (*String*): Optional. The system_id to tag.
 
-**remove** (*String*): Optional. The system\_id to untag.
+**remove** (*String*): Optional. The system_id to untag.
 
-**definition** (*String*): Optional. If given, the definition (XPATH
-expression) will be validated against the current definition of the tag.
-If the value does not match, MAAS assumes the worker is out of date and
-will drop the update.
+**definition** (*String*): Optional. If given, the definition (XPATH expression) will be validated against the current definition of the tag. If the value does not match, MAAS assumes the worker is out of date and will drop the update.
 
-**rack\_controller** (*String*): Optional. The system ID of the rack
-controller that processed the given tag initially. If not given, the
-requester must be a MAAS admin. If given, the requester must be the rack
-controller.
+**rack_controller** (*String*): Optional. The system ID of the rack controller that processed the given tag initially. If not given, the requester must be a MAAS admin. If given, the requester must be the rack controller.
 
 **Success**
 
@@ -41128,9 +39395,7 @@ controller.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``PUT /MAAS/api/2.0/tags/{name}/``</summary>
+</details> <details> <summary>`PUT /MAAS/api/2.0/tags/{name}/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -41142,15 +39407,11 @@ Update elements of a given tag.
 
 **{name}** (*URL String*): Required. The tag to update.
 
-**name** (*String*): Optional. The new tag name. Because the name will
-be used in urls, it should be short.
+**name** (*String*): Optional. The new tag name. Because the name will be used in urls, it should be short.
 
-**comment** (*String*): Optional. A description of what the the tag will
-be used for in natural language.
+**comment** (*String*): Optional. A description of what the the tag will be used for in natural language.
 
-**definition** (*String*): Optional. An XPATH query that is evaluated
-against the hardware\_details stored for all nodes (i.e. the output of
-`lshw -xml`).
+**definition** (*String*): Optional. An XPATH query that is evaluated against the hardware_details stored for all nodes (i.e. the output of `lshw -xml`).
 
 **Success**
 
@@ -41180,17 +39441,16 @@ against the hardware\_details stored for all nodes (i.e. the output of
 
 <p>&nbsp;</p>
 </details>
+
 ### Tags
 
 Manage all tags known to MAAS.
 
-<details>
-  <summary>``GET /MAAS/api/2.0/tags/``</summary>
+<details> <summary>`GET /MAAS/api/2.0/tags/`</summary>
 
 ------------------------------------------------------------------------
 
-Outputs a JSON object containing an array of all currently defined tag
-objects.
+Outputs a JSON object containing an array of all currently defined tag objects.
 
 **Success**
 
@@ -41209,9 +39469,7 @@ objects.
     ]
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/tags/``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/tags/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -41221,22 +39479,13 @@ Create a new tag.
 
 ------------------------------------------------------------------------
 
-**name** (*String*): Required. The new tag name. Because the name will
-be used in urls, it should be short.
+**name** (*String*): Required. The new tag name. Because the name will be used in urls, it should be short.
 
-**comment** (*String*): Optional. A description of what the the tag will
-be used for in natural language.
+**comment** (*String*): Optional. A description of what the the tag will be used for in natural language.
 
-**definition** (*String*): Optional. An XPATH query that is evaluated
-against the hardware\_details stored for all nodes (i.e. the output of
-`lshw -xml`).
+**definition** (*String*): Optional. An XPATH query that is evaluated against the hardware_details stored for all nodes (i.e. the output of `lshw -xml`).
 
-**kernel\_opts** (*String*): Optional. Nodes associated with this tag
-will add this string to their kernel options when booting. The value
-overrides the global `kernel_opts` setting. If more than one tag is
-associated with a node, the one with the lower alphabetical name will be
-picked. For example, `01-my-tag` will be chosen instead of
-`99-tag-name`.
+**kernel_opts** (*String*): Optional. Nodes associated with this tag will add this string to their kernel options when booting. The value overrides the global `kernel_opts` setting. If more than one tag is associated with a node, the one with the lower alphabetical name will be picked. For example, `01-my-tag` will be chosen instead of `99-tag-name`.
 
 **Success**
 
@@ -41264,12 +39513,12 @@ picked. For example, `01-my-tag` will be chosen instead of
 
 <p>&nbsp;</p>
 </details>
+
 ### User
 
 Manage a user account.
 
-<details>
-  <summary>``DELETE /MAAS/api/2.0/users/{username}/``</summary>
+<details> <summary>`DELETE /MAAS/api/2.0/users/{username}/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -41288,9 +39537,7 @@ Deletes a given username.
 *HTTP Status Code* : 204
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``GET /MAAS/api/2.0/users/{username}/``</summary>
+</details> <details> <summary>`GET /MAAS/api/2.0/users/{username}/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -41330,12 +39577,12 @@ Retrieve a user's details.
 
 <p>&nbsp;</p>
 </details>
+
 ### Users
 
 Manage the user accounts of this MAAS.
 
-<details>
-  <summary>``GET /MAAS/api/2.0/users/``</summary>
+<details> <summary>`GET /MAAS/api/2.0/users/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -41367,9 +39614,7 @@ List users
     ]
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``GET /MAAS/api/2.0/users/?op=whoami``</summary>
+</details> <details> <summary>`GET /MAAS/api/2.0/users/?op=whoami`</summary>
 
 ------------------------------------------------------------------------
 
@@ -41392,31 +39637,25 @@ Returns the currently logged-in user.
     }
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/users/``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/users/`</summary>
 
 ------------------------------------------------------------------------
 
 Creates a MAAS user account.
 
-This is not safe: the password is sent in plaintext. Avoid it for
-production, unless you are confident that you can prevent eavesdroppers
-from observing the request.
+This is not safe: the password is sent in plaintext. Avoid it for production, unless you are confident that you can prevent eavesdroppers from observing the request.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**username** (*String*): Required. Identifier-style username for the new
-user.
+**username** (*String*): Required. Identifier-style username for the new user.
 
 **email** (*String*): Required. Email address for the new user.
 
 **password** (*String*): Required. Password for the new user.
 
-**is\_superuser** (*Boolean*): Required. Whether the new user is to be
-an administrator. ('0' == False, '1' == True)
+**is_superuser** (*Boolean*): Required. Whether the new user is to be an administrator. ('0' == False, '1' == True)
 
 **Success**
 
@@ -41446,12 +39685,12 @@ an administrator. ('0' == False, '1' == True)
 
 <p>&nbsp;</p>
 </details>
+
 ### MAAS version
 
 Information about this MAAS instance.
 
-<details>
-  <summary>``GET /MAAS/api/2.0/version/``</summary>
+<details> <summary>`GET /MAAS/api/2.0/version/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -41483,12 +39722,12 @@ Read version and capabilities of this MAAS instance.
 
 <p>&nbsp;</p>
 </details>
+
 ### VLAN
 
 Manage a VLAN on a fabric.
 
-<details>
-  <summary>``DELETE /MAAS/api/2.0/fabrics/{fabric_id}/vlans/{vid}/``</summary>
+<details> <summary>`DELETE /MAAS/api/2.0/fabrics/{fabric_id}/vlans/{vid}/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -41498,8 +39737,7 @@ Delete VLAN on a given fabric.
 
 ------------------------------------------------------------------------
 
-**{fabric\_id}** (*Int*): Required. Fabric ID containing the VLAN to
-delete.
+**{fabric_id}** (*Int*): Required. Fabric ID containing the VLAN to delete.
 
 **{vid}** (*Int*): Required. VLAN ID of the VLAN to delete.
 
@@ -41520,19 +39758,17 @@ delete.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``GET /MAAS/api/2.0/fabrics/{fabric_id}/vlans/{vid}/``</summary>
+</details> <details> <summary>`GET /MAAS/api/2.0/fabrics/{fabric_id}/vlans/{vid}/`</summary>
 
 ------------------------------------------------------------------------
 
-Retrieves a VLAN on a given fabric\_id.
+Retrieves a VLAN on a given fabric_id.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**{fabric\_id}** (*Int*): Required. The fabric\_id containing the VLAN.
+**{fabric_id}** (*Int*): Required. The fabric_id containing the VLAN.
 
 **{vid}** (*Int*): Required. The VLAN ID.
 
@@ -41571,9 +39807,7 @@ Retrieves a VLAN on a given fabric\_id.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``PUT /MAAS/api/2.0/fabrics/{fabric_id}/vlans/{vid}/``</summary>
+</details> <details> <summary>`PUT /MAAS/api/2.0/fabrics/{fabric_id}/vlans/{vid}/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -41583,7 +39817,7 @@ Updates a given VLAN.
 
 ------------------------------------------------------------------------
 
-**{fabric\_id}** (*Int*): Required. Fabric ID containing the VLAN.
+**{fabric_id}** (*Int*): Required. Fabric ID containing the VLAN.
 
 **{vid}** (*Int*): Required. VLAN ID of the VLAN.
 
@@ -41593,24 +39827,15 @@ Updates a given VLAN.
 
 **mtu** (*Int*): Optional. The MTU to use on the VLAN.
 
-**dhcp\_on** (*Boolean*): Optional. Whether or not DHCP should be
-managed on the VLAN.
+**dhcp_on** (*Boolean*): Optional. Whether or not DHCP should be managed on the VLAN.
 
-**primary\_rack** (*String*): Optional. The primary rack controller
-managing the VLAN (system\_id).
+**primary_rack** (*String*): Optional. The primary rack controller managing the VLAN (system_id).
 
-**secondary\_rack** (*String*): Optional. The secondary rack controller
-managing the VLAN (system\_id).
+**secondary_rack** (*String*): Optional. The secondary rack controller managing the VLAN (system_id).
 
-**relay\_vlan** (*Int*): Optional. Relay VLAN ID. Only set when this
-VLAN will be using a DHCP relay to forward DHCP requests to another VLAN
-that MAAS is managing. MAAS will not run the DHCP relay itself, it must
-be configured to proxy reqests to the primary and/or secondary rack
-controller interfaces for the VLAN specified in this field.
+**relay_vlan** (*Int*): Optional. Relay VLAN ID. Only set when this VLAN will be using a DHCP relay to forward DHCP requests to another VLAN that MAAS is managing. MAAS will not run the DHCP relay itself, it must be configured to proxy reqests to the primary and/or secondary rack controller interfaces for the VLAN specified in this field.
 
-**space** (*String*): Optional. The space this VLAN should be placed in.
-Passing in an empty string (or the string 'undefined') will cause the
-VLAN to be placed in the 'undefined' space.
+**space** (*String*): Optional. The space this VLAN should be placed in. Passing in an empty string (or the string 'undefined') will cause the VLAN to be placed in the 'undefined' space.
 
 **Success**
 
@@ -41648,12 +39873,12 @@ VLAN to be placed in the 'undefined' space.
 
 <p>&nbsp;</p>
 </details>
+
 ### VLANs
 
 Manage VLANs on a fabric.
 
-<details>
-  <summary>``GET /MAAS/api/2.0/fabrics/{fabric_id}/vlans/``</summary>
+<details> <summary>`GET /MAAS/api/2.0/fabrics/{fabric_id}/vlans/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -41663,8 +39888,7 @@ List all VLANs belonging to given fabric.
 
 ------------------------------------------------------------------------
 
-**{fabric\_id}** (*Int*): Required. The fabric for which to list the
-VLANs.
+**{fabric_id}** (*Int*): Required. The fabric for which to list the VLANs.
 
 **Success**
 
@@ -41703,9 +39927,7 @@ VLANs.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/fabrics/{fabric_id}/vlans/``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/fabrics/{fabric_id}/vlans/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -41715,8 +39937,7 @@ Creates a new VLAN.
 
 ------------------------------------------------------------------------
 
-**{fabric\_id}** (*Int*): Required. The fabric\_id on which to add the
-new VLAN.
+**{fabric_id}** (*Int*): Required. The fabric_id on which to add the new VLAN.
 
 **name** (*String*): Optional. Name of the VLAN.
 
@@ -41726,9 +39947,7 @@ new VLAN.
 
 **mtu** (*Int*): Optional. The MTU to use on the VLAN.
 
-**space** (*String*): Optional. The space this VLAN should be placed in.
-Passing in an empty string (or the string 'undefined') will cause the
-VLAN to be placed in the 'undefined' space.
+**space** (*String*): Optional. The space this VLAN should be placed in. Passing in an empty string (or the string 'undefined') will cause the VLAN to be placed in the 'undefined' space.
 
 **Success**
 
@@ -41766,24 +39985,22 @@ VLAN to be placed in the 'undefined' space.
 
 <p>&nbsp;</p>
 </details>
+
 ### VMFS datastore
 
 Manage VMFS datastore on a machine.
 
-<details>
-  <summary>``DELETE /MAAS/api/2.0/nodes/{system_id}/vmfs-datastore/{id}/``</summary>
+<details> <summary>`DELETE /MAAS/api/2.0/nodes/{system_id}/vmfs-datastore/{id}/`</summary>
 
 ------------------------------------------------------------------------
 
-Delete a VMFS datastore with the given id from the machine with the
-given system\_id.
+Delete a VMFS datastore with the given id from the machine with the given system_id.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. The machine system\_id containing
-the VMFS datastore.
+**{system_id}** (*String*): Required. The machine system_id containing the VMFS datastore.
 
 **{id}** (*Int*): Required. The id of the VMFS datastore.
 
@@ -41808,21 +40025,17 @@ the VMFS datastore.
 *Content* : The requested machine is not ready.
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``GET /MAAS/api/2.0/nodes/{system_id}/vmfs-datastore/{id}/``</summary>
+</details> <details> <summary>`GET /MAAS/api/2.0/nodes/{system_id}/vmfs-datastore/{id}/`</summary>
 
 ------------------------------------------------------------------------
 
-Read a VMFS datastore with the given id on the machine with the given
-system\_id.
+Read a VMFS datastore with the given id on the machine with the given system_id.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. The machine system\_id on which
-to create the VMFS datastore.
+**{system_id}** (*String*): Required. The machine system_id on which to create the VMFS datastore.
 
 **{id}** (*Int*): Required. The id of the VMFS datastore.
 
@@ -41877,21 +40090,17 @@ to create the VMFS datastore.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``PUT /MAAS/api/2.0/nodes/{system_id}/vmfs-datastore/{id}/``</summary>
+</details> <details> <summary>`PUT /MAAS/api/2.0/nodes/{system_id}/vmfs-datastore/{id}/`</summary>
 
 ------------------------------------------------------------------------
 
-Update a VMFS datastore with the given id on the machine with the given
-system\_id.
+Update a VMFS datastore with the given id on the machine with the given system_id.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. The machine system\_id containing
-the VMFS datastore.
+**{system_id}** (*String*): Required. The machine system_id containing the VMFS datastore.
 
 **{id}** (*Int*): Required. The id of the VMFS datastore.
 
@@ -41899,14 +40108,11 @@ the VMFS datastore.
 
 **uuid** (*String*): Optional. UUID of the VMFS datastore.
 
-**add\_block\_devices** (*String*): Optional. Block devices to add to
-the VMFS datastore.
+**add_block_devices** (*String*): Optional. Block devices to add to the VMFS datastore.
 
-**add\_partitions** (*String*): Optional. Partitions to add to the VMFS
-datastore.
+**add_partitions** (*String*): Optional. Partitions to add to the VMFS datastore.
 
-**remove\_partitions** (*String*): Optional. Partitions to remove from
-the VMFS datastore.
+**remove_partitions** (*String*): Optional. Partitions to remove from the VMFS datastore.
 
 **Success**
 
@@ -41964,24 +40170,22 @@ the VMFS datastore.
 
 <p>&nbsp;</p>
 </details>
+
 ### VMFS datastores
 
 Manage VMFS datastores on a machine.
 
-<details>
-  <summary>``GET /MAAS/api/2.0/nodes/{system_id}/vmfs-datastores/``</summary>
+<details> <summary>`GET /MAAS/api/2.0/nodes/{system_id}/vmfs-datastores/`</summary>
 
 ------------------------------------------------------------------------
 
-List all VMFS datastores belonging to a machine with the given
-system\_id.
+List all VMFS datastores belonging to a machine with the given system_id.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. The machine system\_id containing
-the VMFS datastores.
+**{system_id}** (*String*): Required. The machine system_id containing the VMFS datastores.
 
 **Success**
 
@@ -42067,14 +40271,11 @@ the VMFS datastores.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/nodes/{system_id}/vmfs-datastores/``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/nodes/{system_id}/vmfs-datastores/`</summary>
 
 ------------------------------------------------------------------------
 
-Create a VMFS datastore belonging to a machine with the given
-system\_id.
+Create a VMFS datastore belonging to a machine with the given system_id.
 
 Note that at least one valid block device or partition is required.
 
@@ -42082,18 +40283,15 @@ Note that at least one valid block device or partition is required.
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. The machine system\_id on which
-to create the VMFS datastore.
+**{system_id}** (*String*): Required. The machine system_id on which to create the VMFS datastore.
 
 **name** (*String*): Required. Name of the VMFS datastore.
 
 **uuid** (*String*): Optional. (optional) UUID of the VMFS group.
 
-**block\_devices** (*String*): Optional. Block devices to add to the
-VMFS datastore.
+**block_devices** (*String*): Optional. Block devices to add to the VMFS datastore.
 
-**partitions** (*String*): Optional. Partitions to add to the VMFS
-datastore.
+**partitions** (*String*): Optional. Partitions to add to the VMFS datastore.
 
 **Success**
 
@@ -42171,24 +40369,22 @@ datastore.
 
 <p>&nbsp;</p>
 </details>
+
 ### Volume group
 
 Manage volume group on a machine.
 
-<details>
-  <summary>``DELETE /MAAS/api/2.0/nodes/{system_id}/volume-group/{id}/``</summary>
+<details> <summary>`DELETE /MAAS/api/2.0/nodes/{system_id}/volume-group/{id}/`</summary>
 
 ------------------------------------------------------------------------
 
-Delete a volume group with the given id from the machine with the given
-system\_id.
+Delete a volume group with the given id from the machine with the given system_id.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. The machine system\_id containing
-the volume group.
+**{system_id}** (*String*): Required. The machine system_id containing the volume group.
 
 **{id}** (*Int*): Required. The id of the volume group.
 
@@ -42213,21 +40409,17 @@ the volume group.
 *Content* : The requested machine is not ready.
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``GET /MAAS/api/2.0/nodes/{system_id}/volume-group/{id}/``</summary>
+</details> <details> <summary>`GET /MAAS/api/2.0/nodes/{system_id}/volume-group/{id}/`</summary>
 
 ------------------------------------------------------------------------
 
-Read a volume group with the given id on the machine with the given
-system\_id.
+Read a volume group with the given id on the machine with the given system_id.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. The machine system\_id on which
-to create the volume group.
+**{system_id}** (*String*): Required. The machine system_id on which to create the volume group.
 
 **{id}** (*Int*): Required. The id of the volume group.
 
@@ -42287,21 +40479,17 @@ to create the volume group.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/nodes/{system_id}/volume-group/{id}/?op=create_logical_volume``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/nodes/{system_id}/volume-group/{id}/?op=create_logical_volume`</summary>
 
 ------------------------------------------------------------------------
 
-Create a logical volume in the volume group with the given id on the
-machine with the given system\_id.
+Create a logical volume in the volume group with the given id on the machine with the given system_id.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. The machine system\_id containing
-the volume group.
+**{system_id}** (*String*): Required. The machine system_id containing the volume group.
 
 **{id}** (*Int*): Required. The id of the volume group.
 
@@ -42309,8 +40497,7 @@ the volume group.
 
 **uuid** (*String*): Optional. (optional) UUID of the logical volume.
 
-**size** (*String*): Required. Size of the logical volume. Must be
-larger than or equal to 4,194,304 bytes. E.g. `4194304`.
+**size** (*String*): Required. Size of the logical volume. Must be larger than or equal to 4,194,304 bytes. E.g. `4194304`.
 
 **Success**
 
@@ -42346,24 +40533,19 @@ larger than or equal to 4,194,304 bytes. E.g. `4194304`.
 *Content* : The requested machine is not ready.
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/nodes/{system_id}/volume-group/{id}/?op=delete_logical_volume``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/nodes/{system_id}/volume-group/{id}/?op=delete_logical_volume`</summary>
 
 ------------------------------------------------------------------------
 
-Delete a logical volume in the volume group with the given id on the
-machine with the given system\_id.
+Delete a logical volume in the volume group with the given id on the machine with the given system_id.
 
-Note: this operation returns HTTP status code 204 even if the logical
-volume id does not exist.
+Note: this operation returns HTTP status code 204 even if the logical volume id does not exist.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. The machine system\_id containing
-the volume group.
+**{system_id}** (*String*): Required. The machine system_id containing the volume group.
 
 **{id}** (*Int*): Required. The id of the volume group.
 
@@ -42390,21 +40572,17 @@ the volume group.
 *Content* : The requested machine is not ready.
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``PUT /MAAS/api/2.0/nodes/{system_id}/volume-group/{id}/``</summary>
+</details> <details> <summary>`PUT /MAAS/api/2.0/nodes/{system_id}/volume-group/{id}/`</summary>
 
 ------------------------------------------------------------------------
 
-Update a volume group with the given id on the machine with the given
-system\_id.
+Update a volume group with the given id on the machine with the given system_id.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. The machine system\_id containing
-the volume group.
+**{system_id}** (*String*): Required. The machine system_id containing the volume group.
 
 **{id}** (*Int*): Required. The id of the volume group.
 
@@ -42412,17 +40590,13 @@ the volume group.
 
 **uuid** (*String*): Optional. UUID of the volume group.
 
-**add\_block\_devices** (*String*): Optional. Block devices to add to
-the volume group.
+**add_block_devices** (*String*): Optional. Block devices to add to the volume group.
 
-**remove\_block\_devices** (*String*): Optional. Block devices to remove
-from the volume group.
+**remove_block_devices** (*String*): Optional. Block devices to remove from the volume group.
 
-**add\_partitions** (*String*): Optional. Partitions to add to the
-volume group.
+**add_partitions** (*String*): Optional. Partitions to add to the volume group.
 
-**remove\_partitions** (*String*): Optional. Partitions to remove from
-the volume group.
+**remove_partitions** (*String*): Optional. Partitions to remove from the volume group.
 
 **Success**
 
@@ -42485,23 +40659,22 @@ the volume group.
 
 <p>&nbsp;</p>
 </details>
+
 ### Volume groups
 
 Manage volume groups on a machine.
 
-<details>
-  <summary>``GET /MAAS/api/2.0/nodes/{system_id}/volume-groups/``</summary>
+<details> <summary>`GET /MAAS/api/2.0/nodes/{system_id}/volume-groups/`</summary>
 
 ------------------------------------------------------------------------
 
-List all volume groups belonging to a machine with the given system\_id.
+List all volume groups belonging to a machine with the given system_id.
 
 **Parameters**
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. The machine system\_id containing
-the volume groups.
+**{system_id}** (*String*): Required. The machine system_id containing the volume groups.
 
 **Success**
 
@@ -42561,13 +40734,11 @@ the volume groups.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/nodes/{system_id}/volume-groups/``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/nodes/{system_id}/volume-groups/`</summary>
 
 ------------------------------------------------------------------------
 
-Create a volume group belonging to a machine with the given system\_id.
+Create a volume group belonging to a machine with the given system_id.
 
 Note that at least one valid block device or partition is required.
 
@@ -42575,18 +40746,15 @@ Note that at least one valid block device or partition is required.
 
 ------------------------------------------------------------------------
 
-**{system\_id}** (*String*): Required. The machine system\_id on which
-to create the volume group.
+**{system_id}** (*String*): Required. The machine system_id on which to create the volume group.
 
 **name** (*String*): Required. Name of the volume group.
 
 **uuid** (*String*): Optional. (optional) UUID of the volume group.
 
-**block\_devices** (*String*): Optional. Block devices to add to the
-volume group.
+**block_devices** (*String*): Optional. Block devices to add to the volume group.
 
-**partitions** (*String*): Optional. Partitions to add to the volume
-group.
+**partitions** (*String*): Optional. Partitions to add to the volume group.
 
 **Success**
 
@@ -42649,20 +40817,16 @@ group.
 
 <p>&nbsp;</p>
 </details>
+
 ### Zone
 
 Manage a physical zone.
 
-Any node is in a physical zone, or "zone" for short. The meaning of a
-physical zone is up to you: it could identify e.g. a server rack, a
-network, or a data centre. Users can then allocate nodes from specific
-physical zones, to suit their redundancy or performance requirements.
+Any node is in a physical zone, or "zone" for short. The meaning of a physical zone is up to you: it could identify e.g. a server rack, a network, or a data centre. Users can then allocate nodes from specific physical zones, to suit their redundancy or performance requirements.
 
-This functionality is only available to administrators. Other users can
-view physical zones, but not modify them.
+This functionality is only available to administrators. Other users can view physical zones, but not modify them.
 
-<details>
-  <summary>``DELETE /MAAS/api/2.0/zones/{name}/``</summary>
+<details> <summary>`DELETE /MAAS/api/2.0/zones/{name}/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -42695,9 +40859,7 @@ Deletes a zone.
     <no content>
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``GET /MAAS/api/2.0/zones/{name}/``</summary>
+</details> <details> <summary>`GET /MAAS/api/2.0/zones/{name}/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -42735,16 +40897,13 @@ Returns a named zone.
     Not Found
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``PUT /MAAS/api/2.0/zones/{name}/``</summary>
+</details> <details> <summary>`PUT /MAAS/api/2.0/zones/{name}/`</summary>
 
 ------------------------------------------------------------------------
 
 Updates a zone's name or description.
 
-Note that only 'name' and 'description' parameters are honored. Others,
-such as 'resource-uri' or 'id' will be ignored.
+Note that only 'name' and 'description' parameters are honored. Others, such as 'resource-uri' or 'id' will be ignored.
 
 **Parameters**
 
@@ -42752,8 +40911,7 @@ such as 'resource-uri' or 'id' will be ignored.
 
 **{name}** (*URL String*): Required. The zone to update.
 
-**description** (*String*): Optional. A brief description of the new
-zone.
+**description** (*String*): Optional. A brief description of the new zone.
 
 **name** (*String*): Optional. The zone's new name.
 
@@ -42784,17 +40942,16 @@ zone.
 
 <p>&nbsp;</p>
 </details>
+
 ### Zones
 
 Manage physical zones.
 
-<details>
-  <summary>``GET /MAAS/api/2.0/zones/``</summary>
+<details> <summary>`GET /MAAS/api/2.0/zones/`</summary>
 
 ------------------------------------------------------------------------
 
-Get a listing of all zones. Note that there is always at least one zone:
-default.
+Get a listing of all zones. Note that there is always at least one zone: default.
 
 **Success**
 
@@ -42815,9 +40972,7 @@ default.
         ]
 
 <p>&nbsp;</p>
-</details>
-<details>
-  <summary>``POST /MAAS/api/2.0/zones/``</summary>
+</details> <details> <summary>`POST /MAAS/api/2.0/zones/`</summary>
 
 ------------------------------------------------------------------------
 
@@ -42829,8 +40984,7 @@ Creates a new zone.
 
 **name** (*String*): Required. The new zone's name.
 
-**description** (*String*): Optional. A brief description of the new
-zone.
+**description** (*String*): Optional. A brief description of the new zone.
 
 **Success**
 
@@ -42858,70 +41012,63 @@ zone.
     {"name": ["Physical zone with this Name already exists."]}
 
 <p>&nbsp;</p>
-</details>
-Power types
------------
+</details> Power types -----------
 
-This is the list of the supported power types and their associated power
-parameters. Note that the list of usable power types for a particular
-rack controller might be a subset of this list if the rack controller in
-question is from an older version of MAAS.
+This is the list of the supported power types and their associated power parameters. Note that the list of usable power types for a particular rack controller might be a subset of this list if the rack controller in question is from an older version of MAAS.
 
 ### amt (Intel AMT)
 
 Power parameters:
 
--   power\_pass (Power password).
--   power\_address (Power address).
+-   power_pass (Power password).
+-   power_address (Power address).
 
 ### apc (American Power Conversion (APC) PDU)
 
 Power parameters:
 
--   power\_address (IP for APC PDU).
--   node\_outlet (APC PDU node outlet number (1-16)).
--   power\_on\_delay (Power ON outlet delay (seconds)). Default: '5'.
+-   power_address (IP for APC PDU).
+-   node_outlet (APC PDU node outlet number (1-16)).
+-   power_on_delay (Power ON outlet delay (seconds)). Default: '5'.
 
 ### dli (Digital Loggers, Inc. PDU)
 
 Power parameters:
 
--   outlet\_id (Outlet ID).
--   power\_address (Power address).
--   power\_user (Power user).
--   power\_pass (Power password).
+-   outlet_id (Outlet ID).
+-   power_address (Power address).
+-   power_user (Power user).
+-   power_pass (Power password).
 
-### fence\_cdu (Sentry Switch CDU)
+### fence_cdu (Sentry Switch CDU)
 
 Power parameters:
 
--   power\_address (Power address).
--   power\_id (Power ID).
--   power\_user (Power user).
--   power\_pass (Power password).
+-   power_address (Power address).
+-   power_id (Power ID).
+-   power_user (Power user).
+-   power_pass (Power password).
 
 ### hmc (IBM Hardware Management Console (HMC))
 
 Power parameters:
 
--   power\_address (IP for HMC).
--   power\_user (HMC username).
--   power\_pass (HMC password).
--   server\_name (HMC Managed System server name).
+-   power_address (IP for HMC).
+-   power_user (HMC username).
+-   power_pass (HMC password).
+-   server_name (HMC Managed System server name).
 -   lpar (HMC logical partition).
 
 ### ipmi (IPMI)
 
 Power parameters:
 
--   power\_driver (Power driver). Choices: 'LAN' (LAN \[IPMI 1.5\]),
-    'LAN\_2\_0' (LAN\_2\_0 \[IPMI 2.0\]) Default: 'LAN\_2\_0'.
--   power\_boot\_type (Power boot type). Choices: 'auto' (Automatic),
-    'legacy' (Legacy boot), 'efi' (EFI boot) Default: 'auto'.
--   power\_address (IP address).
--   power\_user (Power user).
--   power\_pass (Power password).
--   mac\_address (Power MAC).
+-   power_driver (Power driver). Choices: 'LAN' (LAN [IPMI 1.5]), 'LAN_2_0' (LAN_2_0 [IPMI 2.0]) Default: 'LAN_2_0'.
+-   power_boot_type (Power boot type). Choices: 'auto' (Automatic), 'legacy' (Legacy boot), 'efi' (EFI boot) Default: 'auto'.
+-   power_address (IP address).
+-   power_user (Power user).
+-   power_pass (Power password).
+-   mac_address (Power MAC).
 
 ### manual (Manual)
 
@@ -42931,147 +41078,141 @@ Power parameters:
 
 Power parameters:
 
--   power\_address (Power address).
--   power\_user (Power user).
--   power\_pass (Power password).
--   power\_hwaddress (Power hardware address).
+-   power_address (Power address).
+-   power_user (Power user).
+-   power_pass (Power password).
+-   power_hwaddress (Power hardware address).
 
 ### mscm (HP Moonshot - iLO Chassis Manager)
 
 Power parameters:
 
--   power\_address (IP for MSCM CLI API).
--   power\_user (MSCM CLI API user).
--   power\_pass (MSCM CLI API password).
--   node\_id (Node ID - Must adhere to cXnY format (X=cartridge number,
-    Y=node number).).
+-   power_address (IP for MSCM CLI API).
+-   power_user (MSCM CLI API user).
+-   power_pass (MSCM CLI API password).
+-   node_id (Node ID - Must adhere to cXnY format (X=cartridge number, Y=node number).).
 
 ### msftocs (Microsoft OCS - Chassis Manager)
 
 Power parameters:
 
--   power\_address (Power address).
--   power\_port (Power port).
--   power\_user (Power user).
--   power\_pass (Power password).
--   blade\_id (Blade ID (Typically 1-24)).
+-   power_address (Power address).
+-   power_port (Power port).
+-   power_user (Power user).
+-   power_pass (Power password).
+-   blade_id (Blade ID (Typically 1-24)).
 
 ### nova (OpenStack Nova)
 
 Power parameters:
 
--   nova\_id (Host UUID).
--   os\_tenantname (Tenant name).
--   os\_username (Username).
--   os\_password (Password).
--   os\_authurl (Auth URL).
+-   nova_id (Host UUID).
+-   os_tenantname (Tenant name).
+-   os_username (Username).
+-   os_password (Password).
+-   os_authurl (Auth URL).
 
 ### openbmc (OpenBMC Power Driver)
 
 Power parameters:
 
--   power\_address (OpenBMC address).
--   power\_user (OpenBMC user).
--   power\_pass (OpenBMC password).
+-   power_address (OpenBMC address).
+-   power_user (OpenBMC user).
+-   power_pass (OpenBMC password).
 
-### recs\_box (Christmann RECS|Box Power Driver)
+### recs_box (Christmann RECS|Box Power Driver)
 
 Power parameters:
 
--   node\_id (Node ID).
--   power\_address (Power address).
--   power\_port (Power port).
--   power\_user (Power user).
--   power\_pass (Power password).
+-   node_id (Node ID).
+-   power_address (Power address).
+-   power_port (Power port).
+-   power_user (Power user).
+-   power_pass (Power password).
 
 ### redfish (Redfish)
 
 Power parameters:
 
--   power\_address (Redfish address).
--   power\_user (Redfish user).
--   power\_pass (Redfish password).
--   node\_id (Node ID).
+-   power_address (Redfish address).
+-   power_user (Redfish user).
+-   power_pass (Redfish password).
+-   node_id (Node ID).
 
 ### sm15k (SeaMicro 15000)
 
 Power parameters:
 
--   system\_id (System ID).
--   power\_address (Power address).
--   power\_user (Power user).
--   power\_pass (Power password).
--   power\_control (Power control type). Choices: 'ipmi' (IPMI),
-    'restapi' (REST API v0.9), 'restapi2' (REST API v2.0) Default:
-    'ipmi'.
+-   system_id (System ID).
+-   power_address (Power address).
+-   power_user (Power user).
+-   power_pass (Power password).
+-   power_control (Power control type). Choices: 'ipmi' (IPMI), 'restapi' (REST API v0.9), 'restapi2' (REST API v2.0) Default: 'ipmi'.
 
 ### ucsm (Cisco UCS Manager)
 
 Power parameters:
 
 -   uuid (Server UUID).
--   power\_address (URL for XML API).
--   power\_user (API user).
--   power\_pass (API password).
+-   power_address (URL for XML API).
+-   power_user (API user).
+-   power_pass (API password).
 
 ### virsh (Virsh (virtual systems))
 
 Power parameters:
 
--   power\_address (Virsh address).
--   power\_pass (Virsh password (optional)).
--   power\_id (Virsh VM ID).
+-   power_address (Virsh address).
+-   power_pass (Virsh password (optional)).
+-   power_id (Virsh VM ID).
 
 ### vmware (VMware)
 
 Power parameters:
 
--   power\_vm\_name (VM Name (if UUID unknown)).
--   power\_uuid (VM UUID (if known)).
--   power\_address (VMware hostname).
--   power\_user (VMware username).
--   power\_pass (VMware password).
--   power\_port (VMware API port (optional)).
--   power\_protocol (VMware API protocol (optional)).
+-   power_vm_name (VM Name (if UUID unknown)).
+-   power_uuid (VM UUID (if known)).
+-   power_address (VMware hostname).
+-   power_user (VMware username).
+-   power_pass (VMware password).
+-   power_port (VMware API port (optional)).
+-   power_protocol (VMware API protocol (optional)).
 
 ### wedge (Facebook's Wedge)
 
 Power parameters:
 
--   power\_address (IP address).
--   power\_user (Power user).
--   power\_pass (Power password).
+-   power_address (IP address).
+-   power_user (Power user).
+-   power_pass (Power password).
 
 ### rsd (Rack Scale Design)
 
 Power parameters:
 
--   power\_address (Pod address).
--   power\_user (Pod user).
--   power\_pass (Pod password).
--   node\_id (Node ID).
+-   power_address (Pod address).
+-   power_user (Pod user).
+-   power_pass (Pod password).
+-   node_id (Node ID).
 
-Pod types
----------
+## Pod types
 
-This is the list of the supported pod types and their associated
-parameters. Note that the list of usable pod types for a particular rack
-controller might be a subset of this list if the rack controller in
-question is from an older version of MAAS.
+This is the list of the supported pod types and their associated parameters. Note that the list of usable pod types for a particular rack controller might be a subset of this list if the rack controller in question is from an older version of MAAS.
 
 ### rsd (Rack Scale Design)
 
 Parameters:
 
--   power\_address (Pod address).
--   power\_user (Pod user).
--   power\_pass (Pod password).
--   node\_id (Node ID).
+-   power_address (Pod address).
+-   power_user (Pod user).
+-   power_pass (Pod password).
+-   node_id (Node ID).
 
 ### virsh (Virsh (virtual systems))
 
 Parameters:
 
--   power\_address (Virsh address).
--   power\_pass (Virsh password (optional)).
--   power\_id (Virsh VM ID).
+-   power_address (Virsh address).
+-   power_pass (Virsh password (optional)).
+-   power_id (Virsh VM ID).
+

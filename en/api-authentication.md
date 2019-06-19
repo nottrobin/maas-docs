@@ -1,21 +1,14 @@
-MAAS's API uses [OAuth][oauth] as its authentication mechanism. There isn't a
-third party involved (as in 3-legged OAuth) and so the process used is what's
-commonly referred to as 0-legged OAuth: the consumer accesses protected
-resources by submitting OAuth signed requests.
+MAAS's API uses [OAuth](http://en.wikipedia.org/wiki/OAuth) as its authentication mechanism. There isn't a third party involved (as in 3-legged OAuth) and so the process used is what's commonly referred to as 0-legged OAuth: the consumer accesses protected resources by submitting OAuth signed requests.
 
-Note that some API endpoints support unauthenticated requests (i.e. anonymous
-access). See the API documentation &lt;api&gt; for details.
+Note that some API endpoints support unauthenticated requests (i.e. anonymous access). See the API documentation &lt;api&gt; for details.
 
 # Examples
 
-Here are two examples on how to perform an authenticated GET request to
-retrieve the list of nodes. The &lt;key&gt;, &lt;secret&gt;,
-&lt;consumer\_key&gt; tokens are the three elements that compose the API key
-(API key = '&lt;consumer\_key&gt;:&lt;key&gt;:&lt;secret&gt;').
+Here are two examples on how to perform an authenticated GET request to retrieve the list of nodes. The &lt;key&gt;, &lt;secret&gt;, &lt;consumer_key&gt; tokens are the three elements that compose the API key (API key = '&lt;consumer_key&gt;:&lt;key&gt;:&lt;secret&gt;').
 
 ## Python
 
-```python
+``` python
 import oauth.oauth as oauth
 import httplib2
 import uuid
@@ -45,7 +38,7 @@ response = perform_API_request(
 
 ## Ruby
 
-```ruby
+``` ruby
 require 'oauth'
 require 'oauth/signature/plaintext'
 
@@ -65,4 +58,4 @@ response = perform_API_request(
 ```
 
 <!-- LINKS -->
-[oauth]: http://en.wikipedia.org/wiki/OAuth
+

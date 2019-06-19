@@ -1,19 +1,14 @@
-MAAS can configure custom local VMware VMFS Datastore layouts to maximize the
-usage of your local disks when deploying VMware ESXi. As VMware ESXi requires
-specific partitions for operating system usage you must first apply the [VMFS6
-storage layout](installconfig-storage.md#VMFS6 layout). This layout creates a
-VMFS Datastore named datastore1 which uses the disk space left over on the boot
-disk after the operating system partitions have been applied.
+MAAS can configure custom local VMware VMFS Datastore layouts to maximize the usage of your local disks when deploying VMware ESXi. As VMware ESXi requires specific partitions for operating system usage you must first apply the [VMFS6 storage layout](installconfig-storage.md#VMFS6%20layout). This layout creates a VMFS Datastore named datastore1 which uses the disk space left over on the boot disk after the operating system partitions have been applied.
 
 # Listing VMFS Datastores
 
 To view all VMFS Datastores on a machine use the 'vmfs-datastores read' API call:
 
-```bash
+``` bash
 maas $PROFILE vmfs-datastores read $SYSTEM_ID
 ```
 
-```nohighlight
+``` nohighlight
 [
     {
         "human_size": "45.8 GB",
@@ -77,11 +72,11 @@ maas $PROFILE vmfs-datastores read $SYSTEM_ID
 
 To view a specific VMFS Datastores on a machine use the 'vmfs-datastore read' API call:
 
-```bash
+``` bash
 maas $PROFILE vmfs-datastore read $SYSTEM_ID $VMFS_DATASTORE_ID
 ```
 
-```nohighlight
+``` nohighlight
 {
     "uuid": "fb6fedc2-f711-40de-ab83-77eddc3e19ac",
     "name": "datastore1",
@@ -121,16 +116,15 @@ maas $PROFILE vmfs-datastore read $SYSTEM_ID $VMFS_DATASTORE_ID
 
 # Creating a new VMFS Datastore
 
-A VMware VMFS datastore is created on one or more [block devices
-](installconfig-block.md) or [partitions](installconfig-block.md)
+A VMware VMFS datastore is created on one or more [block devices](installconfig-block.md) or [partitions](installconfig-block.md)
 
 To create a VMFS Datastores on a machine use the 'vmfs-datastores create' API call:
 
-```bash
+``` bash
 maas $PROFILE vmfs-datastores create $SYSTEM_ID name=$VMFS_NAME block_devices=$BLOCK_ID_1,$BLOCK_ID_2 partitions=$PARTITION_ID_1,$PARTITION_ID_2
 ```
 
-```nohighlight
+``` nohighlight
 {
     "system_id": "b66fn6",
     "devices": [
@@ -172,11 +166,11 @@ maas $PROFILE vmfs-datastores create $SYSTEM_ID name=$VMFS_NAME block_devices=$B
 
 To edit an existing VMFS Datastores on a machine use the 'vmfs-datastore update' API call:
 
-```bash
+``` bash
 maas $PROFILE vmfs-datastore update $SYSTEM_ID $VMFS_ID name=$NEW_VMFS_NAME add_block_devices=$NEW_BLOCK_ID_1,$NEW_BLOCK_ID_2 add_partitions=$NEW_PARTITION_ID_1,$NEW_PARTITION_ID_2 remove_partitions=$EXISTING_PARTITION_ID1,$EXISTING_PARTITION_ID2
 ```
 
-```nohighlight
+``` nohighlight
 {
     "uuid": "2711566c-2df4-4cc4-8c06-7392bb1f9532",
     "name": "datastore42",
@@ -238,6 +232,6 @@ maas $PROFILE vmfs-datastore update $SYSTEM_ID $VMFS_ID name=$NEW_VMFS_NAME add_
 
 To delete a VMFS Datastores on a machine use the 'vmfs-datastore delete' API call:
 
-```bash
+``` bash
 maas $PROFILE vmfs-datastore delete $SYSTEM_ID $VMFS_ID
 ```

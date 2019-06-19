@@ -1,37 +1,26 @@
-Welcome to MAAS 2.6, a major update to [Canonical's][canonical] *Metal as a
-Service* - The smartest way to manage bare metal.
+Welcome to MAAS 2.6, a major update to [Canonical's](https://www.canonical.com/) *Metal as a Service* - The smartest way to manage bare metal.
 
 This latest release of MAAS:
 
-+ Performance - Leverage HTTP for most of the PXE process
-+ Performance - Track stats and metrics with prometheus
-+ User experience - Provide a more granular boot output
-+ Networking - Multiple default gateways
-+ Power control - Add support for redfish
-+ Power control - Add support for OpenBMC
-+ ESXi - Support configuring datastores
-+ ESXi - Support registering to vCenter
-+ User experience - Dismiss/supress failed tests
-+ User experience - Clear discovered devices
-+ User experience - Add note to machine
-+ User experience - Add grouping to machine listing page
+-   Performance - Leverage HTTP for most of the PXE process
+-   Performance - Track stats and metrics with prometheus
+-   User experience - Provide a more granular boot output
+-   Networking - Multiple default gateways
+-   Power control - Add support for redfish
+-   Power control - Add support for OpenBMC
+-   ESXi - Support configuring datastores
+-   ESXi - Support registering to vCenter
+-   User experience - Dismiss/supress failed tests
+-   User experience - Clear discovered devices
+-   User experience - Add note to machine
+-   User experience - Add grouping to machine listing page
 
-If you're new to MAAS, take a look at [Explore MAAS][explore-maas] to get an
-overview of its installation and capabilities. If you need a more
-comprehensive review of the changes in this release, including known issues,
-workarounds and bug fixes, take a look at the detailed release notes in the
-following MAAS Discourse topics:
+If you're new to MAAS, take a look at [Explore MAAS](intro-explore.md) to get an overview of its installation and capabilities. If you need a more comprehensive review of the changes in this release, including known issues, workarounds and bug fixes, take a look at the detailed release notes in the following MAAS Discourse topics:
 
-+ [MAAS 2.6.0 beta 2][release-notes-beta-2]
-+ [MAAS 2.6.0 beta 1][release-notes-beta-1]
-+ [MAAS 2.6.0 alpha 2][release-notes-alpha-2]
-+ [MAAS 2.6.0 alpha 1][release-notes-alpha-1]
+-   [MAAS 2.6.0 beta 2](https://discourse.maas.io/t/2-6-0-beta-2-released/523)
+-   [MAAS 2.6.0 beta 1](https://discourse.maas.io/t/2-6-0-beta-1-released/495)
+-   [MAAS 2.6.0 alpha 2](https://discourse.maas.io/t/maas-2-6-0-alpha-2-released/460)
+-   [MAAS 2.6.0 alpha 1](https://discourse.maas.io/t/maas-2-6-0-alpha-1-released/413)
 
 <!-- LINKS -->
-[vanilla]: https://vanillaframework.io/
-[explore-maas]: intro-explore.md
-[canonical]: https://www.canonical.com/
-[release-notes-alpha-1]: https://discourse.maas.io/t/maas-2-6-0-alpha-1-released/413
-[release-notes-alpha-2]: https://discourse.maas.io/t/maas-2-6-0-alpha-2-released/460
-[release-notes-beta-1]: https://discourse.maas.io/t/2-6-0-beta-1-released/495
-[release-notes-beta-2]: https://discourse.maas.io/t/2-6-0-beta-2-released/523
+

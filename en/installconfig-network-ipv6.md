@@ -1,75 +1,38 @@
-Support for IPv6 in MAAS is similar to support for IPv4. Please note the
-following:
+Support for IPv6 in MAAS is similar to support for IPv4. Please note the following:
 
-+ A rack controller in an IPv6 context needs to have the region API server URL
-  specified with brackets, similar to the example below.
+-   A rack controller in an IPv6 context needs to have the region API server URL specified with brackets, similar to the example below.
 
-+ The [Web UI][webui] and the [MAAS CLI][manage-cli] (logging in to the API
-  server) can be accessed in the same way on both IPv4 and IPv6. To use an IPv6
-  address in a URL, surround it with square brackets. For example, on the local
-  machine (`::1`, the IPv6 equivalent of `localhost`):
+-   The [Web UI](installconfig-webui.md) and the [MAAS CLI](manage-cli.md) (logging in to the API server) can be accessed in the same way on both IPv4 and IPv6. To use an IPv6 address in a URL, surround it with square brackets. For example, on the local machine (`::1`, the IPv6 equivalent of `localhost`):
 
-```nohighlight
+<!-- -->
+
+``` nohighlight
 http://[::1]:5240/MAAS/
 ```
 
-[note]
-Most BMCs can only be controlled over IPv4.
-[/note]
+[note] Most BMCs can only be controlled over IPv4. [/note]
 
 ## Enable IPv6
 
-You enable IPv6 networking in the same way that you enable IPv4 networking:
-configure a separate rack controller interface for your IPv6 subnet. The IPv6 interface must
-define a static address range. Provided that you already have a functioning
-IPv6 network, that's all there is to it. The following sections will go into
-more detail about what is supported, what is needed, and what to do if you
-don't yet have a functioning IPv6 network.
+You enable IPv6 networking in the same way that you enable IPv4 networking: configure a separate rack controller interface for your IPv6 subnet. The IPv6 interface must define a static address range. Provided that you already have a functioning IPv6 network, that's all there is to it. The following sections will go into more detail about what is supported, what is needed, and what to do if you don't yet have a functioning IPv6 network.
 
-An IPv6 interface can use the same network interface on the rack controller as
-an existing IPv4 network interface. It just defines a different subnet, with
-IPv6 addressing. A node that's connected to the IPv4 subnet will also be
-connected to the IPv6 subnet on the same network segment.
+An IPv6 interface can use the same network interface on the rack controller as an existing IPv4 network interface. It just defines a different subnet, with IPv6 addressing. A node that's connected to the IPv4 subnet will also be connected to the IPv6 subnet on the same network segment.
 
 ### Configure an IPv6 subnet
 
-Define a reserved static IP range and nodes deployed on the subnet will get a
-static address in this range. Since IPv6 networks are normally 64 bits wide you
-can be generous with the range size. Leave the netmask and broadcast address
-fields blank.
+Define a reserved static IP range and nodes deployed on the subnet will get a static address in this range. Since IPv6 networks are normally 64 bits wide you can be generous with the range size. Leave the netmask and broadcast address fields blank.
 
-You may want MAAS to manage DHCP and DNS, but it's not required. In fact nodes
-do not need a DHCP server at all for IPv6; MAAS configures static IPv6
-addresses on a node's network interface while deploying it. A DHCPv6 server
-can provide addresses for containers or virtual machines running on the nodes,
-as well as devices on the network that are not managed by MAAS, but it is not
-needed for the nodes themselves. MAAS will not be aware of any addresses
-issued by DHCP, and does not guarantee that they will stay unchanged.
+You may want MAAS to manage DHCP and DNS, but it's not required. In fact nodes do not need a DHCP server at all for IPv6; MAAS configures static IPv6 addresses on a node's network interface while deploying it. A DHCPv6 server can provide addresses for containers or virtual machines running on the nodes, as well as devices on the network that are not managed by MAAS, but it is not needed for the nodes themselves. MAAS will not be aware of any addresses issued by DHCP, and does not guarantee that they will stay unchanged.
 
 ### Routing
 
-In IPv6, clients do not discover routes through DHCP. Routers make themselves
-known on their networks by sending out *route advertisements*. These *RAs*
-contain other configuration as well: whether clients should statelessly
-configure their own unique IP addresses based on their MAC addresses; whether
-they should request stateless configuration from a DHCP server; and finally,
-whether they should request a stateful IP address from a DHCP server. Since a
-network interface can have any number of IPv6 addresses even on a single
-subnet, several of these address assignment mechanisms can be combined.
+In IPv6, clients do not discover routes through DHCP. Routers make themselves known on their networks by sending out *route advertisements*. These *RAs* contain other configuration as well: whether clients should statelessly configure their own unique IP addresses based on their MAC addresses; whether they should request stateless configuration from a DHCP server; and finally, whether they should request a stateful IP address from a DHCP server. Since a network interface can have any number of IPv6 addresses even on a single subnet, several of these address assignment mechanisms can be combined.
 
-However, when MAAS configures IPv6 networking on a node, it does not rely on
-RAs. It statically configures a node's default IPv6 route to use the router
-that is configured on the cluster interface, so that the node will know their
-default gateway. They do not need DHCP and will not autoconfigure global
-addresses.
+However, when MAAS configures IPv6 networking on a node, it does not rely on RAs. It statically configures a node's default IPv6 route to use the router that is configured on the cluster interface, so that the node will know their default gateway. They do not need DHCP and will not autoconfigure global addresses.
 
-However, if you are planning to operate DHCPv6 clients as well, e.g. on
-machines not managed by MAAS or on virtual machines hosted by MAAS nodes, you
-may still want to have RAs configured to make those clients obtain
-configuration over DHCP.
+However, if you are planning to operate DHCPv6 clients as well, e.g. on machines not managed by MAAS or on virtual machines hosted by MAAS nodes, you may still want to have RAs configured to make those clients obtain configuration over DHCP.
 
-If you need RAs but your gateway does not send them, install and configure
-`radvd` somewhere on the network to advertise its route.
+If you need RAs but your gateway does not send them, install and configure `radvd` somewhere on the network to advertise its route.
 
 <!-- LEAVE THIS OUT FOR NOW
 ### Other installers and operating systems
@@ -85,7 +48,6 @@ However, as long as the address remains allocated to the node, you may still
 configure its operating system to use that address. The node can then use that
 address as if it had been configured by MAAS.
 -->
-
 <!-- LEAVE THIS OUT FOR NOW. I DO NOT SEE THIS OPTION IN THE WEB UI ANYWAY.
 ## Disable IPv4
 
@@ -98,10 +60,5 @@ deployed, the node will have IPv6 networking only.
 In practice nodes may not be functional without IPv4 networking. A few things
 are known to be needed in any case:
 -->
-
-
 <!-- LINKS -->
 
-[install-rackd]: installconfig-rack.md#install-a-rack-controller
-[webui]: installconfig-webui.md
-[manage-cli]: manage-cli.md

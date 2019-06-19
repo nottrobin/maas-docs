@@ -1,20 +1,21 @@
-MAAS 2.5 and above has the ability to deploy VMware ESXi as a custom image. MAAS cannot directly deploy the VMware ESXi ISO, a specialized image must be created from official VMWare  ISO. Canonical created a [Packer](https://www.packer.io/) template to automate the image creation process.
+MAAS 2.5 and above has the ability to deploy VMware ESXi as a custom image. MAAS cannot directly deploy the VMware ESXi ISO, a specialized image must be created from official VMWare ISO. Canonical created a [Packer](https://www.packer.io/) template to automate the image creation process.
 
 ## Prerequisites (to create the images)
 
 ### Image creation
 
-- A physical machine running Ubuntu 18.04+
-  - **CPU**: 4 2GHz cores
-  - **Memory**: 8 GB RAM (16 GB RAM recommended)
-  - **Disk space**: 11 GB
-- [The VMWare ESxi ISO](https://my.vmware.com/en/web/vmware/evalcenter?p=free-esxi6)
-- [Packer - https://www.packer.io/intro/getting-started/install.html](https://www.packer.io/intro/getting-started/install.html)
-  - Procedure was tested with precompiled 64-bit Packer 1.3.4 Linux binaries
-- <a class="modal-trigger" href="#esxi-modal">Packer template</a> for MAAS custom image
+-   A physical machine running Ubuntu 18.04+
+-   **CPU**: 4 2GHz cores
+-   **Memory**: 8 GB RAM (16 GB RAM recommended)
+-   **Disk space**: 11 GB
+-   [The VMWare ESxi ISO](https://my.vmware.com/en/web/vmware/evalcenter?p=free-esxi6)
+-   [Packer - https://www.packer.io/intro/getting-started/install.html](https://www.packer.io/intro/getting-started/install.html)
+-   Procedure was tested with precompiled 64-bit Packer 1.3.4 Linux binaries
+-   <a class="modal-trigger" href="#esxi-modal">Packer template</a> for MAAS custom image
 
 ### Image deployment
-- MAAS 2.5.0+
+
+-   MAAS 2.5.0+
 
 ## Customizing the Image
 
@@ -24,44 +25,36 @@ The image may be customized by modifying packer-maas/vmware-esxi/http/vmware-esx
 
 Before an image is built the nbd kernel module must be loaded
 
-```
-sudo modprobe nbd
-```
+    sudo modprobe nbd
 
 Once the nbd kernel module is loaded your current working directory must be in the packer-maas/vmware-esxi directory
 
-
-```
-cd /path/to/packer-maas/vmware-esxi
-```
+    cd /path/to/packer-maas/vmware-esxi
 
 You can now start the image building process using Packer with the following command
 
-```
-sudo packer build -var
-'vmware_esxi_iso_path=/path/to/VMware-VMvisor-Installer-6.7.0-8169922.x86_64.iso'
-vmware-esxi.json
-```
+    sudo packer build -var
+    'vmware_esxi_iso_path=/path/to/VMware-VMvisor-Installer-6.7.0-8169922.x86_64.iso'
+    vmware-esxi.json
 
 ## Uploading an Image
 
 Once the image has been created it can be uploaded to MAAS using the CLI with the following command
 
-```
-maas $PROFILE boot-resources create name='esxi/6.7' title='VMware ESXi 6.7'
-architecture='amd64/generic' filetype='ddgz' content@=vmware-esxi.dd.gz
-```
+    maas $PROFILE boot-resources create name='esxi/6.7' title='VMware ESXi 6.7'
+    architecture='amd64/generic' filetype='ddgz' content@=vmware-esxi.dd.gz
 
 ## Features and Limitations
 
 ### Networking
-- VMware ESXi does not support linux bridges
-- Bonds - The following MAAS bond modes are mapped to VMware ESXi NIC team sharing with load balancing as follows:
-  - balance-rr - portid
-  - active-backup - explicit
-  - 802.3ad - iphash, LACP rate and XMIT hash policy settings are ignored.
-  - No other bond modes are currently supported.
-- VMware ESXi does not allow VMs to use a PortGroup that has a VMK attached to it. All configured devices will have a VMK attached. To use a vSwitch with VMs you must leave a device or alias unconfigured in MAAS.
+
+-   VMware ESXi does not support linux bridges
+-   Bonds - The following MAAS bond modes are mapped to VMware ESXi NIC team sharing with load balancing as follows:
+-   balance-rr - portid
+-   active-backup - explicit
+-   802.3ad - iphash, LACP rate and XMIT hash policy settings are ignored.
+-   No other bond modes are currently supported.
+-   VMware ESXi does not allow VMs to use a PortGroup that has a VMK attached to it. All configured devices will have a VMK attached. To use a vSwitch with VMs you must leave a device or alias unconfigured in MAAS.
 
 ### Storage
 
@@ -331,3 +324,4 @@ VMware has [very specific hardware requirements](https://www.vmware.com/resource
   display: none;
 }
 </style>
+
