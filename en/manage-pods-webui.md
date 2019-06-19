@@ -1,9 +1,3 @@
-Title: Manage composable machines
-TODO:  
-table_of_contents: True
-
-# Manage composable machines
-
 See [Web UI][webui] for how to get started with the web UI.
 
 ## Add a KVM host
@@ -94,11 +88,12 @@ Next, add the contents of `~maas/.ssh/id_rsa.pub` to the KVM host user's
 KVM host node via SSH from a host for which you provided MAAS an existing public
 SSH key (e.g. your imported Launchpad keys).
 
-!!! Note:
-    Insufficient permissions for `$USER` may cause the `virsh` command to fail
-    with an error such as `failed to connect to the hypervisor`. Check the
-    `$USER` group membership to make sure `$USER` is a member of the `libvirtd`
-    group.
+[note]
+Insufficient permissions for `$USER` may cause the `virsh` command to fail
+with an error such as `failed to connect to the hypervisor`. Check the
+`$USER` group membership to make sure `$USER` is a member of the `libvirtd`
+group.
+[/note]
 
 
 #### Add
@@ -114,10 +109,11 @@ Here, 'Virsh address' typically looks like the following:
 qemu+ssh://<kvm host IP>/system
 ```
 
-!!! Note:
-    MAAS will automatically discover and store the resources your KVM host
-    contains. Any existing machines will also appear on the 'Machines' page and
-    be commissioned.
+[note]
+MAAS will automatically discover and store the resources your KVM host
+contains. Any existing machines will also appear on the 'Machines' page and
+be commissioned.
+[/note]
 
 ## Add an RSD Pod
 
@@ -129,9 +125,10 @@ the Pod type drop-down menu.
 You will need to get values for 'Pod address' (IP address or URL followed by a
 port), 'Pod user', and 'Pod password' from your RSD administrator.
 
-!!! Note:
-    MAAS will automatically discover and store the resources your RSD Pod
-    contains.
+[note]
+MAAS will automatically discover and store the resources your RSD Pod
+contains.
+[/note]
 
 ## List pods
 
@@ -229,8 +226,9 @@ the 'Take action' dropdown menu. Click 'Delete 1 pod' to confirm the action:
 
 ![pod delete][img__pod-delete]
 
-!!! Warning:
-    Deleting a pod will also delete all its machines and remove them from MAAS.
+[note type="caution"]
+Deleting a pod will also delete all its machines and remove them from MAAS.
+[/note]
 
 <!-- LINKS -->
 

@@ -1,9 +1,3 @@
-Title: Introduction
-TODO:  
-table_of_contents: True
-
-# Controllers
-
 There are two types of controllers: a *region controller* and a *rack
 controller*. The region controller deals with operator requests while one or
 more rack controllers provide the high-bandwidth services to multiple server

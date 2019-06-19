@@ -1,9 +1,7 @@
-Title: PostgreSQL HA notes
-TODO:  these notes should be tested occasionally
-table_of_contents: True
-
-
-# PostgreSQL HA: hot standby
+<!--
+Todo:
+- these notes should be tested occasionally
+-->
 
 **Disclaimer: These *notes* give an idea of what is involved in setting up 'hot
 standby' HA mode in PostgreSQL. The below procedures are not regularly tested.

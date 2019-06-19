@@ -1,8 +1,3 @@
-Title: Kernel Boot Options
-
-
-# Kernel Boot Options
-
 MAAS is able to specify kernel boot options to nodes on both a global basis and
 a per-node basis. See
 [Linux kernel parameters][upstream-kernel.org-kernel-parameters] (kernel.org)
@@ -31,8 +26,9 @@ maas $PROFILE maas set-config name=kernel_opts value='$KERNEL_OPTIONS'
 
 Per-node kernel boot options are set using the CLI.
 
-!!! Note:
-    Per-node boot options take precedence to global ones.
+[note]
+Per-node boot options take precedence to global ones.
+[/note]
 
 To specify kernel boot options for an individual machine, first create a tag:
 

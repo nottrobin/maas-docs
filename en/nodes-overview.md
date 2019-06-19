@@ -1,8 +1,3 @@
-Title: Node overview
-table_of_contents: True
-
-# Node overview
-
 Select 'Machines' from the top menu of the MAAS web UI to display a table
 listing all the nodes MAAS currently knows about.
 
@@ -43,9 +38,10 @@ renamed 'Take action' and provides access to the various
 
 ![web UI node take action menu][img__nodes-action]
 
-!!! Note:
-    The 'Filter by' section limits the nodes listed in the table to selected
-    keywords and node attributes.
+[note]
+The 'Filter by' section limits the nodes listed in the table to selected
+keywords and node attributes.
+[/note]
 
 ## Node details
 

@@ -1,9 +1,3 @@
-Title: Creating and deleting machines
-TODO:  
-table_of_contents: True
-
-# Creating a machine
-
 While on a pod's details view, select 'Compose' from the 'Take action' drop-down
 menu to compose a machine.
 

@@ -1,7 +1,3 @@
-Title: Install from Packages
-
-# Installation methods
-
 To best fit your requirements, MAAS offers several installation options:
 
 - **[Packages][install-from-packages]**. The recommended way to install MAAS.
@@ -17,9 +13,10 @@ Additionally, you may want to consider an installation within
 [LXD containers][install-with-lxd]. This allows MAAS nodes to also run as
 local containers and is ideal for testing and experimenting with MAAS.
 
-!!! Note:
-    See [MAAS HA][maas-ha] for more information about installing MAAS via Snaps
-    in high-availability environments.
+[note]
+See [MAAS HA][maas-ha] for more information about installing MAAS via Snaps
+in high-availability environments.
+[/note]
 
 # Install from Packages
 

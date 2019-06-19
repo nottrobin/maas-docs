@@ -1,8 +1,7 @@
-Title: Install with LXD
-TODO:  Text needs a review
-
-
-# Install with LXD
+<!--
+Todo:
+- Text needs a review
+-->
 
 [LXD][link-lxd] is a manager for Linux-based containers (LXC), offering a user
 experience similar to virtual machines without the same overheads.

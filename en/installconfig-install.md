@@ -1,8 +1,3 @@
-Title: Installation
-
-
-# Installation
-
 There are four ways to install MAAS:
 
 - [From a snap][install-from-snap]. Install via a snap.

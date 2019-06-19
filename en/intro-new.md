@@ -1,9 +1,3 @@
-Title: What's new in 2.6
-TODO:  
-table_of_contents: True
-
-# What's new in 2.6
-
 Welcome to MAAS 2.6, a major update to [Canonical's][canonical] *Metal as a
 Service* - The smartest way to manage bare metal.
 
@@ -41,4 +35,3 @@ following MAAS Discourse topics:
 [release-notes-alpha-2]: https://discourse.maas.io/t/maas-2-6-0-alpha-2-released/460
 [release-notes-beta-1]: https://discourse.maas.io/t/2-6-0-beta-1-released/495
 [release-notes-beta-2]: https://discourse.maas.io/t/2-6-0-beta-2-released/523
-

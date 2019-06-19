@@ -1,5 +1,3 @@
-Title: API
-
 MAAS API
 ========
 
@@ -43077,4 +43075,3 @@ Parameters:
 -   power\_address (Virsh address).
 -   power\_pass (Virsh password (optional)).
 -   power\_id (Virsh VM ID).
-

@@ -1,10 +1,8 @@
-Title: Working with Git and GitHub
-TODO:  Review commented out section: "Additional resources"
-       bug tracking: https://github.com/canonical-webteam/documentation-builder/issues/83
-table_of_contents: True
-
-
-# Working with Git and GitHub
+<!--
+Todo:
+- Review commented out section: "Additional resources"
+- bug tracking: https://github.com/canonical-webteam/documentation-builder/issues/83
+-->
 
 This page provides the essentials for working with Git and GitHub with the goal
 of contributing specifically to MAAS documentation. See the upstream projects

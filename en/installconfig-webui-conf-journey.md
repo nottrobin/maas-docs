@@ -1,31 +1,40 @@
-Title: Configuration Journey
-
-
-# Configuration Journey 
-
 When the web UI is accessed for the first time a series of configuration
 dialogs will be displayed to the administrator. It can be cancelled using the
 'skip' button in the top-right corner.
 
 Below are the default windows and window sections that will appear.
 
-^# MAAS (region) name
-   ![conf journey step 1][conf-journey-step-1]
+<details>
+<summary>MAAS (region) name</summary>
+<p><img alt="conf journey step 1" src="../media/installconfig-webui-conf-journey__region-name.png" /></p>
+<!-- LINKS -->
+</details>
 
-^# Connectivity (upstream DNS server, Ubuntu archives, and HTTP proxy)
-   ![conf journey step 2][conf-journey-step-2]
+<details>
+<summary>Connectivity (upstream DNS server, Ubuntu archives, and HTTP proxy)</summary>
+<p><img alt="conf journey step 2" src="../media/installconfig-webui-conf-journey__connectivity.png" /></p>
+<!-- LINKS -->
+</details>
 
-^# Ubuntu images
-   ![conf journey step 3][conf-journey-step-3]
+<details>
+<summary>Ubuntu images</summary>
+<p><img alt="conf journey step 3" src="../media/installconfig-webui-conf-journey__2.3_ubuntu-images.png" /></p>
+<!-- LINKS -->
+</details>
 
-^# SSH keys (for currently logged in user)
-   ![conf journey step 4][conf-journey-step-4]
+<details>
+<summary>SSH keys (for currently logged in user)</summary>
+<p><img alt="conf journey step 4" src="../media/installconfig-webui-conf-journey__2.3_ssh-keys.png" /></p>
+<p>Here, one key is already imported as this was added when the administrator
+   was created via the CLI.</p>
+<!-- LINKS -->
+</details>
 
-   Here, one key is already imported as this was added when the administrator
-   was created via the CLI.
-
-^# Finished (next steps)
-   ![conf journey step 5][conf-journey-step-5]
+<details>
+<summary>Finished (next steps)</summary>
+<p><img alt="conf journey step 5" src="../media/installconfig-webui-conf-journey__2.3_successfully-setup.png" /></p>
+<!-- LINKS -->
+</details>
 
 
 <!-- LINKS -->

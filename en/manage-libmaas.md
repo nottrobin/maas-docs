@@ -1,9 +1,7 @@
-Title: API Client
-TODO:  bug tracking: https://github.com/canonical-webteam/documentation-builder/issues/83
-table_of_contents: True
-
-
-# API Client
+<!--
+Todo:
+- bug tracking: https://github.com/canonical-webteam/documentation-builder/issues/83
+-->
 
 The `python-libmaas` client library is an asyncio-based client library whose
 purpose is to allow developers, integrators and administrators to better

@@ -1,9 +1,7 @@
-Title: Audit event logs
-TODO:  Update when all audit event logs have landed in MAAS master.
-table_of_contents: True
-
-
-# Audit event logs
+<!--
+Todo:
+- Update when all audit event logs have landed in MAAS master.
+-->
 
 There are many user initiated events in MAAS that an administrator or a user
 may want to audit. These include someone updating the settings or changing a
@@ -142,4 +140,3 @@ Here is a list of the types of audit event logs that are currently supported by 
 - User profile changes
 - Commissioning script changes
 - Test script changes
-

@@ -1,8 +1,3 @@
-Title: IP Ranges
-
-
-# IP Ranges
-
 The two types of IP ranges are explained in the
 [Concepts and terms][concepts-ipranges] page. The current page shows how to
 manage them. Specifically, it will show how to:

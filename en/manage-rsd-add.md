@@ -1,9 +1,3 @@
-Title: Add RSD pod
-TODO:  
-table_of_contents: True
-
-# Add an RSD host
-
 Add an RSD host by using the 'Add pod' button. Choose 'Rack Scale Design' from
 the pod type drop-down menu.
 
@@ -12,9 +6,10 @@ the pod type drop-down menu.
 You will need to get values for 'Pod address' (IP address or URL followed by a
 port), 'Pod user', and 'Pod password' from your RSD administrator.
 
-!!! Note:
-    MAAS will automatically discover and store the resources your RSD Pod
-    contains.
+[note]
+MAAS will automatically discover and store the resources your RSD Pod
+contains.
+[/note]
 
 ## CLI
 

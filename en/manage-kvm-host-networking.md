@@ -1,9 +1,3 @@
-Title: KVM host networking
-TODO:  
-table_of_contents: True
-
-# KVM host networking
-
 In order to enable KVM host networking features, MAAS must be able to correlate
 the IP address of a potential KVM host with a device known to MAAS (e.g.  a
 machine or controller). If it cannot, for example, if a machine not known to
@@ -19,10 +13,11 @@ There are other ways of setting up KVM hosts that provide easy management of VMs
 via the MAAS UI. You can, for example, install KVM manually on a deployed node
 or on a new or existing rack controller.
 
-!!! Warning:
-    Enhanced KVM host networking features may not operate correctly when you
-    install KVM manaully on a deployed node. (E.g. if any of the host interfaces
-    change.)
+[note type="caution"]
+Enhanced KVM host networking features may not operate correctly when you
+install KVM manaully on a deployed node. (E.g. if any of the host interfaces
+change.)
+[/note]
 
 ## 2.4 and earlier
 
@@ -40,10 +35,11 @@ network, or (2) NAT must be enabled.
 If MAAS cannot find a `maas` network, it will fallback to libvirt's `default`
 network.
 
-!!! Note:
-    Libvirt's `default` network has DHCP enabled by default. You must either
-    disable libvirt's DHCP and enable MAAS DHCP on the `default` network in
-    libvirt, or create a separate `maas` network on a VLAN with MAAS DHCP enabled.
+[note]
+Libvirt's `default` network has DHCP enabled by default. You must either
+disable libvirt's DHCP and enable MAAS DHCP on the `default` network in
+libvirt, or create a separate `maas` network on a VLAN with MAAS DHCP enabled.
+[/note]
 
 ## 2.5+
 
@@ -125,4 +121,3 @@ easier to configure and more likely to result in successful communication.
 [findpodid]: manage-kvm-create-vms.md#find-pod-ids
 [interface-constraints]: manage-kvm-create-vms.md#interfaces
 [deploykvm]: manage-kvm-add-host.md
-

@@ -1,8 +1,3 @@
-Title: Web UI
- 
-
-# Web UI
-
 The MAAS web UI is where users will spend much of their time. It is the
 preferred way to manage MAAS. This page will explain how to access the web UI
 for the first time and also draw attention to the first iteration of the MAAS
@@ -30,9 +25,10 @@ The username can be anything. You will also be prompted to supply a password
 for the user. The command option `--password=$PASSWORD` can be used to specify
 one but, depending on your environment, this may pose a security risk.
 
-!!! Note: 
-    At this time MAAS does not make use of the email address. However, it
-    may do so in the future.
+[note]
+At this time MAAS does not make use of the email address. However, it
+may do so in the future.
+[/note]
 
 You can now log in here:
 

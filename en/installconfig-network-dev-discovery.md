@@ -1,8 +1,3 @@
-Title: Network Discovery
-
-
-# Network Discovery
-
 MAAS constantly listens to the network and reports any discovered devices.
 Devices are identified when the rack controller observes them communicating on
 an attached IPv4 subnet. Discovered devices that do not correspond to machines

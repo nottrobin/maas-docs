@@ -1,10 +1,3 @@
-Title: Syslog
-TODO:
-table_of_contents: True
-
-
-# Syslog
-
 Syslog can be a useful tool for debugging MAAS issues. MAAS uses syslog to
 gather logs from the enlistment, commissioning and deployment processes and
 proxies them through the rack controllers, which send them to all region
@@ -26,9 +19,10 @@ or IP:
 
 Click the Save button to save your changes.
 
-!!! Note:
-    Note that MAAS controllers' syslogs are *not* forwarded to the external
-    syslog server -- only machine syslog information is forwarded.
+[note]
+Note that MAAS controllers' syslogs are *not* forwarded to the external
+syslog server -- only machine syslog information is forwarded.
+[/note]
 
 See [MAAS CLI][cli-remote-syslog] to learn how to add a remote syslog server
 using the CLI.

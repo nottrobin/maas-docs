@@ -1,8 +1,3 @@
-Title: Custom node setup
-table_of_contents: True
-
-# Custom node setup (preseed)
-
 During node [enlistment][node-enlistment], [deployment][node-deployment],
 [commissioning][node-commission] and node installation, MAAS sends
 [Tempita-derived][tempita] configuration files to the [cloud-init][cloud-init]
@@ -57,10 +52,11 @@ The `enlist` template, for example, contains only minimal variables whereas the
 contents of `enlist_userdata` includes both user variables and initialisation
 logic.
 
-!!! Note:
-    Tempita’s inheritance mechanism is the reverse of what might be expected.
-    Inherited files, such as `enlist_userdata`, become the new template which
-    can then reference variables from the higher level file, such as `enlist`.
+[note]
+Tempita’s inheritance mechanism is the reverse of what might be expected.
+Inherited files, such as `enlist_userdata`, become the new template which
+can then reference variables from the higher level file, such as `enlist`.
+[/note]
 
 
 ### Template naming
@@ -106,10 +102,11 @@ Xenial running on a x64 architecture, the file would need to be called
 To create the equivalent template for *curtin_userdata*, the file would be called
 `curtin_userdata_ubuntu_amd64_generic_xenial_node`.
 
-!!! Note:
-    Any file targetting a specific node will replace the values and
-    configuration held within any generic files. If those values are needed,
-    the generic template values will need to be copied into your new file. 
+[note]
+Any file targetting a specific node will replace the values and
+configuration held within any generic files. If those values are needed,
+the generic template values will need to be copied into your new file.
+[/note]
 
 ### Configuration
 

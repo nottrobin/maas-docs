@@ -1,10 +1,8 @@
-Title: Building the Docs
-TODO: can add more user-friendly instructions on setting up local web server
-      talk about entr utility
-table_of_contents: True
-
-
-# Building the Docs
+<!--
+Todo:
+- can add more user-friendly instructions on setting up local web server
+- talk about entr utility
+-->
 
 Every non-trivial contribution must first have its HTML built and verified
 before a pull request (PR) is made from it.
@@ -26,9 +24,10 @@ Install the builder. On Ubuntu 16.04 LTS:
 sudo snap install documentation-builder
 ```
 
-!!! Note:
-    You will first need to install package `squashfuse` if you're doing this in
-    a LXD container.
+[note]
+You will first need to install package `squashfuse` if you're doing this in
+a LXD container.
+[/note]
 
 To build the HTML, while in the root of the MAAS docs repository:
 

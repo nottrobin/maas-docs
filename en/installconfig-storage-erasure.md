@@ -1,8 +1,3 @@
-Title: Disk Erasure
-
-
-# Disk Erasure
-
 Disk erasure pertains to the erasing of data on each of a node's disks when the
 node has been released (see [Release action][concepts-release-action]) back
 into the pool of available nodes. The user can choose from among three erasure

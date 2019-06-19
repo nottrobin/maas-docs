@@ -1,16 +1,13 @@
-Title: Upgrade 2.3 to 2.4 from Ubuntu 16.04
-
-# Upgrade 2.3 to 2.4 from Ubuntu 16.04
-
 MAAS 2.3 is the last supported version for Ubuntu 16.04 LTS. Changes in the
 base dependencies of Ubuntu 18.04 LTS mean that newer versions of MAAS will not
 be back-portable, and consequently, to upgrade to MAAS 2.4 and all future
 versions, you will also need to upgrade the base operating system.
 
-!!! Note:
-    MAAS 2.3 will continue to be supported on Ubuntu 16.04 LTS until the end of its
-    support cycle. See [Ubuntu Releases][ubuntu-wiki-releases] for release and EOL
-    dates for all Ubuntu versions.
+[note]
+MAAS 2.3 will continue to be supported on Ubuntu 16.04 LTS until the end of its
+support cycle. See [Ubuntu Releases][ubuntu-wiki-releases] for release and EOL
+dates for all Ubuntu versions.
+[/note]
 
 Upgrading from MAAS 2.3 to MAAS 2.4 involves two steps:
 

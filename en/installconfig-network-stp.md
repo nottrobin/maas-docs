@@ -1,8 +1,3 @@
-Title: STP
-
-
-# STP
-
 Some switches use Spanning-Tree Protocol (STP) to negotiate a loop-free path
 through a root bridge. While scanning, it can make each port wait up to 50
 seconds before data is allowed to be sent on the port. This delay in turn can

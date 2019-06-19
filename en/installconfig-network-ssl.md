@@ -1,9 +1,8 @@
-Title: SSL
-TODO:  Critical: review required
-       modify Apache redirection wording if this redirection is ever removed
-
-
-# SSL
+<!--
+Todo:
+- Critical: review required
+- modify Apache redirection wording if this redirection is ever removed
+-->
 
 MAAS doesn't support SSL natively and needs to be enabled in web server
 software independently (e.g. Apache, Nginx) which users access directly.
@@ -54,4 +53,3 @@ server {
         ProxyPassReverse / http://localhost:5240/
 </VirtualHost>
 ```
-

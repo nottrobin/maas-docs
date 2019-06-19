@@ -1,9 +1,8 @@
-Title: Networking
-TODO:  Bug check: https://goo.gl/mPKBRl
-       Not sure about the purpose of "deleting" a subnet. Won't it reappear eventually?
-
-
-# Networking
+<!--
+Todo:
+- Bug check: https://goo.gl/mPKBRl
+- Not sure about the purpose of "deleting" a subnet. Won't it reappear eventually?
+-->
 
 This page shows where to view and edit the main networking elements in MAAS.
 See [Concepts and terms][concepts] for the definitions of networking objects.

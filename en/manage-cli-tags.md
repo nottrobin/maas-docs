@@ -1,9 +1,8 @@
-Title: CLI tag management
-TODO:  Decide whether explicit examples are needed everywhere
-       Foldouts cannot be used due to bug: https://git.io/vwbCz
-
-
-# CLI tag management
+<!--
+Todo:
+- Decide whether explicit examples are needed everywhere
+- Foldouts cannot be used due to bug: https://git.io/vwbCz
+-->
 
 This is a list of tag management tasks to perform with the MAAS CLI. See
 [MAAS CLI][manage-cli] on how to get started and [Tags][tags] for an

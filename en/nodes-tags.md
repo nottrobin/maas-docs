@@ -1,10 +1,8 @@
-Title: Tags
-TODO:  Cover how tags are used in the web UI (including XML output for a node)
-       Track bug: https://bugs.launchpad.net/maas/+bug/1608629 (UI and tags)
-table_of_contents: True
-
-
-# Tags
+<!--
+Todo:
+- Cover how tags are used in the web UI (including XML output for a node)
+- Track bug: https://bugs.launchpad.net/maas/+bug/1608629 (UI and tags)
+-->
 
 Using MAAS tags, you can easily deploy services on machines that meet certain
 criteria. Tags are a convenient way to assign descriptive words to machines,
@@ -112,9 +110,10 @@ configuration' to edit tags:
 
 Changes are applied by pressing the 'Save changes' button.
 
-!!! Note:
-    New tags become available as a filter in the 'Machines' page in the web UI
-    immediately after you add them.
+[note]
+New tags become available as a filter in the 'Machines' page in the web UI
+immediately after you add them.
+[/note]
 
 ### Tags for network interfaces
 

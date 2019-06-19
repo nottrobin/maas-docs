@@ -1,8 +1,3 @@
-Title: Local Image Mirror
-
-
-# Local Image Mirror
-
 Images are delivered to MAAS via the SimpleStreams protocol and the mirroring
 of these images is worthy of consideration. This option is especially useful
 when your environment has a slow or unreliable Internet link. In such cases,
@@ -24,10 +19,11 @@ IMAGE_SRC=https://images.maas.io/ephemeral-v3/daily/
 IMAGE_DIR=/var/www/html/maas/images/ephemeral-v3/daily
 ```
 
-!!! Note: 
-    The v3 format offers only a 'daily' stream whereas in previous versions a
-    'releases' stream was available. The latter changes far less frequently but
-    lacks security and bug fixes.
+[note]
+The v3 format offers only a 'daily' stream whereas in previous versions a
+'releases' stream was available. The latter changes far less frequently but
+lacks security and bug fixes.
+[/note]
 
 The below example selects all available kernels that are compatible with either
 Ubuntu 14.04 (Trusty) and Ubuntu 16.04 (Xenial) for the amd64 architecture,

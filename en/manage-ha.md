@@ -1,8 +1,7 @@
-Title: High Availability
-TODO:  CDO QA (irc: cgregan/jog) might be testing/using installing HA via Juju
-table_of_contents: True
-
-# High Availability
+<!--
+Todo:
+- CDO QA (irc: cgregan/jog) might be testing/using installing HA via Juju
+-->
 
 This page describes how to provide high availability (HA) for MAAS at both the
 rack-controller level and the region-controller level. See [Concepts and
@@ -63,9 +62,10 @@ to do is press the 'Reconfigure DHCP' button:
 
 The setup of rack controller HA is now complete.
 
-!!! Note:
-    For HA purposes, DHCP provisioning will take into account multiple DNS
-    services when there is more than one region controller on a single region.
+[note]
+For HA purposes, DHCP provisioning will take into account multiple DNS
+services when there is more than one region controller on a single region.
+[/note]
 
 
 ## Region controller HA
@@ -90,12 +90,13 @@ here for convenience only. Its purpose is to give an idea of what's involved at
 the command line level when implementing one particular form of HA with
 PostgreSQL.
 
-!!! Note:
-    Each region controller uses up to 40 connections to PostgreSQL in high load
-    situations. Running 2 region controllers requires no modifications to the
-    `max_connections` in `postgresql.conf`. More than 2 region controllers
-    requires that `max_connections` be adjusted to add 40 more connections per
-    extra region controller added to the HA configuration.
+[note]
+Each region controller uses up to 40 connections to PostgreSQL in high load
+situations. Running 2 region controllers requires no modifications to the
+`max_connections` in `postgresql.conf`. More than 2 region controllers
+requires that `max_connections` be adjusted to add 40 more connections per
+extra region controller added to the HA configuration.
+[/note]
 
 ### Secondary API server(s)
 
@@ -109,10 +110,11 @@ Load balancing can be added with [HAProxy][upstream-haproxy] load-balancing
 software to support multiple API servers. In this setup, HAProxy provides access
 to the MAAS web UI and API.
 
-!!! Note:
-    If you happen to have Apache running on the same server where you intend to
-    install HAProxy, you will need to stop and disable `apache2`, because
-    HAProxy binds to port 80.
+[note]
+If you happen to have Apache running on the same server where you intend to
+install HAProxy, you will need to stop and disable `apache2`, because
+HAProxy binds to port 80.
+[/note]
 
 #### Install
 

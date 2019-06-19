@@ -1,9 +1,3 @@
-Title: CLI Interface Management
-table_of_contents: True
-
-
-# CLI Interface Management
-
 This is a list of interface management tasks which can be performed by the MAAS
 CLI. See [MAAS CLI][manage-cli] on how to get started.
 
@@ -101,9 +95,10 @@ Machine-readable output follows:
 
 ```
 
-!!! Note:
-    There is no machine-readable output after the successful execution of the
-    delete command.
+[note]
+There is no machine-readable output after the successful execution of the
+delete command.
+[/note]
 
 ## Create a VLAN interface
 
@@ -150,9 +145,10 @@ maas $PROFILE interfaces create-vlan $SYSTEM_ID vlan=$OUTPUT_VLAN_ID \
 parent=$IFACE_ID
 ```
 
-!!! Note:
-    **OUTPUT_VLAN_ID** corresponds to the *id* value output when the VLAN was
-    created. 
+[note]
+**OUTPUT_VLAN_ID** corresponds to the *id* value output when the VLAN was
+created.
+[/note]
 
 The following example contains values that correspond to the output above:
 

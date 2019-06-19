@@ -1,8 +1,3 @@
-Title: VMware VMFS Datastores
-
-
-# VMware VMFS Datastores
-
 MAAS can configure custom local VMware VMFS Datastore layouts to maximize the
 usage of your local disks when deploying VMware ESXi. As VMware ESXi requires
 specific partitions for operating system usage you must first apply the [VMFS6

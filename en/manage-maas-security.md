@@ -1,17 +1,12 @@
-Title: MAAS security
-TODO:  
-table_of_contents: True
-
-# MAAS security
-
 Computer security is a wide-ranging and important discipline impossible to cover
 completely here. There are, however, some relatively simple steps you can take
 to harden the security of your MAAS installation on your rack and region
 controllers.
 
-!!! Warning:
-    There are too many use cases and operating systems to make any meaningful
-    security suggestions in this context for your deployed machines.
+[note type="caution"]
+There are too many use cases and operating systems to make any meaningful
+security suggestions in this context for your deployed machines.
+[/note]
 
 ## `maas` and `root` users
 

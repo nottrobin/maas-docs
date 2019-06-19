@@ -1,9 +1,3 @@
-Title: Storage pools
-TODO:
-table_of_contents: True
-
-# KVM host storage pools
-
 Libvirt “storage pools” are storage resources managed by libvirt. For a more
 in-depth take on libvirt storage pools, see
 [here](https://libvirt.org/storage.html).

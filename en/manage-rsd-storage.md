@@ -1,9 +1,3 @@
-Title: RSD storage
-TODO:  
-table_of_contents: True
-
-# RSD storage
-
 MAAS auto-detects configured local and remote (iSCSI) RSD storage when you
 [add an RSD host][add-host] and shows available storage, similar to what is
 shown below:

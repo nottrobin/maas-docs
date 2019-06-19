@@ -1,8 +1,3 @@
-Title: Partitions
-
-
-# Partitions
-
 As with block devices (see [Block devices][block-devices]), MAAS and its API
 offer a great deal of control over the creation, formatting, mounting and
 deletion of partitions.
@@ -125,9 +120,10 @@ Machine-readable output follows:
 }
 ```
 
-!!! Note: 
-    You cannot format partitions that are used to make another virtual
-    block device.
+[note]
+You cannot format partitions that are used to make another virtual
+block device.
+[/note]
 
 ### Unformat Partition
 

@@ -1,10 +1,8 @@
-Title: CLI DHCP Snippet Management
-TODO:  Include non-trivial examples of DHCP snippets
-       Bug check: https://bugs.launchpad.net/maas/+bug/1623192
-table_of_contents: True
-
-
-# CLI DHCP Snippet Management
+<!--
+Todo:
+- Include non-trivial examples of DHCP snippets
+- Bug check: https://bugs.launchpad.net/maas/+bug/1623192
+-->
 
 This is a list of DHCP snippet management tasks to perform with the MAAS CLI.
 See [MAAS CLI][manage-cli] to get started with the CLI and

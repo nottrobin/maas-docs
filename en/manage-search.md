@@ -1,10 +1,3 @@
-Title: Interactive search
-TODO:  
-table_of_contents: True
-
-
-# Interactive search
-
 See [Web UI][webui] for how to get started with the web UI.
 
 The Machines and Devices pages contain a powerful interactive search bar that

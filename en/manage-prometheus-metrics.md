@@ -1,9 +1,3 @@
-Title: Prometheus metrics
-TODO:
-table_of_contents: True
-
-# Prometheus metrics
-
 MAAS services can provide [Prometheus][prometheus] endpoints for collecting
 performance metrics.
 

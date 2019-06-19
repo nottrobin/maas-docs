@@ -1,7 +1,3 @@
-Title: Communication
-
-# MAAS communcation
-
 ## Machine/rack
 
 In multi-region/rack clusters (i.e. HA clusters), all machine communication
@@ -27,8 +23,9 @@ The rack controller installs and configures `bind` as a forwarder. All machines
 communicate via the rack controller directly.
 
 
-!!! Note:
-    Zone management and maintenance still happen within the region controller.
+[note]
+Zone management and maintenance still happen within the region controller.
+[/note]
 
 ## Rack/region
 

@@ -1,8 +1,3 @@
-Title: Historical Release Notes
-
-
-# Historical Release Notes
-
 # Release Notes 2.4
 
 *Last updated 30th May 2018.*
@@ -579,10 +574,11 @@ To deploy a rack controller, users can do so via the API (or CLI), e.g:
 maas $PROFILE machine deploy $SYSTEM_ID install_rackd=True
 ```
 
-!!! Note:
-    This features makes use of the MAAS snap to configure the rack
-    controller on the deployed machine. 'snap store' mirrors are not yet
-    available, which means the machine will need access to the internet.
+[note]
+This features makes use of the MAAS snap to configure the rack
+controller on the deployed machine. 'snap store' mirrors are not yet
+available, which means the machine will need access to the internet.
+[/note]
 
 
 ### Improved DNS reloading
@@ -1170,8 +1166,9 @@ are:
 - ga-16.04-lowlatency: the low latency GA kernel for Xenial
 - hwe-16.04-lowlatency: the low latency HWE kernel for Xenial
 
-!!! Note: 
-    As time of writing, the last 2 kernels are the same.
+[note]
+As time of writing, the last 2 kernels are the same.
+[/note]
 
 ### Bootloaders are now provided in the image stream
 

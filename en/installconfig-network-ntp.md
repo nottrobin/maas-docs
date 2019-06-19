@@ -1,8 +1,3 @@
-Title: NTP
-
-
-# NTP
-
 MAAS provides managed NTP services (with [Chrony][chrony]) for all region and
 rack controllers. This allows MAAS to both keep its own controllers
 synchronised, and keep deployed machines synchronised as well. NTP is

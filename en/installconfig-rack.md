@@ -1,8 +1,3 @@
-Title: Rack Controller
-
-
-# Rack Controller
-
 A rack controller can be connected to multiple VLANs, each from a different
 network interface. This provides a scaling factor that can help as a network
 architecture grows in size.
@@ -39,10 +34,11 @@ all registered rack controllers with the CLI.
 Multiple rack controllers are needed in order to achieve specific types of
 high availability. See [MAAS HA][manage-ha].
 
-!!! Note: 
-    If you will be using KVM-backed nodes you must ensure that the new
-    rack controller can communicate with the KVM host. See
-    [KVM guest nodes][add-nodes-kvm-guest-nodes].
+[note]
+If you will be using KVM-backed nodes you must ensure that the new
+rack controller can communicate with the KVM host. See
+[KVM guest nodes][add-nodes-kvm-guest-nodes].
+[/note]
 
 ## Configuration for multiple API servers
 
@@ -65,10 +61,11 @@ be enabled since there is no longer the possibility of having it).
 Although similar, this is not conceptually equivalent to deleting a MAAS node.
 Here, you are deleting a machine that is a part of MAAS itself.
 
-!!! Note: 
-    Unless the software on this machine is removed, rebooting it will cause the
-    machine to re-instate itself as a rack controller. This behaviour may change
-    with future versions of MAAS.
+[note]
+Unless the software on this machine is removed, rebooting it will cause the
+machine to re-instate itself as a rack controller. This behaviour may change
+with future versions of MAAS.
+[/note]
 
 ## Region/Rack/Machine communication and high-availability environments
 

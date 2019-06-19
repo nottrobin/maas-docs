@@ -1,9 +1,7 @@
-Title: DHCP
-TODO:  Maybe create a bug for why the enablement of DHCP in the web UI asks for a gateway IP and not a nameserver
-table_of_contents: True
-
-
-# DHCP
+<!--
+Todo:
+- Maybe create a bug for why the enablement of DHCP in the web UI asks for a gateway IP and not a nameserver
+-->
 
 MAAS enlists and commissions nodes through the use of its own DHCP server
 running on an untagged VLAN. Although this *MAAS-managed DHCP* can also be
@@ -116,9 +114,10 @@ to all VLANs, subnets, and nodes. All three types end up in
 `/var/lib/maas/dhcpd.conf` or `/var/lib/maas/dhcpd6.conf`. For information on
 what options to use refer to the [`dhcpd.conf` man page][dhcpd.conf-man-page].
 
-!!! Note:
-    Modifications made directly to `dhcpd.conf.template` or
-    `dhcpd6.conf.template` are not supported.
+[note]
+Modifications made directly to `dhcpd.conf.template` or
+`dhcpd6.conf.template` are not supported.
+[/note]
 
 To manage snippets, as an admin, open the 'Settings' page and click on the
 'DHCP snippets' tab.

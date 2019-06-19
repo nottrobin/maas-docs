@@ -1,8 +1,3 @@
-Title: Getting Help
-
-
-# Getting Help
-
 The best place to get help with your MAAS issue is on the [MAAS Discourse
 forum][discourse]. There, you can interact with the MAAS team as well as search
 for issues similar to your own.

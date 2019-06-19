@@ -1,8 +1,3 @@
-Title: Backup
-table_of_contents: off
-
-# Backup
-
 MAAS doesn't yet include specific tools to help with the backup and restoration
 of a working MAAS environment. As MAAS servers are obviously no different to
 the majority of other Linux-based servers, it's likely your current backup and
@@ -64,9 +59,10 @@ the `sudo systemctl stop <service>` command:
 - maas-rackd.service
 - maas-regiond.service
 
-!!! Note: 
-    Ubuntu 14.04 LTS (Trusty) users need to use Upstart's `service`
-    command rather than Systemd's `systemctl` command for managing services.
+[note]
+Ubuntu 14.04 LTS (Trusty) users need to use Upstart's `service`
+command rather than Systemd's `systemctl` command for managing services.
+[/note]
 
 ### Archive configuration files
 
@@ -110,9 +106,10 @@ sudo mv /etc/maas /etc/_maas; mv /var/lib/maas /var/lib/_maas
 sudo cp -prf etc/maas /etc/; cp -prf var/lib/maas /var/lib/
 ```
 
-!!! Note: 
-    Ensure the correct permissions are preserved when restoring files and
-    directories.
+[note]
+Ensure the correct permissions are preserved when restoring files and
+directories.
+[/note]
 
 If you have additional stand-alone rack controllers and a fresh installation
 has regenerated the  `/var/lib/maas/secret` file, you'll need to make sure this
@@ -130,8 +127,9 @@ As such, it is required to re-create the DB triggers (or upgrade the db and run 
 sudo maas-region dbupgrade
 ```
 
-!!! Note: 
-    Please note this is only required to be run in *one* of the Region Controllers (if this is a multi-region MAAS cluster).
+[note]
+Please note this is only required to be run in *one* of the Region Controllers (if this is a multi-region MAAS cluster).
+[/note]
 
 Now either restart your system(s) or the stopped services. You'll find your
-MAAS deployment fully restored. 
+MAAS deployment fully restored.

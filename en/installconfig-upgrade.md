@@ -1,7 +1,3 @@
-Title: Upgrading MAAS
-
-# Upgrading MAAS
-
 ## Upgrade 2.4 to 2.5
 
 To upgrade MAAS from 2.4 to 2.5:

@@ -1,9 +1,3 @@
-Title: Writing Guide
-table_of_contents: True
-
-
-# Writing Guide
-
 This page contains detailed information on how to become a successful MAAS
 documentation writer. Welcome to the club.
 
@@ -136,58 +130,68 @@ the 'title' has a null value (i.e. "") then no title will be displayed.
 A standard 'Note' type admonishment:
 
 ```no-highlight
-!!! Note: 
-    If KVM-backed nodes are used, ensure that the 'maas' user on the rack
-    controller can connect to the KVM host using a passphraseless private SSH
-    key.
+[note]
+If KVM-backed nodes are used, ensure that the 'maas' user on the rack
+controller can connect to the KVM host using a passphraseless private SSH
+key.
+[/note]
 ```
 
 A standard 'Warning' type admonishment:
 
 ```no-highlight
-!!! Warning: 
-    Data will be lost unless you do the right thing.
+[note type="caution"]
+Data will be lost unless you do the right thing.
+[/note]
 ```
 
 A 'Positive' type admonishment with title:
 
 ```no-highlight
-!!! Positive "High score":
-    A positive note that should include a title.
+[note type="positive" status="High score"]
+A positive note that should include a title.
+[/note]
 ```
 
 A 'Negative' type admonishment with title:
 
 ```no-highlight
-!!! Negative "Game over": 
-    A negative note that should include a title.
+[note type="negative" status="Game over"]
+A negative note that should include a title.
+[/note]
 ```
 
 A 'Positive' type admonishment with no title:
 
 ```no-highlight
-!!! Positive "": 
-    I'm done, and I feel fine.
+[note type="positive"]
+I'm done, and I feel fine.
+[/note]
 ```
 
 The above examples will appear as:
 
-!!! Note: 
-    If KVM-backed nodes are used, ensure that the 'maas' user on the rack
-    controller can connect to the KVM host using a passphraseless private SSH
-    key.
+[note]
+If KVM-backed nodes are used, ensure that the 'maas' user on the rack
+controller can connect to the KVM host using a passphraseless private SSH
+key.
+[/note]
 
-!!! Warning: 
-    Data will be lost unless you do the right thing.
+[note type="caution"]
+Data will be lost unless you do the right thing.
+[/note]
 
-!!! Positive "High score":
-    A positive note that should include a title.
+[note type="positive" status="High score"]
+A positive note that should include a title.
+[/note]
 
-!!! Negative "Game over": 
-    A negative note that should include a title.
+[note type="negative" status="Game over"]
+A negative note that should include a title.
+[/note]
 
-!!! Positive "": 
-    I'm done, and I feel fine.
+[note type="positive"]
+I'm done, and I feel fine.
+[/note]
 
 
 ## Comments
@@ -211,10 +215,12 @@ create a collapsed header which, when clicked, will expand to display all the
 content below it.
 
 ```no-highlight
-^# Header
-  Content can be multi-paragraphed and will be sent through the Markdown parser
-
-  as long as content is continually indented under the header.
+<details>
+<summary>Header</summary>
+<p>Content can be multi-paragraphed and will be sent through the Markdown parser</p>
+<p>as long as content is continually indented under the header.</p>
+<!-- LINKS -->
+</details>
 ```
 
 

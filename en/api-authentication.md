@@ -1,8 +1,3 @@
-Title: API Authentication
-table_of_contents: True
-
-# API authentication
-
 MAAS's API uses [OAuth][oauth] as its authentication mechanism. There isn't a
 third party involved (as in 3-legged OAuth) and so the process used is what's
 commonly referred to as 0-legged OAuth: the consumer accesses protected

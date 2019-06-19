@@ -1,8 +1,7 @@
-Title: Install from ISO
-TODO:  Check debian-installer bug: https://goo.gl/abMnu8 and reword stuff appropriately
-
-
-# Install from ISO
+<!--
+Todo:
+- Check debian-installer bug: https://goo.gl/abMnu8 and reword stuff appropriately
+-->
 
 The [Ubuntu Server ISO][download-server-iso] offers to have the
 server-to-be-installed provide a complete MAAS environment or a single rack
@@ -19,10 +18,11 @@ Choosing option **Install MAAS Rack Controller** will install a rack
 controller and register it with an existing region controller. Therefore,
 *an existing region controller is a requirement* for this option to succeed.
 
-!!! Note: 
-    Using the ISO to install a rack controller is typically used to install an
-    extra rack controller since the recommended starting design is to co-locate
-    the rack controller with the region controller.
+[note]
+Using the ISO to install a rack controller is typically used to install an
+extra rack controller since the recommended starting design is to co-locate
+the rack controller with the region controller.
+[/note]
 
 Each of these two options will add extra dialog boxes to the generic Ubuntu
 Server install procedure. This page covers these extra dialogs only. See the
@@ -39,21 +39,20 @@ boxes will appear in order to do the following:
 - Set a username for the MAAS administrator
 - Set a password for the MAAS administrator
 
-^# Walkthrough of MAAS environment installation
-
-  Confirm the installation of a MAAS environment.
-  ![regiond install dialog 1][img__iso-install-regiond-01]
-  
-  Provide the name of the initial MAAS administrator. It can be anything but in
+<details>
+<summary>Walkthrough of MAAS environment installation</summary>
+<p>Confirm the installation of a MAAS environment.
+  <img alt="regiond install dialog 1" src="../media/iso-install-region_01.png" /></p>
+<p>Provide the name of the initial MAAS administrator. It can be anything but in
   this example 'admin' was chosen. This account is distinct from the system
   account that will be created later as part of the generic Ubuntu Server
   install.
-  ![regiond install dialog 2][img__iso-install-regiond-02]
-  
-  Complete the creation of the MAAS administrator account by supplying a
+  <img alt="regiond install dialog 2" src="../media/iso-install-region_02.png" /></p>
+<p>Complete the creation of the MAAS administrator account by supplying a
   password.
-  ![regiond install dialog 3][img__iso-install-regiond-03]
-
+  <img alt="regiond install dialog 3" src="../media/iso-install-region_03.png" /></p>
+<!-- LINKS -->
+</details>
 During one step of the generic Server install you will be asked whether a proxy
 is needed for the server itself. This is separate from the proxy that
 MAAS provides to its nodes (see [Proxy][proxy]).
@@ -72,19 +71,18 @@ For nodes on an [IPv6][ipv6] subnet, the URL must use a hostname instead of an
 IP address and it must resolve to both IPv4 and IPv6 addresses, both on the
 rack controller and on the nodes.
 
-^# Walkthrough of rack controller installation
-
-  Confirm the installation of a rack controller.
-  ![rackd install dialog 1][img__iso-install-rackd-01]
-
-  Point the new rack controller at an existing region API server so it can
+<details>
+<summary>Walkthrough of rack controller installation</summary>
+<p>Confirm the installation of a rack controller.
+  <img alt="rackd install dialog 1" src="../media/iso-install-rack_01.png" /></p>
+<p>Point the new rack controller at an existing region API server so it can
   register with it.
-  ![rackd install dialog 2][img__iso-install-rackd-02]
-
-  Provide the secret required for registering the rack controller. It is found
+  <img alt="rackd install dialog 2" src="../media/iso-install-rack_02.png" /></p>
+<p>Provide the secret required for registering the rack controller. It is found
   on the region API server.
-  ![rackd install dialog 3][img__iso-install-rackd-03]
-
+  <img alt="rackd install dialog 3" src="../media/iso-install-rack_03.png" /></p>
+<!-- LINKS -->
+</details>
 The final dialog will not confirm whether registration was successful. Once
 Ubuntu Server is fully installed and rebooted you should inspect
 `/var/log/maas/rackd.log` for any possible error messages. Alternatively, you

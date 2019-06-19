@@ -1,8 +1,7 @@
-Title: Select and Import Images
-TODO:  There is a rumor of changing the rackd:region image sync frequency from 5 min to 15
-
-
-# Select and Import Images
+<!--
+Todo:
+- There is a rumor of changing the rackd:region image sync frequency from 5 min to 15
+-->
 
 This page explains how to select and import the images that MAAS requires in
 order to provision its nodes.

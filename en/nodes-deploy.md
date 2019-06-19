@@ -1,8 +1,3 @@
-Title: Deploy Nodes
-TODO:
-
-# Deploy Nodes
-
 Once a node has been commissioned (see [Commission nodes][commission-nodes])
 the next logical step is to *deploy* it. Deploying a node means, effectively,
 to install an operating system on it.
@@ -20,8 +15,9 @@ via SSH to the 'ubuntu' user account providing an SSH key has been imported to
 the user's MAAS account. This is explained in
 [SSH keys][user-accounts-ssh-keys].
 
-!!! Note:
-    Juju has its own way of adding SSH keys to machines under its control.
+[note]
+Juju has its own way of adding SSH keys to machines under its control.
+[/note]
 
 MAAS also supports node customisation with a process called "preseeding." For
 more information about customising nodes, see [Custom node setup][preseed].
@@ -57,11 +53,12 @@ will undergo the following process:
     1. curtin installation script is run
     1. Squashfs image (same as above) is placed on disk
 
-!!! Note:
-    The *curtin* installer uses an image-based method and is now the only
-    installer used by MAAS. Although the older *debian-installer* method has
-    been removed curtin continues to support preseed files. For more information
-    about customising nodes see [Custom node setup][preseed].
+[note]
+The *curtin* installer uses an image-based method and is now the only
+installer used by MAAS. Although the older *debian-installer* method has
+been removed curtin continues to support preseed files. For more information
+about customising nodes see [Custom node setup][preseed].
+[/note]
 
 Before deploying you should:
 

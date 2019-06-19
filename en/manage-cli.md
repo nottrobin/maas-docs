@@ -1,9 +1,7 @@
-Title: CLI
-TODO:  Foldouts cannot be used with syntax highlighting: https://git.io/v14BR (affects all CLI pages)
-table_of_contents: True
-
-
-# MAAS CLI
+<!--
+Todo:
+- Foldouts cannot be used with syntax highlighting: https://git.io/v14BR (affects all CLI pages)
+-->
 
 The MAAS CLI can do everything that the web UI can do, and more. The CLI uses
 the `maas` command exclusively which, in turn, connects to the API.
@@ -57,9 +55,10 @@ the 'maas-region-controller' package was installed):
 sudo maas-region apikey --username=$PROFILE > $API_KEY_FILE
 ```
 
-!!! Note: 
-    A user's API key can also be obtained from the web interface. Click
-    on 'username' in the top right corner, and select 'Account'.
+[note]
+A user's API key can also be obtained from the web interface. Click
+on 'username' in the top right corner, and select 'Account'.
+[/note]
 
 Log in. You will be prompted for the API key:
 

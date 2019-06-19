@@ -1,9 +1,3 @@
-Title: Introduction
-TODO:  
-table_of_contents: True
-
-# KVM introduction
-
 KVM in MAAS allows for the dynamic composition of nodes from a pool of available
 hardware resources (e.g. disk space, memory, cores).
 
@@ -32,5 +26,3 @@ Features:
 <!-- LINKS -->
 
 [addkvmhost]: manage-kvm-add-host.md
-
-

@@ -1,8 +1,7 @@
-Title: Install from a Snap
-TODO:  Track bug: https://goo.gl/Yifghb
-table_of_contents: True
-
-
+<!--
+Todo:
+- Track bug: https://goo.gl/Yifghb
+-->
 
 ## Install from snap
 
@@ -16,9 +15,10 @@ sudo snap install maas --devmode --stable
 After entering your password, the snap will download and install from the
 *stable* channel. However, MAAS needs initialising before it's ready to go.
 
-!!! Note:
-    `--devmode` is currently a required argument and gives the MAAS snap access
-    to all system resources, similar to an installed `deb` package.
+[note]
+`--devmode` is currently a required argument and gives the MAAS snap access
+to all system resources, similar to an installed `deb` package.
+[/note]
 
 ## Initialisation
 
@@ -33,11 +33,12 @@ the following modes dictates what services will run on the local system:
 | `region+rack`  |    X   |   X  |          | Region API server and rack controller |
 | `none`         |        |      |          | Deinitializes MAAS and stops services |
 
-!!! Warning:
-    This list is different from the installation scenarios covered in the
-    package install method (see [Install from packages][install-from-packages])
-    where the installation of a "region controller" **will**, for example,
-    include a database.
+[note type="caution"]
+This list is different from the installation scenarios covered in the
+package install method (see [Install from packages][install-from-packages])
+where the installation of a "region controller" **will**, for example,
+include a database.
+[/note]
 
 To initialise MAAS and select a run mode, use the `maas init` command with the
 *--mode* argument.
@@ -63,10 +64,11 @@ Email: admin@example.com
 Import SSH keys [] (lp:user-id or gh:user-id): lp:petermatulis
 ```
 
-!!! Note:
-    The username and password will be used to access the web UI and if you enter
-    a [Launchpad][launchpad] or [GitHub][github] account name with associated
-    SSH key, these will be imported into MAAS automatically.
+[note]
+The username and password will be used to access the web UI and if you enter
+a [Launchpad][launchpad] or [GitHub][github] account name with associated
+SSH key, these will be imported into MAAS automatically.
+[/note]
 
 ### MAAS URL
 

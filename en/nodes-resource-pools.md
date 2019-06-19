@@ -1,9 +1,3 @@
-Title: Resource pools
-TODO:  
-table_of_contents: True
-
-# Resource pools
-
 Resource pools allow administrators to logically group resources (nodes and
 pods) into pools. All MAAS installations have a resource pool named "default."
 New machines are automatically added to the default resource pool.
@@ -29,9 +23,10 @@ To delete a resource pool, click the trashcan icon next to the pool.
 
 ![add resource pool][img__delete-pool]
 
-!!! Note:
-    If you delete a resource pool, all machines that belong to that resource pool
-    will be returned back to the default pool.
+[note]
+If you delete a resource pool, all machines that belong to that resource pool
+will be returned back to the default pool.
+[/note]
 
 ## Add a node to a resource pool
 

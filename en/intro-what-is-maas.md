@@ -1,9 +1,3 @@
-Title: What is MAAS?
-table_of_contents: True
-
-
-# What is MAAS?
-
 MAAS is *Metal As A Service*. It lets you treat physical servers like virtual
 machines (instances) in the cloud. Rather than having to manage each server
 individually, MAAS turns your bare metal into an elastic cloud-like resource.
@@ -18,9 +12,10 @@ other technologies. In particular, it is designed to work especially well with
 arrangement: MAAS manages the machines and Juju manages the services running on
 those machines.
 
-!!! Note:
-    KVM guests can also act as MAAS nodes as long as they are set to boot
-    from the network (PXE).
+[note]
+KVM guests can also act as MAAS nodes as long as they are set to boot
+from the network (PXE).
+[/note]
 
 
 ## What MAAS offers
@@ -55,9 +50,10 @@ configuration and large-scale automation.
 
 ![web UI showing node view][img__webui]
 
-!!! Note:
-    Windows and RHEL images require
-    [Ubuntu Advantage][ubuntu-advantage] to work properly with MAAS.
+[note]
+Windows and RHEL images require
+[Ubuntu Advantage][ubuntu-advantage] to work properly with MAAS.
+[/note]
 
 
 ## Key components and colocation of all services
@@ -88,10 +84,11 @@ the pool and is available for use ("Ready" state).
 MAAS controls machines through IPMI (or another BMC) or converged chassis
 controller such as Cisco UCS.
 
-!!! Negative "Warning":
-    A machine destined for MAAS will have its disk space overwritten.
-    A node in the pool is under MAAS's sole control and should not be provisioned
-    using other methods.
+[note type="negative" status="Warning"]
+A machine destined for MAAS will have its disk space overwritten.
+A node in the pool is under MAAS's sole control and should not be provisioned
+using other methods.
+[/note]
 
 Users of the MAAS then allocate them for their own use ("Acquire") when they go
 into use. Any subsequently installed operating system will contain the user's

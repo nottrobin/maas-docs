@@ -1,8 +1,3 @@
----
-title: Home
-homepage: true
----
-
 <div class="p-strip--image is-dark" style="background-image: url('https://assets.ubuntu.com/v1/a328d904-MAAS-background-desktop-large-screen.png')">
     <div class="p-content__row">
         <div class="col-8">
@@ -70,4 +65,3 @@ homepage: true
         </div>
     </div>
 </div>
-

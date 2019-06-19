@@ -1,8 +1,3 @@
-Title: Subnet Management
-
-
-# Subnet Management
-
 The topic of subnet management pertains to whether MAAS is in full control of a
 subnet or not. When a subnet is *managed*, all aspects of IP address allocation
 are handled by MAAS. This includes DHCP leases and assigned static addresses.
