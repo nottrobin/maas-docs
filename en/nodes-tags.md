@@ -7,11 +7,11 @@ Using MAAS tags, you can easily deploy services on machines that meet certain cr
 
 MAAS supports XPath expressions in tags (see below), which makes auto-assigning tags to matching hardware possible. For instance, you could tag nodes that possess fast GPUs and then deploy software that used GPU-accelerated CUDA or OpenCL libraries.
 
-Because [Juju](https://jujucharms.com/docs/stable/about-juju.html) is the recommended way to deploy services on machines managed by MAAS (see [below](#tag-management)), it supports MAAS tags for application deployments.
+Because [Juju](https://jujucharms.com/docs/stable/about-juju.html) is the recommended way to deploy services on machines managed by MAAS (see [below](#heading--tag-management)), it supports MAAS tags for application deployments.
 
 To understand the true power of MAAS tags, it is important to understand tag definitions.
 
-## Tag definitions
+<h2 id="heading--tag-definitions">Tag definitions</h2>
 
 A *tag definition* is the criteria by which nodes are auto-labelled by the corresponding tag. During node enlistment MAAS collects hardware information (using the [lshw](http://ezix.org/project/wiki/HardwareLiSter) utility). The definition used in creating a tag is then constructed using an *XPath expression* based on that information. See [w3schools documentation](https://www.w3schools.com/xml/xpath_intro.asp) for details on XPath.
 
@@ -54,7 +54,7 @@ After adding the speed criteria via an XPath *operator* we end up with this as o
 //node[@id="display"]/'clock units="Hz"' > 1000000000
 ```
 
-## Tag listing and tags as search filters
+<h2 id="heading--tag-listing-and-tags-as-search-filters">Tag listing and tags as search filters</h2>
 
 To list all tags visit the 'Machines' tab and expand the 'Tags' subsection in the left pane.
 
@@ -66,7 +66,7 @@ Below, tag 'virtual' has been selected (with the mouse) and the search field aut
 
 Remove a tag from the search filter by either hitting the 'x' character alongside a tag or editing the search expression.
 
-## Tag assignment
+<h2 id="heading--tag-assignment">Tag assignment</h2>
 
 To view a node's currently assigned tags stay on the 'Machines' page and click on the node in question. Tags that are currently assigned will be displayed in the *Tags* pane of the 'Machine summary'.
 
@@ -84,7 +84,7 @@ Changes are applied by pressing the 'Save changes' button.
 New tags become available as a filter in the 'Machines' page in the web UI immediately after you add them.
 [/note]
 
-### Tags for network interfaces
+<h3 id="heading--tags-for-network-interfaces">Tags for network interfaces</h3>
 
 It's also possible to assign tags to specific network interfaces. These tags can be used when searching for nodes within the web UI and when allocating machines from the API.
 
@@ -98,7 +98,7 @@ To add a tag, type its name into the 'Tags' field and press Enter. Repeat as des
 
 Changes are applied by pressing the 'Save' button.
 
-### Tags for storage configuration
+<h3 id="heading--tags-for-storage-configuration">Tags for storage configuration</h3>
 
 Alongside tags for an entire node and network interfaces, tags can also be defined for storage devices. As with other tags, these can be used when searching for nodes within the web UI, where they appear beneath the 'Storage tag' filter, and when allocating machines from the API.
 
@@ -110,7 +110,7 @@ To add a tag, type its name into the 'Tags' field and press Enter. Repeat as des
 
 Changes are applied by pressing the 'Save' button.
 
-## Tag management
+<h2 id="heading--tag-management">Tag management</h2>
 
 At this time, other than simple tag assignemts as demonstrated above, the best way to manage MAAS tags is by using the CLI (see [CLI Tag management](manage-cli-tags.md)). Juju integration is also covered there.
 

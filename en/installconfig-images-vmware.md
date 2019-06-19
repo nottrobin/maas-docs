@@ -1,8 +1,8 @@
 MAAS 2.5 and above has the ability to deploy VMware ESXi as a custom image. MAAS cannot directly deploy the VMware ESXi ISO, a specialized image must be created from official VMWare ISO. Canonical created a [Packer](https://www.packer.io/) template to automate the image creation process.
 
-## Prerequisites (to create the images)
+<h2 id="heading--prerequisites-to-create-the-images">Prerequisites (to create the images)</h2>
 
-### Image creation
+<h3 id="heading--image-creation">Image creation</h3>
 
 -   A physical machine running Ubuntu 18.04+
 -   **CPU**: 4 2GHz cores
@@ -13,15 +13,15 @@ MAAS 2.5 and above has the ability to deploy VMware ESXi as a custom image. MAAS
 -   Procedure was tested with precompiled 64-bit Packer 1.3.4 Linux binaries
 -   <a class="modal-trigger" href="#esxi-modal">Packer template</a> for MAAS custom image
 
-### Image deployment
+<h3 id="heading--image-deployment">Image deployment</h3>
 
 -   MAAS 2.5.0+
 
-## Customizing the Image
+<h2 id="heading--customizing-the-image">Customizing the Image</h2>
 
 The image may be customized by modifying packer-maas/vmware-esxi/http/vmware-esxi-ks.cfg see Installation and Upgrade Scripts in the [VMware ESXi installation and Setup manual](https://docs.vmware.com/en/VMware-vSphere/6.7/vsphere-esxi-67-installation-setup-guide.pdf) for more information.
 
-## Building an Image
+<h2 id="heading--building-an-image">Building an Image</h2>
 
 Before an image is built the nbd kernel module must be loaded
 
@@ -37,16 +37,16 @@ You can now start the image building process using Packer with the following com
     'vmware_esxi_iso_path=/path/to/VMware-VMvisor-Installer-6.7.0-8169922.x86_64.iso'
     vmware-esxi.json
 
-## Uploading an Image
+<h2 id="heading--uploading-an-image">Uploading an Image</h2>
 
 Once the image has been created it can be uploaded to MAAS using the CLI with the following command
 
     maas $PROFILE boot-resources create name='esxi/6.7' title='VMware ESXi 6.7'
     architecture='amd64/generic' filetype='ddgz' content@=vmware-esxi.dd.gz
 
-## Features and Limitations
+<h2 id="heading--features-and-limitations">Features and Limitations</h2>
 
-### Networking
+<h3 id="heading--networking">Networking</h3>
 
 -   VMware ESXi does not support linux bridges
 -   Bonds - The following MAAS bond modes are mapped to VMware ESXi NIC team sharing with load balancing as follows:
@@ -56,11 +56,11 @@ Once the image has been created it can be uploaded to MAAS using the CLI with th
 -   No other bond modes are currently supported.
 -   VMware ESXi does not allow VMs to use a PortGroup that has a VMK attached to it. All configured devices will have a VMK attached. To use a vSwitch with VMs you must leave a device or alias unconfigured in MAAS.
 
-### Storage
+<h3 id="heading--storage">Storage</h3>
 
 Custom storage configuration is not supported as VMware ESXi has specific requirements for how files are written to the disk. MAAS will extend datastore1 to the full size of the deployment disk. After deployment VMware tools may be used to access the other disks.
 
-### ESXi Hardware Support
+<h3 id="heading--esxi-hardware-support">ESXi Hardware Support</h3>
 
 VMware has [very specific hardware requirements](https://www.vmware.com/resources/compatibility/search.php). In particular running VMware ESXi is not supported in a virtual machine or MAAS virsh Pod.
 

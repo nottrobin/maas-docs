@@ -5,7 +5,7 @@ Todo:
 -->
 This is a list of common tasks to perform with the MAAS CLI. See [MAAS CLI](manage-cli.md) on how to get started.
 
-## List nodes
+<h2 id="heading--list-nodes">List nodes</h2>
 
 To list all nodes (and their characteristics) in the MAAS:
 
@@ -25,7 +25,7 @@ To see a list of all available search parameters:
 maas $PROFILE machines read --help
 ```
 
-## Determine a node system ID
+<h2 id="heading--determine-a-node-system-id">Determine a node system ID</h2>
 
 You can use `jq` to determine a node's system ID. For example, here's how to output just the `hostname` and `system_id` when searching for a particular hostname:
 
@@ -43,7 +43,7 @@ Output looks like this:
 "e8xa8m"
 ```
 
-## Commission a node
+<h2 id="heading--commission-a-node">Commission a node</h2>
 
 To commission a node:
 
@@ -63,7 +63,7 @@ maas $PROFILE machines accept-all
 
 See [Commission nodes](nodes-commission.md).
 
-## Acquire a node
+<h2 id="heading--acquire-a-node">Acquire a node</h2>
 
 To acquire/allocate a random node:
 
@@ -81,7 +81,7 @@ maas $PROFILE machines allocate system_id=$SYSTEM_ID
 To acquire a node it must have a status of 'Ready'.
 [/note]
 
-## Deploy a node
+<h2 id="heading--deploy-a-node">Deploy a node</h2>
 
 To deploy a node:
 
@@ -101,7 +101,7 @@ To deploy with the CLI the node must have a status of 'Allocated'. See 'Acquire 
 
 See [Deploy nodes](nodes-deploy.md).
 
-## Control subnet management
+<h2 id="heading--control-subnet-management">Control subnet management</h2>
 
 To enable or disable subnet management:
 
@@ -119,9 +119,9 @@ The subnet's ID can also be used in place of the CIDR address.
 
 See [Subnet management](installconfig-network-subnet-management.md).
 
-## Create a reserved IP range
+<h2 id="heading--create-a-reserved-ip-range">Create a reserved IP range</h2>
 
-See [Concepts and terms](intro-concepts.md#ip-ranges) for an explanation of the two kinds of reserved IP ranges MAAS uses.
+See [Concepts and terms](intro-concepts.md#heading--ip-ranges) for an explanation of the two kinds of reserved IP ranges MAAS uses.
 
 To create a range of dynamic IP addresses that will be used by MAAS for node enlistment, commissioning, and possibly deployment:
 
@@ -151,7 +151,7 @@ To remove such a single reserved IP address:
 maas $PROFILE ipaddresses release ip=$IP_STATIC_SINGLE
 ```
 
-## Determine a fabric ID
+<h2 id="heading--determine-a-fabric-id">Determine a fabric ID</h2>
 
 To determine a fabric ID based on a subnet address:
 
@@ -160,7 +160,7 @@ FABRIC_ID=$(maas $PROFILE subnet read $SUBNET_CIDR \
     | grep fabric | cut -d ' ' -f 10 | cut -d '"' -f 2)
 ```
 
-## Enable DHCP
+<h2 id="heading--enable-dhcp">Enable DHCP</h2>
 
 To enable DHCP on a VLAN on a certain fabric:
 
@@ -177,7 +177,7 @@ maas $PROFILE vlan update $FABRIC_ID $VLAN_TAG dhcp_on=True \
     secondary_rack=$SECONDARY_RACK_CONTROLLER 
 ```
 
-You will also need to set a default gateway (see [below](#set-a-default-gateway)).
+You will also need to set a default gateway (see [below](#heading--set-a-default-gateway)).
 
 [note]
 DHCP for PXE booting will need to be enabled on the 'untagged' VLAN.
@@ -185,7 +185,7 @@ DHCP for PXE booting will need to be enabled on the 'untagged' VLAN.
 
 See [DHCP](installconfig-network-dhcp.md) for more on this subject.
 
-## Set a DNS forwarder
+<h2 id="heading--set-a-dns-forwarder">Set a DNS forwarder</h2>
 
 To set a DNS forwarder:
 
@@ -193,7 +193,7 @@ To set a DNS forwarder:
 maas $PROFILE maas set-config name=upstream_dns value=$MY_UPSTREAM_DNS
 ```
 
-## Configure proxying
+<h2 id="heading--configure-proxying">Configure proxying</h2>
 
 Enabling and disabling proxying in general is done via a boolean option ('true' or 'false'). This is how proxying is disabled completely:
 
@@ -228,7 +228,7 @@ maas $PROFILE subnet update 192.168.0.0/22 allow_proxy=false
 
 See [Proxy](installconfig-network-proxy.md) for detailed information on how proxying works with MAAS.
 
-## Set a default gateway
+<h2 id="heading--set-a-default-gateway">Set a default gateway</h2>
 
 To set the default gateway for a subnet:
 
@@ -236,7 +236,7 @@ To set the default gateway for a subnet:
 maas $PROFILE subnet update $SUBNET_CIDR gateway_ip=$MY_GATEWAY
 ```
 
-## Set a DNS server
+<h2 id="heading--set-a-dns-server">Set a DNS server</h2>
 
 To set the DNS server for a subnet:
 
@@ -244,7 +244,7 @@ To set the DNS server for a subnet:
 maas $PROFILE subnet update $SUBNET_CIDR dns_servers=$MY_NAMESERVER
 ```
 
-## Set a zone description
+<h2 id="heading--set-a-zone-description">Set a zone description</h2>
 
 To set a description for a physical zone:
 
@@ -255,7 +255,7 @@ maas $PROFILE zone update default \
 
 See [Zones](manage-zones.md) for more information on this topic.
 
-## Add a public SSH key
+<h2 id="heading--add-a-public-ssh-key">Add a public SSH key</h2>
 
 To add a public SSH key to a MAAS user account:
 
@@ -263,9 +263,9 @@ To add a public SSH key to a MAAS user account:
 maas $PROFILE sshkeys create "key=$SSH_KEY"
 ```
 
-See [SSH keys](manage-account.md#ssh-keys).
+See [SSH keys](manage-account.md#heading--ssh-keys).
 
-## Determine a node hostname
+<h2 id="heading--determine-a-node-hostname">Determine a node hostname</h2>
 
 To determine a node's hostname based on it's MAC address:
 
@@ -274,7 +274,7 @@ HOSTNAME=$(maas $PROFILE nodes read mac_address=$MAC \
     | grep hostname | cut -d '"' -f 4)
 ```
 
-## Create a regular user
+<h2 id="heading--create-a-regular-user">Create a regular user</h2>
 
 To create a regular user:
 

@@ -4,7 +4,7 @@ Todo:
 -->
 There are many user initiated events in MAAS that an administrator or a user may want to audit. These include someone updating the settings or changing a user's permissions. This page details how to query these events and includes examples of how to perform a query and the type of data logs can provide.
 
-## List audit events for all users
+<h2 id="heading--list-audit-events-for-all-users">List audit events for all users</h2>
 
 To list events for all users, use the following syntax:
 
@@ -40,7 +40,7 @@ Machine-readable output follows:
 
 The above output shows that there is currently only one audit event log for the user `admin` and this was created when they logged into the web UI.
 
-## List audit events for a specific user
+<h2 id="heading--list-audit-events-for-a-specific-user">List audit events for a specific user</h2>
 
 To list the audit event logs for a specific user that you have permissions for, supply the `owner=$USERNAME` parameter to the query command:
 
@@ -114,7 +114,7 @@ As we can see above, only audit event logs for the user `johnnybegood` are gener
 -   event type
 -   event description
 
-## Types of audit event logs
+<h2 id="heading--types-of-audit-event-logs">Types of audit event logs</h2>
 
 Here is a list of the types of audit event logs that are currently supported by MAAS:
 

@@ -4,17 +4,17 @@ Computer security is a wide-ranging and important discipline impossible to cover
 There are too many use cases and operating systems to make any meaningful security suggestions in this context for your deployed machines.
 [/note]
 
-## `maas` and `root` users
+<h2 id="heading--maas-and-root-users">`maas` and `root` users</h2>
 
 This should go without saying, but you should pick good passwords and store them securely (e.g. in a KeePassX password database). User administration should be performed via the web UI and the `maas` and `root` user passwords should only be shared with administrators.
 
-## SSL
+<h2 id="heading--ssl">SSL</h2>
 
 MAAS doesn't (yet) support SSL natively. Using a reverse SSL proxy, however, you can restrict outside access to your region controllers (which serve the MAAS API) by using NGINX or Apache to accept HTTPS requests, then using HTTP internally to communicate with MAAS normally via port 5240 and finally serving results back through HTTPS to the requester.
 
 See [SSL](installconfig-network-ssl.md) for configuration examples.
 
-## Conf file permissions
+<h2 id="heading--conf-file-permissions">Conf file permissions</h2>
 
 MAAS configuration files should be set to have permission `640`: readable by logins belonging to the `maas` group and writeable only by the `root` user. Currently, the `regiond.conf` file contains the login credentials for the PostgreSQL database used by MAAS to keep track of all machines, networks, and configuration.
 
@@ -30,11 +30,11 @@ After:
 -rw-r----- 1 root maas  157 Sep 27 14:14 regiond.conf
 ```
 
-## Firewalls
+<h2 id="heading--firewalls">Firewalls</h2>
 
 The [Rack controller](installconfig-rack.md#communication-with-the-region-controller) page contains a list of ports used by MAAS for communications between rack and region controllers. Consider setting your firewall on your rack and region controllers to disallow communication on all ports except those used by MAAS.
 
-## Shared secrets
+<h2 id="heading--shared-secrets">Shared secrets</h2>
 
 When you add a new rack or region controller, for example, by installing the MAAS snap and running `maas init --mode rack`, MAAS asks for a shared secret it will use to communicate with the rest of MAAS. (This secret is also exposed in the web UI when you click the 'Add rack controller' button on the Controllers page.)
 

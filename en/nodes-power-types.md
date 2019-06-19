@@ -21,7 +21,7 @@ Click 'Save changes' to finish. Once that's done, a power check will be performe
 
 If you get such an error double-check your entered values by editing the power type. Also consider another power type altogether. Another cause may be at the networking level; traffic may be getting filtered between the rack controller and the BMC card.
 
-## Example: Virsh (KVM) power type
+<h2 id="heading--example-virsh-kvm-power-type">Example: Virsh (KVM) power type</h2>
 
 Consider a node backed by KVM. Below, a 'Power type' of `Virsh` has been selected and the 'Power address' of `qemu+ssh://ubuntu@192.168.1.2/system` has been entered (replace values as appropriate). Finally, and out of necessity for virsh, the value of 'Power ID' is the KVM domain (guest) name, here `node2`.
 
@@ -31,13 +31,13 @@ Consider a node backed by KVM. Below, a 'Power type' of `Virsh` has been selecte
 The node's hostname *according to MAAS* is a randomly chosen string (here `dear.ant`). This would normally be edited to reflect the hostname of the underlying machine.
 [/note]
 
-See [MAAS CLI](manage-cli-advanced.md#edit-node-hostname-and-power-parameters) for an example of how to edit power parameters with the CLI.
+See [MAAS CLI](manage-cli-advanced.md#heading--edit-node-hostname-and-power-parameters) for an example of how to edit power parameters with the CLI.
 
 See [Add nodes](nodes-add.md#kvm-guest-nodes) for help in setting up MAAS and KVM to work together.
 
 Multiple Virsh machines running on the same host are managed and composed using [Pods](nodes-comp-hw.md).
 
-## BMC driver support
+<h2 id="heading--bmc-driver-support">BMC driver support</h2>
 
 MAAS supports many types of BMC hardware yet not all the drivers have the same capabilities. See the below table for a feature comparison of the BMC drivers currently supported by MAAS.
 

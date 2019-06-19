@@ -16,7 +16,7 @@ Using the ISO to install a rack controller is typically used to install an extra
 
 Each of these two options will add extra dialog boxes to the generic Ubuntu Server install procedure. This page covers these extra dialogs only. See the [Ubuntu Server Guide](https://help.ubuntu.com/lts/serverguide/installing-from-cd.html) for details on installing Ubuntu Server.
 
-## Region controller
+<h2 id="heading--region-controller">Region controller</h2>
 
 After having chosen to install a region controller, three consecutive dialog boxes will appear in order to do the following:
 
@@ -38,7 +38,7 @@ After having chosen to install a region controller, three consecutive dialog box
 <!-- LINKS -->
 </details> During one step of the generic Server install you will be asked whether a proxy is needed for the server itself. This is separate from the proxy that MAAS provides to its nodes (see [Proxy](installconfig-network-proxy.md)).
 
-## Rack controller
+<h2 id="heading--rack-controller">Rack controller</h2>
 
 After having chosen to install a rack controller, three consecutive dialog boxes will appear in order to do the following:
 
@@ -58,13 +58,13 @@ For nodes on an [IPv6](installconfig-network-ipv6.md) subnet, the URL must use a
   on the region API server.
   <img alt="rackd install dialog 3" src="../media/iso-install-rack_03.png" /></p>
 <!-- LINKS -->
-</details> The final dialog will not confirm whether registration was successful. Once Ubuntu Server is fully installed and rebooted you should inspect `/var/log/maas/rackd.log` for any possible error messages. Alternatively, you may verify that the rack controller shows up in the web UI. You can always register the rack controller manually (after the server has rebooted) if a mistake was made. See [MAAS CLI - install a rack controller](manage-cli-advanced.md#install-a-rack-controller).
+</details> The final dialog will not confirm whether registration was successful. Once Ubuntu Server is fully installed and rebooted you should inspect `/var/log/maas/rackd.log` for any possible error messages. Alternatively, you may verify that the rack controller shows up in the web UI. You can always register the rack controller manually (after the server has rebooted) if a mistake was made. See [MAAS CLI - install a rack controller](manage-cli-advanced.md#heading--install-a-rack-controller).
 
 You can choose to display the typed secret (necessary for registering the rack controller) in cleartext. This can help prevent mis-typing and thus avoiding a failed registration.
 
 An SSH server is not installed on the rack controller by default. Near the end of the generic Server install there will be the opportunity to install optional software. You may install an SSH server at this time.
 
-## Next steps
+<h2 id="heading--next-steps">Next steps</h2>
 
 Once you have installed your MAAS environment (region + rack controller) and any possible extra rack controllers(s), see the [Checklist](installconfig-checklist.md) for what to do next.
 

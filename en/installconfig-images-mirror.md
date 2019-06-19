@@ -39,11 +39,11 @@ Verify the availability of the images by visiting the above URL.
 
 The final `sstream-mirror` command should be invoked at regular intervals (i.e. with `cron`) to ensure the mirror contains the latest images.
 
-## Configure MAAS to use the local mirror
+<h2 id="heading--configure-maas-to-use-the-local-mirror">Configure MAAS to use the local mirror</h2>
 
-See [Image mirrors](installconfig-images-import.md#image-mirrors) to learn how to configure MAAS to use the local image server (mirror) using the web UI.
+See [Image mirrors](installconfig-images-import.md#heading--image-mirrors) to learn how to configure MAAS to use the local image server (mirror) using the web UI.
 
-See [Add a boot source](manage-cli-images.md#add-a-boot-source) and [Using a local image mirror](manage-cli-images.md#using-a-local-image-mirror) for instructions on how to do this with the CLI.
+See [Add a boot source](manage-cli-images.md#heading--add-a-boot-source) and [Using a local image mirror](manage-cli-images.md#heading--using-a-local-image-mirror) for instructions on how to do this with the CLI.
 
 <!-- LINKS -->
 

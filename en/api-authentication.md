@@ -6,7 +6,7 @@ Note that some API endpoints support unauthenticated requests (i.e. anonymous ac
 
 Here are two examples on how to perform an authenticated GET request to retrieve the list of nodes. The &lt;key&gt;, &lt;secret&gt;, &lt;consumer_key&gt; tokens are the three elements that compose the API key (API key = '&lt;consumer_key&gt;:&lt;key&gt;:&lt;secret&gt;').
 
-## Python
+<h2 id="heading--python">Python</h2>
 
 ``` python
 import oauth.oauth as oauth
@@ -36,7 +36,7 @@ response = perform_API_request(
     '<consumer_key>')
 ```
 
-## Ruby
+<h2 id="heading--ruby">Ruby</h2>
 
 ``` ruby
 require 'oauth'

@@ -5,7 +5,7 @@ Todo:
 -->
 This is a list of advanced tasks to perform with the MAAS CLI. See [MAAS CLI](manage-cli.md) on how to get started.
 
-## Edit node hostname and power parameters
+<h2 id="heading--edit-node-hostname-and-power-parameters">Edit node hostname and power parameters</h2>
 
 To edit the hostname and power parameters of a node:
 
@@ -27,9 +27,9 @@ maas $PROFILE machine update $SYSTEM_ID \
     power_parameters_power_id=$HOSTNAME
 ```
 
-See [Common CLI tasks](manage-cli-common.md#determine-a-node-system-id) for how to find a node's system id and [BMC Power Types](nodes-power-types.md) for details on different power types.
+See [Common CLI tasks](manage-cli-common.md#heading--determine-a-node-system-id) for how to find a node's system id and [BMC Power Types](nodes-power-types.md) for details on different power types.
 
-## Relay DHCP
+<h2 id="heading--relay-dhcp">Relay DHCP</h2>
 
 To relay DHCP traffic for a VLAN (source) through another VLAN (target):
 
@@ -43,9 +43,9 @@ For example, to relay VLAN with vid 0 (on fabric-2) through VLAN with id 5002 :
 maas $PROFILE vlan update 2 0 relay_van=5002
 ```
 
-See [DHCP relay](installconfig-network-dhcp.md#dhcp-relay) for more information.
+See [DHCP relay](installconfig-network-dhcp.md#heading--dhcp-relay) for more information.
 
-## Assign a network interface to a fabric
+<h2 id="heading--assign-a-network-interface-to-a-fabric">Assign a network interface to a fabric</h2>
 
 This task is made easier with the aid of the `jq` utility. It filters the `maas` command (JSON formatted) output and prints it in a desired way. This allows one to quickly view and compare data. Go ahead and install it:
 
@@ -124,7 +124,7 @@ The output shows that the interface is now on fabric-0:
 {"id":9,"name":"eth1","mac":"52:54:00:01:01:02","vid":null,"fabric":null}
 ```
 
-## Change the IP assignment mode of a network interface
+<h2 id="heading--change-the-ip-assignment-mode-of-a-network-interface">Change the IP assignment mode of a network interface</h2>
 
 To edit the IP assignment mode of a network interface the existing subnet link first needs to be removed.
 
@@ -154,9 +154,9 @@ If, instead of DHCP, a static address was desired, then the second command would
 maas $PROFILE interface link-subnet exqn37 58 mode=static subnet=192.168.1.0/24 ip_address=192.168.1.113
 ```
 
-For a summary of IP assignment modes see [Post-commission configuration](nodes-commission.md#post-commission-configuration).
+For a summary of IP assignment modes see [Post-commission configuration](nodes-commission.md#heading--post-commission-configuration).
 
-## Install a rack controller
+<h2 id="heading--install-a-rack-controller">Install a rack controller</h2>
 
 To install and register a rack controller with the MAAS:
 
@@ -184,7 +184,7 @@ sudo maas-rack register --url http://10.5.1.5:5240/MAAS \
 
 See [Rack controller](installconfig-rack.md) for an overview.
 
-## List rack controllers
+<h2 id="heading--list-rack-controllers">List rack controllers</h2>
 
 To list all rack controllers registered with the region:
 
@@ -192,7 +192,7 @@ To list all rack controllers registered with the region:
 maas $PROFILE rack-controllers read | grep hostname | cut -d '"' -f 4
 ```
 
-## Set the default storage layout
+<h2 id="heading--set-the-default-storage-layout">Set the default storage layout</h2>
 
 To set the default storage layout for all nodes:
 
@@ -212,7 +212,7 @@ The new default will only apply to newly-commissioned nodes.
 
 See [Storage](installconfig-storage.md) for more details on MAAS storage features.
 
-## Set a storage layout
+<h2 id="heading--set-a-storage-layout">Set a storage layout</h2>
 
 An administrator can set a storage layout for a node with a status of 'Ready' like this:
 
@@ -232,7 +232,7 @@ All storage sizes are currently required to be specified in bytes.
 This will remove the configuration that may exist on any block device.
 [/note]
 
-## Create an A or AAAA record in DNS
+<h2 id="heading--create-an-a-or-aaaa-record-in-dns">Create an A or AAAA record in DNS</h2>
 
 An administrator can create an A record when creating a DNS resource with an IPv4 address.
 
@@ -246,7 +246,7 @@ An administrator can create an AAAA record when creating a DNS resource with an 
 mass $PROFILE dnsresources create fqdn=$HOSTNAME.$DOMAIN ip_addresses=$IPV6ADDRESS
 ```
 
-## Create an alias (CNAME) record in DNS
+<h2 id="heading--create-an-alias-cname-record-in-dns">Create an alias (CNAME) record in DNS</h2>
 
 An administrator can set a DNS Alias (CNAME record) to an already existing DNS entry of a node.
 
@@ -260,7 +260,7 @@ For example, to set webserver.maas.io to alias to www.maas.io:
 maas $PROFILE dnsresource-records create fqdn=webserver.maas.io rrtype=cname rrdata=www
 ```
 
-## Create a Mail Exchange pointer record in DNS
+<h2 id="heading--create-a-mail-exchange-pointer-record-in-dns">Create a Mail Exchange pointer record in DNS</h2>
 
 An administrator can set a DNS Mail Exchange pointer record (MX and value) to a domain.
 
@@ -274,7 +274,7 @@ For example, to set domain.name managed by MAAS to have an MX record and that yo
 maas $PROFILE dnsresource-records create fqdn=maas.io rrtype=mx rrdata='10 smtp.maas.io'
 ```
 
-## Add or update a remote syslog server
+<h2 id="heading--add-or-update-a-remote-syslog-server">Add or update a remote syslog server</h2>
 
 To add or update a remote syslog server in your MAAS environment:
 

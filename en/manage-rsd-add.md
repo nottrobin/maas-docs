@@ -8,7 +8,7 @@ You will need to get values for 'Pod address' (IP address or URL followed by a p
 MAAS will automatically discover and store the resources your RSD Pod contains.
 [/note]
 
-## CLI
+<h2 id="heading--cli">CLI</h2>
 
 ``` bash
 maas $PROFILE pods create type=rsd power_address=10.3.0.1:8443 \

@@ -1,4 +1,4 @@
-The two types of IP ranges are explained in the [Concepts and terms](intro-concepts.md#ip-ranges) page. The current page shows how to manage them. Specifically, it will show how to:
+The two types of IP ranges are explained in the [Concepts and terms](intro-concepts.md#heading--ip-ranges) page. The current page shows how to manage them. Specifically, it will show how to:
 
 -   Create a range
 -   Edit a range
@@ -6,7 +6,7 @@ The two types of IP ranges are explained in the [Concepts and terms](intro-conce
 
 All three actions require administrative privileges and begin by accessing the 'Subnets' page, selecting the desired subnet, and scrolling down to the 'Reserved' section.
 
-## Create a range
+<h2 id="heading--create-a-range">Create a range</h2>
 
 Choose 'Reserve range' or 'Reserve dynamic range'. If the latter is chosen, MAAS will automatically provide DHCP for enlistment and commissioning provided that the associated VLAN has DHCP enabled. Read the [DHCP page](installconfig-network-dhcp.md).
 
@@ -18,13 +18,13 @@ Below is an example window when creating a 'reserved range' (both windows are ac
 
 Click the 'Reserve' button when done.
 
-See [MAAS CLI](manage-cli-common.md#create-a-reserved-ip-range) for doing this with the CLI.
+See [MAAS CLI](manage-cli-common.md#heading--create-a-reserved-ip-range) for doing this with the CLI.
 
-## Edit a range
+<h2 id="heading--edit-a-range">Edit a range</h2>
 
 Click the 'Menu' button at the far right of the row corresponding to the subnet in question and select 'Edit reserved range' from the menu that appears. Edit the fields as desired and click the 'Save' button.
 
-## Delete a range
+<h2 id="heading--delete-a-range">Delete a range</h2>
 
 Select 'Remove range' from the menu that appears when clicking the 'Menu' button at the far right of the row corresponding to the subnet in question.
 

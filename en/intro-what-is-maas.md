@@ -8,7 +8,7 @@ MAAS can act as a standalone PXE/preseed service or it can be integrated with ot
 KVM guests can also act as MAAS nodes as long as they are set to boot from the network (PXE).
 [/note]
 
-## What MAAS offers
+<h2 id="heading--what-maas-offers">What MAAS offers</h2>
 
 MAAS provides management of a large number of physical machines by creating a single resource pool out of them. Participating machines can then be provisioned automatically and used as normal. When those machines are no longer required they are "released" back into the pool. MAAS integrates all the tools you require in one smooth experience. It includes:
 
@@ -36,9 +36,9 @@ The [web UI](installconfig-webui.md) provides a responsive interface to the majo
 Windows and RHEL images require [Ubuntu Advantage](https://www.ubuntu.com/support) to work properly with MAAS.
 [/note]
 
-## Key components and colocation of all services
+<h2 id="heading--key-components-and-colocation-of-all-services">Key components and colocation of all services</h2>
 
-The key components of a MAAS installation are the region controller and the rack controller. See [Concepts and terms](intro-concepts.md#controllers) for how each are defined.
+The key components of a MAAS installation are the region controller and the rack controller. See [Concepts and terms](intro-concepts.md#heading--controllers) for how each are defined.
 
 Unless there is specific reason not to, it is recommended to have both controllers residing on the same system. A no-fuss way to achieve this is by installing the `maas` metapackage, or by installing from the Ubuntu Server ISO.
 
@@ -48,7 +48,7 @@ It's important to note that the all-in-one solution will provide a DHCP service.
 
 ![intro-arch-overview](../media/intro-arch-overview.png)
 
-## How MAAS works
+<h2 id="heading--how-maas-works">How MAAS works</h2>
 
 MAAS manages a pool of nodes. After registering ("Enlisting" state) a new system and preparing it for service ("Commissioning" state), the system joins the pool and is available for use ("Ready" state).
 

@@ -2,20 +2,20 @@ The minimum requirements for the machines that run MAAS vary widely depending on
 
 Below, resource estimates are provided based on MAAS components and operating system (Ubuntu Server). A test (or proof of concept) and a production environment are considered.
 
-## Test environment
+<h2 id="heading--test-environment">Test environment</h2>
 
 This is a proof of concept scenario where all MAAS components are installed on a single host. *Two* complete sets of images (latest two Ubuntu LTS releases) for a *single* architecture (amd64) have been assumed.
 
 |                                                                       | Memory (MB) | CPU (GHz) | Disk (GB) |
 |-----------------------------------------------------------------------|-------------|-----------|-----------|
-| [Region controller](intro-concepts.md#controllers) (minus PostgreSQL) | 512         | 0.5       | 5         |
+| [Region controller](intro-concepts.md#heading--controllers) (minus PostgreSQL) | 512         | 0.5       | 5         |
 | PostgreSQL                                                            | 512         | 0.5       | 5         |
-| [Rack controller](intro-concepts.md#controllers)                      | 512         | 0.5       | 5         |
+| [Rack controller](intro-concepts.md#heading--controllers)                      | 512         | 0.5       | 5         |
 | Ubuntu Server (including logs)                                        | 512         | 0.5       | 5         |
 
 Therefore, the approximate requirements for this scenario are: 2 GB memory, 2 GHz CPU, and 20 GB of disk space.
 
-## Production environment
+<h2 id="heading--production-environment">Production environment</h2>
 
 This is a production scenario that is designed to handle a high number of sustained client connections. Both high availability (region and rack) and load balancing (region) have been implemented.
 
@@ -23,9 +23,9 @@ Even though extra space has been reserved for images (database and rack controll
 
 |                                                                       | Memory (MB) | CPU (GHz) | Disk (GB) |
 |-----------------------------------------------------------------------|-------------|-----------|-----------|
-| [Region controller](intro-concepts.md#controllers) (minus PostgreSQL) | 2048        | 2.0       | 5         |
+| [Region controller](intro-concepts.md#heading--controllers) (minus PostgreSQL) | 2048        | 2.0       | 5         |
 | PostgreSQL                                                            | 2048        | 2.0       | 20        |
-| [Rack controller](intro-concepts.md#controllers)                      | 2048        | 2.0       | 20        |
+| [Rack controller](intro-concepts.md#heading--controllers)                      | 2048        | 2.0       | 20        |
 | Ubuntu Server (including logs)                                        | 512         | 0.5       | 20        |
 
 Therefore, the approximate requirements for this scenario are:

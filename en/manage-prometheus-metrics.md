@@ -10,7 +10,7 @@ These include:
 
 All available metrics are prefixed with `maas_`, to make it easier to look them up in Prometheus and Grafana UIs.
 
-## Enabling Prometheus endpoints
+<h2 id="heading--enabling-prometheus-endpoints">Enabling Prometheus endpoints</h2>
 
 Prometheus endpoints are exposed over HTTP by the `rackd` and `regiond` processes under the default `/metrics` path, whenever the `python3-prometheus-client` library is installed.
 
@@ -35,7 +35,7 @@ After installing the `python3-prometheus-client` library as describe above, run 
 
     maas $PROFILE maas set-config name=prometheus_enabled value=true
 
-## Configuring Prometheus
+<h2 id="heading--configuring-prometheus">Configuring Prometheus</h2>
 
 Once the `/metrics` endpoint is available in MAAS services, Prometheus can be confiured to scrape metric values from these. This can be done by adding a stanza like the following to the prometheus configuration:
 
@@ -63,7 +63,7 @@ If MAAS stats have also been enabled, an additional Prometheus job must added to
 
 In case of a multi-host deploy, adding a single IP for any of the MAAS hosts running `regiond` will suffice.
 
-## Deploying Prometheus and Grafana
+<h2 id="heading--deploying-prometheus-and-grafana">Deploying Prometheus and Grafana</h2>
 
 [Grafana](https://grafana.com/) and Prometheus can be easily deployed using [Juju](https://jujucharms.com/).
 

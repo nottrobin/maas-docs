@@ -24,11 +24,11 @@ Each of the above packages has its own dependencies. That is, each will bring in
 apt-cache search maas
 ```
 
-The 'maas' metapackage is the recommended way to install MAAS. See the [Introduction](index.md#key-components-and-colocation-of-all-services) for more detail on colocating all services on a single host.
+The 'maas' metapackage is the recommended way to install MAAS. See the [Introduction](index.md#heading--key-components-and-colocation-of-all-services) for more detail on colocating all services on a single host.
 
 High availability with MAAS involves installing multiple region controllers and/or multiple rack controllers. See [MAAS HA](manage-ha.md).
 
-## Package repositories
+<h2 id="heading--package-repositories">Package repositories</h2>
 
 While MAAS is available in the normal Ubuntu archives, the available packages may be lagging behind non-archive, but still stable, versions. To install a newer stable version the following PPA can be used:
 
@@ -44,7 +44,7 @@ For example, to add the 'stable' PPA, type:
 sudo apt-add-repository -yu ppa:maas/stable
 ```
 
-## Installation scenarios
+<h2 id="heading--installation-scenarios">Installation scenarios</h2>
 
 The recommended way to set up an initial MAAS environment is to put everything on one machine:
 

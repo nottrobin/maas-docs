@@ -1,6 +1,6 @@
 This is a list of examples of pod-management tasks performed with the MAAS CLI. See [MAAS CLI](manage-cli.md) for how to get started with the CLI and [Pods](manage-pods-intro.md) for an overview of the subject.
 
-## Add a pod
+<h2 id="heading--add-a-pod">Add a pod</h2>
 
 To add a pod:
 
@@ -29,21 +29,21 @@ And to create a KVM host:
 maas $PROFILE pods create type=virsh power_address=qemu+ssh://ubuntu@192.168.1.2/system
 ```
 
-Create a KVM host with [overcommitted resources](manage-kvm-pods-webui.md#overcommit-resources):
+Create a KVM host with [overcommitted resources](manage-kvm-pods-webui.md#heading--overcommit-resources):
 
 ``` bash
 maas $PROFILE pods create type=virsh power_address=qemu+ssh://ubuntu@192.168.1.2/system \
         power_pass=example cpu_over_commit_ratio=0.3 memory_over_commit_ratio=4.6
 ```
 
-Create a KVM host that uses a default [storage pool](manage-pods-webui.md#configuration):
+Create a KVM host that uses a default [storage pool](manage-pods-webui.md#heading--configuration):
 
 ``` bash
 maas $PROFILE pods create type=virsh power_address=qemu+ssh://ubuntu@192.168.1.2/system \
         power_pass=example default_storage_pool=pool1
 ```
 
-## Find pod IDs
+<h2 id="heading--find-pod-ids">Find pod IDs</h2>
 
 Here's a simple way to find a pod's ID by name using `jq`:
 
@@ -61,7 +61,7 @@ Example output:
 1
 ```
 
-## List resources of all pods
+<h2 id="heading--list-resources-of-all-pods">List resources of all pods</h2>
 
 ``` bash
 maas $PROFILE pods read
@@ -79,7 +79,7 @@ A portion of sample output:
         "name": "civil-hermit",
 ```
 
-## List resources of a pod
+<h2 id="heading--list-resources-of-a-pod">List resources of a pod</h2>
 
 To list an individual pod's resources:
 
@@ -87,7 +87,7 @@ To list an individual pod's resources:
 maas $PROFILE pod read $POD_ID
 ```
 
-## Update pod configuration
+<h2 id="heading--update-pod-configuration">Update pod configuration</h2>
 
 Update overcommit ratios for a KVM host:
 
@@ -103,7 +103,7 @@ maas $PROFILE pod update $POD_ID power_address=qemu+ssh://ubuntu@192.168.1.2/sys
         power_pass=example default_storage_pool=pool2
 ```
 
-## List pod connection parameters
+<h2 id="heading--list-pod-connection-parameters">List pod connection parameters</h2>
 
 To list a pod's connection parameters:
 
@@ -121,9 +121,9 @@ Example output:
 }
 ```
 
-## Compose pod virtual machines
+<h2 id="heading--compose-pod-virtual-machines">Compose pod virtual machines</h2>
 
-### Basic
+<h3 id="heading--basic">Basic</h3>
 
 To compose a basic pod VM:
 
@@ -140,7 +140,7 @@ Example output for default composing:
 }
 ```
 
-### Set resources
+<h3 id="heading--set-resources">Set resources</h3>
 
 Compose with resources specified:
 
@@ -153,11 +153,11 @@ Where RESOURCES is a space-separated list from:
 **cores=**requested cores
 **cpu_speed=**requested minimum cpu speed in MHz
 **memory=**requested memory in MB
-**architecture=** See [Architecture](#architecture) below
-**storage=** See [Storage](#storage) below
-**interfaces=** See [Interfaces](#interfaces) below
+**architecture=** See [Architecture](#heading--architecture) below
+**storage=** See [Storage](#heading--storage) below
+**interfaces=** See [Interfaces](#heading--interfaces) below
 
-#### Architecture
+<h4 id="heading--architecture">Architecture</h4>
 
 To list available architectures:
 
@@ -172,7 +172,7 @@ maas $PROFILE pod compose $POD_ID \
     cores=40 cpu_speed=2000 memory=7812 architecture="amd64/generic"
 ```
 
-#### Storage
+<h4 id="heading--storage">Storage</h4>
 
 Storage parameters look like this:
 
@@ -255,7 +255,7 @@ Finally, we deploy the machine. MAAS will use the partitions as we have defined 
 maas admin machine deploy $SYSTEM_ID
 ```
 
-#### Interfaces
+<h4 id="heading--interfaces">Interfaces</h4>
 
 Using the `interfaces` constraint, you can compose virtual machines with interfaces, allowing the selection of pod NICs.
 
@@ -269,7 +269,7 @@ Consider the following interfaces constraint:
 interfaces=eth0:space=maas,eth1:space=storage
 ```
 
-Assuming the pod is deployed on a machine or controller with access to the `maas` and `storage` [spaces](intro-concepts.md#spaces), MAAS will create an `eth0` interface bound to the `maas` space and an `eth1` interface bound to the `storage` space.
+Assuming the pod is deployed on a machine or controller with access to the `maas` and `storage` [spaces](intro-concepts.md#heading--spaces), MAAS will create an `eth0` interface bound to the `maas` space and an `eth1` interface bound to the `storage` space.
 
 Another example tells MAAS to assign unallocated IP addresses:
 
@@ -281,7 +281,7 @@ MAAS automatically converts the `ip` constraint to a VLAN constraint (for the VL
 
 See the [MAAS API documentation](api.md#post-maasapi20machines-opallocate) for a list of all constraint keys.
 
-## Compose and allocate a pod VM
+<h2 id="heading--compose-and-allocate-a-pod-vm">Compose and allocate a pod VM</h2>
 
 In the absence of any nodes in the 'New' or 'Ready' state, if a pod of sufficient resources is available, MAAS can automatically compose (add), commission, and acquire a pod VM. This is done with the `allocate` sub-command:
 
@@ -289,7 +289,7 @@ In the absence of any nodes in the 'New' or 'Ready' state, if a pod of sufficien
 maas $PROFILE machines allocate
 ```
 
-Note that all pod [resource parameters](#set-resources) are available to the `allocate` command, so based on the example above, the following works:
+Note that all pod [resource parameters](#heading--set-resources) are available to the `allocate` command, so based on the example above, the following works:
 
 ``` bash
 maas $PROFILE machines allocate "storage=mylabel1:32(pool1),mylabel2:64(pool2)"
@@ -301,7 +301,7 @@ Once commissioned and acquired, the new machine will be ready to deploy.
 The labels (i.e. `mylabel1`, `mylabel2`) in this case can be used to associate device IDs in the information MAAS dumps about the newly created VM. Try piping the output to: `jq '.constraints_by_type'`.
 [/note]
 
-## List machine parameters
+<h2 id="heading--list-machine-parameters">List machine parameters</h2>
 
 MAAS VM parameters, including their resources, are listed just like any other machine:
 
@@ -309,13 +309,13 @@ MAAS VM parameters, including their resources, are listed just like any other ma
 maas $PROFILE machine read $SYSTEM_ID
 ```
 
-## Libvirt storage pools
+<h2 id="heading--libvirt-storage-pools">Libvirt storage pools</h2>
 
-### Composing VMs with storage pool constraints
+<h3 id="heading--composing-vms-with-storage-pool-constraints">Composing VMs with storage pool constraints</h3>
 
-See [Compose pod virtual machines](#compose-pod-virtual-machines).
+See [Compose pod virtual machines](#heading--compose-pod-virtual-machines).
 
-### Usage
+<h3 id="heading--usage">Usage</h3>
 
 Retrieve pod storage pool information with the following command:
 
@@ -408,7 +408,7 @@ Machine-readable output follows:
 }
 ```
 
-## Delete a pod VM
+<h2 id="heading--delete-a-pod-vm">Delete a pod VM</h2>
 
 ``` bash
 maas $PROFILE machine delete $SYSTEM_ID
@@ -416,7 +416,7 @@ maas $PROFILE machine delete $SYSTEM_ID
 
 After a machine is deleted, the machine's resources will be available for other VMs.
 
-## Delete a pod
+<h2 id="heading--delete-a-pod">Delete a pod</h2>
 
 ``` bash
 maas $PROFILE pod delete $POD_ID

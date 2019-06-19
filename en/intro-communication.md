@@ -1,4 +1,4 @@
-## Machine/rack
+<h2 id="heading--machinerack">Machine/rack</h2>
 
 In multi-region/rack clusters (i.e. HA clusters), all machine communication with MAAS is proxied through rack controllers, including HTTP metadata, DNS, syslog and APT (proxying via Squid). Note that in single-region/rack clusters, the region controller manages communication.
 
@@ -14,7 +14,7 @@ The rack controller installs and configures `bind` as a forwarder. All machines 
 Zone management and maintenance still happen within the region controller.
 [/note]
 
-## Rack/region
+<h2 id="heading--rackregion">Rack/region</h2>
 
 Each rack controller must be able to initiate TCP connections on the following ports:
 
@@ -49,11 +49,11 @@ Each rack controller must be able to initiate TCP connections on the following p
 </tbody>
 </table>
 
-## HTTP
+<h2 id="heading--http">HTTP</h2>
 
 The rack controller installs `nginx`, which serves as a proxy and as an HTTP server, binding to port 5248. Machines contact the metadata server via the rack controller.
 
-## Syslog
+<h2 id="heading--syslog">Syslog</h2>
 
 See [Syslog](installconfig-syslog.md) for more information about MAAS syslog communication as well as how to set up a remote syslog server.
 

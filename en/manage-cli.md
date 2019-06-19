@@ -10,7 +10,7 @@ Note that we do not provide complete coverage of the MAAS CLI. For an exhaustive
 
 Values are represented as uppercase variables preceded with the '$' character (e.g. $PROFILE and $EMAIL_ADDRESS). These are to be replaced with actual values.
 
-## The maas command
+<h2 id="heading--the-maas-command">The maas command</h2>
 
 The `maas` command is obtained via the `maas-cli` Ubuntu package which is installed on every region API server and rack controller. To manage MAAS at the CLI level from a remote workstation this package will need to be installed:
 
@@ -18,7 +18,7 @@ The `maas` command is obtained via the `maas-cli` Ubuntu package which is instal
 sudo apt install maas-cli
 ```
 
-## Create an administrator
+<h2 id="heading--create-an-administrator">Create an administrator</h2>
 
 MAAS requires an initial administrator, sometimes called a MAAS "superuser". When the web UI is accessed for the first time you will be prompted to create this user:
 
@@ -26,9 +26,9 @@ MAAS requires an initial administrator, sometimes called a MAAS "superuser". Whe
 sudo maas createadmin --username=$PROFILE --email=$EMAIL_ADDRESS
 ```
 
-Extra administrators can be created in the same way. See [MAAS CLI - common tasks](manage-cli-common.md#create-a-regular-user) for creating regular users with the CLI.
+Extra administrators can be created in the same way. See [MAAS CLI - common tasks](manage-cli-common.md#heading--create-a-regular-user) for creating regular users with the CLI.
 
-## Log in (required)
+<h2 id="heading--log-in-required">Log in (required)</h2>
 
 To use the CLI you must first log in to the API server (region controller).
 
@@ -75,7 +75,7 @@ MAAS_URL=http://$API_SERVER/MAAS/api/2.0
 maas login $PROFILE $MAAS_URL - < $API_KEY_FILE
 ```
 
-## Get help
+<h2 id="heading--get-help">Get help</h2>
 
 MAAS has a powerful built-in help reference, which you can access in stages to understand how to build commands.
 
@@ -107,7 +107,7 @@ maas admin tags create --help
 
 In this way, you can discover all that the MAAS CLI has to offer.
 
-## Log out
+<h2 id="heading--log-out">Log out</h2>
 
 Once you are done with the CLI you can log out from the given profile, flushing the stored credentials.
 
@@ -115,7 +115,7 @@ Once you are done with the CLI you can log out from the given profile, flushing 
 maas logout $PROFILE
 ```
 
-## Next steps
+<h2 id="heading--next-steps">Next steps</h2>
 
 The following categories are now available to be explored:
 

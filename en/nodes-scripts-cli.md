@@ -2,13 +2,13 @@ The [web UI](nodes-scripts.md) enables you to easily write, upload and execute y
 
 However, the [MAAS CLI](manage-cli.md) supports options not available from the web UI, including access to earlier versions of your scripts, script deletion and result automation.
 
-To use the CLI, first make sure you are [logged in](manage-cli.md#log-in-(required)).
+To use the CLI, first make sure you are [logged in](manage-cli.md#heading--log-in-required).
 
 [note]
-For further details on which metadata fields can be used within scripts, and what they do, see [Commissioning and Hardware Testing Scripts](nodes-scripts.md#metadata-fields).
+For further details on which metadata fields can be used within scripts, and what they do, see [Commissioning and Hardware Testing Scripts](nodes-scripts.md#heading--metadata-fields).
 [/note]
 
-## Script management
+<h2 id="heading--script-management">Script management</h2>
 
 To upload a hardware testing script to MAAS, enter the following:
 
@@ -73,7 +73,7 @@ To delete a script, use `delete`:
 maas $PROFILE node-script delete $SCRIPT_NAME
 ```
 
-## Tags
+<h2 id="heading--tags">Tags</h2>
 
 As with general [tag management](manage-cli-tags.md), tags make scripts easier to manage; grouping scripts together for commissioning and testing, for example:
 
@@ -98,7 +98,7 @@ maas $PROFILE machine commission \
 
 Any testing scripts tagged with *commissioning* will also run during commissioning.
 
-## Results
+<h2 id="heading--results">Results</h2>
 
 The command line allows you to not only view the current script's progress but also retrieve the verbatim output from any previous runs too.
 

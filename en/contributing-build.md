@@ -12,7 +12,7 @@ Related documents:
 -   [Writing guide](contributing-writing.md)
 -   [Working with Git and GitHub](contributing-git.md)
 
-## Installation
+<h2 id="heading--installation">Installation</h2>
 
 Install the builder. On Ubuntu 16.04 LTS:
 
@@ -30,11 +30,11 @@ To build the HTML, while in the root of the MAAS docs repository:
 documentation-builder
 ```
 
-## Verification
+<h2 id="heading--verification">Verification</h2>
 
 You can point a web browser at individual HTML files but to make your verification more conclusive you will need a web server.
 
-### Web server
+<h3 id="heading--web-server">Web server</h3>
 
 See the [Ubuntu Server Guide](https://help.ubuntu.com/lts/serverguide/httpd.html) for instructions on setting up Apache. The DocumentRoot should be the `build` directory. To test, point your browser at:
 
@@ -54,7 +54,7 @@ With Python 3:
 python3 -m http.server
 ```
 
-### Points to consider
+<h3 id="heading--points-to-consider">Points to consider</h3>
 
 Some things to consider during verification:
 

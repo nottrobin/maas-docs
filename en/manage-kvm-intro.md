@@ -13,7 +13,7 @@ Features:
 -   Track libvirt storage pool usage and assign default storage pools to your KVM hosts
 -   Create VMs on multiple networks, specified by space, subnet, VLAN, or IP address
 
-## Next steps
+<h2 id="heading--next-steps">Next steps</h2>
 
 -   [Add a KVM host](manage-kvm-add-host.md)
 

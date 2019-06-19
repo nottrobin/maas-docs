@@ -10,7 +10,7 @@ Upgrading from 1.9 to 2.3 will therefore involve upgrading the version of Ubuntu
 
 Prior to the upgrade all packages should be updated (`sudo apt-get update && sudo apt-get dist-upgrade`). It is recommended that backups be made and that a test environment (that mirrors your production environment) be upgraded first, to pre-empt any issues.
 
-## IP range changes
+<h2 id="heading--ip-range-changes">IP range changes</h2>
 
 The concepts and terminology used to define IP ranges within MAAS have changed significantly between 1.9 and 2.x releases of MAAS. These changes are described below.
 
@@ -38,7 +38,7 @@ The above example shows a static range replaced by three reserved ranges to crea
 With MAAS 2.1+, [network devices discovery](installconfig-network-dev-discovery.md) uses the ARP protocol to determine which addresses are being used, allowing MAAS to automatically avoid assigning recently used IP addresses.
 [/note]
 
-## Troubleshooting
+<h2 id="heading--troubleshooting">Troubleshooting</h2>
 
 The upgrade process can be complex, and depending on your installation, may require manual intervention. You may be asked whether you want to overwrite some files, PostgreSQL files in particular, especially if you've implemented high availability in PostgreSQL (see [PostgreSQL HA](manage-ha-postgresql.md)). If you've made no modifications to these files, you can instruct the upgrade process to overwrite them. Otherwise, you'll need to merge the new changes into the files manually.
 

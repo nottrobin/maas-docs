@@ -2,7 +2,7 @@ This is a list of interface management tasks which can be performed by the MAAS 
 
 See [Networking](installconfig-networking.md) for an overview of networking and [Commission Nodes](nodes-commission.md) for more details on managing interfaces from the MAAS web UI.
 
-## Interface identifiers
+<h2 id="heading--interface-identifiers">Interface identifiers</h2>
 
 A numeric interface identifier is used by the MAAS CLI for many interface operations. Use the following command to retrieve the identifier(s):
 
@@ -21,7 +21,7 @@ Look for either *id* or the number at the end of an interface's resource URI, su
 "resource_uri": "/MAAS/api/2.0/nodes/4efwb4/interfaces/15/"
 ```
 
-## Create a Bond interface
+<h2 id="heading--create-a-bond-interface">Create a Bond interface</h2>
 
 A bond interface is used to aggregate two or more more physical interfaces into a single logical interface. A bond can be created with the following command:
 
@@ -44,9 +44,9 @@ mac_address=52:52:00:00:00:00 parents=15 bond_mode=802.3ad \
 bond_updelay=200 bond_downdelay=200 mtu=9000
 ```
 
-See [Bond interfaces](nodes-commission.md#bond-interfaces) for details on supported bond modes and their actions.
+See [Bond interfaces](nodes-commission.md#heading--bond-interfaces) for details on supported bond modes and their actions.
 
-## Create a Bridge interface
+<h2 id="heading--create-a-bridge-interface">Create a Bridge interface</h2>
 
 A bridge interface is created with the following syntax:
 
@@ -61,7 +61,7 @@ Use 'parent' to define the primary interface used for the bridge:
 maas admin interfaces create-bridge 4efwb4 name=bridged0 parent=4
 ```
 
-## Delete an interface
+<h2 id="heading--delete-an-interface">Delete an interface</h2>
 
 The 'delete' command can be used to delete a bridge interface, a bond interface or a physical interface:
 
@@ -86,7 +86,7 @@ Machine-readable output follows:
 There is no machine-readable output after the successful execution of the delete command.
 [/note]
 
-## Create a VLAN interface
+<h2 id="heading--create-a-vlan-interface">Create a VLAN interface</h2>
 
 To create a VLAN interface, use the following syntax:
 
@@ -184,7 +184,7 @@ Machine-readable output follows:
 }
 ```
 
-## Delete a VLAN interface
+<h2 id="heading--delete-a-vlan-interface">Delete a VLAN interface</h2>
 
 The following command outlines the syntax required to delete a VLAN interface from the command line:
 

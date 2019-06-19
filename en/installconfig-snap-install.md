@@ -2,7 +2,7 @@
 Todo:
 - Track bug: https://goo.gl/Yifghb
 -->
-## Install from snap
+<h2 id="heading--install-from-snap">Install from snap</h2>
 
 [Snaps](https://snapcraft.io/docs) are containerised software packages. To install MAAS from a *snap*, simply enter the following:
 
@@ -16,7 +16,7 @@ After entering your password, the snap will download and install from the *stabl
 `--devmode` is currently a required argument and gives the MAAS snap access to all system resources, similar to an installed `deb` package.
 [/note]
 
-## Initialisation
+<h2 id="heading--initialisation">Initialisation</h2>
 
 The next step involves initialising MAAS with a *run mode*. Selecting one of the following modes dictates what services will run on the local system:
 
@@ -34,7 +34,7 @@ This list is different from the installation scenarios covered in the package in
 
 To initialise MAAS and select a run mode, use the `maas init` command with the *--mode* argument.
 
-### Example
+<h3 id="heading--example">Example</h3>
 
 The following demonstrates the `all` mode, a popular initialisation choice for MAAS:
 
@@ -58,7 +58,7 @@ Import SSH keys [] (lp:user-id or gh:user-id): lp:petermatulis
 The username and password will be used to access the web UI and if you enter a [Launchpad](https://launchpad.net/) or [GitHub](https://github.com) account name with associated SSH key, these will be imported into MAAS automatically.
 [/note]
 
-### MAAS URL
+<h3 id="heading--maas-url">MAAS URL</h3>
 
 All run modes (except `none`) prompt for a MAAS URL, which is interpreted differently depending on the mode:
 
@@ -66,11 +66,11 @@ All run modes (except `none`) prompt for a MAAS URL, which is interpreted differ
 -   `region`: Used to create a new region controller.
 -   `rack`: Used to locate the region controller.
 
-### Shared secret
+<h3 id="heading--shared-secret">Shared secret</h3>
 
 The 'rack' and 'region+rack' modes will additionally ask for a shared secret that will allow the new rack controller to register with the region controller.
 
-### Reinitialising MAAS
+<h3 id="heading--reinitialising-maas">Reinitialising MAAS</h3>
 
 To re-initialise MAAS, for example, to switch from `rack` to `region`:
 
@@ -78,7 +78,7 @@ To re-initialise MAAS, for example, to switch from `rack` to `region`:
 sudo maas init --mode region
 ```
 
-### Additional `init` options
+<h3 id="heading--additional-init-options">Additional `init` options</h3>
 
 The `init` command can take a number of optional arguments. To list them all as well as read a brief description of each:
 
@@ -86,7 +86,7 @@ The `init` command can take a number of optional arguments. To list them all as 
 sudo maas init --help
 ```
 
-## Configuration verification
+<h2 id="heading--configuration-verification">Configuration verification</h2>
 
 After a *snap* installation of MAAS, a verification of the currently running configuration can be done with:
 
@@ -102,7 +102,7 @@ Settings:
 maas_url=http://192.168.122.1:5240/MAAS
 ```
 
-## Service statuses
+<h2 id="heading--service-statuses">Service statuses</h2>
 
 The status of running services can likewise be checked:
 
@@ -127,7 +127,7 @@ regiond:regiond-3                RUNNING   pid 8015, uptime 0:09:17
 tgt                              RUNNING   pid 8040, uptime 0:09:15
 ```
 
-With MAAS installed and initialised, you can now open the web UI in your browser. See [Access the web UI](installconfig-webui.md#access-the-web-ui) for further details.
+With MAAS installed and initialised, you can now open the web UI in your browser. See [Access the web UI](installconfig-webui.md#heading--access-the-web-ui) for further details.
 
 <!-- LINKS -->
 

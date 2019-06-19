@@ -2,7 +2,7 @@ This is a list of image management tasks to perform with the MAAS CLI. See [MAAS
 
 See [Images](installconfig-images.md) for an overview of images.
 
-## List boot sources
+<h2 id="heading--list-boot-sources">List boot sources</h2>
 
 To list boot sources, that is, the locations where images (boot resources) may be downloaded from:
 
@@ -14,9 +14,9 @@ maas $PROFILE boot-sources read
 Although multiple boot sources may be listed, MAAS can only practically work with a single boot source.
 [/note]
 
-## Select images
+<h2 id="heading--select-images">Select images</h2>
 
-Use the `boot-source-selections` command to select images from a boot source. After selecting new images, you will need to [import](#import-newly-selected-images) them.
+Use the `boot-source-selections` command to select images from a boot source. After selecting new images, you will need to [import](#heading--import-newly-selected-images) them.
 
 ``` bash
 maas $PROFILE boot-source-selections create $SOURCE_ID \
@@ -32,7 +32,7 @@ maas $PROFILE boot-source-selections create 1 \
     subarches="*" labels="*"
 ```
 
-### Hardware enablement (HWE)
+<h3 id="heading--hardware-enablement-hwe">Hardware enablement (HWE)</h3>
 
 For example, to get just the latest amd64 HWE kernel available for Trusty, which, at time of writing, is from Xenial:
 
@@ -50,7 +50,7 @@ maas $PROFILE boot-source-selections create 1 \
     subarches="hwe-16.04" labels="*"
 ```
 
-## List image selections
+<h2 id="heading--list-image-selections">List image selections</h2>
 
 To list image selections for a boot source:
 
@@ -58,7 +58,7 @@ To list image selections for a boot source:
 maas $PROFILE boot-source-selections read $SOURCE_ID
 ```
 
-## Import newly-selected images
+<h2 id="heading--import-newly-selected-images">Import newly-selected images</h2>
 
 To import newly-selected images (boot resources):
 
@@ -70,7 +70,7 @@ Once newly-selected images are imported a sync mechanism is enabled (by default)
 
 Available images resulting from this action are reflected in the web UI.
 
-## List currently available images
+<h2 id="heading--list-currently-available-images">List currently available images</h2>
 
 To list currently available/imported images (boot resources):
 
@@ -78,7 +78,7 @@ To list currently available/imported images (boot resources):
 maas $PROFILE boot-resources read
 ```
 
-## Delete a boot source
+<h2 id="heading--delete-a-boot-source">Delete a boot source</h2>
 
 To delete a boot source (the location where images are downloaded from):
 
@@ -88,7 +88,7 @@ maas $PROFILE boot-source delete $SOURCE_ID
 
 If the boot source that was deleted was the sole boot source then the fields 'Sync URL' and 'Keyring Path' in the web UI will take on null values.
 
-## Edit a boot source
+<h2 id="heading--edit-a-boot-source">Edit a boot source</h2>
 
 An existing boot source can be edited by changing the GPG keyring file ($KEYRING_FILE) and/or the location ($URL).
 
@@ -103,7 +103,7 @@ At this time MAAS only fully supports a boot source containing official MAAS ima
 
 KEYRING_FILE=/usr/share/keyrings/ubuntu-cloudimage-keyring.gpg
 
-## Add a boot source
+<h2 id="heading--add-a-boot-source">Add a boot source</h2>
 
 [note]
 To avoid unnecessary complexity, you should probably delete any existing boot sources before adding a new one.
@@ -131,7 +131,7 @@ If the source that was added is now the sole boot source then the fields 'Sync U
 
 Once the source is added, proceed to the [Select and import](installconfig-images-import.md) images step.
 
-### Using a local image mirror
+<h3 id="heading--using-a-local-image-mirror">Using a local image mirror</h3>
 
 Once the mirror is set up according to [Local image mirror](installconfig-images-mirror.md) it is just a matter of specifying the mirror location (URL). Since the images come from the default source the default keyring should be used. If the aforementioned mirror document was followed, the variable values should be:
 
@@ -140,7 +140,7 @@ Once the mirror is set up according to [Local image mirror](installconfig-images
 
 Where $MIRROR is the mirror server's hostname or IP address.
 
-### Recreate the default boot source
+<h3 id="heading--recreate-the-default-boot-source">Recreate the default boot source</h3>
 
 Recreate the default boot source if it was ever deleted using the following variable values:
 

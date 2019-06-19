@@ -9,7 +9,7 @@ Note that MAAS doesn't bind to port 80, instead MAAS binds port 5240.
 
 # Example configuration
 
-## nginx
+<h2 id="heading--nginx">nginx</h2>
 
     server {
      listen 443 ssl;
@@ -31,7 +31,7 @@ Note that MAAS doesn't bind to port 80, instead MAAS binds port 5240.
      }
     }
 
-## apache2
+<h2 id="heading--apache2">apache2</h2>
 
     <VirtualHost *:443>
      SSLEngine On

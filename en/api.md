@@ -4,7 +4,7 @@ Restful MAAS API.
 
 This is the documentation for the API that lets you control and query MAAS. The API is "Restful", which means that you access it through normal HTTP requests.
 
-## API versions
+<h2 id="heading--api-versions">API versions</h2>
 
 At any given time, MAAS may support multiple versions of its API. The version number is included in the API's URL, e.g. /api/2.0/
 
@@ -12,7 +12,7 @@ For now, 2.0 is the only supported version.
 
 The current API version number can be retrieved by issuing a GET to "/api/version/". Accessing an old or unknown API version URL will result in a "410 GONE" being returned, along with a descriptive error message. Both the error message and the api version are returned as plaintext.
 
-## HTTP methods and parameter-passing
+<h2 id="heading--http-methods-and-parameter-passing">HTTP methods and parameter-passing</h2>
 
 The following HTTP methods are available for accessing the API:
 
@@ -31,9 +31,9 @@ Most resources offer a choice of GET or POST operations. In those cases these me
 
 For example, to list all machines, you might GET "/MAAS/api/2.0/machines".
 
-## Operations
+<h2 id="heading--operations">Operations</h2>
 
-### Logged-in user
+<h3 id="heading--logged-in-user">Logged-in user</h3>
 
 Manage the current logged-in user.
 
@@ -135,7 +135,7 @@ Modify the consumer name of an authorisation OAuth token.
 <p>&nbsp;</p>
 </details>
 
-### Bcache Cache Set
+<h3 id="heading--bcache-cache-set">Bcache Cache Set</h3>
 
 Manage bcache cache set on a machine.
 
@@ -264,7 +264,7 @@ Note: specifying both a cache_device and a cache_partition is not allowed.
 <p>&nbsp;</p>
 </details>
 
-### Bcache Cache Sets
+<h3 id="heading--bcache-cache-sets">Bcache Cache Sets</h3>
 
 Manage bcache cache sets on a machine.
 
@@ -350,7 +350,7 @@ Note: specifying both a cache_device and a cache_partition is not allowed.
 <p>&nbsp;</p>
 </details>
 
-### Bcache Device
+<h3 id="heading--bcache-device">Bcache Device</h3>
 
 Manage bcache device on a machine.
 
@@ -483,7 +483,7 @@ Specifying both a device and a partition for a given role (cache or backing) is 
 <p>&nbsp;</p>
 </details>
 
-### Bcache Devices
+<h3 id="heading--bcache-devices">Bcache Devices</h3>
 
 Manage bcache devices on a machine.
 
@@ -577,7 +577,7 @@ Specifying both a device and a partition for a given role (cache or backing) is 
 <p>&nbsp;</p>
 </details>
 
-### Block device
+<h3 id="heading--block-device">Block device</h3>
 
 Manage a block device on a machine.
 
@@ -1268,7 +1268,7 @@ Machines must have a status of Ready to have access to all options. Machines wit
 <p>&nbsp;</p>
 </details>
 
-### Block devices
+<h3 id="heading--block-devices">Block devices</h3>
 
 Manage block devices on a machine.
 
@@ -1427,7 +1427,7 @@ Create a physical block device.
 <p>&nbsp;</p>
 </details>
 
-### Boot resource
+<h3 id="heading--boot-resource">Boot resource</h3>
 
 Manage a boot resource.
 
@@ -1523,7 +1523,7 @@ Reads a boot resource by id
 <p>&nbsp;</p>
 </details>
 
-### Boot resources
+<h3 id="heading--boot-resources">Boot resources</h3>
 
 Manage the boot resources.
 
@@ -1707,7 +1707,7 @@ Stop import the boot resources.
 <p>&nbsp;</p>
 </details>
 
-### Boot source
+<h3 id="heading--boot-source">Boot source</h3>
 
 Manage a boot source.
 
@@ -1830,7 +1830,7 @@ Update a boot source with the given id.
 <p>&nbsp;</p>
 </details>
 
-### Boot source selection
+<h3 id="heading--boot-source-selection">Boot source selection</h3>
 
 Manage a boot source selection.
 
@@ -1977,7 +1977,7 @@ Update a boot source selection with the given id.
 <p>&nbsp;</p>
 </details>
 
-### Boot source selections
+<h3 id="heading--boot-source-selections">Boot source selections</h3>
 
 Manage the collection of boot source selections.
 
@@ -2089,7 +2089,7 @@ Create a new boot source selection.
 <p>&nbsp;</p>
 </details>
 
-### Boot sources
+<h3 id="heading--boot-sources">Boot sources</h3>
 
 Manage the collection of boot sources.
 
@@ -2157,7 +2157,7 @@ Create a new boot source. Note that in addition to `url`, you must supply either
 <p>&nbsp;</p>
 </details>
 
-### Commissioning script
+<h3 id="heading--commissioning-script">Commissioning script</h3>
 
 Manage a custom commissioning script.
 
@@ -2165,19 +2165,19 @@ Manage a custom commissioning script.
 >
 > This endpoint has been deprecated in favor of the node-script endpoint.
 
-#### `DELETE /MAAS/api/2.0/commissioning-scripts/{name}`
+<h4 id="heading--delete-maasapi20commissioning-scriptsname">`DELETE /MAAS/api/2.0/commissioning-scripts/{name}`</h4>
 
 Delete a commissioning script.
 
-#### `GET /MAAS/api/2.0/commissioning-scripts/{name}`
+<h4 id="heading--get-maasapi20commissioning-scriptsname">`GET /MAAS/api/2.0/commissioning-scripts/{name}`</h4>
 
 Read a commissioning script.
 
-#### `PUT /MAAS/api/2.0/commissioning-scripts/{name}`
+<h4 id="heading--put-maasapi20commissioning-scriptsname">`PUT /MAAS/api/2.0/commissioning-scripts/{name}`</h4>
 
 Update a commissioning script.
 
-### Commissioning scripts
+<h3 id="heading--commissioning-scripts">Commissioning scripts</h3>
 
 Manage custom commissioning scripts.
 
@@ -2185,11 +2185,11 @@ Manage custom commissioning scripts.
 >
 > This endpoint has been deprecated in favor of the node-scripts endpoint.
 
-#### `GET /MAAS/api/2.0/commissioning-scripts/`
+<h4 id="heading--get-maasapi20commissioning-scripts">`GET /MAAS/api/2.0/commissioning-scripts/`</h4>
 
 List commissioning scripts.
 
-#### `POST /MAAS/api/2.0/commissioning-scripts/`
+<h4 id="heading--post-maasapi20commissioning-scripts">`POST /MAAS/api/2.0/commissioning-scripts/`</h4>
 
 Create a new commissioning script.
 
@@ -2211,7 +2211,7 @@ param content
 
 :   A script file, to be uploaded in binary form. Note: this is not a normal parameter, but a file upload. Its filename is ignored; MAAS will know it by the name you pass to the request.
 
-### DHCP Snippet
+<h3 id="heading--dhcp-snippet">DHCP Snippet</h3>
 
 Manage an individual DHCP snippet.
 
@@ -2584,7 +2584,7 @@ Update a DHCP snippet with the given id.
 <p>&nbsp;</p>
 </details>
 
-### DHCP Snippets
+<h3 id="heading--dhcp-snippets">DHCP Snippets</h3>
 
 Manage the collection of all DHCP snippets in MAAS.
 
@@ -2826,7 +2826,7 @@ Creates a DHCP snippet.
 <p>&nbsp;</p>
 </details>
 
-### DNSResource
+<h3 id="heading--dnsresource">DNSResource</h3>
 
 Manage dnsresource.
 
@@ -2953,7 +2953,7 @@ Update a DNS resource with the given id.
 <p>&nbsp;</p>
 </details>
 
-### DNSResourceRecord
+<h3 id="heading--dnsresourcerecord">DNSResourceRecord</h3>
 
 Manage dnsresourcerecord.
 
@@ -3080,7 +3080,7 @@ Update a DNS resource record with the given id.
 <p>&nbsp;</p>
 </details>
 
-### DNSResourceRecords
+<h3 id="heading--dnsresourcerecords">DNSResourceRecords</h3>
 
 Manage DNS resource records (e.g. CNAME, MX, NS, SRV, TXT)
 
@@ -3160,7 +3160,7 @@ Create a new DNS resource record.
 <p>&nbsp;</p>
 </details>
 
-### DNSResources
+<h3 id="heading--dnsresources">DNSResources</h3>
 
 Manage dnsresources.
 
@@ -3263,7 +3263,7 @@ Create a DNS resource.
 <p>&nbsp;</p>
 </details>
 
-### Device
+<h3 id="heading--device">Device</h3>
 
 Manage an individual device.
 
@@ -4229,7 +4229,7 @@ Update a device with a given system_id.
 <p>&nbsp;</p>
 </details>
 
-### Devices
+<h3 id="heading--devices">Devices</h3>
 
 Manage the collection of all the devices in the MAAS.
 
@@ -4711,7 +4711,7 @@ Assigns a given node to a given zone.
 <p>&nbsp;</p>
 </details>
 
-### Discoveries
+<h3 id="heading--discoveries">Discoveries</h3>
 
 Query observed discoveries.
 
@@ -5050,7 +5050,7 @@ If the call is a success, this method will return a dictionary of results with t
 <p>&nbsp;</p>
 </details>
 
-### Discovery
+<h3 id="heading--discovery">Discovery</h3>
 
 Read or delete an observed discovery.
 
@@ -5105,7 +5105,7 @@ Read a discovery with the given discovery_id.
 <p>&nbsp;</p>
 </details>
 
-### Domain
+<h3 id="heading--domain">Domain</h3>
 
 Manage domain.
 
@@ -5301,7 +5301,7 @@ Update a domain with the given id.
 <p>&nbsp;</p>
 </details>
 
-### Domains
+<h3 id="heading--domains">Domains</h3>
 
 Manage domains.
 
@@ -5406,7 +5406,7 @@ Set the SOA serial number for all DNS zones.
 <p>&nbsp;</p>
 </details>
 
-### Events
+<h3 id="heading--events">Events</h3>
 
 Retrieve filtered node events.
 
@@ -5511,7 +5511,7 @@ List node events, optionally filtered by various criteria via URL query paramete
 <p>&nbsp;</p>
 </details>
 
-### Fabric
+<h3 id="heading--fabric">Fabric</h3>
 
 Manage fabric.
 
@@ -5662,7 +5662,7 @@ Update a fabric with the given id.
 <p>&nbsp;</p>
 </details>
 
-### Fabrics
+<h3 id="heading--fabrics">Fabrics</h3>
 
 Manage fabrics.
 
@@ -6102,7 +6102,7 @@ Create a fabric.
 <p>&nbsp;</p>
 </details>
 
-### Fan Network
+<h3 id="heading--fan-network">Fan Network</h3>
 
 Manage Fan Network.
 
@@ -6237,7 +6237,7 @@ Update a fan network with the given id.
 <p>&nbsp;</p>
 </details>
 
-### Fan Networks
+<h3 id="heading--fan-networks">Fan Networks</h3>
 
 Manage Fan Networks.
 
@@ -6319,7 +6319,7 @@ Create a fan network
 <p>&nbsp;</p>
 </details>
 
-### File
+<h3 id="heading--file">File</h3>
 
 Manage a FileStorage object.
 
@@ -6393,7 +6393,7 @@ The content of the file is base64-encoded.
 <p>&nbsp;</p>
 </details>
 
-### Files
+<h3 id="heading--files">Files</h3>
 
 Manage the collection of all the files in this MAAS.
 
@@ -6560,7 +6560,7 @@ Add a new file to the file storage.
 <p>&nbsp;</p>
 </details>
 
-### IP Addresses
+<h3 id="heading--ip-addresses">IP Addresses</h3>
 
 Manage IP addresses allocated by MAAS.
 
@@ -6767,7 +6767,7 @@ The user must supply either a subnet or a specific IP address within a subnet.
 <p>&nbsp;</p>
 </details>
 
-### IP Range
+<h3 id="heading--ip-range">IP Range</h3>
 
 Manage IP range.
 
@@ -6972,7 +6972,7 @@ Update an IP range with the given id.
 <p>&nbsp;</p>
 </details>
 
-### IP Ranges
+<h3 id="heading--ip-ranges">IP Ranges</h3>
 
 Manage IP ranges.
 
@@ -7126,7 +7126,7 @@ Create a new IP range.
 <p>&nbsp;</p>
 </details>
 
-### Interface
+<h3 id="heading--interface">Interface</h3>
 
 Manage a node's or device's interface.
 
@@ -7950,7 +7950,7 @@ Supported bonding modes (bond-mode):
 <p>&nbsp;</p>
 </details>
 
-### Interfaces
+<h3 id="heading--interfaces">Interfaces</h3>
 
 Manage interfaces on a node.
 
@@ -8749,7 +8749,7 @@ Create a VLAN interface on a machine.
 <p>&nbsp;</p>
 </details>
 
-### License Key
+<h3 id="heading--license-key">License Key</h3>
 
 Manage a license key.
 
@@ -8862,7 +8862,7 @@ Update a license key for the given operating system and distro series.
 <p>&nbsp;</p>
 </details>
 
-### License Keys
+<h3 id="heading--license-keys">License Keys</h3>
 
 Manage the license keys.
 
@@ -8916,7 +8916,7 @@ Define a license key.
 <p>&nbsp;</p>
 </details>
 
-### MAAS server
+<h3 id="heading--maas-server">MAAS server</h3>
 
 Manage the MAAS server.
 
@@ -9358,7 +9358,7 @@ windows_kms_host
 <p>&nbsp;</p>
 </details>
 
-### Machine
+<h3 id="heading--machine">Machine</h3>
 
 Manage an individual machine.
 
@@ -21340,7 +21340,7 @@ Updates a machine with the given system_id.
 <p>&nbsp;</p>
 </details>
 
-### Machines
+<h3 id="heading--machines">Machines</h3>
 
 Manage the collection of all the machines in the MAAS.
 
@@ -23251,41 +23251,41 @@ Assigns a given node to a given zone.
 <p>&nbsp;</p>
 </details>
 
-### Network
+<h3 id="heading--network">Network</h3>
 
 Manage a network.
 
 > This endpoint is deprecated. Use the new 'subnet' endpoint instead.
 
-#### `DELETE /MAAS/api/2.0/networks/{name}/`
+<h4 id="heading--delete-maasapi20networksname">`DELETE /MAAS/api/2.0/networks/{name}/`</h4>
 
 Delete network definition.
 
 This endpoint is no longer available. Use the 'subnet' endpoint instead.
 
-#### `GET /MAAS/api/2.0/networks/{name}/`
+<h4 id="heading--get-maasapi20networksname">`GET /MAAS/api/2.0/networks/{name}/`</h4>
 
 Read network definition.
 
-#### `GET /MAAS/api/2.0/networks/{name}/ op=list_connected_macs`
+<h4 id="heading--get-maasapi20networksname-oplist_connected_macs">`GET /MAAS/api/2.0/networks/{name}/ op=list_connected_macs`</h4>
 
 Returns the list of MAC addresses connected to this network.
 
 Only MAC addresses for nodes visible to the requesting user are returned.
 
-#### `POST /MAAS/api/2.0/networks/{name}/ op=connect_macs`
+<h4 id="heading--post-maasapi20networksname-opconnect_macs">`POST /MAAS/api/2.0/networks/{name}/ op=connect_macs`</h4>
 
 Connect the given MAC addresses to this network.
 
 This endpoint is no longer available. Use the 'subnet' endpoint instead.
 
-#### `POST /MAAS/api/2.0/networks/{name}/ op=disconnect_macs`
+<h4 id="heading--post-maasapi20networksname-opdisconnect_macs">`POST /MAAS/api/2.0/networks/{name}/ op=disconnect_macs`</h4>
 
 Disconnect the given MAC addresses from this network.
 
 This endpoint is no longer available. Use the 'subnet' endpoint instead.
 
-#### `PUT /MAAS/api/2.0/networks/{name}/`
+<h4 id="heading--put-maasapi20networksname">`PUT /MAAS/api/2.0/networks/{name}/`</h4>
 
 Update network definition.
 
@@ -23311,13 +23311,13 @@ param description
 
 :   Detailed description of the network for the benefit of users and administrators.
 
-### Networks
+<h3 id="heading--networks">Networks</h3>
 
 Manage the networks.
 
 > This endpoint is deprecated. Use the new 'subnets' endpoint instead.
 
-#### `GET /MAAS/api/2.0/networks/`
+<h4 id="heading--get-maasapi20networks">`GET /MAAS/api/2.0/networks/`</h4>
 
 List networks.
 
@@ -23325,13 +23325,13 @@ param node
 
 :   Optionally, nodes which must be attached to any returned networks. If more than one node is given, the result will be restricted to networks that these nodes have in common.
 
-#### `POST /MAAS/api/2.0/networks/`
+<h4 id="heading--post-maasapi20networks">`POST /MAAS/api/2.0/networks/`</h4>
 
 Define a network.
 
 This endpoint is no longer available. Use the 'subnets' endpoint instead.
 
-### Node
+<h3 id="heading--node">Node</h3>
 
 Manage an individual Node.
 
@@ -23924,7 +23924,7 @@ Note that this method is reserved for admin users and returns a 403 if the user 
 <p>&nbsp;</p>
 </details>
 
-### Commissioning results
+<h3 id="heading--commissioning-results">Commissioning results</h3>
 
 Read the collection of commissioning script results.
 
@@ -24010,7 +24010,7 @@ Read the commissioning results per node visible to the user, optionally filtered
 <p>&nbsp;</p>
 </details>
 
-### Node Script
+<h3 id="heading--node-script">Node Script</h3>
 
 Manage or view a custom script.
 
@@ -24478,7 +24478,7 @@ Update a script with the given name.
 <p>&nbsp;</p>
 </details>
 
-### Node Script Result
+<h3 id="heading--node-script-result">Node Script Result</h3>
 
 Manage node script results.
 
@@ -25746,7 +25746,7 @@ Update a set of test results for a given system_id and script id.
 <p>&nbsp;</p>
 </details>
 
-### Node Script Result
+<h3 id="heading--node-script-result">Node Script Result</h3>
 
 Manage node script results.
 
@@ -26600,7 +26600,7 @@ Return a list of script results grouped by run for the given system_id.
 <p>&nbsp;</p>
 </details>
 
-### Node Scripts
+<h3 id="heading--node-scripts">Node Scripts</h3>
 
 Manage custom scripts.
 
@@ -26828,7 +26828,7 @@ Create a new script.
 <p>&nbsp;</p>
 </details>
 
-### Nodes
+<h3 id="heading--nodes">Nodes</h3>
 
 Manage the collection of all the nodes in the MAAS.
 
@@ -27220,7 +27220,7 @@ Assigns a given node to a given zone.
 <p>&nbsp;</p>
 </details>
 
-### Notification
+<h3 id="heading--notification">Notification</h3>
 
 Manage an individual notification.
 
@@ -27394,7 +27394,7 @@ Note: One of the `user`, `users` or `admins` parameters must be set to True for 
 <p>&nbsp;</p>
 </details>
 
-### Notifications
+<h3 id="heading--notifications">Notifications</h3>
 
 Manage the collection of all the notifications in MAAS.
 
@@ -27564,7 +27564,7 @@ Note: One of the `user`, `users` or `admins` parameters must be set to True for 
 <p>&nbsp;</p>
 </details>
 
-### Package Repositories
+<h3 id="heading--package-repositories">Package Repositories</h3>
 
 Manage the collection of all Package Repositories in MAAS.
 
@@ -27662,7 +27662,7 @@ Create a new package repository.
 <p>&nbsp;</p>
 </details>
 
-### Package Repository
+<h3 id="heading--package-repository">Package Repository</h3>
 
 Manage an individual package repository.
 
@@ -27821,7 +27821,7 @@ Update the package repository with the given id.
 <p>&nbsp;</p>
 </details>
 
-### Partitions
+<h3 id="heading--partitions">Partitions</h3>
 
 Manage partition on a block device.
 
@@ -28313,7 +28313,7 @@ Unmount a filesystem on machine system_id, device device_id and partition id.
 <p>&nbsp;</p>
 </details>
 
-### Partitions
+<h3 id="heading--partitions">Partitions</h3>
 
 Manage partitions on a block device.
 
@@ -28454,7 +28454,7 @@ Create a partition on a block device.
 <p>&nbsp;</p>
 </details>
 
-### Pod
+<h3 id="heading--pod">Pod</h3>
 
 Manage an individual pod.
 
@@ -28497,7 +28497,7 @@ Deletes a pod with the given pod ID.
 <p>&nbsp;</p>
 </details>
 
-#### `GET /MAAS/api/2.0/pods/{id}/`
+<h4 id="heading--get-maasapi20podsid">`GET /MAAS/api/2.0/pods/{id}/`</h4>
 
 <details> <summary>`GET /MAAS/api/2.0/pods/{id}/?op=parameters`</summary>
 
@@ -29079,7 +29079,7 @@ Note: A pod's 'type' cannot be updated. The pod must be deleted and re-added to 
 <p>&nbsp;</p>
 </details>
 
-### Pods
+<h3 id="heading--pods">Pods</h3>
 
 Manage the collection of all the pod in the MAAS.
 
@@ -29303,7 +29303,7 @@ Create or discover a new pod.
 <p>&nbsp;</p>
 </details>
 
-### RackController
+<h3 id="heading--rackcontroller">RackController</h3>
 
 Manage an individual rack controller.
 
@@ -31815,7 +31815,7 @@ Updates a rack controller with the given system_id.
 <p>&nbsp;</p>
 </details>
 
-### RackControllers
+<h3 id="heading--rackcontrollers">RackControllers</h3>
 
 Manage the collection of all rack controllers in MAAS.
 
@@ -32298,7 +32298,7 @@ Assigns a given node to a given zone.
 <p>&nbsp;</p>
 </details>
 
-### RAID Device
+<h3 id="heading--raid-device">RAID Device</h3>
 
 Manage a specific RAID (Redundant Array of Independent Disks) on a machine.
 
@@ -32437,7 +32437,7 @@ Update a RAID with the given id on a machine with the given system_id.
 <p>&nbsp;</p>
 </details>
 
-### RAID Devices
+<h3 id="heading--raid-devices">RAID Devices</h3>
 
 Manage all RAIDs (Redundant Array of Independent Disks) on a machine.
 
@@ -32533,7 +32533,7 @@ Set up a RAID on a machine with the given system_id.
 <p>&nbsp;</p>
 </details>
 
-### RegionController
+<h3 id="heading--regioncontroller">RegionController</h3>
 
 Manage an individual region controller.
 
@@ -33428,7 +33428,7 @@ Updates a region controller with the given system_id.
 <p>&nbsp;</p>
 </details>
 
-### RegionControllers
+<h3 id="heading--regioncontrollers">RegionControllers</h3>
 
 Manage the collection of all region controllers in MAAS.
 
@@ -33820,7 +33820,7 @@ Assigns a given node to a given zone.
 <p>&nbsp;</p>
 </details>
 
-### Resource pool
+<h3 id="heading--resource-pool">Resource pool</h3>
 
 Manage a resource pool.
 
@@ -33941,7 +33941,7 @@ Note that any other given parameters are silently ignored.
 <p>&nbsp;</p>
 </details>
 
-### Resource pools
+<h3 id="heading--resource-pools">Resource pools</h3>
 
 Manage resource pools.
 
@@ -34013,7 +34013,7 @@ Creates a new resource pool.
 <p>&nbsp;</p>
 </details>
 
-### SSH Key
+<h3 id="heading--ssh-key">SSH Key</h3>
 
 Manage an SSH key.
 
@@ -34094,7 +34094,7 @@ Retrieves an SSH key with the given ID.
 <p>&nbsp;</p>
 </details>
 
-### SSH Keys
+<h3 id="heading--ssh-keys">SSH Keys</h3>
 
 Manage the collection of all the SSH keys in this MAAS.
 
@@ -34205,7 +34205,7 @@ E.g.
 <p>&nbsp;</p>
 </details>
 
-### SSL Key
+<h3 id="heading--ssl-key">SSL Key</h3>
 
 Manage an SSL key.
 
@@ -34290,7 +34290,7 @@ Retrieves an SSL key with the given ID.
 <p>&nbsp;</p>
 </details>
 
-### SSL Keys
+<h3 id="heading--ssl-keys">SSL Keys</h3>
 
 Operations on multiple keys.
 
@@ -34349,7 +34349,7 @@ Add a new SSL key to the requesting user's account.
 <p>&nbsp;</p>
 </details>
 
-### Space
+<h3 id="heading--space">Space</h3>
 
 Manage space.
 
@@ -34466,7 +34466,7 @@ Updates a space with the given ID.
 <p>&nbsp;</p>
 </details>
 
-### Spaces
+<h3 id="heading--spaces">Spaces</h3>
 
 Manage spaces.
 
@@ -35031,7 +35031,7 @@ Create a new space.
 <p>&nbsp;</p>
 </details>
 
-### Static route
+<h3 id="heading--static-route">Static route</h3>
 
 Manage static route.
 
@@ -35278,7 +35278,7 @@ Updates a static route with the given ID.
 <p>&nbsp;</p>
 </details>
 
-### Static routes
+<h3 id="heading--static-routes">Static routes</h3>
 
 Manage static routes.
 
@@ -35540,7 +35540,7 @@ Creates a static route.
 <p>&nbsp;</p>
 </details>
 
-### Subnet
+<h3 id="heading--subnet">Subnet</h3>
 
 Manage subnet.
 
@@ -36284,7 +36284,7 @@ Managed subnets do not allow IP allocation by default. The meaning of a "reserve
 <p>&nbsp;</p>
 </details>
 
-### Subnets
+<h3 id="heading--subnets">Subnets</h3>
 
 Manage subnets.
 
@@ -36611,7 +36611,7 @@ Managed subnets do not allow IP allocation by default. The meaning of a "reserve
 <p>&nbsp;</p>
 </details>
 
-### Tag
+<h3 id="heading--tag">Tag</h3>
 
 Tags are properties that can be associated with a Node and serve as criteria for selecting and allocating nodes.
 
@@ -39442,7 +39442,7 @@ Update elements of a given tag.
 <p>&nbsp;</p>
 </details>
 
-### Tags
+<h3 id="heading--tags">Tags</h3>
 
 Manage all tags known to MAAS.
 
@@ -39514,7 +39514,7 @@ Create a new tag.
 <p>&nbsp;</p>
 </details>
 
-### User
+<h3 id="heading--user">User</h3>
 
 Manage a user account.
 
@@ -39578,7 +39578,7 @@ Retrieve a user's details.
 <p>&nbsp;</p>
 </details>
 
-### Users
+<h3 id="heading--users">Users</h3>
 
 Manage the user accounts of this MAAS.
 
@@ -39686,7 +39686,7 @@ This is not safe: the password is sent in plaintext. Avoid it for production, un
 <p>&nbsp;</p>
 </details>
 
-### MAAS version
+<h3 id="heading--maas-version">MAAS version</h3>
 
 Information about this MAAS instance.
 
@@ -39723,7 +39723,7 @@ Read version and capabilities of this MAAS instance.
 <p>&nbsp;</p>
 </details>
 
-### VLAN
+<h3 id="heading--vlan">VLAN</h3>
 
 Manage a VLAN on a fabric.
 
@@ -39874,7 +39874,7 @@ Updates a given VLAN.
 <p>&nbsp;</p>
 </details>
 
-### VLANs
+<h3 id="heading--vlans">VLANs</h3>
 
 Manage VLANs on a fabric.
 
@@ -39986,7 +39986,7 @@ Creates a new VLAN.
 <p>&nbsp;</p>
 </details>
 
-### VMFS datastore
+<h3 id="heading--vmfs-datastore">VMFS datastore</h3>
 
 Manage VMFS datastore on a machine.
 
@@ -40171,7 +40171,7 @@ Update a VMFS datastore with the given id on the machine with the given system_i
 <p>&nbsp;</p>
 </details>
 
-### VMFS datastores
+<h3 id="heading--vmfs-datastores">VMFS datastores</h3>
 
 Manage VMFS datastores on a machine.
 
@@ -40370,7 +40370,7 @@ Note that at least one valid block device or partition is required.
 <p>&nbsp;</p>
 </details>
 
-### Volume group
+<h3 id="heading--volume-group">Volume group</h3>
 
 Manage volume group on a machine.
 
@@ -40660,7 +40660,7 @@ Update a volume group with the given id on the machine with the given system_id.
 <p>&nbsp;</p>
 </details>
 
-### Volume groups
+<h3 id="heading--volume-groups">Volume groups</h3>
 
 Manage volume groups on a machine.
 
@@ -40818,7 +40818,7 @@ Note that at least one valid block device or partition is required.
 <p>&nbsp;</p>
 </details>
 
-### Zone
+<h3 id="heading--zone">Zone</h3>
 
 Manage a physical zone.
 
@@ -40943,7 +40943,7 @@ Note that only 'name' and 'description' parameters are honored. Others, such as 
 <p>&nbsp;</p>
 </details>
 
-### Zones
+<h3 id="heading--zones">Zones</h3>
 
 Manage physical zones.
 
@@ -41016,14 +41016,14 @@ Creates a new zone.
 
 This is the list of the supported power types and their associated power parameters. Note that the list of usable power types for a particular rack controller might be a subset of this list if the rack controller in question is from an older version of MAAS.
 
-### amt (Intel AMT)
+<h3 id="heading--amt-intel-amt">amt (Intel AMT)</h3>
 
 Power parameters:
 
 -   power_pass (Power password).
 -   power_address (Power address).
 
-### apc (American Power Conversion (APC) PDU)
+<h3 id="heading--apc-american-power-conversion-apc-pdu">apc (American Power Conversion (APC) PDU)</h3>
 
 Power parameters:
 
@@ -41031,7 +41031,7 @@ Power parameters:
 -   node_outlet (APC PDU node outlet number (1-16)).
 -   power_on_delay (Power ON outlet delay (seconds)). Default: '5'.
 
-### dli (Digital Loggers, Inc. PDU)
+<h3 id="heading--dli-digital-loggers-inc-pdu">dli (Digital Loggers, Inc. PDU)</h3>
 
 Power parameters:
 
@@ -41040,7 +41040,7 @@ Power parameters:
 -   power_user (Power user).
 -   power_pass (Power password).
 
-### fence_cdu (Sentry Switch CDU)
+<h3 id="heading--fence_cdu-sentry-switch-cdu">fence_cdu (Sentry Switch CDU)</h3>
 
 Power parameters:
 
@@ -41049,7 +41049,7 @@ Power parameters:
 -   power_user (Power user).
 -   power_pass (Power password).
 
-### hmc (IBM Hardware Management Console (HMC))
+<h3 id="heading--hmc-ibm-hardware-management-console-hmc">hmc (IBM Hardware Management Console (HMC))</h3>
 
 Power parameters:
 
@@ -41059,7 +41059,7 @@ Power parameters:
 -   server_name (HMC Managed System server name).
 -   lpar (HMC logical partition).
 
-### ipmi (IPMI)
+<h3 id="heading--ipmi-ipmi">ipmi (IPMI)</h3>
 
 Power parameters:
 
@@ -41070,11 +41070,11 @@ Power parameters:
 -   power_pass (Power password).
 -   mac_address (Power MAC).
 
-### manual (Manual)
+<h3 id="heading--manual-manual">manual (Manual)</h3>
 
 Power parameters:
 
-### moonshot (HP Moonshot - iLO4 (IPMI))
+<h3 id="heading--moonshot-hp-moonshot---ilo4-ipmi">moonshot (HP Moonshot - iLO4 (IPMI))</h3>
 
 Power parameters:
 
@@ -41083,7 +41083,7 @@ Power parameters:
 -   power_pass (Power password).
 -   power_hwaddress (Power hardware address).
 
-### mscm (HP Moonshot - iLO Chassis Manager)
+<h3 id="heading--mscm-hp-moonshot---ilo-chassis-manager">mscm (HP Moonshot - iLO Chassis Manager)</h3>
 
 Power parameters:
 
@@ -41092,7 +41092,7 @@ Power parameters:
 -   power_pass (MSCM CLI API password).
 -   node_id (Node ID - Must adhere to cXnY format (X=cartridge number, Y=node number).).
 
-### msftocs (Microsoft OCS - Chassis Manager)
+<h3 id="heading--msftocs-microsoft-ocs---chassis-manager">msftocs (Microsoft OCS - Chassis Manager)</h3>
 
 Power parameters:
 
@@ -41102,7 +41102,7 @@ Power parameters:
 -   power_pass (Power password).
 -   blade_id (Blade ID (Typically 1-24)).
 
-### nova (OpenStack Nova)
+<h3 id="heading--nova-openstack-nova">nova (OpenStack Nova)</h3>
 
 Power parameters:
 
@@ -41112,7 +41112,7 @@ Power parameters:
 -   os_password (Password).
 -   os_authurl (Auth URL).
 
-### openbmc (OpenBMC Power Driver)
+<h3 id="heading--openbmc-openbmc-power-driver">openbmc (OpenBMC Power Driver)</h3>
 
 Power parameters:
 
@@ -41120,7 +41120,7 @@ Power parameters:
 -   power_user (OpenBMC user).
 -   power_pass (OpenBMC password).
 
-### recs_box (Christmann RECS|Box Power Driver)
+<h3 id="heading--recs_box-christmann-recsbox-power-driver">recs_box (Christmann RECS|Box Power Driver)</h3>
 
 Power parameters:
 
@@ -41130,7 +41130,7 @@ Power parameters:
 -   power_user (Power user).
 -   power_pass (Power password).
 
-### redfish (Redfish)
+<h3 id="heading--redfish-redfish">redfish (Redfish)</h3>
 
 Power parameters:
 
@@ -41139,7 +41139,7 @@ Power parameters:
 -   power_pass (Redfish password).
 -   node_id (Node ID).
 
-### sm15k (SeaMicro 15000)
+<h3 id="heading--sm15k-seamicro-15000">sm15k (SeaMicro 15000)</h3>
 
 Power parameters:
 
@@ -41149,7 +41149,7 @@ Power parameters:
 -   power_pass (Power password).
 -   power_control (Power control type). Choices: 'ipmi' (IPMI), 'restapi' (REST API v0.9), 'restapi2' (REST API v2.0) Default: 'ipmi'.
 
-### ucsm (Cisco UCS Manager)
+<h3 id="heading--ucsm-cisco-ucs-manager">ucsm (Cisco UCS Manager)</h3>
 
 Power parameters:
 
@@ -41158,7 +41158,7 @@ Power parameters:
 -   power_user (API user).
 -   power_pass (API password).
 
-### virsh (Virsh (virtual systems))
+<h3 id="heading--virsh-virsh-virtual-systems">virsh (Virsh (virtual systems))</h3>
 
 Power parameters:
 
@@ -41166,7 +41166,7 @@ Power parameters:
 -   power_pass (Virsh password (optional)).
 -   power_id (Virsh VM ID).
 
-### vmware (VMware)
+<h3 id="heading--vmware-vmware">vmware (VMware)</h3>
 
 Power parameters:
 
@@ -41178,7 +41178,7 @@ Power parameters:
 -   power_port (VMware API port (optional)).
 -   power_protocol (VMware API protocol (optional)).
 
-### wedge (Facebook's Wedge)
+<h3 id="heading--wedge-facebooks-wedge">wedge (Facebook's Wedge)</h3>
 
 Power parameters:
 
@@ -41186,7 +41186,7 @@ Power parameters:
 -   power_user (Power user).
 -   power_pass (Power password).
 
-### rsd (Rack Scale Design)
+<h3 id="heading--rsd-rack-scale-design">rsd (Rack Scale Design)</h3>
 
 Power parameters:
 
@@ -41195,11 +41195,11 @@ Power parameters:
 -   power_pass (Pod password).
 -   node_id (Node ID).
 
-## Pod types
+<h2 id="heading--pod-types">Pod types</h2>
 
 This is the list of the supported pod types and their associated parameters. Note that the list of usable pod types for a particular rack controller might be a subset of this list if the rack controller in question is from an older version of MAAS.
 
-### rsd (Rack Scale Design)
+<h3 id="heading--rsd-rack-scale-design">rsd (Rack Scale Design)</h3>
 
 Parameters:
 
@@ -41208,7 +41208,7 @@ Parameters:
 -   power_pass (Pod password).
 -   node_id (Node ID).
 
-### virsh (Virsh (virtual systems))
+<h3 id="heading--virsh-virsh-virtual-systems">virsh (Virsh (virtual systems))</h3>
 
 Parameters:
 

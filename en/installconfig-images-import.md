@@ -4,7 +4,7 @@ Todo:
 -->
 This page explains how to select and import the images that MAAS requires in order to provision its nodes.
 
-Note that the MAAS CLI can also be used for image management: see [Select images](manage-cli-images.md#select-images) and [Import newly-selected images](manage-cli-images.md#import-newly-selected-images).
+Note that the MAAS CLI can also be used for image management: see [Select images](manage-cli-images.md#heading--select-images) and [Import newly-selected images](manage-cli-images.md#heading--import-newly-selected-images).
 
 The 'Images' page shows what images and architectures have been selected and downloaded. By default, MAAS will automatically grab the most recent Ubuntu LTS releases (and amd64 architecture). Below, two additional releases have been selected:
 
@@ -18,7 +18,7 @@ Click the 'Save selection' button to initiate the import. Existing images will b
 
 To remove an image, simply unselect it and click 'Save selection'.
 
-## Image mirrors
+<h2 id="heading--image-mirrors">Image mirrors</h2>
 
 Ubuntu images can also be hosted on a mirror, which is configured by selecting 'Custom' beneath 'Choose source'. Enter the mirror URL and click 'Connect'.
 
@@ -28,7 +28,7 @@ Advanced options, such as using a GPG key or keyring to validate the mirror path
 
 Optionally, a local mirror can be set up as the boot source. MAAS will then use it instead of the standard internet-based server. This will reduce the time required to complete the image import step significantly. See [Local image mirror](installconfig-images-mirror.md) for instructions on doing this.
 
-## Other images
+<h2 id="heading--other-images">Other images</h2>
 
 It is also possible to import and provision images other than Ubuntu. Images supported and provided by MAAS will appear beneath the 'Other Images' section. Currently, images for both CentOS 6.6 and CentOS 7.0 are available and these can be imported and used just like the Ubuntu images above.
 

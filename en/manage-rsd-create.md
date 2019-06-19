@@ -10,9 +10,9 @@ The new machine's resources will be deducted from the pod's resources:
 
 ![pod compose machine commissioning](../media/manage-kvm-pods__2.5_pod-compose-machine-commissioning.png)
 
-## CLI
+<h2 id="heading--cli">CLI</h2>
 
-Creating RSD machines in MAAS using the CLI is identical to creating KVM virtual machines. Please see [Creating and deleting machines](manage-kvm-create-vms.md#cli) for more information.
+Creating RSD machines in MAAS using the CLI is identical to creating KVM virtual machines. Please see [Creating and deleting machines](manage-kvm-create-vms.md#heading--cli) for more information.
 
 # Delete a machine
 

@@ -2,13 +2,13 @@ After installing MAAS, the 'Pods' page is typically empty:
 
 ![initial pods page](../media/manage-kvm-pods__2.5_pod-initial-page.png)
 
-## 2.5+
+<h2 id="heading--25">2.5+</h2>
 
 Once a machine as been added to MAAS and gone through enlistment, commissioning and hardware testing, you can deploy it (after acquiring it) as a KVM host by ticking the 'Install MAAS-managed KVM Host' checkbox:
 
 ![kvmpoddeploy](../media/manage-kvm-add-host__2.6-kvm-pod-deploy.png)
 
-### CLI
+<h3 id="heading--cli">CLI</h3>
 
 Once a machine has been enlisted, commissioned, and acquired, you can tell MAAS to deploy it as a KVM host:
 
@@ -16,11 +16,11 @@ Once a machine has been enlisted, commissioned, and acquired, you can tell MAAS 
 maas $PROFILE machine deploy <system_id> install_kvm=True
 ```
 
-## Manual/Pre-2.5
+<h2 id="heading--manualpre-25">Manual/Pre-2.5</h2>
 
 Setting up a manual KVM host in 2.5 or on an older version of MAAS requires more steps.
 
-### Set up a `maas` libvirt network
+<h3 id="heading--set-up-a-maas-libvirt-network">Set up a `maas` libvirt network</h3>
 
 Libvirt by default creates a virtual bridge, `virbr0`, through which VMs communicate with each other and the Internet. DHCP is supplied by libvirt so that new VMs are automatically given an IP address.
 
@@ -52,7 +52,7 @@ virsh net-define maas.xml
 
 Note that this network also has NAT port forwarding enabled to allow VMs to communicate with the Internet at large. This is useful in test environments.
 
-### Set up SSH
+<h3 id="heading--set-up-ssh">Set up SSH</h3>
 
 In order for MAAS to successfully communicate with libvirt on your KVM host machine, this example command must succeed from every rack controller as user `maas`:
 
@@ -78,7 +78,7 @@ Next, add the contents of `~maas/.ssh/id_rsa.pub` to the KVM host user's `~$USER
 Insufficient permissions for `$USER` may cause the `virsh` command to fail with an error such as `failed to connect to the hypervisor`. Check the `$USER` group membership to make sure `$USER` is a member of the `libvirtd` group.
 [/note]
 
-### Add
+<h3 id="heading--add">Add</h3>
 
 Now, add a KVM host by using the 'Add pod' button. Choose 'Virsh (Virtual systems)' from the 'Pod type' drop-down menu.
 
@@ -94,7 +94,7 @@ qemu+ssh://<kvm host IP>/system
 MAAS will automatically discover and store the resources your KVM host contains. Any existing machines will also appear on the 'Machines' page and be commissioned.
 [/note]
 
-#### Add with CLI
+<h4 id="heading--add-with-cli">Add with CLI</h4>
 
 Create a KVM host:
 
@@ -102,7 +102,7 @@ Create a KVM host:
 maas $PROFILE pods create type=virsh power_address=qemu+ssh://ubuntu@192.168.1.2/system
 ```
 
-Create a KVM host with [overcommitted resources](#overcommit-resources):
+Create a KVM host with [overcommitted resources](#heading--overcommit-resources):
 
 ``` bash
 maas $PROFILE pods create type=virsh power_address=qemu+ssh://ubuntu@192.168.1.2/system \
@@ -116,13 +116,13 @@ maas $PROFILE pods create type=virsh power_address=qemu+ssh://ubuntu@192.168.1.2
         power_pass=example default_storage_pool=pool1
 ```
 
-## Configuration
+<h2 id="heading--configuration">Configuration</h2>
 
 KVM hosts have several configuration options. Modify these by selecting the 'Configuration' tab and clicking 'Edit'. Options include a KVM host's location, password, network zone, and default resource pool.
 
 ![pod configuration](../media/manage-kvm-pods__2.5_pod-compose-config.png)
 
-### Overcommit resources
+<h3 id="heading--overcommit-resources">Overcommit resources</h3>
 
 Overcommitted resources are those allocated beyond what's available in the physical resource. Sliders on the configuration page allow you to strictly limit whether CPU and memory can be over committed, and to what extent. The input fields to the right of the sliders accept floating point values from 0 to 10, with a default value of 1.
 

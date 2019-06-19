@@ -19,7 +19,7 @@ Note that for ESXi images, network configuration is limited to:
 
 See [CLI Image Management](manage-cli-images.md) for information on advanced image management.
 
-## Boot sources
+<h2 id="heading--boot-sources">Boot sources</h2>
 
 The place from where a region controller downloads its images is known as a *boot source*. The main characteristics of a boot source are its location (URL) and its associated GPG public keyring.
 
@@ -35,7 +35,7 @@ The above URL points to the 'daily' stream (for the v3 format). See [Local image
 
 Although the backend supports multiple boot sources, MAAS itself uses a single source. If multiple sources are detected the web UI will print a warning and will be unable to manage images.
 
-## Select and import
+<h2 id="heading--select-and-import">Select and import</h2>
 
 MAAS is only useful once it has images available to provision its nodes with. Therefore, one key task once MAAS is installed is to select and import images from the boot source. Once images have been imported MAAS will update them on an hourly basis (a sync mechanism is enabled by default).
 

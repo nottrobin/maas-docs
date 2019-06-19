@@ -19,9 +19,9 @@ For RSD, MAAS has only been validated to work with Intel RSD reference software 
 
 See [MAAS CLI - Composable hardware](manage-cli-comp-hw.md) for how to manage composable hardware with the CLI.
 
-## Virsh pods
+<h2 id="heading--virsh-pods">Virsh pods</h2>
 
-### Networking
+<h3 id="heading--networking">Networking</h3>
 
 When using Virsh pods, the KVM host will typically have a network bridge set up with a libvirt network configured to use it.
 
@@ -33,7 +33,7 @@ MAAS will fall back to attaching to a libvirt-managed network known to be DHCP-e
 
 MAAS supports more complex methods for assigning interfaces to pods [using the CLI](manage-cli-comp-hw.md#interface-constraints).
 
-### Storage
+<h3 id="heading--storage">Storage</h3>
 
 Virsh pods can optionally use a default *storage pool*. This feature uses storage tags to map a storage pool in libvirt with a storage tag in MAAS.
 
@@ -44,11 +44,11 @@ See [libvirt storage](https://libvirt.org/storage.html) for more information.
 
 You can [use the MAAS CLI](manage-cli-comp-hw.md#track-libvirt-storage-pools) to track libvirt storage pools.
 
-### Supported architectures
+<h3 id="heading--supported-architectures">Supported architectures</h3>
 
 MAAS KVM pods support `i386`-, `amd64`-, `ppc64el`- and `arm64`-based architectures, provided hypervisors for these architectures are running at least Ubuntu 18.04. MAAS KVM pods running on `amd64` support older versions of Ubuntu.
 
-## Web UI
+<h2 id="heading--web-ui">Web UI</h2>
 
 See [Web UI](installconfig-webui.md) for how to get started with the web UI.
 
@@ -56,7 +56,7 @@ Composable hardware systems are managed on the 'Pods' page, which is initially e
 
 ![initial pods page](../media/nodes-comp-hw__2.4_pod-initial-page.png)
 
-### Add a pod
+<h3 id="heading--add-a-pod">Add a pod</h3>
 
 Add/register a pod by using the 'Add pod' button.
 
@@ -68,19 +68,19 @@ Fill in the fields. You will need to get values for 'Pod address' (IP address or
 
 Once added, MAAS will automatically discover and store the resources that a pod contains. Any pre-composed machines will also appear on the 'Machines' page and be commissioned. 
 
-#### Virsh pods
+<h4 id="heading--virsh-pods">Virsh pods</h4>
 
 This is how a virsh pod is added:
 
 ![add Virsh pod](../media/nodes-comp-hw__2.4_pod-add-virsh.png)
 
-### List pods
+<h3 id="heading--list-pods">List pods</h3>
 
 The new pod, including a summary of contained resources, will be listed on the 'Pods' page:
 
 ![save pod](../media/nodes-comp-hw__2.4_pod-list.png)
 
-### View pod details
+<h3 id="heading--view-pod-details">View pod details</h3>
 
 Clicking a pod's name on the 'Pods' page will reveal the resources contained within it, including its total number of CPU cores, the amount of total RAM and local storage. These values update to reflect usage and remaining resources.
 
@@ -88,7 +88,7 @@ The main view also lists the machines contained within the pod.
 
 ![pod details](../media/nodes-comp-hw__2.4_pod-details.png)
 
-### Configuration
+<h3 id="heading--configuration">Configuration</h3>
 
 Pods have several configuration options. These are modified by selecting the 'Configuration' tab and clicking 'Edit'. Options include a pod's location, password, network zone.
 
@@ -107,7 +107,7 @@ The following shows theoretical examples of these ratios and how they affect phy
 
 Over committing resources allows a user to compose many MAAS-managed VMs without worrying about the physical limitations of the host. For example, on a physical host with 4 cores and 12 GB of memory, you could compose 4 virsh nodes, each using 2 cores and 4 GB of memory, obviously over-committing the available physical resources. Provided you never run all 4 simultaneously, you'd have all the benefits of MAAS-managed VMs without over-taxing your host.
 
-### Compose a pod machine
+<h3 id="heading--compose-a-pod-machine">Compose a pod machine</h3>
 
 While on a pod's details view, begin the machine composition process by selecting 'Compose' from the 'Take action' dropdown menu:
 
@@ -121,7 +121,7 @@ As expected, the new machine's resources will be deducted from the pod's resourc
 
 ![pod compose machine commissioning](../media/nodes-comp-hw__2.4_pod-compose-machine-commissioning.png)
 
-### Decompose a pod machine
+<h3 id="heading--decompose-a-pod-machine">Decompose a pod machine</h3>
 
 Decomposing a pod machine means to send the machine's resources back to the pod for reuse. Doing so within MAAS will also cause the corresponding MAAS node to be Deleted.
 
@@ -137,7 +137,7 @@ This operation can also be achieved by simply deleting the corresponding MAAS no
 
 Once done, you will be transported back to the main 'Machines' page.
 
-### Delete a pod
+<h3 id="heading--delete-a-pod">Delete a pod</h3>
 
 While on the main pods page, select a pod and choose the 'Delete' action from the dropdown menu. Hit 'Delete 1 pod' to confirm the action:
 

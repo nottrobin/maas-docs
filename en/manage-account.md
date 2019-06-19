@@ -11,7 +11,7 @@ User accounts are managed from the 'Users' tab of the 'Settings' page.
 A currently logged in user cannot delete himself from the web UI.
 [/note]
 
-## Add a user
+<h2 id="heading--add-a-user">Add a user</h2>
 
 Clicking the 'Add user' button will result in a form to be displayed:
 
@@ -21,11 +21,11 @@ Fill in the fields and hit 'Add user' when done.
 
 An administrator can manage all aspects of MAAS, whereas a non-administrator user can perform a subset of tasks on machines they acquire and deploy. A non-admin user is also limited in the details they can view, such as nodes allocated to other users, and they have no access to the global settings page in the web UI nor any of the equivalent API calls from the command line.
 
-## User preferences
+<h2 id="heading--user-preferences">User preferences</h2>
 
 Clicking the MAAS username in the top right corner will show that user's preferences.
 
-### SSH keys
+<h3 id="heading--ssh-keys">SSH keys</h3>
 
 Before a user can deploy a machine they must import at least one public SSH key into MAAS. This is so the deployed machine can be accessed. Obviously the user will need to be in possession of the corresponding private key. See [Public key authentication](https://www.ssh.com/ssh/public-key-authentication) (ssh.com) if you're not familiar with SSH keys.
 
@@ -39,11 +39,11 @@ Public keys residing on either [Launchpad](https://help.launchpad.net/YourAccoun
 
 ![add user SSH key](../media/manage-user-accounts__2.4_add-user-ssh-key.png)
 
-### API key
+<h3 id="heading--api-key">API key</h3>
 
 The user preferences page includes an API key for the currently active user. This can be copied and regenerated as needed. The API key is used to log in to the API from the [MAAS CLI](manage-cli.md). Other services connecting to MAAS such as [Juju](https://jujucharms.com/docs/stable/clouds-maas) will also need this key.
 
-### Change password
+<h3 id="heading--change-password">Change password</h3>
 
 The password for the current user can be changed at the bottom of the page by entering the old password and entering the new password (twice). Click 'Save password' to finish.
 

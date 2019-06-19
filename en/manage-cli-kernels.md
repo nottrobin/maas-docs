@@ -7,7 +7,7 @@ This is a list of kernel tasks to perform with the MAAS CLI. See [MAAS CLI](mana
 -   [Ubuntu kernels](nodes-kernels.md) for background on Ubuntu kernels within a MAAS context.
 -   [Kernel boot options](nodes-kernel-options.md) for help on kernel boot options.
 
-## Set a default minimum kernel for enlistment and commissioning
+<h2 id="heading--set-a-default-minimum-kernel-for-enlistment-and-commissioning">Set a default minimum kernel for enlistment and commissioning</h2>
 
 To set a default minimum kernel for all new and commissioned machines:
 
@@ -25,7 +25,7 @@ maas $PROFILE maas set-config name=default_min_hwe_kernel value=ga-16.04
 The command option `default_min_hwe_kernel` appears to apply to only HWE kernels but this is not the case.
 [/note]
 
-## Set a minimum deploy kernel for a machine
+<h2 id="heading--set-a-minimum-deploy-kernel-for-a-machine">Set a minimum deploy kernel for a machine</h2>
 
 To set the minimum deploy kernel on a per machine basis:
 
@@ -43,7 +43,7 @@ maas $PROFILE machine update $SYSTEM_ID min_hwe_kernel=hwe-16.04
 The command option `default_min_hwe_kernel` appears to apply to only HWE kernels but this is not the case.
 [/note]
 
-## Set a specific kernel during machine deployment
+<h2 id="heading--set-a-specific-kernel-during-machine-deployment">Set a specific kernel during machine deployment</h2>
 
 To set a specific kernel during the deployment of a machine:
 

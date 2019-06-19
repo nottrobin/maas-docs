@@ -1,6 +1,6 @@
 MAAS is able to specify kernel boot options to nodes on both a global basis and a per-node basis. See [Linux kernel parameters](https://www.kernel.org/doc/html/latest/admin-guide/kernel-parameters.html) (kernel.org) for a full listing of available options.
 
-## Global kernel boot options
+<h2 id="heading--global-kernel-boot-options">Global kernel boot options</h2>
 
 To set kernel boot options globally, as an admin, open the 'Settings' page and on the 'General' tab scroll down to the 'Global Kernel Parameters' section:
 
@@ -8,7 +8,7 @@ To set kernel boot options globally, as an admin, open the 'Settings' page and o
 
 Type in the desired (space separated) options and click 'Save'. The contents of the field will be used as-is. Do not use extra characters.
 
-### CLI
+<h3 id="heading--cli">CLI</h3>
 
 To set kernel boot options that will be applied to all machines with the CLI:
 
@@ -16,7 +16,7 @@ To set kernel boot options that will be applied to all machines with the CLI:
 maas $PROFILE maas set-config name=kernel_opts value='$KERNEL_OPTIONS'
 ```
 
-## Per-node kernel boot options
+<h2 id="heading--per-node-kernel-boot-options">Per-node kernel boot options</h2>
 
 Per-node kernel boot options are set using the CLI.
 

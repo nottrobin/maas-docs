@@ -5,15 +5,15 @@ Todo:
 -->
 This is a list of tag management tasks to perform with the MAAS CLI. See [MAAS CLI](manage-cli.md) on how to get started and [Tags](nodes-tags.md) for an explanation of the subject.
 
-## Rudimentary tag creation
+<h2 id="heading--rudimentary-tag-creation">Rudimentary tag creation</h2>
 
 ``` bash
 maas $PROFILE tags create name=$TAG_NAME
 ```
 
-## Tag creation and auto-assignment
+<h2 id="heading--tag-creation-and-auto-assignment">Tag creation and auto-assignment</h2>
 
-When a [definition](nodes-tags.md#tag-definitions) is supplied during a tag's creation the tag is automatically applied to all the nodes that satisfy the definition:
+When a [definition](nodes-tags.md#heading--tag-definitions) is supplied during a tag's creation the tag is automatically applied to all the nodes that satisfy the definition:
 
 ``` bash
 maas $PROFILE tags create name=$TAG_NAME \
@@ -30,13 +30,13 @@ maas $PROFILE tags create name='gpu' \
 
 We recommend that each tag have a short name and a comment that fully describes it. Having both will help with usage and for recalling a tag's meaning long after it was created.
 
-## Delete a tag
+<h2 id="heading--delete-a-tag">Delete a tag</h2>
 
 ``` bash
 maas $PROFILE tag delete $TAG_NAME
 ```
 
-## List all tags
+<h2 id="heading--list-all-tags">List all tags</h2>
 
 To list all tags present on the region controller:
 
@@ -44,7 +44,7 @@ To list all tags present on the region controller:
 maas $PROFILE tags read
 ```
 
-## List nodes/machines labelled with a tag
+<h2 id="heading--list-nodesmachines-labelled-with-a-tag">List nodes/machines labelled with a tag</h2>
 
 To list what nodes (or machines) a tag applies to:
 
@@ -53,7 +53,7 @@ maas $PROFILE tag nodes $TAG_NAME
 maas $PROFILE tag machines $TAG_NAME
 ```
 
-## Juju integration
+<h2 id="heading--juju-integration">Juju integration</h2>
 
 Although a tag can be used in the web UI as a node search filter the primary benefit of tags is realized when Juju is utilized for application deployment.
 
@@ -69,7 +69,7 @@ You can also use multiple tags in addition to the normal Juju constraints:
 juju deploy --constraints "mem=1024 tags=gpu,intel" cuda
 ```
 
-## Manual tag assignment
+<h2 id="heading--manual-tag-assignment">Manual tag assignment</h2>
 
 It is possible to assign tags to nodes manually by simply omitting the definition and applying the tag to a node by referencing its system id:
 
@@ -91,7 +91,7 @@ maas $PROFILE tag update-nodes $TAG_NAME \
     add=$SYSTEM_ID_1 add=$SYSTEM_ID_2 remove=$SYSTEM_ID_3
 ```
 
-## Hybrid tag assignment
+<h2 id="heading--hybrid-tag-assignment">Hybrid tag assignment</h2>
 
 It is also possible to create a tag with a definition (thereby map to certain nodes), remove the definition (but retain the mapping), and then add the tag manually to specific nodes. This is useful for hardware which is conceptually similar but do not all satisfy a single tag definition. Here are the commands you would use to do this:
 

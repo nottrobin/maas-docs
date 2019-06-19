@@ -9,7 +9,7 @@ Scripts can be selected to run from web UI [during commissioning](nodes-commissi
 This page explains the various metadata fields used within these scripts, how parameters are passed to scripts and how any results are returned, along with examples of both commissioning and hardware testing scripts.
 
 [note]
-By default, all commissioning scripts will be run except those which use the `for_hardware` feature. Similarly, any test script tagged `commissioning` using the `script_type` parameter will be run during commissioning or testing. [See below](#automatic-script-selection-by-hardware-type) for more details.
+By default, all commissioning scripts will be run except those which use the `for_hardware` feature. Similarly, any test script tagged `commissioning` using the `script_type` parameter will be run during commissioning or testing. [See below](#heading--automatic-script-selection-by-hardware-type) for more details.
 [/note]
 
 A typical administrator workflow (with node states) using customised commissioning scripts is represented here:
@@ -20,7 +20,7 @@ Add node -&gt; Enlistment (runs built-in commissioning scripts MAAS) -&gt; New -
 In subsequent releases of MAAS, administrators will be able to make a machine 'Ready' simply by running hardware tests. For now, administrators will need to Commission the new machine.
 [/note]
 
-## Metadata fields
+<h2 id="heading--metadata-fields">Metadata fields</h2>
 
 Metadata fields tell MAAS when the script should be used, how it should be run, and what information a script is gathering. A script can have the following fields:
 
@@ -41,8 +41,8 @@ Metadata fields tell MAAS when the script should be used, how it should be run, 
     -   `disabled`: The script will run serially on its own.
     -   `instance`: Runs in parallel only with other instances of the same script.
     -   `any`: Runs in parallel alongside any other scripts with *parallel* set to *any*.
--   `parameters`: What [parameters](#parameters) the script accepts.
--   `results`: What [results](#results) the script will return.
+-   `parameters`: What [parameters](#heading--parameters) the script accepts.
+-   `results`: What [results](#heading--results) the script will return.
 -   `packages`: List of packages to be installed or extracted before running the script. Packages may be specified as a JSON string, a list of strings, or as a dictionary. For example, `packages: {apt: stress-ng}`, would ask `apt` to install *stress-ng*. Package sources can be any of the following:
     -   `apt`: Used by default if the source is omitted.
     -   `snap`: Installs packages using [snap][snapcraft]. May also be a list of dictionaries. The dictionary must define the *name* of the package to be installed, and optionally, the `channel`, `mode` and `revision`.
@@ -60,7 +60,7 @@ Metadata fields tell MAAS when the script should be used, how it should be run, 
 -   `recommission`: After all commissioning scripts have finished running rerun
 -   `script_type`: *commissioning* or *test*. Indicates whether the script should be run during commissioning or hardware testing.
 
-## Parameters
+<h2 id="heading--parameters">Parameters</h2>
 
 Scripts can accept values defined within the `parameters` field. Parameters are automatically filled by MAAS to allow one test to be run against multiple devices at once while keeping seperate logs.
 
@@ -122,7 +122,7 @@ echo "Model: $1"
 echo "Serial: $2"
 ```
 
-## Environment variables
+<h2 id="heading--environment-variables">Environment variables</h2>
 
 The following environment variables are available when a script is run within the MAAS environment:
 
@@ -134,7 +134,7 @@ The following environment variables are available when a script is run within th
 -   `RUNTIME`: The amount of time the script has to run in seconds.
 -   `HAS_STARTED`: When True MAAS has run the script once before but not to completion. Indicates the machine has been rebooted.
 
-## Results
+<h2 id="heading--results">Results</h2>
 
 A script can output its results to a YAML file and those results will be associated with the hardware type defined within the script. The path for the results file is provided by MAAS in an environment variable, `RESULT_PATH`. Scripts should write YAML to this file before exiting.
 
@@ -184,9 +184,9 @@ if result_path is not None:
         yaml.safe_dump(results, results_file)
 ```
 
-## Script examples
+<h2 id="heading--script-examples">Script examples</h2>
 
-### Built-in scripts
+<h3 id="heading--built-in-scripts">Built-in scripts</h3>
 
 The source to all commissioning and test scripts can be downloaded at any time over the API
 
@@ -196,7 +196,7 @@ maas $PROFILE node-script download $SCRIPT_NAME
 
 The source code to all built-in scripts is available on [launchpad](https://git.launchpad.net/maas/tree/src/metadataserver/builtin_scripts).
 
-### Commissioning script: Configure HPA
+<h3 id="heading--commissioning-script-configure-hpa">Commissioning script: Configure HPA</h3>
 
 Below is a sample script to configure an Intel C610/X99 HPA controller on an HP system. The script will only run on systems with an Intel C610/X99 controller identified by the PCI ID **8086:8d06**.
 
@@ -225,7 +225,7 @@ else:
 fi
 ```
 
-### Commissioning script: Update firmware
+<h3 id="heading--commissioning-script-update-firmware">Commissioning script: Update firmware</h3>
 
 Below is a sample script to update the mainboard firmware on an ASUS P8P67 Pro using a vendor provided tool. The tool will be automatically downloaded an extracted by MAAS. The script reboots the system to complete the update. The system will boot back into the MAAS ephemeral environment to finish commissioning and optionally testing.
 
@@ -250,7 +250,7 @@ $DOWNLOAD_PATH/update_firmware
 reboot
 ```
 
-### Hardware test script: CPU stress test
+<h3 id="heading--hardware-test-script-cpu-stress-test">Hardware test script: CPU stress test</h3>
 
 As a simple example, here's a functional Bash script replicating part of the **stress-ng** script bundled with MAAS:
 
@@ -273,13 +273,13 @@ sudo -n stress-ng --matrix 0 --ignite-cpu --log-brief --metrics-brief --times \
 
 The above Bash script contains comment-delineated metadata that configures the script environment and installs any dependencies, plus a single line of functionality that runs **stress-ng** (a CPU stress-test utility) with various arguments.
 
-### Automatic script selection by hardware type
+<h3 id="heading--automatic-script-selection-by-hardware-type">Automatic script selection by hardware type</h3>
 
 When selecting multiple machines in the [web UI](nodes-overview.md), scripts which declare the `for_hardware` field will only run on machines with matching hardware. To automatically run a script when 'Update firmware' or 'Configure HBA' is selected the script must be tagged with 'update_firmware' or 'configure_hba'.
 
 Similarly, scripts selected by tag on the [command line](nodes-scripts-cli.md) which specify the `for_hardware` field will only run on matching hardware.
 
-## Upload procedure
+<h2 id="heading--upload-procedure">Upload procedure</h2>
 
 Scripts can be uploaded to MAAS using the web UI. Select the 'User scripts' tab of the 'Settings' page - the 'Commissioning scripts' section is near the top. Within the Commissioning scripts section, click the *Upload script* button followed by 'Choose file' to open a requester, locate the script, and select *Upload* to upload it to MAAS.
 
@@ -291,7 +291,7 @@ A status message of *Commissioning script created* will appear and you'll now be
 MAAS executes scripts in lexicographical order. This allows you to control when your scripts are executed and if they run before or after the standard MAAS scripts.
 [/note]
 
-## Debugging
+<h2 id="heading--debugging">Debugging</h2>
 
 Clicking on the title of a completed or failed script will reveal the output from that specific script.
 
@@ -305,22 +305,22 @@ To do this, enable *Allow SSH access and prevent machine from powering off* when
 
 Because scripts operate within an ephemeral version of Ubuntu, enabling this option stops the node from shutting down, allowing you to connect and probe a script's status.
 
-As long as you've added your [SSH key](manage-account.md#ssh-keys) to MAAS, you can simply connect with SSH to the node's IP with a username of `ubuntu`. Type `sudo -i` to get root access.
+As long as you've added your [SSH key](manage-account.md#heading--ssh-keys) to MAAS, you can simply connect with SSH to the node's IP with a username of `ubuntu`. Type `sudo -i` to get root access.
 
-### Access individual scripts and log files
+<h3 id="heading--access-individual-scripts-and-log-files">Access individual scripts and log files</h3>
 
-#### Commissioning and testing script files
+<h4 id="heading--commissioning-and-testing-script-files">Commissioning and testing script files</h4>
 
 -   `/tmp/user_data.sh.*/scripts/commissioning/`: Commissioning scripts
 -   `/tmp/user_data.sh.*/scripts/testing/`: Hardware testing scripts
 
-#### Log files
+<h4 id="heading--log-files">Log files</h4>
 
 -   `/tmp/user_data.sh*/out/`
 -   `/var/log/cloud-init-output.log`
 -   `/var/log/cloud-init.log`
 
-### Run all scripts manually
+<h3 id="heading--run-all-scripts-manually">Run all scripts manually</h3>
 
 You can also run all commissioning and hardware-testing scripts on a machine for debugging.
 
@@ -348,7 +348,7 @@ Here, all the scripts are run again after downloading from MAAS, but no output d
 /tmp/user_data.sh.*/bin/maas-run-remote-scripts --no-send /tmp/user_data.sh.*
 ```
 
-## Command line access
+<h2 id="heading--command-line-access">Command line access</h2>
 
 For information about managing scripts, applying tags to scripts and seeing script results using the CLI, please see [CLI Hardware Testing Scripts](nodes-scripts-cli.md).
 

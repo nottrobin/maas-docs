@@ -2,7 +2,7 @@ MAAS doesn't yet include specific tools to help with the backup and restoration 
 
 However, as it's important to know which elements of MAAS are critical when restoring a previous deployment, we're going to briefly outline the process and its requirements below.
 
-## Configuration files
+<h2 id="heading--configuration-files">Configuration files</h2>
 
 The following MAAS components on each region and rack controller need to be backed-up and restored to recreate a working environment:
 
@@ -14,7 +14,7 @@ The following MAAS components on each region and rack controller need to be back
 
 Other configuration files, such as those used by your network configuration (`/etc/network/interfaces`, for example) will need to be backed-up and restored according to your specific deployment requirements.
 
-### PostgreSQL export
+<h3 id="heading--postgresql-export">PostgreSQL export</h3>
 
 This procedure assumes the region and rack controllers are on the same machine, that MAAS is installed on Ubuntu 18.04 LTS (Bionic) and restoration will be to identical hardware, including the network configuration.
 
@@ -32,7 +32,7 @@ sudo -u postgres psql -c  "SELECT * FROM pg_stat_activity"
 
 Running sessions, such as *pg_dumpall*, will appear in the `application_name` column of the output alongside `psql` running the above `pg_stat_activity` query. Excepting *psql*, if `application_name` is empty you can safely stop the database service.
 
-### Stop critical services
+<h3 id="heading--stop-critical-services">Stop critical services</h3>
 
 To avoid conflicting updates during a backup, stop the following services with the `sudo systemctl stop <service>` command:
 
@@ -45,7 +45,7 @@ To avoid conflicting updates during a backup, stop the following services with t
 Ubuntu 14.04 LTS (Trusty) users need to use Upstart's `service` command rather than Systemd's `systemctl` command for managing services.
 [/note]
 
-### Archive configuration files
+<h3 id="heading--archive-configuration-files">Archive configuration files</h3>
 
 Archive the database and the required configuration files with a command similar to the following:
 
@@ -57,7 +57,7 @@ Make sure you move the resulting `backup.tgz` to some external storage you can a
 
 We've now backed-up all the components necessary to recreate a MAAS deployment, which we'll cover now.
 
-### Restore files
+<h3 id="heading--restore-files">Restore files</h3>
 
 With a fresh and updated installation of Ubuntu on identical hardware, where MAAS has already been installed (`sudo apt install maas`), stop the following services (PostgreSQL needs to stay running):
 
@@ -86,7 +86,7 @@ Ensure the correct permissions are preserved when restoring files and directorie
 
 If you have additional stand-alone rack controllers and a fresh installation has regenerated the `/var/lib/maas/secret` file, you'll need to make sure this secret is updated on each rack controller to allow them to re-connect to the newly restored region controller.
 
-### Recreating/updating the DB
+<h3 id="heading--recreatingupdating-the-db">Recreating/updating the DB</h3>
 
 After retoring a backup, it is required to "upgrade" the DB schema to either re-create DB triggers or ensure it the schema matches the current running version (and so runs all new/missing migrations).
 

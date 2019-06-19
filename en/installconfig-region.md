@@ -1,4 +1,4 @@
-## PostgreSQL setup
+<h2 id="heading--postgresql-setup">PostgreSQL setup</h2>
 
 Any number of API servers (region controllers) can be present as long as each connects to the same PostgreSQL database and allows the required number of connections.
 
@@ -18,7 +18,7 @@ Apply this change by restarting the database:
 sudo systemctl restart postgresql
 ```
 
-## Adding a new region host
+<h2 id="heading--adding-a-new-region-host">Adding a new region host</h2>
 
 On a secondary host, add the new region controller by installing `maas-region-api`:
 
@@ -44,7 +44,7 @@ Check the log files for any errors:
 -   `/var/log/maas/maas.log`
 -   `/var/log/syslog`
 
-## Increasing the number of regiond daemon workers for improved performance
+<h2 id="heading--increasing-the-number-of-regiond-daemon-workers-for-improved-performance">Increasing the number of regiond daemon workers for improved performance</h2>
 
 [note]
 This functionality is available starting from MAAS 2.4.
@@ -55,7 +55,7 @@ The MAAS Region Controller is a daemon collection of 4 workers that are in charg
 Increasing the number of worker in larger environments where there are multiple rack controllers should increase the performance of the Region by allowing more workers to handle internal communication between the Region and the Rack controllers.
 
 [note]
-Increasing the number of workers will also increase the number of required database connections by 11 per extra worker. This may required PostgreSQL to have an increased number of allowed connections; please see [PostgreSQL High Availability section](manage-ha.md#region-controller-ha) for more information to increase the connections.
+Increasing the number of workers will also increase the number of required database connections by 11 per extra worker. This may required PostgreSQL to have an increased number of allowed connections; please see [PostgreSQL High Availability section](manage-ha.md#heading--region-controller-ha) for more information to increase the connections.
 [/note]
 
 To increase the number of workers, simply edit `regiond.conf (/etc/maas/regiond.conf)` and set `num_workers`. For example:

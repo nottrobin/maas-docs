@@ -20,7 +20,7 @@ When a node is no longer needed a user can choose from among several disk erasur
 MAAS supports storage configuration for CentOS and RHEL deployments. Support includes RAID, LVM, and custom partitioning with different file systems (ZFS and Bcache excluded). This support requires a newer version of Curtin, [available as a PPA](https://launchpad.net/ubuntu/+source/curtin).
 [/note]
 
-## UEFI
+<h2 id="heading--uefi">UEFI</h2>
 
 A node booting with UEFI is supported by every layout type. In such a case, an EFI boot partition (`/boot/efi`) will be automatically created. Other than setting the node to boot from UEFI, no other action is required of the user.
 
@@ -30,7 +30,7 @@ UEFI is either used by the node throughout its lifecycle or it's not. For exampl
 
 The EFI partition, if created, will be the first partition (`sda1`) and will have a FAT32 filesystem with a size of 512 MB.
 
-## Layouts
+<h2 id="heading--layouts">Layouts</h2>
 
 There are three layout types:
 
@@ -40,7 +40,7 @@ There are three layout types:
 
 The below layout descriptions will include the EFI partition. If your system is not using UEFI simply regard `sda2` as `sda1` (with an additional 512 MB available to it).
 
-### Flat layout
+<h3 id="heading--flat-layout">Flat layout</h3>
 
 With the Flat layout, a partition spans the entire boot disk. The partition is formatted with the ext4 filesystem and uses the `/` mount point:
 
@@ -58,7 +58,7 @@ The following options are supported:
 
 `root_size`: Size of the root partition. Default is 100%, meaning the entire size of the root device.
 
-### LVM layout
+<h3 id="heading--lvm-layout">LVM layout</h3>
 
 The LVM layout creates the volume group `vgroot` on a partition that spans the entire boot disk. A logical volume `lvroot` is created for the full size of the volume group; is formatted with the ext4 filesystem; and uses the `/` mount point:
 
@@ -84,7 +84,7 @@ The following options are supported:
 
 `lv_size`: Size of the created logical volume. Default is 100%, meaning the entire size of the volume group.
 
-### Bcache layout
+<h3 id="heading--bcache-layout">Bcache layout</h3>
 
 A Bcache layout will create a partition that spans the entire boot disk as the backing device. It uses the smallest block device tagged with 'ssd' as the cache device. The Bcache device is formatted with the ext4 filesystem and uses the `/` mount point. If there are no 'ssd' tagged block devices on the node, then the Bcache device will not be created and the Flat layout will be used instead:
 
@@ -113,7 +113,7 @@ The following options are supported:
 
 `cache_no_part`: Whether or not to create a partition on the cache device. Default is false, meaning to create a partition using the given `cache_size`. If set to true no partition will be created and the raw cache device will be used as the cache.
 
-### VMFS6 layout
+<h3 id="heading--vmfs6-layout">VMFS6 layout</h3>
 
 The VMFS6 layout is used for VMware ESXi deployments only. It is required when configuring VMware VMFS Datastores. The layout creates all operating system partitions in addition to the default datastore. The datastore may be modified and new datastores may be created or extended to include other storage devices. The base operating system partitions may not be modified as they are required for VMware ESXi use. Once applied another storage layout must be applied to remove the operating system partitions.
 
@@ -136,17 +136,17 @@ The following options are supported:
 
 `root_size`: Size of the default VMFS Datastore. Default is 100%, meaning the remaining size of the root disk.
 
-### Blank layout
+<h3 id="heading--blank-layout">Blank layout</h3>
 
 The blank layout removes all storage configuration from all storage devices. It is useful when needing to apply a custom storage configuration.
 
 !!! Negative "Warning": Machines with the blank layout applied are not deployable. Storage must be manually configured first.
 
-## Setting layouts
+<h2 id="heading--setting-layouts">Setting layouts</h2>
 
 Layouts can be set globally and on a per-node basis.
 
-### Default layout
+<h3 id="heading--default-layout">Default layout</h3>
 
 All nodes will have a default layout applied when commissioned. An administrator can configure the default layout on the 'Settings' page, under the 'Storage' tab.
 
@@ -158,21 +158,21 @@ See [Disk erasure](installconfig-storage-erasure.md) for an explanation of the o
 The new default will only apply to newly-commissioned nodes.
 [/note]
 
-To change the default with the CLI see [MAAS CLI - advanced tasks](manage-cli-advanced.md#set-the-default-storage-layout).
+To change the default with the CLI see [MAAS CLI - advanced tasks](manage-cli-advanced.md#heading--set-the-default-storage-layout).
 
-### Node layout
+<h3 id="heading--node-layout">Node layout</h3>
 
-An administrator can change the layout for a single node as well as customise that layout providing this is done while the node has a status of 'Ready'. This is only possible via the CLI at this time (see [MAAS CLI - advanced tasks](manage-cli-advanced.md#set-a-storage-layout)).
+An administrator can change the layout for a single node as well as customise that layout providing this is done while the node has a status of 'Ready'. This is only possible via the CLI at this time (see [MAAS CLI - advanced tasks](manage-cli-advanced.md#heading--set-a-storage-layout)).
 
 [note]
 Only an administrator can modify storage at the block device level (providing the node has a status of 'Ready').
 [/note]
 
-## Final storage modifications
+<h2 id="heading--final-storage-modifications">Final storage modifications</h2>
 
 Once a node has been provisioned with block devices via a layout or administrator customisation (as mentioned under 'Node layout'), a regular user can perform modifications on the resulting storage configuration at the filesystem level.
 
-## Disk erasure
+<h2 id="heading--disk-erasure">Disk erasure</h2>
 
 Node storage can be erased in several ways. See [Disk erasure](installconfig-storage-erasure.md) for details.
 

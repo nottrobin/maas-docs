@@ -12,7 +12,7 @@ Testing can also be included as part of the commissioning process. The dialog (d
 The majority of testing scripts only work with nodes that are backed by physical hardware (e.g. they may be incompatible with KVM-based nodes).
 [/note]
 
-## Apply a hardware test
+<h2 id="heading--apply-a-hardware-test">Apply a hardware test</h2>
 
 To launch a test, select the target machine from the 'Machines' page and use the 'Take action' drop-down menu to select 'Test hardware'. When ready, hit the 'Test machine' button. Here, a test is being applied to a deployed node:
 
@@ -24,7 +24,7 @@ A default test will be selected (`smartctl-validate`, a hard drive test) but oth
 
 ![hw test deployed node choices](../media/nodes-hw-testing__2.4_deployed-choices.png)
 
-## Included scripts
+<h2 id="heading--included-scripts">Included scripts</h2>
 
 The following hardware testing scripts can be selected from the web UI:
 

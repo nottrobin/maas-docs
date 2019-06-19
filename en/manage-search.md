@@ -2,13 +2,13 @@ See [Web UI](installconfig-webui.md) for how to get started with the web UI.
 
 The Machines and Devices pages contain a powerful interactive search bar that lets you filter machines and devices.
 
-## Simple searches
+<h2 id="heading--simple-searches">Simple searches</h2>
 
 To begin searching, simply enter the text you're interested in. As you type, MAAS will update search results in real time. You can search across virtually every parameter, including domain, name, tag, power type, IP, status, zone, and so on.
 
 ![searchbar](../media/manage-search__2.5_searchbar.png)
 
-## Filtered searches
+<h2 id="heading--filtered-searches">Filtered searches</h2>
 
 Filter your searches to major categories by selecting one from the Filters dropdown menu next to the search bar.
 
@@ -18,7 +18,7 @@ For example, to find all "New" machines containing the name or tag 'quail', sele
 
 ![filterresult](../media/manage-search__2.5_filtered-search.png)
 
-### Manual filters
+<h3 id="heading--manual-filters">Manual filters</h3>
 
 Enter filters manually in the search bar to more precisely control your searches:
 
@@ -32,7 +32,7 @@ filter-name:([=]val1,...,[=]val2)
     space and might be misinterpreted as the start of an additional search term.
     E.g.  `status:(failed testing)`.
 
-#### Exact matching
+<h4 id="heading--exact-matching">Exact matching</h4>
 
 If you need an exact match, preface the search value with an equal sign. For example, to find machines belonging to a pod named `able-cattle`:
 
@@ -40,7 +40,7 @@ If you need an exact match, preface the search value with an equal sign. For exa
 pod:=able-cattle
 ```
 
-#### Partial matching
+<h4 id="heading--partial-matching">Partial matching</h4>
 
 Without an equal sign, MAAS returns partial matches. For example, the following will display all machines belonging to pods with names containing `able` or `cattle`:
 
@@ -48,11 +48,11 @@ Without an equal sign, MAAS returns partial matches. For example, the following 
 pod:able,cattle
 ```
 
-#### Multiple search terms
+<h4 id="heading--multiple-search-terms">Multiple search terms</h4>
 
 MAAS uses boolean AND logic to evaluate multiple search terms. That is, when you provide multiple search terms, e.g. `pod:able,cattle cpu:=5`, MAAS displays machines that belong to pods with names containing `able` OR `cattle` AND having 5 CPU cores. Similarly, if you provide multiple string searches, `steady able`, MAAS will display machines matching `steady` AND `able`.
 
-#### Filter properties
+<h4 id="heading--filter-properties">Filter properties</h4>
 
 In addition to the major filtering categories available in the Filter dropdown menu, the following machine properties are available as filters:
 
@@ -84,9 +84,9 @@ For example, the following will search for a machine that has an interface with 
 pxe_mac:=9e:b0:e4:15:ae:1e
 ```
 
-## CLI
+<h2 id="heading--cli">CLI</h2>
 
-See [List nodes](manage-cli-common.md#list-nodes) for more information about how to use the MAAS CLI to perform similar searches or [CLI](manage-cli.md) for how to get started with the MAAS CLI.
+See [List nodes](manage-cli-common.md#heading--list-nodes) for more information about how to use the MAAS CLI to perform similar searches or [CLI](manage-cli.md) for how to get started with the MAAS CLI.
 
 <!-- LINKS -->
 

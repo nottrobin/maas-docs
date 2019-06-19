@@ -8,7 +8,7 @@ There are other ways of setting up KVM hosts that provide easy management of VMs
 Enhanced KVM host networking features may not operate correctly when you install KVM manaully on a deployed node. (E.g. if any of the host interfaces change.)
 [/note]
 
-## 2.4 and earlier
+<h2 id="heading--24-and-earlier">2.4 and earlier</h2>
 
 MAAS requires the use of a DHCP server it can control. Therefore, DHCP must be enabled in MAAS (rather than in libvirt) to allow VMs to use network booting (e.g. PXE). DHCP requests can also be forwarded to MAAS via a DHCP relay.
 
@@ -20,15 +20,15 @@ If MAAS cannot find a `maas` network, it will fallback to libvirt's `default` ne
 Libvirt's `default` network has DHCP enabled by default. You must either disable libvirt's DHCP and enable MAAS DHCP on the `default` network in libvirt, or create a separate `maas` network on a VLAN with MAAS DHCP enabled.
 [/note]
 
-## 2.5+
+<h2 id="heading--25">2.5+</h2>
 
-In MAAS 2.5, you can apply interface-constraints to VMs, which allows you to compose a VM with specific networking requirements (a full-explanation of the feature is found in the [following section](manage-kvm-create-vms.md#interfaces)). When these requirements are present, MAAS is able connect your VMs to the full range of your MAAS-configured network.
+In MAAS 2.5, you can apply interface-constraints to VMs, which allows you to compose a VM with specific networking requirements (a full-explanation of the feature is found in the [following section](manage-kvm-create-vms.md#heading--interfaces)). When these requirements are present, MAAS is able connect your VMs to the full range of your MAAS-configured network.
 
-### With interface constraints
+<h3 id="heading--with-interface-constraints">With interface constraints</h3>
 
 Instead of attaching to a libvirt network like `maas` or `default`, MAAS in this case tells the hypervisor on the host to attach the VM directly to a constraints-matching underlying bridge or non-bridge interface via macvtap. In addition, if you provide a specific IP address in the constraint string, MAAS will try to allocate it and assign it to the interface when the VM is created, thereby providing some limited interface configuration upon creating the VM.
 
-### With *no* interface constraints
+<h3 id="heading--with-no-interface-constraints">With *no* interface constraints</h3>
 
 If you do not specify interface constraints, how MAAS attaches the VM to a network depends on how KVM was installed on the host.
 
@@ -36,9 +36,9 @@ If the [host was deployed by MAAS](manage-kvm-add-host.md) for use as a KVM host
 
 If you've instead installed KVM manually on your host machine after deploying via MAAS, MAAS will revert to its 2.4 behavior, namely trying to attach to a suitable `maas` or `default` libvirt network, enabling network booting if it detects MAAS-enabled DHCP on either.
 
-## Bridges
+<h2 id="heading--bridges">Bridges</h2>
 
-### Macvlan
+<h3 id="heading--macvlan">Macvlan</h3>
 
 MAAS uses macvlan if an interfaces constraint specifies a macvlan interface when composing a VM.
 
@@ -50,7 +50,7 @@ maas $PROFILE pod update <pod-id> host=<host> default_macvlan_mode=<mode>
 
 Where:
 
--   `pod-id`: [The pod’s MAAS ID](manage-kvm-create-vms.md#find-pod-ids)
+-   `pod-id`: [The pod’s MAAS ID](manage-kvm-create-vms.md#heading--find-pod-ids)
 -   `host`: The IP or hostname of the libvirt instance
 -   `default_macvlan_mode`:
     -   `private`: VMs with the same parent interface cannot communicate but can reach destinations outside the parent interface
@@ -58,7 +58,7 @@ Where:
     -   `bridge`: Inter-VM communication is maintained locally (behind the parent interface) and destinations outside are forwarded through the parent interface.
     -   `passthru`: Allows a single VM to be connected directly to the parent interface, which in turn allows the VM to change MAC addresses and other interface parameters.
 
-### Bridge vs. macvlan
+<h3 id="heading--bridge-vs-macvlan">Bridge vs. macvlan</h3>
 
 Unless you have a specific reason to use macvlan, a bridge is the better choice for most situations. Although macvlan is simpler in design than a bridge and therefore can offer better throughput and less demand on CPU, a bridge is typically easier to configure and more likely to result in successful communication.
 

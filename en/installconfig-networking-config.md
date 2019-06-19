@@ -6,15 +6,15 @@ Todo:
 -->
 The following networking components can be configured via the GUI. See [Concepts and terms](intro-concepts.md) for corresponding definitions.
 
-## Fabrics
+<h2 id="heading--fabrics">Fabrics</h2>
 
-## Subnets
+<h2 id="heading--subnets">Subnets</h2>
 
-## VLANs
+<h2 id="heading--vlans">VLANs</h2>
 
-## Spaces
+<h2 id="heading--spaces">Spaces</h2>
 
-## Interfaces
+<h2 id="heading--interfaces">Interfaces</h2>
 
 <!-- LINKS -->
 

@@ -11,7 +11,7 @@ Upgrading from MAAS 2.3 to MAAS 2.4 involves two steps:
 
 Prior to the upgrade all packages should be updated. It is also strongly recommended that backups be made and that a test environment that mirrors your production environment be upgraded first, to pre-empt any issues.
 
-## Upgrade MAAS
+<h2 id="heading--upgrade-maas">Upgrade MAAS</h2>
 
 To upgrade to MAAS 2.4, simply upgrade the operating system; the process that upgrades Ubuntu will also upgrade the software, including MAAS.
 
@@ -23,7 +23,7 @@ sudo do-release-upgrade
 
 After the upgrade process completes and the machine is rebooted, MAAS will continue to use the PostgreSQL 9.x version that came with Ubuntu 16.04 LTS. However, because Ubuntu 18.04 LTS switches to PostgreSQL 10, it is imperative we upgrade the database as well.
 
-## Upgrade PostgreSQL
+<h2 id="heading--upgrade-postgresql">Upgrade PostgreSQL</h2>
 
 The PostgreSQL upgrade process is fairly simple.
 

@@ -6,7 +6,7 @@ The `python-libmaas` client library is an asyncio-based client library whose pur
 
 This software is in development and does not yet support all MAAS endpoints (nor all operations). It currently supports MAAS versions 2.1 and 2.2-beta3.
 
-## Library endpoints
+<h2 id="heading--library-endpoints">Library endpoints</h2>
 
 At this time, the client library supports these endpoints:
 
@@ -25,7 +25,7 @@ See the below resources to better understand the above terms and how they are us
 -   [MAAS CLI](manage-cli.md)
 -   [API documentation](api.md)
 
-## Installation and usage of python-libmaas
+<h2 id="heading--installation-and-usage-of-python-libmaas">Installation and usage of python-libmaas</h2>
 
 For installation and initial steps, see:
 

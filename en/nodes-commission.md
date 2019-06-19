@@ -31,9 +31,9 @@ These options include:
 
 -   **Retain storage configuration**: When enabled, preserves any storage settings previously configured for the machine. See [Storage](installconfig-storage.md) for more details.
 
--   **Update firmware**: Runs scripts tagged with 'update_firmware. See [Testing scripts](nodes-scripts.md#automatic-script-selection-by-hardware-type) for more details.
+-   **Update firmware**: Runs scripts tagged with 'update_firmware. See [Testing scripts](nodes-scripts.md#heading--automatic-script-selection-by-hardware-type) for more details.
 
--   **Configure HBA**: Runs scripts tagged with 'configure_hba'. As above, see [Testing scripts](nodes-scripts.md#automatic-script-selection-by-hardware-type) for further details.
+-   **Configure HBA**: Runs scripts tagged with 'configure_hba'. As above, see [Testing scripts](nodes-scripts.md#heading--automatic-script-selection-by-hardware-type) for further details.
 
 ![confirm commission](../media/nodes-commission__2.6-commission-confirm.png)
 
@@ -43,7 +43,7 @@ Finalise the directive by hitting 'Commission machine'.
 
 While a node is commissioning its status will change to *Commissioning*. During this time the node's network topology will be discovered. This will prompt one of the node's network interfaces to be connected to the fabric, VLAN, and subnet combination that will allow it to be configured. By default, a static IP address will be assigned out of the reserved IP range for the subnet. That is, an IP assignment mode of 'Auto assign' will be used. See the next section for details on assignment modes.
 
-See [MAAS CLI](manage-cli-common.md#commission-a-node) for how to commission a node with the CLI.
+See [MAAS CLI](manage-cli-common.md#heading--commission-a-node) for how to commission a node with the CLI.
 
 Once a node is commissioned its status will change to *Ready* and an extra tab for the node called 'Commissioning' will become available. This tab contains the results of the scripts executed during the commissioning process.
 
@@ -51,9 +51,9 @@ Now that the node is commissioned you may consider creating or applying a tag (s
 
 The next step will be to *deploy* the node. See [Deploy nodes](nodes-deploy.md).
 
-## Post-commission configuration
+<h2 id="heading--post-commission-configuration">Post-commission configuration</h2>
 
-Once a node has been commissioned, its network interface(s) can be configured. Specifically, when a node's status is either 'Ready' or 'Broken', interfaces can be added/removed, attached to a fabric and linked to a subnet, and provided an IP assignment mode. Tags can also be assigned to specific network interfaces (see [Tags for network interfaces](nodes-tags.md#tags-for-network-interfaces)).
+Once a node has been commissioned, its network interface(s) can be configured. Specifically, when a node's status is either 'Ready' or 'Broken', interfaces can be added/removed, attached to a fabric and linked to a subnet, and provided an IP assignment mode. Tags can also be assigned to specific network interfaces (see [Tags for network interfaces](nodes-tags.md#heading--tags-for-network-interfaces)).
 
 From a node's 'Interfaces' page, click the menu icon for the interface to be edited and select 'Edit Physical' from the resulting menu:
 
@@ -75,9 +75,9 @@ There are four modes to choose from that determine how an address on the subnet 
 
 Press the 'Save' button to apply the changes.
 
-See [Concepts and terms](intro-concepts.md#ip-ranges) for the definitions of reserved range types and [MAAS CLI - advanced tasks](manage-cli-advanced.md#change-the-ip-assignment-mode-of-a-network-interface) to learn how to change the IP-assignment mode of a network interface using the CLI.
+See [Concepts and terms](intro-concepts.md#heading--ip-ranges) for the definitions of reserved range types and [MAAS CLI - advanced tasks](manage-cli-advanced.md#heading--change-the-ip-assignment-mode-of-a-network-interface) to learn how to change the IP-assignment mode of a network interface using the CLI.
 
-### Bond interfaces
+<h3 id="heading--bond-interfaces">Bond interfaces</h3>
 
 A bond interface is used to aggregate two or more physical interfaces into a single logical interface. A bond is created by selecting more than one interface and clicking the now-active 'Create bond' button:
 
@@ -113,7 +113,7 @@ Press the 'Save' button when you're done.
 The MAC address defaults to the MAC address of the primary interface.
 [/note]
 
-### Bridge interfaces
+<h3 id="heading--bridge-interfaces">Bridge interfaces</h3>
 
 A bridge is created by selecting an interface and clicking the now-active 'Create bridge' button. A form will appear that will allow a MAC address, STP, and a tag to be configured.
 

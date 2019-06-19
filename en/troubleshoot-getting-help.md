@@ -5,7 +5,7 @@ You might also try:
 -   [Ask Ubuntu](http://askubuntu.com/questions/ask?tags=maas) web site
 -   [Freenode #maas](http://webchat.freenode.net/?channels=maas) IRC channel
 
-## Gathering debugging information
+<h2 id="heading--gathering-debugging-information">Gathering debugging information</h2>
 
 If your question is related to a problem related to a specific MAAS installation, we encourage you to gather debugging information and make it available while asking for help. This will make it much easier for people to assist.
 

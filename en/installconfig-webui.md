@@ -1,6 +1,6 @@
 The MAAS web UI is where users will spend much of their time. It is the preferred way to manage MAAS. This page will explain how to access the web UI for the first time and also draw attention to the first iteration of the MAAS *Dashboard*.
 
-## Access the web UI
+<h2 id="heading--access-the-web-ui">Access the web UI</h2>
 
 Unless MAAS was installed from a snap (see [Install from snap](installconfig-snap-install.md)) or the Ubuntu Server ISO (see [Install from ISO](installconfig-iso-install.md)), you'll need to create a user in order to access the web UI. This initial user is a MAAS administrator:
 
@@ -34,7 +34,7 @@ Once logged in, an administrator can create regular users as well as additional 
 
 See [MAAS CLI](manage-cli.md) for logging in via the CLI and working with the CLI.
 
-## MAAS Dashboard
+<h2 id="heading--maas-dashboard">MAAS Dashboard</h2>
 
 The Dashboard will be a central hub for the user to branch out to other parts of the web UI to perform certain operations. For now, it points to the main pages of the web UI such as Machines, Devices, Controllers, Pods, Images, DNS, AZs, Subnets and Settings. It is also where the results of [Device discovery](installconfig-network-dev-discovery.md) are recorded.
 

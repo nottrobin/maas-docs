@@ -10,7 +10,7 @@ Related documents:
 -   [Writing guide](contributing-writing.md)
 -   [Building the docs](contributing-build.md)
 
-## Initial setup
+<h2 id="heading--initial-setup">Initial setup</h2>
 
 Several actions are required before you can begin. These only need to be done once.
 
@@ -20,7 +20,7 @@ Several actions are required before you can begin. These only need to be done on
 -   Clone your MAAS docs fork locally
 -   Add the upstream remote
 
-### GitHub account
+<h3 id="heading--github-account">GitHub account</h3>
 
 A [GitHub account](https://github.com/join) will be required.
 
@@ -28,7 +28,7 @@ Verify your email address by responding to the email notification you will recei
 
 The remainder of this page will refer to your GitHub username as **$GH_USERNAME** (e.g. 'johnsmith').
 
-### User environment
+<h3 id="heading--user-environment">User environment</h3>
 
 Configure some user environment essentials.
 
@@ -53,7 +53,7 @@ git config --global credential.helper 'cache --timeout=3600'
 
 To authenticate via SSH keys click on 'Settings' in the top-right corner, choose 'SSH and GPG keys' in the left menu, and add your public key.
 
-### Fork the MAAS docs repository on GitHub
+<h3 id="heading--fork-the-maas-docs-repository-on-github">Fork the MAAS docs repository on GitHub</h3>
 
 A copy of the main (upstream) MAAS docs repository will be needed. This will become your working area. All your changes will be put there and then merged into the upstream repo. *Branches* of proposed changes are never created in the upstream repository directly. This copy is known as a *fork*.
 
@@ -65,7 +65,7 @@ The URL of your fork will become:
 
 `https://github.com/$GH_USERNAME/maas-docs`
 
-### Clone your MAAS docs fork locally
+<h3 id="heading--clone-your-maas-docs-fork-locally">Clone your MAAS docs fork locally</h3>
 
 A clone is a local copy of a repository, including all metadata and history (commits, merges, etc). Since you cannot make changes in GitHub itself (where your fork currently resides) a copy of your fork will be needed on your local computer. Clone your fork now:
 
@@ -81,7 +81,7 @@ git clone git@github.com:$GH_USERNAME/maas-docs $GH_USERNAME-maas-docs
 
 A directory called `$GH_USERNAME-maas-docs` will be created. This is the clone directory.
 
-### Add the upstream remote
+<h3 id="heading--add-the-upstream-remote">Add the upstream remote</h3>
 
 Add a *remote* to your local repository. This links it with the upstream version of the documentation, making it easy to keep your local branches in sync with upstream:
 
@@ -90,7 +90,7 @@ cd $GH_USERNAME-maas-docs
 git remote add upstream https://github.com/CanonicalLtd/maas-docs
 ```
 
-## Add and track upstream series branches locally
+<h2 id="heading--add-and-track-upstream-series-branches-locally">Add and track upstream series branches locally</h2>
 
 If you're a serious contributor you should add the upstream series branches and *track* them. This will enable you to target specific series.
 
@@ -167,7 +167,7 @@ Example output:
 
 Over time, contribution branches will come and go but the ones above should be regarded as permanent.
 
-### Tracking a new branch
+<h3 id="heading--tracking-a-new-branch">Tracking a new branch</h3>
 
 You will need to track a series branch as they become available upstream (approximately every 6 months). Continuing with the example above, we will demonstrate using the 2.3 series branch:
 
@@ -182,7 +182,7 @@ However, because your GitHub fork will not contain the new branch you cannot ins
 git push -u origin 2.3
 ```
 
-## Syncing fork series branches with upstream
+<h2 id="heading--syncing-fork-series-branches-with-upstream">Syncing fork series branches with upstream</h2>
 
 You should now have remotes for both the upstream repository and your fork (known as *origin* to git):
 
@@ -208,7 +208,7 @@ git merge --ff-only upstream/$SERIES_BRANCH  # Sync your local branch with the u
 git push origin $SERIES_BRANCH               # Sync your GitHub branch with your now-updated local branch
 ```
 
-## General workflow
+<h2 id="heading--general-workflow">General workflow</h2>
 
 1.  Decide which series branch you want to target (make an improvement to). Choose the most recent one that applies (often 'master' but not necessarily). The changes, if they're deemed important enough, will be backported to earlier series for you by the Doc team. Let this branch be called **$TARGET_SERIES_BRANCH**.
 
@@ -276,15 +276,15 @@ git push origin $SERIES_BRANCH               # Sync your GitHub branch with your
      MAYBE ADD THIS AS A SEPARATE 'ADVANCED' PAGE, POSSIBLY INCLUDE
      BACKPORTING.
 
-## Additional resources
+<h2 id="heading--additional-resources">Additional resources</h2>
 
-### Tools
+<h3 id="heading--tools">Tools</h3>
 
 [Git Remote Branch](https://github.com/webmat/git_remote_branch) - A tool to 
 simplify working with remote branches (Detailed installation instructions are
 in their README).
 
-### Using git aliases
+<h3 id="heading--using-git-aliases">Using git aliases</h3>
 
 Git provides a mechanism for creating aliases for complex or multi-step
 commands. These are located in your ``.gitconfig`` file under the

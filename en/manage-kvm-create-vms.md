@@ -12,9 +12,9 @@ The new machine's resources will be deducted from the pod's resources:
 
 ![pod compose machine commissioning](../media/manage-kvm-create-vms__2.6-pod.png)
 
-## CLI
+<h2 id="heading--cli">CLI</h2>
 
-### Basic
+<h3 id="heading--basic">Basic</h3>
 
 To compose a basic pod VM:
 
@@ -31,7 +31,7 @@ Example output for default composing:
 }
 ```
 
-### Set resources
+<h3 id="heading--set-resources">Set resources</h3>
 
 Compose with resources specified:
 
@@ -41,9 +41,9 @@ maas $PROFILE pod compose $POD_ID $RESOURCES
 
 Where RESOURCES is a space-separated list from:
 
-**cores=**requested cores **cpu_speed=**requested minimum cpu speed in MHz **memory=**requested memory in MB **architecture=** See [Architecture](#architecture) below **storage=** See [Storage](#storage) below **interfaces=** See [Interfaces](#interfaces) below
+**cores=**requested cores **cpu_speed=**requested minimum cpu speed in MHz **memory=**requested memory in MB **architecture=** See [Architecture](#heading--architecture) below **storage=** See [Storage](#heading--storage) below **interfaces=** See [Interfaces](#heading--interfaces) below
 
-#### Architecture
+<h4 id="heading--architecture">Architecture</h4>
 
 To list available architectures:
 
@@ -58,7 +58,7 @@ maas $PROFILE pod compose $POD_ID \
     cores=40 cpu_speed=2000 memory=7812 architecture="amd64/generic"
 ```
 
-#### Storage
+<h4 id="heading--storage">Storage</h4>
 
 Storage parameters look like this:
 
@@ -141,7 +141,7 @@ Finally, we deploy the machine. MAAS will use the partitions as we have defined 
 maas admin machine deploy $SYSTEM_ID
 ```
 
-#### Interfaces
+<h4 id="heading--interfaces">Interfaces</h4>
 
 Using the `interfaces` constraint, you can compose virtual machines with interfaces, allowing the selection of pod NICs.
 
@@ -155,7 +155,7 @@ Consider the following interfaces constraint:
 interfaces=eth0:space=maas,eth1:space=storage
 ```
 
-Assuming the pod is deployed on a machine or controller with access to the `maas` and `storage` [spaces](intro-concepts.md#spaces), MAAS will create an `eth0` interface bound to the `maas` space and an `eth1` interface bound to the `storage` space.
+Assuming the pod is deployed on a machine or controller with access to the `maas` and `storage` [spaces](intro-concepts.md#heading--spaces), MAAS will create an `eth0` interface bound to the `maas` space and an `eth1` interface bound to the `storage` space.
 
 Another example tells MAAS to assign unallocated IP addresses:
 
@@ -165,9 +165,9 @@ interfaces=eth0:ip=172.16.99.42
 
 MAAS automatically converts the `ip` constraint to a VLAN constraint (for the VLAN where its subnet can be found -- e.g. `172.16.99.0/24`.) and assigns the IP address to the newly-composed machine upon allocation.
 
-See the Machines [MAAS API documentation](api.md#machines) (`op=allocate`) for a list of all constraint keys.
+See the Machines [MAAS API documentation](api.md#heading--machines) (`op=allocate`) for a list of all constraint keys.
 
-### Find pod IDs
+<h3 id="heading--find-pod-ids">Find pod IDs</h3>
 
 Here's a simple way to find a pod's ID by name using `jq`:
 
@@ -185,15 +185,15 @@ Example output:
 1
 ```
 
-## Delete a machine
+<h2 id="heading--delete-a-machine">Delete a machine</h2>
 
 To delete a machine, simply delete it as you would any other MAAS node. Select the desired machine from the list of machines and select 'Delete' from the 'Take Action' menu.
 
 ![pod decompose machine](../media/manage-kvm-pods__2.5_pod-decompose-machine.png)
 
-### CLI
+<h3 id="heading--cli">CLI</h3>
 
-## Delete a VM
+<h2 id="heading--delete-a-vm">Delete a VM</h2>
 
 ``` bash
 maas $PROFILE machine delete $SYSTEM_ID

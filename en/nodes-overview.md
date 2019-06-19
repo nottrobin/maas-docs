@@ -27,7 +27,7 @@ With one or mode nodes selected, the 'Add hardware' drop-down menu is renamed 'T
 The 'Filter by' section limits the nodes listed in the table to selected keywords and node attributes.
 [/note]
 
-## Node details
+<h2 id="heading--node-details">Node details</h2>
 
 Click a node's FQDN or MAC address to open a detailed view of a node's status and configuration.
 

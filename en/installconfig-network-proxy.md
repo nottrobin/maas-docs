@@ -8,7 +8,7 @@ There are three possible options:
 
 Configuring proxying with MAAS consists of enabling/disabling one of the above three options and enabling/disabling proxying on a specific subnet.
 
-## Internal proxy (MAAS proxy)
+<h2 id="heading--internal-proxy-maas-proxy">Internal proxy (MAAS proxy)</h2>
 
 MAAS provides an internal proxy server. Although it is set up to work well with APT/package requests, it is effectively a HTTP caching proxy server. If the region controller is configured in MAAS as the default gateway for the machines it manages then the proxy will work transparently (on TCP port 3128). Otherwise machines will need to access it on TCP port 8000.
 
@@ -18,9 +18,9 @@ MAAS manages its proxy. So although the active configuration, located in file `/
 
 The proxy must be installed on the same host as the region controller (via the 'maas-proxy' package).
 
-## Configure proxy
+<h2 id="heading--configure-proxy">Configure proxy</h2>
 
-See the [MAAS CLI](manage-cli-common.md#configure-proxying) for how to configure proxying with the CLI. Note that per-subnet proxy configuration can only be accomplished via the CLI.
+See the [MAAS CLI](manage-cli-common.md#heading--configure-proxying) for how to configure proxying with the CLI. Note that per-subnet proxy configuration can only be accomplished via the CLI.
 
 In the web UI, visit the 'Settings' page and select the 'Network services' tab. The 'Proxy' section is at the top. Any changes made are applied by pressing the 'Save' button.
 

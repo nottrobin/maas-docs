@@ -6,7 +6,7 @@ The [User Manual](installconfig-snap-install.md) offers a more comprehensive gui
 
 ![web UI login](../media/intro-explore__2.6-login.png)
 
-## Installation
+<h2 id="heading--installation">Installation</h2>
 
 For best results, we'd recommend testing MAAS with [libvirt](https://libvirt.org/drvqemu.html) and its KVM/QEMU hypervisor driver. This combination is used by default in Ubuntu and the majority of Linux distributions; it's also [easy to install](https://help.ubuntu.com/lts/serverguide/libvirt.html) and natively supported by MAAS for power management duties.
 
@@ -16,7 +16,7 @@ We'd also recommend installing the GUI `virt-manager` to ease configuration, but
 MAAS will also work within a Linux virtual machine running from Oracle's [VirtualBox](https://www.virtualbox.org), which may be useful if you want to test MAAS from a Microsoft Windows or macOS environment.
 [/note]
 
-Assuming a base installation of [Ubuntu 18.04 LTS(Bionic) server](https://wiki.ubuntu.com/BionicBeaver/ReleaseNotes) running on a fresh *libvirt* instance or real hardware, matching the [minimum requirements](intro-requirements.md#test-environment), MAAS is installed with the following command:
+Assuming a base installation of [Ubuntu 18.04 LTS(Bionic) server](https://wiki.ubuntu.com/BionicBeaver/ReleaseNotes) running on a fresh *libvirt* instance or real hardware, matching the [minimum requirements](intro-requirements.md#heading--test-environment), MAAS is installed with the following command:
 
 ``` bash
 sudo snap install --devmode --stable maas
@@ -34,7 +34,7 @@ After entering a username and password, web UI is now accessible from the config
 
 See [Installation](installconfig-snap-install.md) for further details.
 
-### Welcome to MAAS
+<h3 id="heading--welcome-to-maas">Welcome to MAAS</h3>
 
 After a fresh MAAS installation, the web UI presents a [Welcome dashboard](installconfig-webui-conf-journey.md) to help set many system-wide options, including connectivity, image downloads, and authentication keys.
 
@@ -80,7 +80,7 @@ table.logos th, table.logos td{
 </table>
 With this complete, you'll see *MAAS has been successfully set up*. Click 'Go to the Dashboard' to proceed (although you may need to wait a few moments for your selected images to sync locally).
 
-## Networking
+<h2 id="heading--networking">Networking</h2>
 
 The *Dashboard* landing page, manually opened with a click of the MAAS logo, lists non-registered devices detected automatically on the network. This [network discovery](installconfig-network-dev-discovery.md) enables you to easily add or map devices already connected to your network that you may not necessarily want managed by MAAS.
 
@@ -88,7 +88,7 @@ The *Dashboard* landing page, manually opened with a click of the MAAS logo, lis
 
 Note: Network discovery can be disabled at any time from the button on the *Dashboard* view.
 
-### Spaces, fabrics, zones and subnets
+<h3 id="heading--spaces-fabrics-zones-and-subnets">Spaces, fabrics, zones and subnets</h3>
 
 ![MAAS network concepts](../media/intro-concepts__fabrics-spaces.png)
 
@@ -100,7 +100,7 @@ Alongside the management of its own domain, configured via the DNS page of the w
 
 Network settings are spread across several web UI configuration pages. The *Zones* page, for example, enables you to see how many machines, devices and controllers are using a zone as well as making it easy to add a zone. The *Subnets* page provides access to fabric, VLAN, subnet and spaces configuration.
 
-## Deploy hardware
+<h2 id="heading--deploy-hardware">Deploy hardware</h2>
 
 MAAS-managed machines are listed, and operated on, from the [Nodes](nodes-overview.md) page, making this page one of the most important in the MAAS web UI.
 
@@ -112,13 +112,13 @@ After power and interfaces are configured, machines need to be commissioned to r
 
 A powerful filtering mechanism on the left, based around [tags](nodes-tags.md) and hardware characteristics, is used to list only those machines you're interested in, from where one or more can be selected and operated on.
 
-### Images
+<h3 id="heading--images">Images</h3>
 
 When it comes to running applications, MAAS can deploy any supported variant of Ubuntu, including LTS and non-LTS versions for x86, ARM, PPC and s390x systems. Both CentOS 7 and CentOS 6 can also be deployed to your machines, as can Windows, RHEL, and ESXi images with [Ubuntu Advantage](https://www.ubuntu.com/support).
 
 ![Image import overview](../media/intro-explore__2.6-images.png)
 
-### Pods
+<h3 id="heading--pods">Pods</h3>
 
 Even greater control over your hardware comes from the use of *pods* to group either virtual machines (using libvirt and KVM) or physical systems with Intel RSD into an *abstraction of resources*. This allows for [composable hardware](nodes-comp-hw.md), where machine requests can be made without having a specific machine pre-built.
 

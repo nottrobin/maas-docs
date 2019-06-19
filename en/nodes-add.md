@@ -6,9 +6,9 @@ Configuring a computer to boot over PXE is done via its BIOS and is often referr
 
 Regardless of how a node is added, there are no special requirements for the underlying machine. In particular, there is no need to install an operating system on it.
 
-Once MAAS is working to the point of adding nodes it is important to understand node statuses and node actions. See [Node statuses](intro-concepts.md#node-statuses) and [Node actions](intro-concepts.md#node-actions) respectively.
+Once MAAS is working to the point of adding nodes it is important to understand node statuses and node actions. See [Node statuses](intro-concepts.md#heading--node-statuses) and [Node actions](intro-concepts.md#node-actions) respectively.
 
-## Enlistment
+<h2 id="heading--enlistment">Enlistment</h2>
 
 As explained, to enlist, the underlying machine needs to be configured to netboot. Such a machine will undergo the following process:
 
@@ -32,17 +32,17 @@ Typically, the next step will be to *commission* the node. See [Commission nodes
     will have access to data collected during enlistment. Follow the link above
     for more information about commissioning and commission scripts.
 
-As an alternative to enlistment, an administrator can add a node manually (see [below](#add-a-node-manually)). Typically this is done when enlistment doesn't work for some reason.
+As an alternative to enlistment, an administrator can add a node manually (see [below](#heading--add-a-node-manually)). Typically this is done when enlistment doesn't work for some reason.
 
-## KVM host nodes
+<h2 id="heading--kvm-host-nodes">KVM host nodes</h2>
 
-For more information about adding nodes to use as KVM hosts, please see [Add KVM pods](manage-pods-webui.md#add-a-kvm-host).
+For more information about adding nodes to use as KVM hosts, please see [Add KVM pods](manage-pods-webui.md#heading--add-a-kvm-host).
 
-## Adding virtual machines as nodes
+<h2 id="heading--adding-virtual-machines-as-nodes">Adding virtual machines as nodes</h2>
 
-After you have deployed a machine to use as a KVM host, you can "compose" VMs to add to MAAS. Please see the [Compose a virtual machine section](manage-pods-webui.md#compose-a-machine) for more information.
+After you have deployed a machine to use as a KVM host, you can "compose" VMs to add to MAAS. Please see the [Compose a virtual machine section](manage-pods-webui.md#heading--compose-a-machine) for more information.
 
-## Add a node manually
+<h2 id="heading--add-a-node-manually">Add a node manually</h2>
 
 Enlistment can be done manually if the hardware specifications of the underlying machine are known. On the 'Machines' page of the web UI, click the 'Add hardware' button and then select 'Machine'.
 
@@ -54,13 +54,13 @@ Fill in the form and hit 'Save machine'. In this example, IPMI machine is being 
 The underlying machine will still need to be configured to boot over the network in order to be commissioned. MAAS will not do this for you.
 [/note]
 
-### BMC enlistment
+<h3 id="heading--bmc-enlistment">BMC enlistment</h3>
 
-#### 2.4
+<h4 id="heading--24">2.4</h4>
 
 Note that in MAAS versions prior to 2.5, you are required to provide the MAC address of the PXE interface when adding a new machine manually.
 
-#### 2.5+
+<h4 id="heading--25">2.5+</h4>
 
 Beginning with MAAS 2.5:
 
@@ -72,7 +72,7 @@ For IPMI machines, you only need to provide IPMI credentials. MAAS automatically
 
 For non-IPMI machines, you must specify a non-PXE MAC address. MAAS automatically discovers the machine and runs enlistment configuration by matching the non-PXE MAC address.
 
-## Add nodes via a chassis
+<h2 id="heading--add-nodes-via-a-chassis">Add nodes via a chassis</h2>
 
 Use the *chassis* feature to add multiple nodes at once. To do this, instead of selecting 'Machine' as above, choose 'Chassis' from the drop-down menu. In the following example, MAAS will add all available VMs from the given virsh address:
 

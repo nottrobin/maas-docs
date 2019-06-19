@@ -12,12 +12,12 @@ Using an external DHCP server for enlistment and commissioning may work but this
 
 Required reading before continuing:
 
--   [Concepts and terms](intro-concepts.md#ip-ranges) for an explanation of reserved IP ranges
--   [Commission nodes](nodes-commission.md#post-commission-configuration) for an explanation of IP assignment modes
+-   [Concepts and terms](intro-concepts.md#heading--ip-ranges) for an explanation of reserved IP ranges
+-   [Commission nodes](nodes-commission.md#heading--post-commission-configuration) for an explanation of IP assignment modes
 
-## Enabling DHCP
+<h2 id="heading--enabling-dhcp">Enabling DHCP</h2>
 
-A *reserved dynamic IP range* is needed in order for MAAS-managed DHCP to at least enlist and commission nodes and the creation of such a range is part of the process of enabling DHCP with the web UI. See [MAAS CLI](manage-cli-common.md#enable-dhcp) for doing this with the CLI.
+A *reserved dynamic IP range* is needed in order for MAAS-managed DHCP to at least enlist and commission nodes and the creation of such a range is part of the process of enabling DHCP with the web UI. See [MAAS CLI](manage-cli-common.md#heading--enable-dhcp) for doing this with the CLI.
 
 To enable MAAS-managed DHCP, under the 'Subnets' page select the desired VLAN and then:
 
@@ -32,15 +32,15 @@ Now, addresses in this range will get assigned to machines that are being either
 
 In addition, if a node being deployed has an interface connected to the untagged VLAN and it has an IP assignment mode set to 'DHCP' then it will also get an address in this range.
 
-## Extending a reserved dynamic IP range
+<h2 id="heading--extending-a-reserved-dynamic-ip-range">Extending a reserved dynamic IP range</h2>
 
 If necessary, it is possible to add further portions of the subnet to the dynamic IP range (see [IP ranges](installconfig-network-ipranges.md)). Furthermore, since DHCP is enabled on a VLAN basis and a VLAN can contain multiple subnets, it is possible to add a portion from those subnets as well. Just select the subnet under the 'Subnets' page and reserve a dynamic range. DHCP will be enabled automatically.
 
-## External DHCP and a reserved IP range
+<h2 id="heading--external-dhcp-and-a-reserved-ip-range">External DHCP and a reserved IP range</h2>
 
 If an external DHCP server will be used to deploy machines then a *reserved IP range* should be created to prevent the address namespace from being corrupted. For instance, address conflicts may occur if a node's IP assignment mode is set to 'Auto assign' in the context of an external DHCP server. See [IP ranges][ip-ranges] to create such a range. It should correspond to the lease range of the external server.
 
-## DHCP relay
+<h2 id="heading--dhcp-relay">DHCP relay</h2>
 
 DHCP relaying in MAAS is an advanced feature and should not be implemented without sufficient planning and study. In particular, MAAS does not provide the actual relay. It must be set up as an external service by the administrator. What MAAS does provide is the DHCP configuration that MAAS-managed DHCP requires in order to satisfy any client requests relayed from another VLAN.
 
@@ -48,13 +48,13 @@ To relay from one VLAN (source) to another VLAN (target):
 
 1.  Ensure the target VLAN has DHCP enabled
 
-2.  Set up the external relay This is done independently from MAAS. See [DHCP relay](intro-concepts.md#dhcp-relay) for software suggestions.
+2.  Set up the external relay This is done independently from MAAS. See [DHCP relay](intro-concepts.md#heading--dhcp-relay) for software suggestions.
 
-3.  Configure MAAS-managed DHCP Navigate to the source VLAN page and select the 'Relay DHCP' action. Fill in the fields in the resulting form. The crucial setting is the target VLAN ('Relay VLAN'). Press the 'Relay DHCP' button to finish. See [MAAS CLI](manage-cli-advanced.md#relay-dhcp) for how to do this with the CLI.
+3.  Configure MAAS-managed DHCP Navigate to the source VLAN page and select the 'Relay DHCP' action. Fill in the fields in the resulting form. The crucial setting is the target VLAN ('Relay VLAN'). Press the 'Relay DHCP' button to finish. See [MAAS CLI](manage-cli-advanced.md#heading--relay-dhcp) for how to do this with the CLI.
 
 ![Relay DHCP](../media/installconfig-networking-dhcp__2.6-relay-dhcp.png)
 
-## DHCP Snippets
+<h2 id="heading--dhcp-snippets">DHCP Snippets</h2>
 
 When DHCP is managed from within MAAS, it can be customised through the use of *DHCP snippets*. These are user defined configuration options that can be applied either globally, per subnet, or per node. A global snippet is applied to all VLANs, subnets, and nodes. All three types end up in `/var/lib/maas/dhcpd.conf` or `/var/lib/maas/dhcpd6.conf`. For information on what options to use refer to the [`dhcpd.conf` man page](http://manpages.ubuntu.com/cgi-bin/search.py?q=dhcpd.conf).
 

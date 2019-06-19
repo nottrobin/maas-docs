@@ -12,7 +12,7 @@ MAAS running with LXD has the following requirements:
 -   LXD and ZFS
 -   a container profile
 
-### Install LXD and ZFS
+<h3 id="heading--install-lxd-and-zfs">Install LXD and ZFS</h3>
 
 Begin by installing LXD and ZFS:
 
@@ -26,7 +26,7 @@ The *sudo lxd init* command will trigger a series of configuration questions. Ex
 
 The bridge network is configured via a second round of questions and is named *lxdbr0* by default.
 
-### Create a LXC profile for MAAS
+<h3 id="heading--create-a-lxc-profile-for-maas">Create a LXC profile for MAAS</h3>
 
 First create a container profile by making use of the 'default' profile:
 
@@ -65,7 +65,7 @@ for i in `seq 0 7`; do lxc profile device add maas loop$i unix-block path=/dev/l
 
 When correctly configured, the above command outputs `Device loop0 added to maas` for each loop device.
 
-### Launch and access the LXD container
+<h3 id="heading--launch-and-access-the-lxd-container">Launch and access the LXD container</h3>
 
 Launch the LXD container:
 
@@ -79,7 +79,7 @@ Once the container is running, it can be accessed with:
 lxc exec bionic-maas bash
 ```
 
-### Install MAAS
+<h3 id="heading--install-maas">Install MAAS</h3>
 
 In the container (or containers), install MAAS via packages. See [Install from packages](installconfig-package-install.md).
 

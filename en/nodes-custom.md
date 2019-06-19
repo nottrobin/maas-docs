@@ -1,4 +1,4 @@
-During node [enlistment](nodes-add.html#enlistment), [deployment](nodes-deploy.md), [commissioning](nodes-commission.md) and node installation, MAAS sends [Tempita-derived](https://raw.githubusercontent.com/ravenac95/tempita/master/docs/index.txt) configuration files to the [cloud-init](https://launchpad.net/cloud-init) process running on the target node. MAAS refers to this process as **preseeding**.
+During node [enlistment](nodes-add.html#heading--enlistment), [deployment](nodes-deploy.md), [commissioning](nodes-commission.md) and node installation, MAAS sends [Tempita-derived](https://raw.githubusercontent.com/ravenac95/tempita/master/docs/index.txt) configuration files to the [cloud-init](https://launchpad.net/cloud-init) process running on the target node. MAAS refers to this process as **preseeding**.
 
 These *preseed* files are used to configure a node's ephemeral and installation environments and can be modified or augmented to perform your own custom node configuration.
 
@@ -7,9 +7,9 @@ Customisation in MAAS happens in two ways:
 1.  [Curtin](https://launchpad.net/curtin), a preseeding system similar to Kickstart or d-i (Debian Installer), applies customisations during operating system (OS) image installation. These changes are performed on every deployment, while the OS image is being installed, before the machine reboots into the installed OS. Curtin customisations are perfect for administrators who want their deployments to have identical setups all the time, every time. [This blog post](https://blog.ubuntu.com/2017/06/02/customising-maas-installs) contains an excellent high-level overview of custom MAAS installs using Curtin.
 2.  [Cloud-init](https://launchpad.net/cloud-init), a system for setting up machines immediately after they've been instantiated, applies customisations after the first boot, post OS installation, after MAAS changes a machine's status to 'Deployed.' Customisations are performed on a per-instances basis, which means that user-supplied scripts must be specified again on redeployment. Cloud-init customisations are the best way for MAAS users to customise their deployments, similar to how the various cloud services prepare VMs when launching instances.
 
-## Curtin
+<h2 id="heading--curtin">Curtin</h2>
 
-### Templates
+<h3 id="heading--templates">Templates</h3>
 
 The [Tempita](https://raw.githubusercontent.com/ravenac95/tempita/master/docs/index.txt) template files are found within the `/etc/maas/preseeds/` directory on the region controller. Each template uses a filename prefix that corresponds to a particular *phase* of MAAS node deployment:
 
@@ -27,7 +27,7 @@ The `enlist` template, for example, contains only minimal variables whereas the 
 Tempita’s inheritance mechanism is the reverse of what might be expected. Inherited files, such as `enlist_userdata`, become the new template which can then reference variables from the higher level file, such as `enlist`.
 [/note]
 
-### Template naming
+<h3 id="heading--template-naming">Template naming</h3>
 
 Templates are interpreted in order of their file name, allowing for base configuration options and parameters to be overridden on an operating system, architecture, sub-architecture, release and node name basis.
 
@@ -61,7 +61,7 @@ To create the equivalent template for *curtin_userdata*, the file would be calle
 Any file targetting a specific node will replace the values and configuration held within any generic files. If those values are needed, the generic template values will need to be copied into your new file.
 [/note]
 
-### Configuration
+<h3 id="heading--configuration">Configuration</h3>
 
 You can customise the Curtin installation by either editing the existing `curtin_userdata` template or by adding a custom file as described above.
 
@@ -96,7 +96,7 @@ late_commands:
   custom: ["curtin", "in-target", "--", "sh", "-c", "/bin/echo -en 'Installed ' > /tmp/maas_system_id"]
 ```
 
-## Cloud-init
+<h2 id="heading--cloud-init">Cloud-init</h2>
 
 Using cloud-init to customise a node after deployment is relatively easy. If you're not familiar with the MAAS command-line interface (CLI), start by reviewing the [MAAS CLI](manage-cli.md) page.
 
@@ -105,7 +105,7 @@ After you're logged in, use the following command to deploy a machine with a cus
     maas $PROFILE machine deploy $SYSTEM_ID user_data=<base-64-encoded-script>
 
 -   `$PROFILE`: Your MAAS login. E.g. `admin`
--   `$SYSTEM_ID`: The machine's [system ID](manage-cli-common.md#determine-a-node-system-id).
+-   `$SYSTEM_ID`: The machine's [system ID](manage-cli-common.md#heading--determine-a-node-system-id).
 -   `<base-64-encoded-script>`: A base-64 encoded copy of your customisation script. See below for an example.
 
 E.g.:

@@ -1,6 +1,6 @@
 This page contains detailed information on how to become a successful MAAS documentation writer. Welcome to the club.
 
-## Contribution overview
+<h2 id="heading--contribution-overview">Contribution overview</h2>
 
 An individual doc contribution ends up as a *PR* (pull request) on GitHub. The process involved in producing one is described on the [Working with Git and GitHub](contributing-git.md) page.
 
@@ -8,7 +8,7 @@ Prior to submitting a PR the contributor must verify that the HTML is good. See 
 
 A Documentation team member will review your PR, suggest improvements, and eventually merge it with the appropriate branch (series). Publication to the website is a separate step (performed internally), so it can be a few days before the changes actually show up. Please be patient!
 
-## Style and language
+<h2 id="heading--style-and-language">Style and language</h2>
 
 Please follow these guidelines for style and language:
 
@@ -18,18 +18,18 @@ Please follow these guidelines for style and language:
 -   Target audience: intermediate system administrator, not a developer.
 -   Use British English (en-GB). See [language details](contributing-en-GB.md), including a comparison with American English (en-US).
 -   Use a maximum of 79 columns for files. Here are instructions for the [vim](http://stackoverflow.com/questions/3033423/vim-command-to-restructure-force-text-to-80-columns) editor.
--   An exception to the above is a hyperlink. Never break one with a carriage return. This includes the `[text][label]` and `[label]: destination` combinations. See [hyperlinks](#hyperlinks).
+-   An exception to the above is a hyperlink. Never break one with a carriage return. This includes the `[text][label]` and `[label]: destination` combinations. See [hyperlinks](#heading--hyperlinks).
 
-## GitHub Flavored Markdown
+<h2 id="heading--github-flavored-markdown">GitHub Flavored Markdown</h2>
 
-This documentation is written in GitHub Flavored Markdown. GFM conventions have been added to support features such as [*foldouts*](#foldouts) and [*admonishments*](#admonishments).
+This documentation is written in GitHub Flavored Markdown. GFM conventions have been added to support features such as [*foldouts*](#heading--foldouts) and [*admonishments*](#heading--admonishments).
 
 GFM is very easy to write with. Get started by looking over the below resources:
 
 -   [askubuntu.com](http://askubuntu.com/editing-help)
 -   [github.com](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
 
-## Metadata
+<h2 id="heading--metadata">Metadata</h2>
 
 Metadata can be included in any file. Currently, this is used for:
 
@@ -54,7 +54,7 @@ Text goes here blah blah blah
 -   The table of contents will contain only level 2 headers.
 -   The metadata section is terminated by a blank line.
 
-## Headers
+<h2 id="heading--headers">Headers</h2>
 
 Headers are simple to create:
 
@@ -62,7 +62,7 @@ Headers are simple to create:
     ## Second level header
     ### Third level header
 
-## Code blocks
+<h2 id="heading--code-blocks">Code blocks</h2>
 
 A code block is enclosed by three backticks and includes the *type* of code:
 
@@ -73,7 +73,7 @@ A code block is enclosed by three backticks and includes the *type* of code:
 
 The most common types used are: `bash`, `yaml`, `json`, and `no-highlight`. The last is like a miscellaneous type. It is often used to display command output.
 
-## Inline code
+<h2 id="heading--inline-code">Inline code</h2>
 
 Use a backtick to `inline filenames and other literals` like this:
 
@@ -81,7 +81,7 @@ Use a backtick to `inline filenames and other literals` like this:
 Use a backtick to `inline filenames and other literals`.
 ```
 
-## Admonishments
+<h2 id="heading--admonishments">Admonishments</h2>
 
 An admonishment distinguishes information from the rest of the text. The syntax begins with 3 exclamation points:
 
@@ -98,7 +98,7 @@ Where:
 
 When a value for 'title' is omitted, the default will be the type itself. If the 'title' has a null value (i.e. "") then no title will be displayed.
 
-### Admonishment examples
+<h3 id="heading--admonishment-examples">Admonishment examples</h3>
 
 A standard 'Note' type admonishment:
 
@@ -164,7 +164,7 @@ A negative note that should include a title.
 I'm done, and I feel fine.
 [/note]
 
-## Comments
+<h2 id="heading--comments">Comments</h2>
 
 Occasionally it may be appropriate to include a comment to explain or organize some text. This ends up as an HTML comment which can be read online so take it seriously:
 
@@ -174,7 +174,7 @@ The below text may be removed soon.
 -->
 ```
 
-## Foldouts
+<h2 id="heading--foldouts">Foldouts</h2>
 
 When a page contains a lot of extraneous information such as walkthroughs containing many images or reference tables, a *foldout* can be used. This will create a collapsed header which, when clicked, will expand to display all the content below it.
 
@@ -187,7 +187,7 @@ When a page contains a lot of extraneous information such as walkthroughs contai
 </details>
 ```
 
-## Hyperlinks
+<h2 id="heading--hyperlinks">Hyperlinks</h2>
 
 Links to internal files or external URLs use the following format:
 
@@ -224,7 +224,7 @@ Notes:
 -   An internal page is referred to by its source filename (i.e. `.md` not `.html`).
 -   Try to use the same `label:destination` pair throughout the documentation.
 
-## Images
+<h2 id="heading--images">Images</h2>
 
 An image should not be overly cropped - allow for context. When ready, place the image file in the `media` directory.
 
@@ -261,22 +261,22 @@ For example:
 
 If the image is not of the MAAS web UI then simply omit the version part, like in the second image above.
 
-### Central images directory
+<h3 id="heading--central-images-directory">Central images directory</h3>
 
 For publication (on the web site), all branch series use the `media` directory in the 'master' branch. This means:
 
 -   You must be very careful when renaming or removing an image in master as it will affect all non-master branches.
 -   Any image introduced in a non-master branch must be *forward-ported* to the master branch.
 
-## Filenames
+<h2 id="heading--filenames">Filenames</h2>
 
 The naming of a file is based upon its location in the menu (see below). This makes it easier for the reader and the writer to build up a mental model of how the set of pages is structured. For example, the page corresponding to file `installconfig-network-dhcp.md` is found under 'Install & Configure' and then 'Networking'.
 
-## Capitalization
+<h2 id="heading--capitalization">Capitalization</h2>
 
 Do not use a "Caps Everywhere" style. It is only used in level one headers and the title metadata. References (visible text) to these page titles (including the navigation) should just capitalize the first letter. Obviously, this does not pertain to words that should always be capitalized according to basic grammar rules (e.g. acronyms, proper nouns).
 
-## Navigation menu
+<h2 id="heading--navigation-menu">Navigation menu</h2>
 
 Adding a page (file) to the documentation may require the altering of `metadata.yaml`. Doing so will insert an entry into the left navigation pane (the menu) on the website. This is considered a major change so ensure your PR includes a comment highlighting this change and why it is needed.
 
