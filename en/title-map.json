@@ -47,7 +47,7 @@
     "intro-controllers.md": "Introduction",
     "intro-explore.md": "Explore MAAS",
     "intro-new.md": "What's new in 2.6",
-    "intro-requirements.md": "What is MAAS?",
+    "intro-requirements.md": "MAAS requirements",
     "intro-what-is-maas.md": "What is MAAS?",
     "manage-account.md": "User Accounts",
     "manage-audit-events.md": "Audit event logs",
