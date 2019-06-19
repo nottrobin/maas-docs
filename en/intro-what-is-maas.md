@@ -4,7 +4,9 @@ Machines can be quickly provisioned and then destroyed again as easily as you ca
 
 MAAS can act as a standalone PXE/preseed service or it can be integrated with other technologies. In particular, it is designed to work especially well with [Juju](https://jujucharms.com/docs/stable/about-juju), the service and model management service. It's a perfect arrangement: MAAS manages the machines and Juju manages the services running on those machines.
 
-[note] KVM guests can also act as MAAS nodes as long as they are set to boot from the network (PXE). [/note]
+[note]
+KVM guests can also act as MAAS nodes as long as they are set to boot from the network (PXE).
+[/note]
 
 ## What MAAS offers
 
@@ -30,7 +32,9 @@ The [web UI](installconfig-webui.md) provides a responsive interface to the majo
 
 ![web UI showing node view](../media/intro__2.6-webUI.png)
 
-[note] Windows and RHEL images require [Ubuntu Advantage](https://www.ubuntu.com/support) to work properly with MAAS. [/note]
+[note]
+Windows and RHEL images require [Ubuntu Advantage](https://www.ubuntu.com/support) to work properly with MAAS.
+[/note]
 
 ## Key components and colocation of all services
 
@@ -50,7 +54,9 @@ MAAS manages a pool of nodes. After registering ("Enlisting" state) a new system
 
 MAAS controls machines through IPMI (or another BMC) or converged chassis controller such as Cisco UCS.
 
-[note type="negative" status="Warning"] A machine destined for MAAS will have its disk space overwritten. A node in the pool is under MAAS's sole control and should not be provisioned using other methods. [/note]
+[note type="negative" status="Warning"]
+A machine destined for MAAS will have its disk space overwritten. A node in the pool is under MAAS's sole control and should not be provisioned using other methods.
+[/note]
 
 Users of the MAAS then allocate them for their own use ("Acquire") when they go into use. Any subsequently installed operating system will contain the user's SSH public key for remote access (the user's MAAS account first needs to import the key). The web UI also allows for manual allocation in the sense of reserving hardware to specific users for later use.
 

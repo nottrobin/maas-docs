@@ -34,7 +34,9 @@ Reserved range (3): 192.168.0.200 -> 192.168.0.254
 
 The above example shows a static range replaced by three reserved ranges to create an equivalent configuration.
 
-[note] With MAAS 2.1+, [network devices discovery](installconfig-network-dev-discovery.md) uses the ARP protocol to determine which addresses are being used, allowing MAAS to automatically avoid assigning recently used IP addresses. [/note]
+[note]
+With MAAS 2.1+, [network devices discovery](installconfig-network-dev-discovery.md) uses the ARP protocol to determine which addresses are being used, allowing MAAS to automatically avoid assigning recently used IP addresses.
+[/note]
 
 ## Troubleshooting
 

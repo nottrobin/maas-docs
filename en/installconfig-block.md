@@ -138,7 +138,9 @@ It is also possible to use the name of the block device, such as 'sda' or 'vda',
 s admin block-device read <node-id> vda
 ```
 
-[note] MAAS allows the name of a block device to be changed. If the block device name has changed then the API call needs to use the new name. [/note]
+[note]
+MAAS allows the name of a block device to be changed. If the block device name has changed then the API call needs to use the new name.
+[/note]
 
     Using the ID is safer as it never changes.
 
@@ -177,7 +179,9 @@ Machine-readable output follows:
 }
 ```
 
-[note] The serial number is what MAAS will use when a node is deployed to find the specific block device. It's important that this be correct. In a rare chance that your block device does not provide a model or serial number you can provide an id_path. The id_path should be a path that is always the same, no matter the kernel version. [/note]
+[note]
+The serial number is what MAAS will use when a node is deployed to find the specific block device. It's important that this be correct. In a rare chance that your block device does not provide a model or serial number you can provide an id_path. The id_path should be a path that is always the same, no matter the kernel version.
+[/note]
 
 ### Update Block Device
 
@@ -263,7 +267,9 @@ Machine-readable output follows:
 }
 ```
 
-[note] You cannot format a block device that contains partitions or is used to make another virtual block device. [/note]
+[note]
+You cannot format a block device that contains partitions or is used to make another virtual block device.
+[/note]
 
 ### Unformat Block Device
 
@@ -390,4 +396,6 @@ By default, MAAS picks the first added block device to the node as the boot disk
 maas admin block-device set-boot-disk <node-id> 10
 ```
 
-[note] Only an administrator can set which block device should be used as the boot disk and only a physical block device can be set as as the boot disk. This operation should be done before a node is acquired or the storage layout will be applied to the previous boot disk. [/note]
+[note]
+Only an administrator can set which block device should be used as the boot disk and only a physical block device can be set as as the boot disk. This operation should be done before a node is acquired or the storage layout will be applied to the previous boot disk.
+[/note]

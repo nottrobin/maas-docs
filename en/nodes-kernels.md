@@ -23,7 +23,9 @@ New hardware gets released all the time and if an Ubuntu host is running an olde
 
 Clearly, any kernel improvements and new features are also gained by installing an HWE kernel.
 
-[note] There is the notion of an HWE *stack*. This refers to the (graphical) X portion (in addition to the kernel) when the Ubuntu host is running a desktop environment. This is not the case with MAAS as nodes are provisioned strictly as non-graphical servers. [/note]
+[note]
+There is the notion of an HWE *stack*. This refers to the (graphical) X portion (in addition to the kernel) when the Ubuntu host is running a desktop environment. This is not the case with MAAS as nodes are provisioned strictly as non-graphical servers.
+[/note]
 
 Note that these backported/HWE kernels are only available for LTS releases (e.g. Trusty, Xenial, etc). For example, the first available HWE kernel for Ubuntu 16.04 LTS (Xenial) will be the GA kernel from Ubuntu 16.10 (Yakkety).
 

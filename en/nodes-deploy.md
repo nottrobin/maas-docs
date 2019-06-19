@@ -4,7 +4,9 @@ The agent that triggers deployment may vary. For instance, if the nodes are dest
 
 The node, only if deployed with MAAS, will also be ready to accept connections via SSH to the 'ubuntu' user account providing an SSH key has been imported to the user's MAAS account. This is explained in [SSH keys](manage-account.md#ssh-keys).
 
-[note] Juju has its own way of adding SSH keys to machines under its control. [/note]
+[note]
+Juju has its own way of adding SSH keys to machines under its control.
+[/note]
 
 MAAS also supports node customisation with a process called "preseeding." For more information about customising nodes, see [Custom node setup](nodes-custom.md).
 
@@ -30,7 +32,9 @@ To deploy, the underlying machine needs to be configured to netboot (this should
     1.  curtin installation script is run
     2.  Squashfs image (same as above) is placed on disk
 
-[note] The *curtin* installer uses an image-based method and is now the only installer used by MAAS. Although the older *debian-installer* method has been removed curtin continues to support preseed files. For more information about customising nodes see [Custom node setup](nodes-custom.md). [/note]
+[note]
+The *curtin* installer uses an image-based method and is now the only installer used by MAAS. Although the older *debian-installer* method has been removed curtin continues to support preseed files. For more information about customising nodes see [Custom node setup](nodes-custom.md).
+[/note]
 
 Before deploying you should:
 

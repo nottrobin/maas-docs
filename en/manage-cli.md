@@ -38,7 +38,9 @@ You will need the API key that was generated when your MAAS account was created.
 sudo maas-region apikey --username=$PROFILE > $API_KEY_FILE
 ```
 
-[note] A user's API key can also be obtained from the web interface. Click on 'username' in the top right corner, and select 'Account'. [/note]
+[note]
+A user's API key can also be obtained from the web interface. Click on 'username' in the top right corner, and select 'Account'.
+[/note]
 
 Log in. You will be prompted for the API key:
 

@@ -23,7 +23,9 @@ See [CLI Image Management](manage-cli-images.md) for information on advanced ima
 
 The place from where a region controller downloads its images is known as a *boot source*. The main characteristics of a boot source are its location (URL) and its associated GPG public keyring.
 
-[note] A *boot resource* is another name for an image. So boot resources are found within a boot source. [/note]
+[note]
+A *boot resource* is another name for an image. So boot resources are found within a boot source.
+[/note]
 
 MAAS comes configured with a boot source that should suffice for most users:
 

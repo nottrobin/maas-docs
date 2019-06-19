@@ -4,7 +4,9 @@ The recommended way of setting up a KVM host is therefore to deploy a machine wi
 
 There are other ways of setting up KVM hosts that provide easy management of VMs via the MAAS UI. You can, for example, install KVM manually on a deployed node or on a new or existing rack controller.
 
-[note type="caution"] Enhanced KVM host networking features may not operate correctly when you install KVM manaully on a deployed node. (E.g. if any of the host interfaces change.) [/note]
+[note type="caution"]
+Enhanced KVM host networking features may not operate correctly when you install KVM manaully on a deployed node. (E.g. if any of the host interfaces change.)
+[/note]
 
 ## 2.4 and earlier
 
@@ -14,7 +16,9 @@ MAAS first checks for the existence of a libvirt network named `maas`. The `maas
 
 If MAAS cannot find a `maas` network, it will fallback to libvirt's `default` network.
 
-[note] Libvirt's `default` network has DHCP enabled by default. You must either disable libvirt's DHCP and enable MAAS DHCP on the `default` network in libvirt, or create a separate `maas` network on a VLAN with MAAS DHCP enabled. [/note]
+[note]
+Libvirt's `default` network has DHCP enabled by default. You must either disable libvirt's DHCP and enable MAAS DHCP on the `default` network in libvirt, or create a separate `maas` network on a VLAN with MAAS DHCP enabled.
+[/note]
 
 ## 2.5+
 

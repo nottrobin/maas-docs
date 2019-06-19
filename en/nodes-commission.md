@@ -109,7 +109,9 @@ The following bonding modes can be selected from the 'Bond mode' drop-down menu:
 
 Press the 'Save' button when you're done.
 
-[note] The MAC address defaults to the MAC address of the primary interface. [/note]
+[note]
+The MAC address defaults to the MAC address of the primary interface.
+[/note]
 
 ### Bridge interfaces
 
@@ -119,7 +121,9 @@ A bridge is created by selecting an interface and clicking the now-active 'Creat
 
 Press the 'Save' button when you're done.
 
-[note type="positive" status="Pro tip"] A network bridge may be useful if virtual machines or containers are to be put on the node. [/note]
+[note type="positive" status="Pro tip"]
+A network bridge may be useful if virtual machines or containers are to be put on the node.
+[/note]
 
 See [CLI Interface Management](manage-cli-interfaces.md) for details on how interfaces can be configured from the command line.
 

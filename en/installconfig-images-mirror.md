@@ -14,7 +14,9 @@ IMAGE_SRC=https://images.maas.io/ephemeral-v3/daily/
 IMAGE_DIR=/var/www/html/maas/images/ephemeral-v3/daily
 ```
 
-[note] The v3 format offers only a 'daily' stream whereas in previous versions a 'releases' stream was available. The latter changes far less frequently but lacks security and bug fixes. [/note]
+[note]
+The v3 format offers only a 'daily' stream whereas in previous versions a 'releases' stream was available. The latter changes far less frequently but lacks security and bug fixes.
+[/note]
 
 The below example selects all available kernels that are compatible with either Ubuntu 14.04 (Trusty) and Ubuntu 16.04 (Xenial) for the amd64 architecture, resulting in a download of approximately 3.1 GB. The second command mirrors the bootloaders.
 

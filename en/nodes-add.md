@@ -1,6 +1,8 @@
 Adding a node to MAAS is typically done via a combination of DHCP (and TFTP), which should, by now, be enabled in your MAAS environment, and PXE, which you tell the system in question to use when it boots. This unattended manner of adding a node is called *enlistment*.
 
-[note] Configuring a computer to boot over PXE is done via its BIOS and is often referred to as "netboot" or "network boot". [/note]
+[note]
+Configuring a computer to boot over PXE is done via its BIOS and is often referred to as "netboot" or "network boot".
+[/note]
 
 Regardless of how a node is added, there are no special requirements for the underlying machine. In particular, there is no need to install an operating system on it.
 
@@ -48,7 +50,9 @@ Fill in the form and hit 'Save machine'. In this example, IPMI machine is being 
 
 ![add node manually](../media/nodes-add__2.5_add-node-manually.png)
 
-[note] The underlying machine will still need to be configured to boot over the network in order to be commissioned. MAAS will not do this for you. [/note]
+[note]
+The underlying machine will still need to be configured to boot over the network in order to be commissioned. MAAS will not do this for you.
+[/note]
 
 ### BMC enlistment
 
@@ -76,7 +80,9 @@ Use the *chassis* feature to add multiple nodes at once. To do this, instead of 
 
 The required fields will change based on the type of chassis you choose.
 
-[note] As with the manual method, the underlying machines will require netbooting. [/note]
+[note]
+As with the manual method, the underlying machines will require netbooting.
+[/note]
 
 <!-- LINKS -->
 

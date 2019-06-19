@@ -12,7 +12,9 @@ To add a remote syslog server, click the Settings tab and then click the Network
 
 Click the Save button to save your changes.
 
-[note] Note that MAAS controllers' syslogs are *not* forwarded to the external syslog server -- only machine syslog information is forwarded. [/note]
+[note]
+Note that MAAS controllers' syslogs are *not* forwarded to the external syslog server -- only machine syslog information is forwarded.
+[/note]
 
 See [MAAS CLI](manage-cli-advanced.md#add-or-update-a-remote-syslog-server) to learn how to add a remote syslog server using the CLI.
 

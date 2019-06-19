@@ -6,7 +6,9 @@ To best fit your requirements, MAAS offers several installation options:
 
 Additionally, you may want to consider an installation within [LXD containers](installconfig-lxd-install.md). This allows MAAS nodes to also run as local containers and is ideal for testing and experimenting with MAAS.
 
-[note] See [MAAS HA](manage-ha.md) for more information about installing MAAS via Snaps in high-availability environments. [/note]
+[note]
+See [MAAS HA](manage-ha.md) for more information about installing MAAS via Snaps in high-availability environments.
+[/note]
 
 # Install from Packages
 

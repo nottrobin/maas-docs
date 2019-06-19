@@ -16,13 +16,17 @@ Once a layout is applied, a regular user can make modifications to a node at the
 
 When a node is no longer needed a user can choose from among several disk erasure types before releasing it.
 
-[note] MAAS supports storage configuration for CentOS and RHEL deployments. Support includes RAID, LVM, and custom partitioning with different file systems (ZFS and Bcache excluded). This support requires a newer version of Curtin, [available as a PPA](https://launchpad.net/ubuntu/+source/curtin). [/note]
+[note]
+MAAS supports storage configuration for CentOS and RHEL deployments. Support includes RAID, LVM, and custom partitioning with different file systems (ZFS and Bcache excluded). This support requires a newer version of Curtin, [available as a PPA](https://launchpad.net/ubuntu/+source/curtin).
+[/note]
 
 ## UEFI
 
 A node booting with UEFI is supported by every layout type. In such a case, an EFI boot partition (`/boot/efi`) will be automatically created. Other than setting the node to boot from UEFI, no other action is required of the user.
 
-[note type="negative" status="Warning"] UEFI is either used by the node throughout its lifecycle or it's not. For example, do not enlist a node with UEFI enabled and then disable it before commissioning. It won't work! [/note]
+[note type="negative" status="Warning"]
+UEFI is either used by the node throughout its lifecycle or it's not. For example, do not enlist a node with UEFI enabled and then disable it before commissioning. It won't work!
+[/note]
 
 The EFI partition, if created, will be the first partition (`sda1`) and will have a FAT32 filesystem with a size of 512 MB.
 
@@ -150,7 +154,9 @@ All nodes will have a default layout applied when commissioned. An administrator
 
 See [Disk erasure](installconfig-storage-erasure.md) for an explanation of the options related to the erasing of disks.
 
-[note type="caution" status="Important"] The new default will only apply to newly-commissioned nodes. [/note]
+[note type="caution" status="Important"]
+The new default will only apply to newly-commissioned nodes.
+[/note]
 
 To change the default with the CLI see [MAAS CLI - advanced tasks](manage-cli-advanced.md#set-the-default-storage-layout).
 
@@ -158,7 +164,9 @@ To change the default with the CLI see [MAAS CLI - advanced tasks](manage-cli-ad
 
 An administrator can change the layout for a single node as well as customise that layout providing this is done while the node has a status of 'Ready'. This is only possible via the CLI at this time (see [MAAS CLI - advanced tasks](manage-cli-advanced.md#set-a-storage-layout)).
 
-[note] Only an administrator can modify storage at the block device level (providing the node has a status of 'Ready'). [/note]
+[note]
+Only an administrator can modify storage at the block device level (providing the node has a status of 'Ready').
+[/note]
 
 ## Final storage modifications
 

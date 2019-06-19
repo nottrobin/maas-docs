@@ -10,7 +10,9 @@ maas $PROFILE pods create type=$POD_TYPE power_address=$POWER_ADDRESS \
     [tags=$TAG1,$TAG2,...]
 ```
 
-[note] Both USERNAME and PASSWORD are optional for the virsh power type. ZONE and TAGS are optional for all pods. [/note]
+[note]
+Both USERNAME and PASSWORD are optional for the virsh power type. ZONE and TAGS are optional for all pods.
+[/note]
 
 See the [API reference](api.md#power-types) for a listing of available power types.
 
@@ -49,7 +51,8 @@ Here's a simple way to find a pod's ID by name using `jq`:
 maas $PROFILE pods read | jq '.[] | select (.name=="MyPod") | .name, .id'
 ```
 
-[note][`jq`][jq] is a command-line JSON processor. [/note]
+[note][`jq`][jq] is a command-line JSON processor.
+[/note]
 
 Example output:
 
@@ -200,7 +203,9 @@ We'll start by deleting the `/` partition MAAS created because we want a separat
 maas admin partition delete $POD_ID $DISK1_ID $PARTITION_ID
 ```
 
-[note] To find `$DISK1_ID` and `$PARTITION_ID`, use `maas admin machine read $POD_ID`. [/note]
+[note]
+To find `$DISK1_ID` and `$PARTITION_ID`, use `maas admin machine read $POD_ID`.
+[/note]
 
 Now, create a boot partition (~512MB):
 
@@ -220,7 +225,9 @@ Finally, create a partition to use as the home directory. Here we'll use the ent
 maas admin partitions create $POD_ID $DISK2_ID
 ```
 
-[note] To find `$DISK2_ID`, use `maas admin machine read $POD_ID`. [/note]
+[note]
+To find `$DISK2_ID`, use `maas admin machine read $POD_ID`.
+[/note]
 
 Now, format the partitions. This requires three commands:
 
@@ -230,7 +237,9 @@ maas admin partition format $POD_ID $DISK1_ID $ROOT_PARTITION_ID fstype=ext4
 maas admin partition format $POD_ID $DISK2_ID $HOME_PARTITION_ID fstype=ext4
 ```
 
-[note] To find the partition IDs, use `maas admin partitions read $POD_ID $DISK1_ID` and `maas admin partitions read $POD_ID $DISK2_ID` [/note]
+[note]
+To find the partition IDs, use `maas admin partitions read $POD_ID $DISK1_ID` and `maas admin partitions read $POD_ID $DISK2_ID`
+[/note]
 
 Before you can deploy the machine with our partition layout, you need to mount the new partitions. Here, we'll do that in three commands:
 
@@ -288,7 +297,9 @@ maas $PROFILE machines allocate "storage=mylabel1:32(pool1),mylabel2:64(pool2)"
 
 Once commissioned and acquired, the new machine will be ready to deploy.
 
-[note] The labels (i.e. `mylabel1`, `mylabel2`) in this case can be used to associate device IDs in the information MAAS dumps about the newly created VM. Try piping the output to: `jq '.constraints_by_type'`. [/note]
+[note]
+The labels (i.e. `mylabel1`, `mylabel2`) in this case can be used to associate device IDs in the information MAAS dumps about the newly created VM. Try piping the output to: `jq '.constraints_by_type'`.
+[/note]
 
 ## List machine parameters
 
@@ -411,7 +422,9 @@ After a machine is deleted, the machine's resources will be available for other 
 maas $PROFILE pod delete $POD_ID
 ```
 
-[note type="caution"] Deleting a pod will automatically delete all machines belonging to that pod. [/note]
+[note type="caution"]
+Deleting a pod will automatically delete all machines belonging to that pod.
+[/note]
 
 <!-- LINKS -->
 

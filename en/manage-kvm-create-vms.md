@@ -89,7 +89,9 @@ We'll start by deleting the `/` partition MAAS created because we want a separat
 maas admin partition delete $POD_ID $DISK1_ID $PARTITION_ID
 ```
 
-[note] To find `$DISK1_ID` and `$PARTITION_ID`, use `maas admin machine read $POD_ID`. [/note]
+[note]
+To find `$DISK1_ID` and `$PARTITION_ID`, use `maas admin machine read $POD_ID`.
+[/note]
 
 Now, create a boot partition (~512MB):
 
@@ -109,7 +111,9 @@ Finally, create a partition to use as the home directory. Here we'll use the ent
 maas admin partitions create $POD_ID $DISK2_ID
 ```
 
-[note] To find `$DISK2_ID`, use `maas admin machine read $POD_ID`. [/note]
+[note]
+To find `$DISK2_ID`, use `maas admin machine read $POD_ID`.
+[/note]
 
 Now, format the partitions. This requires three commands:
 
@@ -119,7 +123,9 @@ maas admin partition format $POD_ID $DISK1_ID $ROOT_PARTITION_ID fstype=ext4
 maas admin partition format $POD_ID $DISK2_ID $HOME_PARTITION_ID fstype=ext4
 ```
 
-[note] To find the partition IDs, use `maas admin partitions read $POD_ID $DISK1_ID` and `maas admin partitions read $POD_ID $DISK2_ID` [/note]
+[note]
+To find the partition IDs, use `maas admin partitions read $POD_ID $DISK1_ID` and `maas admin partitions read $POD_ID $DISK2_ID`
+[/note]
 
 Before you can deploy the machine with our partition layout, you need to mount the new partitions. Here, we'll do that in three commands:
 
@@ -169,7 +175,8 @@ Here's a simple way to find a pod's ID by name using `jq`:
 maas $PROFILE pods read | jq '.[] | select (.name=="MyPod") | .name, .id'
 ```
 
-[note][`jq`][jq] is a command-line JSON processor. [/note]
+[note][`jq`][jq] is a command-line JSON processor.
+[/note]
 
 Example output:
 

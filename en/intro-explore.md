@@ -12,7 +12,9 @@ For best results, we'd recommend testing MAAS with [libvirt](https://libvirt.org
 
 We'd also recommend installing the GUI `virt-manager` to ease configuration, but *libvirt* can also be operated from the command line.
 
-[note] MAAS will also work within a Linux virtual machine running from Oracle's [VirtualBox](https://www.virtualbox.org), which may be useful if you want to test MAAS from a Microsoft Windows or macOS environment. [/note]
+[note]
+MAAS will also work within a Linux virtual machine running from Oracle's [VirtualBox](https://www.virtualbox.org), which may be useful if you want to test MAAS from a Microsoft Windows or macOS environment.
+[/note]
 
 Assuming a base installation of [Ubuntu 18.04 LTS(Bionic) server](https://wiki.ubuntu.com/BionicBeaver/ReleaseNotes) running on a fresh *libvirt* instance or real hardware, matching the [minimum requirements](intro-requirements.md#test-environment), MAAS is installed with the following command:
 

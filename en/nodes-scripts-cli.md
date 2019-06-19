@@ -4,7 +4,9 @@ However, the [MAAS CLI](manage-cli.md) supports options not available from the w
 
 To use the CLI, first make sure you are [logged in](manage-cli.md#log-in-(required)).
 
-[note] For further details on which metadata fields can be used within scripts, and what they do, see [Commissioning and Hardware Testing Scripts](nodes-scripts.md#metadata-fields). [/note]
+[note]
+For further details on which metadata fields can be used within scripts, and what they do, see [Commissioning and Hardware Testing Scripts](nodes-scripts.md#metadata-fields).
+[/note]
 
 ## Script management
 
@@ -55,7 +57,9 @@ MAAS keeps a history of all uploaded script versions, allowing you to easily rev
 maas $PROFILE node-script revert $SCRIPT_NAME to=$VERSION_ID
 ```
 
-[note type="negative" status="Warning"] The history for later modifications will be lost when reverting to an earlier version of the script. [/note]
+[note type="negative" status="Warning"]
+The history for later modifications will be lost when reverting to an earlier version of the script.
+[/note]
 
 To download a script, enter the following:
 
@@ -163,7 +167,9 @@ maas $PROFILE node-script-result download $SYSTEM_ID $RUN_ID output=all \
  filetype=tar.xz > $LOCAL_FILENAME
 ```
 
-[note] **$RUN_ID** is labelled `id` in the verbose result output. See [Determine a node's system ID](manage-cli-common#determine-a-node's-system-id) for details on retrieving **$SYSTEM_ID**. [/note]
+[note]
+**$RUN_ID** is labelled `id` in the verbose result output. See [Determine a node's system ID](manage-cli-common#determine-a-node's-system-id) for details on retrieving **$SYSTEM_ID**.
+[/note]
 
 <!-- LINKS -->
 

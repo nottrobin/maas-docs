@@ -8,7 +8,9 @@ Here's an example that demonstrates how to create a new resource pool named `myr
 maas $PROFILE resource-pools create name=myresource description="A new resource pool."
 ```
 
-[note] The `description` field is optional. [/note]
+[note]
+The `description` field is optional.
+[/note]
 
 ## List available resource pools
 
@@ -28,7 +30,9 @@ maas $PROFILE resource-pool read $RESOURCE_POOL_ID
 maas $PROFILE resource-pool update $RESOURCE_POOL_ID name=newname description="A new description."
 ```
 
-[note] The `name` and `description` fields are optional. [/note]
+[note]
+The `name` and `description` fields are optional.
+[/note]
 
 ## Delete a resource pool
 

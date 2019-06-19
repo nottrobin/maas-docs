@@ -20,7 +20,9 @@ To delete a resource pool, click the trashcan icon next to the pool.
 
 ![add resource pool](../media/nodes-resource-pools__2.5_delete-pool.png)
 
-[note] If you delete a resource pool, all machines that belong to that resource pool will be returned back to the default pool. [/note]
+[note]
+If you delete a resource pool, all machines that belong to that resource pool will be returned back to the default pool.
+[/note]
 
 ## Add a node to a resource pool
 

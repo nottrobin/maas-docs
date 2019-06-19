@@ -10,7 +10,9 @@ To list boot sources, that is, the locations where images (boot resources) may b
 maas $PROFILE boot-sources read
 ```
 
-[note] Although multiple boot sources may be listed, MAAS can only practically work with a single boot source. [/note]
+[note]
+Although multiple boot sources may be listed, MAAS can only practically work with a single boot source.
+[/note]
 
 ## Select images
 
@@ -103,7 +105,9 @@ KEYRING_FILE=/usr/share/keyrings/ubuntu-cloudimage-keyring.gpg
 
 ## Add a boot source
 
-[note] To avoid unnecessary complexity, you should probably delete any existing boot sources before adding a new one. [/note]
+[note]
+To avoid unnecessary complexity, you should probably delete any existing boot sources before adding a new one.
+[/note]
 
 Presented below are two use cases for adding a boot source:
 

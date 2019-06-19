@@ -35,7 +35,9 @@ Therefore, the approximate requirements for this scenario are:
 -   A rack controller is installed on a third host: 2.5 GB memory, 2.5 GHz CPU, and 40 GB of disk space.
 -   A rack controller is duplicated on a fourth host: 2.5 GB memory, 2.5 GHz CPU, and 40 GB of disk space.
 
-[note] Figures in the above two tables are for the MAAS infrastructure only. That is, they do not cover resources needed on the nodes that will subsequently be added to MAAS. That said, node machines should have IPMI-based BMC controllers for power cycling, see [BMC power types][power-types]. [/note]
+[note]
+Figures in the above two tables are for the MAAS infrastructure only. That is, they do not cover resources needed on the nodes that will subsequently be added to MAAS. That said, node machines should have IPMI-based BMC controllers for power cycling, see [BMC power types][power-types].
+[/note]
 
 Examples of factors that influence hardware specifications include:
 

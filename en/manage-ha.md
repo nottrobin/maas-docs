@@ -42,7 +42,9 @@ However, if you have already enabled DHCP on your initial rack controller, you'l
 
 The setup of rack controller HA is now complete.
 
-[note] For HA purposes, DHCP provisioning will take into account multiple DNS services when there is more than one region controller on a single region. [/note]
+[note]
+For HA purposes, DHCP provisioning will take into account multiple DNS services when there is more than one region controller on a single region.
+[/note]
 
 ## Region controller HA
 
@@ -59,7 +61,9 @@ MAAS stores all state information in the PostgreSQL database. It is therefore re
 
 A quick treatment of [PostgreSQL HA: hot standby](manage-ha-postgresql.md) is provided here for convenience only. Its purpose is to give an idea of what's involved at the command line level when implementing one particular form of HA with PostgreSQL.
 
-[note] Each region controller uses up to 40 connections to PostgreSQL in high load situations. Running 2 region controllers requires no modifications to the `max_connections` in `postgresql.conf`. More than 2 region controllers requires that `max_connections` be adjusted to add 40 more connections per extra region controller added to the HA configuration. [/note]
+[note]
+Each region controller uses up to 40 connections to PostgreSQL in high load situations. Running 2 region controllers requires no modifications to the `max_connections` in `postgresql.conf`. More than 2 region controllers requires that `max_connections` be adjusted to add 40 more connections per extra region controller added to the HA configuration.
+[/note]
 
 ### Secondary API server(s)
 
@@ -69,7 +73,9 @@ Please see [Region controllers](installconfig-region.md) and [Multiple region en
 
 Load balancing can be added with [HAProxy](http://www.haproxy.org/) load-balancing software to support multiple API servers. In this setup, HAProxy provides access to the MAAS web UI and API.
 
-[note] If you happen to have Apache running on the same server where you intend to install HAProxy, you will need to stop and disable `apache2`, because HAProxy binds to port 80. [/note]
+[note]
+If you happen to have Apache running on the same server where you intend to install HAProxy, you will need to stop and disable `apache2`, because HAProxy binds to port 80.
+[/note]
 
 #### Install
 

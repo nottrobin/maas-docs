@@ -27,7 +27,9 @@ Consider a node backed by KVM. Below, a 'Power type' of `Virsh` has been selecte
 
 ![power types example: virsh](../media/nodes-power-types__2.4_example-virsh.png)
 
-[note] The node's hostname *according to MAAS* is a randomly chosen string (here `dear.ant`). This would normally be edited to reflect the hostname of the underlying machine. [/note]
+[note]
+The node's hostname *according to MAAS* is a randomly chosen string (here `dear.ant`). This would normally be edited to reflect the hostname of the underlying machine.
+[/note]
 
 See [MAAS CLI](manage-cli-advanced.md#edit-node-hostname-and-power-parameters) for an example of how to edit power parameters with the CLI.
 

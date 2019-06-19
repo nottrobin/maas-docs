@@ -23,7 +23,9 @@ With one or mode nodes selected, the 'Add hardware' drop-down menu is renamed 'T
 
 ![web UI node take action menu](../media/nodes-overview__2.6-take-action.png)
 
-[note] The 'Filter by' section limits the nodes listed in the table to selected keywords and node attributes. [/note]
+[note]
+The 'Filter by' section limits the nodes listed in the table to selected keywords and node attributes.
+[/note]
 
 ## Node details
 

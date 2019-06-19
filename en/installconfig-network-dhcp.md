@@ -58,7 +58,9 @@ To relay from one VLAN (source) to another VLAN (target):
 
 When DHCP is managed from within MAAS, it can be customised through the use of *DHCP snippets*. These are user defined configuration options that can be applied either globally, per subnet, or per node. A global snippet is applied to all VLANs, subnets, and nodes. All three types end up in `/var/lib/maas/dhcpd.conf` or `/var/lib/maas/dhcpd6.conf`. For information on what options to use refer to the [`dhcpd.conf` man page](http://manpages.ubuntu.com/cgi-bin/search.py?q=dhcpd.conf).
 
-[note] Modifications made directly to `dhcpd.conf.template` or `dhcpd6.conf.template` are not supported. [/note]
+[note]
+Modifications made directly to `dhcpd.conf.template` or `dhcpd6.conf.template` are not supported.
+[/note]
 
 To manage snippets, as an admin, open the 'Settings' page and click on the 'DHCP snippets' tab.
 

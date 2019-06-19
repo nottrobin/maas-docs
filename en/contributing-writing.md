@@ -144,15 +144,25 @@ I'm done, and I feel fine.
 
 The above examples will appear as:
 
-[note] If KVM-backed nodes are used, ensure that the 'maas' user on the rack controller can connect to the KVM host using a passphraseless private SSH key. [/note]
+[note]
+If KVM-backed nodes are used, ensure that the 'maas' user on the rack controller can connect to the KVM host using a passphraseless private SSH key.
+[/note]
 
-[note type="caution"] Data will be lost unless you do the right thing. [/note]
+[note type="caution"]
+Data will be lost unless you do the right thing.
+[/note]
 
-[note type="positive" status="High score"] A positive note that should include a title. [/note]
+[note type="positive" status="High score"]
+A positive note that should include a title.
+[/note]
 
-[note type="negative" status="Game over"] A negative note that should include a title. [/note]
+[note type="negative" status="Game over"]
+A negative note that should include a title.
+[/note]
 
-[note type="positive"] I'm done, and I feel fine. [/note]
+[note type="positive"]
+I'm done, and I feel fine.
+[/note]
 
 ## Comments
 

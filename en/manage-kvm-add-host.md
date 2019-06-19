@@ -74,7 +74,9 @@ ssh-keygen -t rsa -N ''
 
 Next, add the contents of `~maas/.ssh/id_rsa.pub` to the KVM host user's `~$USER/.ssh/authorized_keys`. To do this, you can, for example, log into your KVM host node via SSH from a host for which you provided MAAS an existing public SSH key (e.g. your imported Launchpad keys).
 
-[note] Insufficient permissions for `$USER` may cause the `virsh` command to fail with an error such as `failed to connect to the hypervisor`. Check the `$USER` group membership to make sure `$USER` is a member of the `libvirtd` group. [/note]
+[note]
+Insufficient permissions for `$USER` may cause the `virsh` command to fail with an error such as `failed to connect to the hypervisor`. Check the `$USER` group membership to make sure `$USER` is a member of the `libvirtd` group.
+[/note]
 
 ### Add
 
@@ -88,7 +90,9 @@ Here, 'Virsh address' typically looks like the following:
 qemu+ssh://<kvm host IP>/system
 ```
 
-[note] MAAS will automatically discover and store the resources your KVM host contains. Any existing machines will also appear on the 'Machines' page and be commissioned. [/note]
+[note]
+MAAS will automatically discover and store the resources your KVM host contains. Any existing machines will also appear on the 'Machines' page and be commissioned.
+[/note]
 
 #### Add with CLI
 

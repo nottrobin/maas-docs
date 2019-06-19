@@ -1,18 +1,24 @@
 MAAS runs various scripts during enlistment, commissioning and testing to collect data about nodes. *Commissioning scripts* are used to configure hardware or perform other tasks during commissioning, such as updating firmware, whereas *hardware testing scripts* are used to evaluate system hardware and report its status.
 
-[note] MAAS runs built-in commissioning scripts only during enlistment. Custom commissioning scripts are only run when commissioning is explicitly run. [/note]
+[note]
+MAAS runs built-in commissioning scripts only during enlistment. Custom commissioning scripts are only run when commissioning is explicitly run.
+[/note]
 
 Scripts can be selected to run from web UI [during commissioning](nodes-commission.md), by [testing hardware](nodes-hw-testing.md) or from the [command line](nodes-scripts-cli.md).
 
 This page explains the various metadata fields used within these scripts, how parameters are passed to scripts and how any results are returned, along with examples of both commissioning and hardware testing scripts.
 
-[note] By default, all commissioning scripts will be run except those which use the `for_hardware` feature. Similarly, any test script tagged `commissioning` using the `script_type` parameter will be run during commissioning or testing. [See below](#automatic-script-selection-by-hardware-type) for more details. [/note]
+[note]
+By default, all commissioning scripts will be run except those which use the `for_hardware` feature. Similarly, any test script tagged `commissioning` using the `script_type` parameter will be run during commissioning or testing. [See below](#automatic-script-selection-by-hardware-type) for more details.
+[/note]
 
 A typical administrator workflow (with node states) using customised commissioning scripts is represented here:
 
 Add node -&gt; Enlistment (runs built-in commissioning scripts MAAS) -&gt; New -&gt; Commission (runs built-in and custom commissioning scripts) -&gt; Ready -&gt; Deploy
 
-[note] In subsequent releases of MAAS, administrators will be able to make a machine 'Ready' simply by running hardware tests. For now, administrators will need to Commission the new machine. [/note]
+[note]
+In subsequent releases of MAAS, administrators will be able to make a machine 'Ready' simply by running hardware tests. For now, administrators will need to Commission the new machine.
+[/note]
 
 ## Metadata fields
 
@@ -223,7 +229,9 @@ fi
 
 Below is a sample script to update the mainboard firmware on an ASUS P8P67 Pro using a vendor provided tool. The tool will be automatically downloaded an extracted by MAAS. The script reboots the system to complete the update. The system will boot back into the MAAS ephemeral environment to finish commissioning and optionally testing.
 
-[note] Vendor tools which use UEFI boot capsules or need to store resource files on disk while rebooting are not currently supported. [/note]
+[note]
+Vendor tools which use UEFI boot capsules or need to store resource files on disk while rebooting are not currently supported.
+[/note]
 
 ``` bash
 #!/bin/bash -ex
@@ -279,7 +287,9 @@ A status message of *Commissioning script created* will appear and you'll now be
 
 ![select custom script](../media/nodes-hw-scripts__2.4_select.png)
 
-[note] MAAS executes scripts in lexicographical order. This allows you to control when your scripts are executed and if they run before or after the standard MAAS scripts. [/note]
+[note]
+MAAS executes scripts in lexicographical order. This allows you to control when your scripts are executed and if they run before or after the standard MAAS scripts.
+[/note]
 
 ## Debugging
 

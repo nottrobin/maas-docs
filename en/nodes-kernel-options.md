@@ -20,7 +20,9 @@ maas $PROFILE maas set-config name=kernel_opts value='$KERNEL_OPTIONS'
 
 Per-node kernel boot options are set using the CLI.
 
-[note] Per-node boot options take precedence to global ones. [/note]
+[note]
+Per-node boot options take precedence to global ones.
+[/note]
 
 To specify kernel boot options for an individual machine, first create a tag:
 

@@ -80,7 +80,9 @@ Select the 'Configuration' tab and then the 'Edit' button alongside 'Machine con
 
 Changes are applied by pressing the 'Save changes' button.
 
-[note] New tags become available as a filter in the 'Machines' page in the web UI immediately after you add them. [/note]
+[note]
+New tags become available as a filter in the 'Machines' page in the web UI immediately after you add them.
+[/note]
 
 ### Tags for network interfaces
 

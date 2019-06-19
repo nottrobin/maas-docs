@@ -33,7 +33,8 @@ You can use `jq` to determine a node's system ID. For example, here's how to out
 maas $PROFILE machines read | jq '.[] | .hostname, .system_id'
 ```
 
-[note][`jq`][jq] is a command-line JSON processor. [/note]
+[note][`jq`][jq] is a command-line JSON processor.
+[/note]
 
 Output looks like this:
 
@@ -50,7 +51,9 @@ To commission a node:
 maas $PROFILE machine commission $SYSTEM_ID
 ```
 
-[note] To commission a node it must have a status of 'New'. [/note]
+[note]
+To commission a node it must have a status of 'New'.
+[/note]
 
 To commission all nodes in the 'New' state:
 
@@ -74,7 +77,9 @@ To acquire/allocate a specific node:
 maas $PROFILE machines allocate system_id=$SYSTEM_ID
 ```
 
-[note] To acquire a node it must have a status of 'Ready'. [/note]
+[note]
+To acquire a node it must have a status of 'Ready'.
+[/note]
 
 ## Deploy a node
 
@@ -90,7 +95,9 @@ To deploy a node as a KVM host:
 maas $PROFILE machine deploy $SYSTEM_ID install_kvm=True
 ```
 
-[note] To deploy with the CLI the node must have a status of 'Allocated'. See 'Acquire a node' above (or use the [web UI](nodes-deploy.md#acquire-nodes)). [/note]
+[note]
+To deploy with the CLI the node must have a status of 'Allocated'. See 'Acquire a node' above (or use the [web UI](nodes-deploy.md#acquire-nodes)).
+[/note]
 
 See [Deploy nodes](nodes-deploy.md).
 
@@ -172,7 +179,9 @@ maas $PROFILE vlan update $FABRIC_ID $VLAN_TAG dhcp_on=True \
 
 You will also need to set a default gateway (see [below](#set-a-default-gateway)).
 
-[note] DHCP for PXE booting will need to be enabled on the 'untagged' VLAN. [/note]
+[note]
+DHCP for PXE booting will need to be enabled on the 'untagged' VLAN.
+[/note]
 
 See [DHCP](installconfig-network-dhcp.md) for more on this subject.
 

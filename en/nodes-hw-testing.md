@@ -8,7 +8,9 @@ Such testing can be performed on a node with a status of 'Ready' (i.e. recently 
 
 Testing can also be included as part of the commissioning process. The dialog (described below) will be displayed when the 'Commission' action is chosen. Be aware that if the hardware tests fail the node will become unavailable for Deployment.
 
-[note] The majority of testing scripts only work with nodes that are backed by physical hardware (e.g. they may be incompatible with KVM-based nodes). [/note]
+[note]
+The majority of testing scripts only work with nodes that are backed by physical hardware (e.g. they may be incompatible with KVM-based nodes).
+[/note]
 
 ## Apply a hardware test
 

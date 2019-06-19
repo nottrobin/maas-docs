@@ -10,7 +10,9 @@ Machines use this internal domain for HTTP metadata queries, APT (proxying via S
 
 The rack controller installs and configures `bind` as a forwarder. All machines communicate via the rack controller directly.
 
-[note] Zone management and maintenance still happen within the region controller. [/note]
+[note]
+Zone management and maintenance still happen within the region controller.
+[/note]
 
 ## Rack/region
 

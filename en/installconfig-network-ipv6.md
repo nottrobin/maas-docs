@@ -10,7 +10,9 @@ Support for IPv6 in MAAS is similar to support for IPv4. Please note the followi
 http://[::1]:5240/MAAS/
 ```
 
-[note] Most BMCs can only be controlled over IPv4. [/note]
+[note]
+Most BMCs can only be controlled over IPv4.
+[/note]
 
 ## Enable IPv6
 

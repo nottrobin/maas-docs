@@ -23,7 +23,9 @@ Additionally, the template for each phase typically consist of two files. The fi
 
 The `enlist` template, for example, contains only minimal variables whereas the contents of `enlist_userdata` includes both user variables and initialisation logic.
 
-[note] Tempita’s inheritance mechanism is the reverse of what might be expected. Inherited files, such as `enlist_userdata`, become the new template which can then reference variables from the higher level file, such as `enlist`. [/note]
+[note]
+Tempita’s inheritance mechanism is the reverse of what might be expected. Inherited files, such as `enlist_userdata`, become the new template which can then reference variables from the higher level file, such as `enlist`.
+[/note]
 
 ### Template naming
 
@@ -55,7 +57,9 @@ For example, to create a *generic* configuration template for Ubuntu 16.04 Xenia
 
 To create the equivalent template for *curtin_userdata*, the file would be called `curtin_userdata_ubuntu_amd64_generic_xenial_node`.
 
-[note] Any file targetting a specific node will replace the values and configuration held within any generic files. If those values are needed, the generic template values will need to be copied into your new file. [/note]
+[note]
+Any file targetting a specific node will replace the values and configuration held within any generic files. If those values are needed, the generic template values will need to be copied into your new file.
+[/note]
 
 ### Configuration
 

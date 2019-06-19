@@ -1,4 +1,6 @@
-[note type="caution"] This page is deprecated. Please see the new [Pods](manage-pods-intro.md) section in the navigation column. [/note]
+[note type="caution"]
+This page is deprecated. Please see the new [Pods](manage-pods-intro.md) section in the navigation column.
+[/note]
 
 # Pods
 
@@ -11,7 +13,9 @@ MAAS currently supports two such architectures:
 -   Intel Rack Scale Design (RSD)
 -   Virsh (KVM)
 
-[note] For RSD, MAAS has only been validated to work with Intel RSD reference software release v.1.2.5, based on Redfish API v.1.0 and RSD PODM API v.1.0. [/note]
+[note]
+For RSD, MAAS has only been validated to work with Intel RSD reference software release v.1.2.5, based on Redfish API v.1.0 and RSD PODM API v.1.0.
+[/note]
 
 See [MAAS CLI - Composable hardware](manage-cli-comp-hw.md) for how to manage composable hardware with the CLI.
 
@@ -127,7 +131,9 @@ While on a pod's details view, select the machine to decompose and choose the 'D
 
 Confirm by hitting the 'Delete machine' button.
 
-[note] This operation can also be achieved by simply deleting the corresponding MAAS node in the regular way. [/note]
+[note]
+This operation can also be achieved by simply deleting the corresponding MAAS node in the regular way.
+[/note]
 
 Once done, you will be transported back to the main 'Machines' page.
 

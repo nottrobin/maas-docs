@@ -8,7 +8,9 @@ As explained in the [Introduction](index.md#key-components-and-colocation-of-all
 
 You *will* be using the web UI so now is the time to log in and take a look around! Proceed to the [web UI](installconfig-webui.md) now. This will involve the creation of an administrator user. Notice how the web UI (API server) is accessed via port 5240 and not port 80.
 
-[note] Although the web UI may be accessed via port 80, this is not guaranteed to work in future versions of MAAS. [/note]
+[note]
+Although the web UI may be accessed via port 80, this is not guaranteed to work in future versions of MAAS.
+[/note]
 
 The initial access of the web UI will kick off an optional [configuration journey](installconfig-webui-conf-journey.md) whose purpose is to get the essential aspects of MAAS configured right away.
 
@@ -30,7 +32,9 @@ Secondly, configure a default gateway and a nameserver that your nodes will use.
 
 The import process can take a while. Consider moving on and coming back. Just ensure that the import has completed prior to adding a node.
 
-[note] Once installed, by default, MAAS will begin downloading images for the latest Ubuntu LTS. [/note]
+[note]
+Once installed, by default, MAAS will begin downloading images for the latest Ubuntu LTS.
+[/note]
 
 ## Access the MAAS CLI
 
